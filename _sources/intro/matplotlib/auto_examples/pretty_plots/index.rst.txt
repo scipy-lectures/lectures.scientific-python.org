@@ -1,0 +1,258 @@
+
+
+.. _sphx_glr_intro_matplotlib_auto_examples_pretty_plots:
+
+
+Code generating the summary figures with a title
+-------------------------------------------------
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo 3D plotting with matplotlib and decorate the figure.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_plot3d_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_plot3d_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3D plotting vignette</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing how to plot in polar coordinate, and some decorations.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_polar_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_polar_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plotting in polar, decorated</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example of plots with matplotlib, and added annotations.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_plot_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_plot_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot example vignette</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo multiple plots and style the figure.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_multiplot_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_multiplot_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Multiple plots vignette</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example of doing box plots with matplotlib">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_boxplot_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_boxplot_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Boxplot with matplotlib</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing the scatter function, with decorations.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_scatter_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_scatter_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot scatter decorated</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo pie chart with matplotlib and style the figure.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_pie_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_pie_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pie chart vignette</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demoing imshow">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_imshow_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_imshow_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Imshow demo</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An more elaborate bar plot example">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_bar_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_bar_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bar plot advanced</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing quiver with decorations.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_quiver_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_quiver_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plotting quiver decorated</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing how to plot the contours of a function, with additional layout tweaks.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_contour_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_contour_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Display the contours of a function</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example displaying a grid on the axes and tweaking the layout.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_grid_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_grid_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Grid elaborate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing text printing and decorating the resulting figure.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_text_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_text_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Text printing decorated</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/matplotlib/auto_examples/pretty_plots/plot_plot3d_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_polar_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_plot_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_multiplot_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_boxplot_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_scatter_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_pie_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_imshow_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_bar_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_quiver_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_contour_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_grid_ext
+   /intro/matplotlib/auto_examples/pretty_plots/plot_text_ext
+

@@ -1,0 +1,331 @@
+
+
+.. _sphx_glr_intro_matplotlib_auto_examples_options:
+
+
+
+Example demoing choices for an option
+--------------------------------------
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing the various colors taken by matplotlib&#x27;s plot.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_color_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_color.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The colors matplotlib line plots</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot various linewidth with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_linewidth_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_linewidth.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Linewidth</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates using alpha for transparency.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_alpha_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_alpha.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Alpha: transparency</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates aliased versus anti-aliased text.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_aliased_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_aliased.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Aliased versus anti-aliased</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The example shows aliased versus anti-aliased text.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_antialiased_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_antialiased.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Aliased versus anti-aliased</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo the marker size control in matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_ms_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_ms.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Marker size</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo the marker edge widths of matplotlib&#x27;s markers.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_mew_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mew.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Marker edge width</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example plotting the matplotlib colormaps.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_colormaps_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_colormaps.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Colormaps</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing the different solid joint styles in matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_solid_joinstyle_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_solid_joinstyle.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Solid joint style</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing the solide cap style in matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_solid_capstyle_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_solid_capstyle.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Solid cap style</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo the marker edge color of matplotlib&#x27;s markers.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_mec_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mec.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Marker edge color</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo the marker face color of matplotlib&#x27;s markers.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_mfc_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mfc.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Marker face color</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing the dash capstyle.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_dash_capstyle_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_dash_capstyle.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dash capstyle</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example demoing the dash join style.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_dash_joinstyle_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_dash_joinstyle.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dash join style</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Show the different markers of matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_markers_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_markers.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Markers</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the different line styles.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_linestyles_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_linestyles.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Linestyles</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing different locators to position ticks on axis for matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_ticks_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_ticks.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Locators for tick on axis</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/matplotlib/auto_examples/options/plot_color
+   /intro/matplotlib/auto_examples/options/plot_linewidth
+   /intro/matplotlib/auto_examples/options/plot_alpha
+   /intro/matplotlib/auto_examples/options/plot_aliased
+   /intro/matplotlib/auto_examples/options/plot_antialiased
+   /intro/matplotlib/auto_examples/options/plot_ms
+   /intro/matplotlib/auto_examples/options/plot_mew
+   /intro/matplotlib/auto_examples/options/plot_colormaps
+   /intro/matplotlib/auto_examples/options/plot_solid_joinstyle
+   /intro/matplotlib/auto_examples/options/plot_solid_capstyle
+   /intro/matplotlib/auto_examples/options/plot_mec
+   /intro/matplotlib/auto_examples/options/plot_mfc
+   /intro/matplotlib/auto_examples/options/plot_dash_capstyle
+   /intro/matplotlib/auto_examples/options/plot_dash_joinstyle
+   /intro/matplotlib/auto_examples/options/plot_markers
+   /intro/matplotlib/auto_examples/options/plot_linestyles
+   /intro/matplotlib/auto_examples/options/plot_ticks
+

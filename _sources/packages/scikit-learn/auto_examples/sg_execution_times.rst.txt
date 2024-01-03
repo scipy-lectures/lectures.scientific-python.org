@@ -1,0 +1,85 @@
+
+:orphan:
+
+.. _sphx_glr_packages_scikit-learn_auto_examples_sg_execution_times:
+
+
+Computation times
+=================
+**00:16.865** total execution time for 17 files **from packages/scikit-learn/auto_examples**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_california_prediction.py` (``plot_california_prediction.py``)
+     - 00:04.450
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_eigenfaces.py` (``plot_eigenfaces.py``)
+     - 00:04.067
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_measuring_performance.py` (``plot_measuring_performance.py``)
+     - 00:01.836
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_digits_simple_classif.py` (``plot_digits_simple_classif.py``)
+     - 00:01.654
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_tsne.py` (``plot_tsne.py``)
+     - 00:01.281
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_bias_variance.py` (``plot_bias_variance.py``)
+     - 00:01.215
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_iris_knn.py` (``plot_iris_knn.py``)
+     - 00:00.682
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_compare_classifiers.py` (``plot_compare_classifiers.py``)
+     - 00:00.440
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_linear_model_cv.py` (``plot_linear_model_cv.py``)
+     - 00:00.342
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_polynomial_regression.py` (``plot_polynomial_regression.py``)
+     - 00:00.220
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_ML_flow_chart.py` (``plot_ML_flow_chart.py``)
+     - 00:00.196
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_variance_linear_regr.py` (``plot_variance_linear_regr.py``)
+     - 00:00.130
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_pca.py` (``plot_pca.py``)
+     - 00:00.092
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_iris_scatter.py` (``plot_iris_scatter.py``)
+     - 00:00.091
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_svm_non_linear.py` (``plot_svm_non_linear.py``)
+     - 00:00.065
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_separator.py` (``plot_separator.py``)
+     - 00:00.057
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_linear_regression.py` (``plot_linear_regression.py``)
+     - 00:00.045
+     - 0.0

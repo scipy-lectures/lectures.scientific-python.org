@@ -1,0 +1,346 @@
+:orphan:
+
+Examples for the scikit-learn chapter
+======================================
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo PCA in 2D">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_pca_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_pca.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Demo PCA in 2D</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demonstrates overfit when testing on train set.">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_measuring_performance_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_measuring_performance.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Measuring Decision Tree performance</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot a simple scatter plot of 2 features of the iris dataset.">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_iris_scatter_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_iris_scatter.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot 2D views of the iris dataset</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A simple linear regression">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_linear_regression_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_linear_regression.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">A simple linear regression</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here we use sklearn.manifold.TSNE to visualize the digits datasets. Indeed, the digits are vect...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_tsne_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_tsne.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">tSNE to visualize digits</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Use the RidgeCV and LassoCV to set the regularization parameter">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_linear_model_cv_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_linear_model_cv.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Use the RidgeCV and LassoCV to set the regularization parameter</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot variance and regularization in linear models">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_variance_linear_regr_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_variance_linear_regr.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot variance and regularization in linear models</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example generates simple synthetic data ploints and shows a separating hyperplane on them.">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_separator_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_separator.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Simple picture of the formal problem of machine learning</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compare the performance of a variety of classifiers on a test set for the digits data.">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_compare_classifiers_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_compare_classifiers.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Compare classifiers on the digits data</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fits data generated from a 9th order polynomial with model of 4th order and 9th order polynomia...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_polynomial_regression_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_polynomial_regression.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot fitting a 9th order polynomial</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here we perform a simple regression analysis on the California housing data, exploring two type...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_california_prediction_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_california_prediction.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">A simple regression analysis on the California housing data</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the decision boundary of nearest neighbor decision on iris, first with a single nearest ne...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_iris_knn_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_iris_knn.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nearest-neighbor prediction on iris</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the first few samples of the digits dataset and a 2D representation built using PCA, then ...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_digits_simple_classif_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_digits_simple_classif.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Simple visualization and classification of the digits dataset</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The goal of this example is to show how an unsupervised method and a supervised one can be chai...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_eigenfaces_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_eigenfaces.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The eigenfaces example: chaining PCA and SVMs</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example plot from the tutorial which accompanies an explanation of the support vecto...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_svm_non_linear_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_svm_non_linear.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example of linear and non-linear models</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo overfitting, underfitting, and validation and learning curves with polynomial regression.">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_bias_variance_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_bias_variance.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bias and variance of polynomial fit</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This script plots the flow-charts used in the scikit-learn tutorials.">
+
+.. only:: html
+
+  .. image:: /packages/scikit-learn/auto_examples/images/thumb/sphx_glr_plot_ML_flow_chart_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_ML_flow_chart.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tutorial Diagrams</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /packages/scikit-learn/auto_examples/plot_pca
+   /packages/scikit-learn/auto_examples/plot_measuring_performance
+   /packages/scikit-learn/auto_examples/plot_iris_scatter
+   /packages/scikit-learn/auto_examples/plot_linear_regression
+   /packages/scikit-learn/auto_examples/plot_tsne
+   /packages/scikit-learn/auto_examples/plot_linear_model_cv
+   /packages/scikit-learn/auto_examples/plot_variance_linear_regr
+   /packages/scikit-learn/auto_examples/plot_separator
+   /packages/scikit-learn/auto_examples/plot_compare_classifiers
+   /packages/scikit-learn/auto_examples/plot_polynomial_regression
+   /packages/scikit-learn/auto_examples/plot_california_prediction
+   /packages/scikit-learn/auto_examples/plot_iris_knn
+   /packages/scikit-learn/auto_examples/plot_digits_simple_classif
+   /packages/scikit-learn/auto_examples/plot_eigenfaces
+   /packages/scikit-learn/auto_examples/plot_svm_non_linear
+   /packages/scikit-learn/auto_examples/plot_bias_variance
+   /packages/scikit-learn/auto_examples/plot_ML_flow_chart
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: auto_examples_python.zip </packages/scikit-learn/auto_examples/auto_examples_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip </packages/scikit-learn/auto_examples/auto_examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

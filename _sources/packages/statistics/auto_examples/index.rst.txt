@@ -1,0 +1,225 @@
+:orphan:
+
+Full code for the figures
+==========================
+
+Code examples for the statistics chapter.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot boxplots for FSIQ, PIQ, and the paired difference between the two: while the spread (error...">
+
+.. only:: html
+
+  .. image:: /packages/statistics/auto_examples/images/thumb/sphx_glr_plot_paired_boxplots_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_statistics_auto_examples_plot_paired_boxplots.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Boxplots and paired differences</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example loads from a CSV file data with mixed numerical and categorical entries, and plots...">
+
+.. only:: html
+
+  .. image:: /packages/statistics/auto_examples/images/thumb/sphx_glr_plot_pandas_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_statistics_auto_examples_plot_pandas.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plotting simple quantities of a pandas dataframe</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Illustrate an analysis on a real dataset:">
+
+.. only:: html
+
+  .. image:: /packages/statistics/auto_examples/images/thumb/sphx_glr_plot_iris_analysis_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_statistics_auto_examples_plot_iris_analysis.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Analysis of Iris petal and sepal sizes</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fit a simple linear regression using &#x27;statsmodels&#x27;, compute corresponding p-values.">
+
+.. only:: html
+
+  .. image:: /packages/statistics/auto_examples/images/thumb/sphx_glr_plot_regression_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_statistics_auto_examples_plot_regression.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Simple Regression</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Wages depend mostly on education. Here we investigate how this dependence is related to gender:...">
+
+.. only:: html
+
+  .. image:: /packages/statistics/auto_examples/images/thumb/sphx_glr_plot_wage_education_gender_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_statistics_auto_examples_plot_wage_education_gender.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Test for an education/gender interaction in wages</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Calculate using &#x27;statsmodels&#x27; just the best fit, or all the corresponding statistical parameter...">
+
+.. only:: html
+
+  .. image:: /packages/statistics/auto_examples/images/thumb/sphx_glr_plot_regression_3d_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_statistics_auto_examples_plot_regression_3d.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Multiple Regression</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example uses seaborn to quickly plot various factors relating wages, experience and educti...">
+
+.. only:: html
+
+  .. image:: /packages/statistics/auto_examples/images/thumb/sphx_glr_plot_wage_data_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_statistics_auto_examples_plot_wage_data.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Visualizing factors influencing wages</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is a business-intelligence (BI) like application.">
+
+.. only:: html
+
+  .. image:: /packages/statistics/auto_examples/images/thumb/sphx_glr_plot_airfare_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_statistics_auto_examples_plot_airfare.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Air fares before and after 9/11</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /packages/statistics/auto_examples/plot_paired_boxplots
+   /packages/statistics/auto_examples/plot_pandas
+   /packages/statistics/auto_examples/plot_iris_analysis
+   /packages/statistics/auto_examples/plot_regression
+   /packages/statistics/auto_examples/plot_wage_education_gender
+   /packages/statistics/auto_examples/plot_regression_3d
+   /packages/statistics/auto_examples/plot_wage_data
+   /packages/statistics/auto_examples/plot_airfare
+
+Solutions to this chapter's exercises
+======================================
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Going back to the brain size + IQ data, test if the VIQ of male and female are different after ...">
+
+.. only:: html
+
+  .. image:: /packages/statistics/auto_examples/solutions/images/thumb/sphx_glr_plot_brain_size_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_statistics_auto_examples_solutions_plot_brain_size.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Relating Gender and IQ</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /packages/statistics/auto_examples/solutions/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: auto_examples_python.zip </packages/statistics/auto_examples/auto_examples_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip </packages/statistics/auto_examples/auto_examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_
