@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.1.6.2. Plotting simple quantities of a pandas dataframe &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.1.6.3. Analysis of Iris petal and sepal sizes" href="plot_iris_analysis.html" />
+    <link rel="prev" title="3.1.6.1. Boxplots and paired differences" href="plot_paired_boxplots.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_iris_analysis.html" title="3.1.6.3. Analysis of Iris petal and sepal sizes"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="plot_paired_boxplots.html" title="3.1.6.1. Boxplots and paired differences"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U"><span class="section-number">3.1. </span>Statistics in Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1.6.2. </span>Plotting simple quantities of a pandas dataframe</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/statistics/auto_examples/plot_pandas.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-packages-statistics-auto-examples-plot-pandas-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="plotting-simple-quantities-of-a-pandas-dataframe">
+<span id="sphx-glr-packages-statistics-auto-examples-plot-pandas-py"></span><h1><span class="section-number">3.1.6.2. </span>Plotting simple quantities of a pandas dataframe<a class="headerlink" href="#plotting-simple-quantities-of-a-pandas-dataframe" title="Link to this heading">¶</a></h1>
+<p>This example loads from a CSV file data with mixed numerical and
+categorical entries, and plots a few quantities, separately for females
+and males, thanks to the pandas integrated plotting tool (that uses
+matplotlib behind the scene).</p>
+<p>See <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/visualization.html">http://pandas.pydata.org/pandas-docs/stable/visualization.html</a></p>
+<ul class="sphx-glr-horizontal">
+<li><img src="../../../_images/sphx_glr_plot_pandas_001.png" srcset="../../../_images/sphx_glr_plot_pandas_001.png" alt="Female, Male" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../../_images/sphx_glr_plot_pandas_002.png" srcset="../../../_images/sphx_glr_plot_pandas_002.png" alt="plot pandas" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../../_images/sphx_glr_plot_pandas_003.png" srcset="../../../_images/sphx_glr_plot_pandas_003.png" alt="plot pandas" class = "sphx-glr-multi-img"/></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function"><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="s2">&quot;brain_size.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Box plots of different columns for each gender</span>
+<div class="newline"></div><span class="n">groupby_gender</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby" title="pandas.DataFrame.groupby" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-method"><span class="n">data</span><span class="o">.</span><span class="n">groupby</span></a><span class="p">(</span><span class="s2">&quot;Gender&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.DataFrameGroupBy.boxplot.html#pandas.core.groupby.DataFrameGroupBy.boxplot" title="pandas.core.groupby.DataFrameGroupBy.boxplot" class="sphx-glr-backref-module-pandas-core-groupby sphx-glr-backref-type-py-method"><span class="n">groupby_gender</span><span class="o">.</span><span class="n">boxplot</span></a><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;FSIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;VIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;PIQ&quot;</span><span class="p">])</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">plotting</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Scatter matrices for different columns</span>
+<div class="newline"></div><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.plotting.scatter_matrix.html#pandas.plotting.scatter_matrix" title="pandas.plotting.scatter_matrix" class="sphx-glr-backref-module-pandas-plotting sphx-glr-backref-type-py-function"><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span></a><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">[[</span><span class="s2">&quot;Weight&quot;</span><span class="p">,</span> <span class="s2">&quot;Height&quot;</span><span class="p">,</span> <span class="s2">&quot;MRI_Count&quot;</span><span class="p">]])</span>
+<div class="newline"></div><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.plotting.scatter_matrix.html#pandas.plotting.scatter_matrix" title="pandas.plotting.scatter_matrix" class="sphx-glr-backref-module-pandas-plotting sphx-glr-backref-type-py-function"><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span></a><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">[[</span><span class="s2">&quot;PIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;VIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;FSIQ&quot;</span><span class="p">]])</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.573 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-packages-statistics-auto-examples-plot-pandas-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/5785e8fe0271fadf4db4da9b5e62e4c7/plot_pandas.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_pandas.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/fb9f0c50d3b231e7f0a309f2b56a8740/plot_pandas.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_pandas.py</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="plot_paired_boxplots.html"
+                          title="previous chapter"><span class="section-number">3.1.6.1. </span>Boxplots and paired differences</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="plot_iris_analysis.html"
+                          title="next chapter"><span class="section-number">3.1.6.3. </span>Analysis of Iris petal and sepal sizes</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/packages/statistics/auto_examples/plot_pandas.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_iris_analysis.html" title="3.1.6.3. Analysis of Iris petal and sepal sizes"
+             >next</a></li>
+        <li class="right" >
+          <a href="plot_paired_boxplots.html" title="3.1.6.1. Boxplots and paired differences"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" ><span class="section-number">3.1. </span>Statistics in Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1.6.2. </span>Plotting simple quantities of a pandas dataframe</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/statistics/auto_examples/plot_pandas.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

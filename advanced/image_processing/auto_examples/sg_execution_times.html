@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Computation times &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Computation times</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/advanced/image_processing/auto_examples/sg_execution_times.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="computation-times">
+<span id="sphx-glr-advanced-image-processing-auto-examples-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Link to this heading">¶</a></h1>
+<p><strong>00:05.190</strong> total execution time for 24 files <strong>from advanced/image_processing/auto_examples</strong>:</p>
+<div class="docutils container">
+<style scoped>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+</style>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" class="init">
+$(document).ready( function () {
+    $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+} );
+</script><table class="table table-striped sg-datatable docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>Mem (MB)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-face-py"><span class="std std-ref">Displaying a Raccoon Face</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_face.py</span></code>)</p></td>
+<td><p>00:00.558</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_geom_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-geom-face-py"><span class="std std-ref">Geometrical transformations</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_geom_face.py</span></code>)</p></td>
+<td><p>00:00.454</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_sharpen.html#sphx-glr-advanced-image-processing-auto-examples-plot-sharpen-py"><span class="std std-ref">Image sharpening</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_sharpen.py</span></code>)</p></td>
+<td><p>00:00.450</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_GMM.html#sphx-glr-advanced-image-processing-auto-examples-plot-gmm-py"><span class="std std-ref">Segmentation with Gaussian mixture models</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_GMM.py</span></code>)</p></td>
+<td><p>00:00.449</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_spectral_clustering.html#sphx-glr-advanced-image-processing-auto-examples-plot-spectral-clustering-py"><span class="std std-ref">Segmentation with spectral clustering</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_spectral_clustering.py</span></code>)</p></td>
+<td><p>00:00.436</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_display_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-display-face-py"><span class="std std-ref">Display a Raccoon Face</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_display_face.py</span></code>)</p></td>
+<td><p>00:00.364</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_blur.html#sphx-glr-advanced-image-processing-auto-examples-plot-blur-py"><span class="std std-ref">Blurring of images</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_blur.py</span></code>)</p></td>
+<td><p>00:00.285</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_granulo.html#sphx-glr-advanced-image-processing-auto-examples-plot-granulo-py"><span class="std std-ref">Granulometry</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_granulo.py</span></code>)</p></td>
+<td><p>00:00.254</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_find_edges.html#sphx-glr-advanced-image-processing-auto-examples-plot-find-edges-py"><span class="std std-ref">Finding edges with Sobel filters</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_find_edges.py</span></code>)</p></td>
+<td><p>00:00.221</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_face_tv_denoise.html#sphx-glr-advanced-image-processing-auto-examples-plot-face-tv-denoise-py"><span class="std std-ref">Total Variation denoising</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_face_tv_denoise.py</span></code>)</p></td>
+<td><p>00:00.218</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_face_denoise.html#sphx-glr-advanced-image-processing-auto-examples-plot-face-denoise-py"><span class="std std-ref">Image denoising</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_face_denoise.py</span></code>)</p></td>
+<td><p>00:00.207</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_block_mean.html#sphx-glr-advanced-image-processing-auto-examples-plot-block-mean-py"><span class="std std-ref">Plot the block mean of an image</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_block_mean.py</span></code>)</p></td>
+<td><p>00:00.176</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_radial_mean.html#sphx-glr-advanced-image-processing-auto-examples-plot-radial-mean-py"><span class="std std-ref">Radial mean</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_radial_mean.py</span></code>)</p></td>
+<td><p>00:00.174</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_numpy_array.html#sphx-glr-advanced-image-processing-auto-examples-plot-numpy-array-py"><span class="std std-ref">Image manipulation and NumPy arrays</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_numpy_array.py</span></code>)</p></td>
+<td><p>00:00.161</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_interpolation_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-interpolation-face-py"><span class="std std-ref">Image interpolation</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_interpolation_face.py</span></code>)</p></td>
+<td><p>00:00.152</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_denoising.html#sphx-glr-advanced-image-processing-auto-examples-plot-denoising-py"><span class="std std-ref">Denoising an image with the median filter</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_denoising.py</span></code>)</p></td>
+<td><p>00:00.141</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_histo_segmentation.html#sphx-glr-advanced-image-processing-auto-examples-plot-histo-segmentation-py"><span class="std std-ref">Histogram segmentation</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_histo_segmentation.py</span></code>)</p></td>
+<td><p>00:00.129</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_clean_morpho.html#sphx-glr-advanced-image-processing-auto-examples-plot-clean-morpho-py"><span class="std std-ref">Cleaning segmentation with mathematical morphology</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_clean_morpho.py</span></code>)</p></td>
+<td><p>00:00.080</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_synthetic_data.html#sphx-glr-advanced-image-processing-auto-examples-plot-synthetic-data-py"><span class="std std-ref">Synthetic data</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_synthetic_data.py</span></code>)</p></td>
+<td><p>00:00.073</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_watershed_segmentation.html#sphx-glr-advanced-image-processing-auto-examples-plot-watershed-segmentation-py"><span class="std std-ref">Watershed segmentation</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_watershed_segmentation.py</span></code>)</p></td>
+<td><p>00:00.057</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_greyscale_dilation.html#sphx-glr-advanced-image-processing-auto-examples-plot-greyscale-dilation-py"><span class="std std-ref">Greyscale dilation</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_greyscale_dilation.py</span></code>)</p></td>
+<td><p>00:00.054</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_measure_data.html#sphx-glr-advanced-image-processing-auto-examples-plot-measure-data-py"><span class="std std-ref">Measurements from images</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_measure_data.py</span></code>)</p></td>
+<td><p>00:00.040</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_propagation.html#sphx-glr-advanced-image-processing-auto-examples-plot-propagation-py"><span class="std std-ref">Opening, erosion, and propagation</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_propagation.py</span></code>)</p></td>
+<td><p>00:00.038</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_find_object.html#sphx-glr-advanced-image-processing-auto-examples-plot-find-object-py"><span class="std std-ref">Find the bounding box of an object</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_find_object.py</span></code>)</p></td>
+<td><p>00:00.019</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/advanced/image_processing/auto_examples/sg_execution_times.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Computation times</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/advanced/image_processing/auto_examples/sg_execution_times.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

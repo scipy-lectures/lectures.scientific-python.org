@@ -1,0 +1,95 @@
+
+
+.. _sphx_glr_intro_scipy_auto_examples_solutions:
+
+Solutions of the exercises for SciPy
+....................................
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Discover the periods in evolution of animal populations (../../../../data/populations.txt)">
+
+.. only:: html
+
+  .. image:: /intro/scipy/auto_examples/solutions/images/thumb/sphx_glr_plot_periodicity_finder_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_periodicity_finder.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Crude periodicity finding</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We have the min and max temperatures in Alaska for each months of the year. We would like to fi...">
+
+.. only:: html
+
+  .. image:: /intro/scipy/auto_examples/solutions/images/thumb/sphx_glr_plot_curvefit_temperature_data_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_curvefit_temperature_data.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Curve fitting: temperature as a function of month of the year</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Blur an an image (../../../../data/elephant.png) using a Gaussian kernel.">
+
+.. only:: html
+
+  .. image:: /intro/scipy/auto_examples/solutions/images/thumb/sphx_glr_plot_image_blur_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_image_blur.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Simple image blur by convolution with a Gaussian kernel</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Denoise an image (../../../../data/moonlanding.png) by implementing a blur with an FFT.">
+
+.. only:: html
+
+  .. image:: /intro/scipy/auto_examples/solutions/images/thumb/sphx_glr_plot_fft_image_denoise_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_fft_image_denoise.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Image denoising by FFT</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/solutions/plot_periodicity_finder
+   /intro/scipy/auto_examples/solutions/plot_curvefit_temperature_data
+   /intro/scipy/auto_examples/solutions/plot_image_blur
+   /intro/scipy/auto_examples/solutions/plot_fft_image_denoise
+

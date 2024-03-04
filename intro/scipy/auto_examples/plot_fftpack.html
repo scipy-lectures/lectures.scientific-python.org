@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.5.12.17. Plotting and manipulating FFTs for filtering &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Solutions of the exercises for SciPy" href="solutions/index.html" />
+    <link rel="prev" title="1.5.12.16. Optimization of a two-parameter function" href="plot_2d_minimization.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="solutions/index.html" title="Solutions of the exercises for SciPy"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="plot_2d_minimization.html" title="1.5.12.16. Optimization of a two-parameter function"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U"><span class="section-number">1.5. </span>SciPy : high-level scientific computing</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.5.12.17. </span>Plotting and manipulating FFTs for filtering</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/scipy/auto_examples/plot_fftpack.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-intro-scipy-auto-examples-plot-fftpack-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="plotting-and-manipulating-ffts-for-filtering">
+<span id="sphx-glr-intro-scipy-auto-examples-plot-fftpack-py"></span><h1><span class="section-number">1.5.12.17. </span>Plotting and manipulating FFTs for filtering<a class="headerlink" href="#plotting-and-manipulating-ffts-for-filtering" title="Link to this heading">¶</a></h1>
+<p>Plot the power of the FFT of a signal and inverse FFT back to reconstruct
+a signal.</p>
+<p>This example demonstrate <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.fft.html#scipy.fft.fft" title="(in SciPy v1.12.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.fft.fft()</span></code></a>,
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.fftfreq.html#scipy.fft.fftfreq" title="(in SciPy v1.12.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.fft.fftfreq()</span></code></a> and <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.ifft.html#scipy.fft.ifft" title="(in SciPy v1.12.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.fft.ifft()</span></code></a>. It
+implements a basic filter that is very suboptimal, and should not be
+used.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="newline"></div></pre></div>
+</div>
+<section id="generate-the-signal">
+<h2>Generate the signal<a class="headerlink" href="#generate-the-signal" title="Link to this heading">¶</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seed the random number generator</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.Generator" title="numpy.random.Generator" class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rng</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.default_rng" title="numpy.random.default_rng" class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span></a><span class="p">(</span><span class="mi">27446968</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">time_step</span></a> <span class="o">=</span> <span class="mf">0.02</span>
+<div class="newline"></div><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">period</span></a> <span class="o">=</span> <span class="mf">5.0</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">time_vec</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html#numpy.arange" title="numpy.arange" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">time_step</span></a><span class="p">)</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sig</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">sin</span></a><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">pi</span></a> <span class="o">/</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">period</span></a> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">time_vec</span></a><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.Generator" title="numpy.random.Generator" class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rng</span></a><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">time_vec</span><span class="o">.</span><span class="n">size</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot" title="matplotlib.pyplot.plot" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">time_vec</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sig</span></a><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original signal&quot;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<img src="../../../_images/sphx_glr_plot_fftpack_001.png" srcset="../../../_images/sphx_glr_plot_fftpack_001.png" alt="plot fftpack" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x7f9c889405d0&gt;]
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="compute-and-plot-the-power">
+<h2>Compute and plot the power<a class="headerlink" href="#compute-and-plot-the-power" title="Link to this heading">¶</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The FFT of the signal</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sig_fft</span></a> <span class="o">=</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.fft.html#scipy.fft.fft" title="scipy.fft.fft" class="sphx-glr-backref-module-scipy-fft sphx-glr-backref-type-py-function"><span class="n">sp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sig</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># And the power (sig_fft is of complex dtype)</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">power</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">abs</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sig_fft</span></a><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># The corresponding frequencies</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sample_freq</span></a> <span class="o">=</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.fftfreq.html#scipy.fft.fftfreq" title="scipy.fft.fftfreq" class="sphx-glr-backref-module-scipy-fft sphx-glr-backref-type-py-function"><span class="n">sp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sig</span><span class="o">.</span><span class="n">size</span></a><span class="p">,</span> <span class="n">d</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">time_step</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Plot the FFT power</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot" title="matplotlib.pyplot.plot" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sample_freq</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">power</span></a><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlabel.html#matplotlib.pyplot.xlabel" title="matplotlib.pyplot.xlabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s2">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylabel.html#matplotlib.pyplot.ylabel" title="matplotlib.pyplot.ylabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s2">&quot;plower&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Find the peak frequency: we can focus on only the positive frequencies</span>
+<div class="newline"></div><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_mask</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.where.html#numpy.where" title="numpy.where" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">where</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sample_freq</span></a> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">freqs</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sample_freq</span></a><span class="p">[</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_mask</span></a><span class="p">]</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">peak_freq</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">freqs</span></a><span class="p">[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">power</span></a><span class="p">[</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_mask</span></a><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Check that it does indeed correspond to the frequency that we generate</span>
+<div class="newline"></div><span class="c1"># the signal with</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.allclose.html#numpy.allclose" title="numpy.allclose" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">allclose</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">peak_freq</span></a><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">period</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># An inner plot to show the peak frequency</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="matplotlib.axes.Axes" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">axes</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axes.html#matplotlib.pyplot.axes" title="matplotlib.pyplot.axes" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axes</span></a><span class="p">([</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.title.html#matplotlib.pyplot.title" title="matplotlib.pyplot.title" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s2">&quot;Peak frequency&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot" title="matplotlib.pyplot.plot" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">freqs</span></a><span class="p">[:</span><span class="mi">8</span><span class="p">],</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">power</span></a><span class="p">[</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_mask</span></a><span class="p">][:</span><span class="mi">8</span><span class="p">])</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.setp.html#matplotlib.pyplot.setp" title="matplotlib.pyplot.setp" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">setp</span></a><span class="p">(</span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="matplotlib.axes.Axes" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">axes</span></a><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># scipy.signal.find_peaks_cwt can also be used for more advanced</span>
+<div class="newline"></div><span class="c1"># peak detection</span>
+<div class="newline"></div></pre></div>
+</div>
+<img src="../../../_images/sphx_glr_plot_fftpack_002.png" srcset="../../../_images/sphx_glr_plot_fftpack_002.png" alt="Peak frequency" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[]
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="remove-all-the-high-frequencies">
+<h2>Remove all the high frequencies<a class="headerlink" href="#remove-all-the-high-frequencies" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>We now remove all the high frequencies and transform back from
+frequencies to signal.</p>
+</div></blockquote>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">high_freq_fft</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sig_fft</span></a><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">high_freq_fft</span></a><span class="p">[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">abs</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sample_freq</span></a><span class="p">)</span> <span class="o">&gt;</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">peak_freq</span></a><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">filtered_sig</span></a> <span class="o">=</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.ifft.html#scipy.fft.ifft" title="scipy.fft.ifft" class="sphx-glr-backref-module-scipy-fft sphx-glr-backref-type-py-function"><span class="n">sp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">high_freq_fft</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot" title="matplotlib.pyplot.plot" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">time_vec</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sig</span></a><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original signal&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot" title="matplotlib.pyplot.plot" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">time_vec</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">filtered_sig</span></a><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Filtered signal&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlabel.html#matplotlib.pyplot.xlabel" title="matplotlib.pyplot.xlabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s2">&quot;Time [s]&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylabel.html#matplotlib.pyplot.ylabel" title="matplotlib.pyplot.ylabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html#matplotlib.pyplot.legend" title="matplotlib.pyplot.legend" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span></a><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<img src="../../../_images/sphx_glr_plot_fftpack_003.png" srcset="../../../_images/sphx_glr_plot_fftpack_003.png" alt="plot fftpack" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/matplotlib/cbook.py:1699: ComplexWarning: Casting complex values to real discards the imaginary part
+<div class="newline"></div>  return math.isfinite(val)
+<div class="newline"></div>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/matplotlib/cbook.py:1345: ComplexWarning: Casting complex values to real discards the imaginary part
+<div class="newline"></div>  return np.asarray(x, float)
+<div class="newline"></div>
+<div class="newline"></div>&lt;matplotlib.legend.Legend object at 0x7f9c7d534c10&gt;
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Note</strong> This is actually a bad way of creating a filter: such brutal
+cut-off in frequency space does not control distortion on the signal.</p>
+<p>Filters should be created using the SciPy filter design code</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.242 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-intro-scipy-auto-examples-plot-fftpack-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/97494e872ef19268664b76eba18e3981/plot_fftpack.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fftpack.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/626ac1bee11135cc834c11c9a8cd74af/plot_fftpack.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_fftpack.py</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">1.5.12.17. Plotting and manipulating FFTs for filtering</a><ul>
+<li><a class="reference internal" href="#generate-the-signal">Generate the signal</a></li>
+<li><a class="reference internal" href="#compute-and-plot-the-power">Compute and plot the power</a></li>
+<li><a class="reference internal" href="#remove-all-the-high-frequencies">Remove all the high frequencies</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="plot_2d_minimization.html"
+                          title="previous chapter"><span class="section-number">1.5.12.16. </span>Optimization of a two-parameter function</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="solutions/index.html"
+                          title="next chapter">Solutions of the exercises for SciPy</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/intro/scipy/auto_examples/plot_fftpack.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="solutions/index.html" title="Solutions of the exercises for SciPy"
+             >next</a></li>
+        <li class="right" >
+          <a href="plot_2d_minimization.html" title="1.5.12.16. Optimization of a two-parameter function"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" ><span class="section-number">1.5. </span>SciPy : high-level scientific computing</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.5.12.17. </span>Plotting and manipulating FFTs for filtering</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/scipy/auto_examples/plot_fftpack.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,205 @@
+
+
+.. _sphx_glr_intro_matplotlib_auto_examples_exercises:
+
+
+
+Code for the chapter's exercises
+--------------------------------
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Solution of the exercise 1 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_1_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_1.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 1</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 4 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_4_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_4.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 4</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 3 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_3_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_3.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 3</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 5 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_5_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_5.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 5</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 6 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_6_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_6.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 6</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 2 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_2_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_2.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 2</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 7 with matplotlib">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_7_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_7.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 7</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 8 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_8_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_8.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 8</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 9 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_9_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_9.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 9</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercises with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_10_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_10.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/matplotlib/auto_examples/exercises/plot_exercise_1
+   /intro/matplotlib/auto_examples/exercises/plot_exercise_4
+   /intro/matplotlib/auto_examples/exercises/plot_exercise_3
+   /intro/matplotlib/auto_examples/exercises/plot_exercise_5
+   /intro/matplotlib/auto_examples/exercises/plot_exercise_6
+   /intro/matplotlib/auto_examples/exercises/plot_exercise_2
+   /intro/matplotlib/auto_examples/exercises/plot_exercise_7
+   /intro/matplotlib/auto_examples/exercises/plot_exercise_8
+   /intro/matplotlib/auto_examples/exercises/plot_exercise_9
+   /intro/matplotlib/auto_examples/exercises/plot_exercise_10
+

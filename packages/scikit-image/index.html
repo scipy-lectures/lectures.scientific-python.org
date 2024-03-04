@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.3. scikit-image: image processing &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/foldable_toc.css?v=38a22cee" />
+    <script src="../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <script src="../../_static/foldable_toc.js?v=d65ca516"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.3.11.1. Creating an image" href="auto_examples/plot_check.html" />
+    <link rel="prev" title="3.2. Sympy : Symbolic Mathematics in Python" href="../sympy.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="auto_examples/plot_check.html" title="3.3.11.1. Creating an image"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../sympy.html" title="3.2. Sympy : Symbolic Mathematics in Python"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U"><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.3. </span><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>: image processing</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/scikit-image/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="scikit-image-image-processing">
+<span id="scikit-image"></span><h1><span class="section-number">3.3. </span><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>: image processing<a class="headerlink" href="#scikit-image-image-processing" title="Link to this heading">¶</a></h1>
+<p><strong>Author</strong>: <em>Emmanuelle Gouillart</em></p>
+<p><a class="reference external" href="https://scikit-image.org/">scikit-image</a> is a Python package dedicated
+to image processing, using NumPy arrays as image objects.
+This chapter describes how to use <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> for various image
+processing tasks, and how it relates to other scientific Python
+modules such as NumPy and SciPy.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For basic image manipulation, such as image cropping or simple
+filtering, a large number of simple operations can be realized with
+NumPy and SciPy only. See <a class="reference internal" href="../../advanced/image_processing/index.html#basic-image"><span class="std std-ref">Image manipulation and processing using NumPy and SciPy</span></a>.</p>
+<p>Note that you should be familiar with the content of the previous
+chapter before reading the current one, as basic operations such as
+masking and labeling are a prerequisite.</p>
+</div>
+<nav class="contents local" id="chapters-contents">
+<p class="topic-title">Chapters contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction-and-concepts" id="id2">Introduction and concepts</a></p>
+<ul>
+<li><p><a class="reference internal" href="#scikit-image-and-the-scientific-python-ecosystem" id="id3"><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> and the scientific Python ecosystem</a></p></li>
+<li><p><a class="reference internal" href="#what-is-included-in-scikit-image" id="id4">What is included in scikit-image</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#importing" id="id5">Importing</a></p></li>
+<li><p><a class="reference internal" href="#example-data" id="id6">Example data</a></p></li>
+<li><p><a class="reference internal" href="#input-output-data-types-and-colorspaces" id="id7">Input/output, data types and colorspaces</a></p>
+<ul>
+<li><p><a class="reference internal" href="#data-types" id="id8">Data types</a></p></li>
+<li><p><a class="reference internal" href="#colorspaces" id="id9">Colorspaces</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#image-preprocessing-enhancement" id="id10">Image preprocessing / enhancement</a></p>
+<ul>
+<li><p><a class="reference internal" href="#local-filters" id="id11">Local filters</a></p></li>
+<li><p><a class="reference internal" href="#non-local-filters" id="id12">Non-local filters</a></p></li>
+<li><p><a class="reference internal" href="#mathematical-morphology" id="id13">Mathematical morphology</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#image-segmentation" id="id14">Image segmentation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#binary-segmentation-foreground-background" id="id15">Binary segmentation: foreground + background</a></p></li>
+<li><p><a class="reference internal" href="#marker-based-methods" id="id16">Marker based methods</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#measuring-regions-properties" id="id17">Measuring regions’ properties</a></p></li>
+<li><p><a class="reference internal" href="#data-visualization-and-interaction" id="id18">Data visualization and interaction</a></p></li>
+<li><p><a class="reference internal" href="#feature-extraction-for-computer-vision" id="id19">Feature extraction for computer vision</a></p></li>
+<li><p><a class="reference internal" href="#full-code-examples" id="id20">Full code examples</a></p></li>
+<li><p><a class="reference internal" href="#examples-for-the-scikit-image-chapter" id="id21">Examples for the scikit-image chapter</a></p></li>
+</ul>
+</nav>
+<section id="introduction-and-concepts">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="section-number">3.3.1. </span>Introduction and concepts</a><a class="headerlink" href="#introduction-and-concepts" title="Link to this heading">¶</a></h2>
+<p>Images are NumPy’s arrays <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">image<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code></p>
+</dd>
+<dt class="field-even">pixels<span class="colon">:</span></dt>
+<dd class="field-even"><p>array values: <code class="docutils literal notranslate"><span class="pre">a[2,</span> <span class="pre">3]</span></code></p>
+</dd>
+<dt class="field-odd">channels<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array dimensions</p>
+</dd>
+<dt class="field-even">image encoding<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> (<code class="docutils literal notranslate"><span class="pre">np.uint8</span></code>, <code class="docutils literal notranslate"><span class="pre">np.uint16</span></code>, <code class="docutils literal notranslate"><span class="pre">np.float</span></code>)</p>
+</dd>
+<dt class="field-odd">filters<span class="colon">:</span></dt>
+<dd class="field-odd"><p>functions (<code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">skimage</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy</span></code>)</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">check</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&lt;matplotlib.image.AxesImage object at ...&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="auto_examples/plot_check.html"><img alt="../../_images/sphx_glr_plot_check_001.png" class="align-center" src="../../_images/sphx_glr_plot_check_001.png" style="width: 288.0px; height: 288.0px;" /></a>
+<section id="scikit-image-and-the-scientific-python-ecosystem">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">3.3.1.1. </span><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> and the scientific Python ecosystem</a><a class="headerlink" href="#scikit-image-and-the-scientific-python-ecosystem" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> is packaged in both <code class="docutils literal notranslate"><span class="pre">pip</span></code> and <code class="docutils literal notranslate"><span class="pre">conda</span></code>-based
+Python installations, as well as in most Linux distributions.  Other
+Python packages for image processing &amp; visualization that operate on
+NumPy arrays include:</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/ndimage.html#module-scipy.ndimage" title="(in SciPy v1.12.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.ndimage</span></code></a></dt><dd><p>For N-dimensional arrays. Basic filtering,
+mathematical morphology, regions properties</p>
+</dd>
+<dt><a class="reference external" href="https://mahotas.readthedocs.io">Mahotas</a></dt><dd><p>With a focus on high-speed implementations.</p>
+</dd>
+<dt><a class="reference external" href="https://napari.org">Napari</a></dt><dd><p>A fast, interactive, multi-dimensional image viewer built in Qt.</p>
+</dd>
+</dl>
+<p>Some powerful C++ image processing libraries also have Python bindings:</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html">OpenCV</a></dt><dd><p>A highly optimized computer vision library with a focus on real-time
+applications.</p>
+</dd>
+<dt><a class="reference external" href="https://www.itk.org">ITK</a></dt><dd><p>The Insight ToolKit, especially useful for registration and
+working with 3D images.</p>
+</dd>
+</dl>
+<p>To varying degrees, these tend to be less Pythonic and NumPy-friendly.</p>
+</section>
+<section id="what-is-included-in-scikit-image">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">3.3.1.2. </span>What is included in scikit-image</a><a class="headerlink" href="#what-is-included-in-scikit-image" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Website: <a class="reference external" href="https://scikit-image.org/">https://scikit-image.org/</a></p></li>
+<li><p>Gallery of examples:
+<a class="reference external" href="https://scikit-image.org/docs/stable/auto_examples/">https://scikit-image.org/docs/stable/auto_examples/</a></p></li>
+</ul>
+<p>The library contains predominantly image processing algorithms, but
+also utility functions to ease data handling and processing.
+It contains the following submodules:</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.color.html#module-skimage.color" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">color</span></code></a></dt><dd><p>Color space conversion.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.data.html#module-skimage.data" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">data</span></code></a></dt><dd><p>Test images and example data.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.draw.html#module-skimage.draw" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">draw</span></code></a></dt><dd><p>Drawing primitives (lines, text, etc.) that operate on NumPy
+arrays.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.exposure.html#module-skimage.exposure" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">exposure</span></code></a></dt><dd><p>Image intensity adjustment, e.g., histogram equalization, etc.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.feature.html#module-skimage.feature" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">feature</span></code></a></dt><dd><p>Feature detection and extraction, e.g., texture analysis corners, etc.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.filters.html#module-skimage.filters" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">filters</span></code></a></dt><dd><p>Sharpening, edge finding, rank filters, thresholding, etc.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.graph.html#module-skimage.graph" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">graph</span></code></a></dt><dd><p>Graph-theoretic operations, e.g., shortest paths.</p>
+</dd>
+<dt><a class="reference external" href="https://docs.python.org/3/library/io.html#module-io" title="(in Python v3.12)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">io</span></code></a></dt><dd><p>Reading, saving, and displaying images and video.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.measure.html#module-skimage.measure" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">measure</span></code></a></dt><dd><p>Measurement of image properties, e.g., region properties and contours.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.metrics.html#module-skimage.metrics" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrics</span></code></a></dt><dd><p>Metrics corresponding to images, e.g. distance metrics, similarity, etc.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.morphology.html#module-skimage.morphology" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">morphology</span></code></a></dt><dd><p>Morphological operations, e.g., opening or skeletonization.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.restoration.html#module-skimage.restoration" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">restoration</span></code></a></dt><dd><p>Restoration algorithms, e.g., deconvolution algorithms, denoising, etc.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.segmentation.html#module-skimage.segmentation" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">segmentation</span></code></a></dt><dd><p>Partitioning an image into multiple regions.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.transform.html#module-skimage.transform" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">transform</span></code></a></dt><dd><p>Geometric and other transforms, e.g., rotation or the Radon transform.</p>
+</dd>
+<dt><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.util.html#module-skimage.util" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code></a></dt><dd><p>Generic utilities.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="importing">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">3.3.2. </span>Importing</a><a class="headerlink" href="#importing" title="Link to this heading">¶</a></h2>
+<p>We import <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> using the convention:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage</span> <span class="k">as</span> <span class="nn">ski</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Most functionality lives in subpackages, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cat</span><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>You can list all submodules with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">ski</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<div class="newline"></div><span class="go">__version__</span>
+<div class="newline"></div><span class="go">color</span>
+<div class="newline"></div><span class="go">data</span>
+<div class="newline"></div><span class="go">draw</span>
+<div class="newline"></div><span class="go">exposure</span>
+<div class="newline"></div><span class="go">feature</span>
+<div class="newline"></div><span class="go">filters</span>
+<div class="newline"></div><span class="go">future</span>
+<div class="newline"></div><span class="go">graph</span>
+<div class="newline"></div><span class="go">io</span>
+<div class="newline"></div><span class="go">measure</span>
+<div class="newline"></div><span class="go">metrics</span>
+<div class="newline"></div><span class="go">morphology</span>
+<div class="newline"></div><span class="go">registration</span>
+<div class="newline"></div><span class="go">restoration</span>
+<div class="newline"></div><span class="go">segmentation</span>
+<div class="newline"></div><span class="go">transform</span>
+<div class="newline"></div><span class="go">util</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Most <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> functions take NumPy <code class="docutils literal notranslate"><span class="pre">ndarrays</span></code> as arguments</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="o">.</span><span class="n">dtype</span>
+<div class="newline"></div><span class="go">dtype(&#39;uint8&#39;)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="o">.</span><span class="n">shape</span>
+<div class="newline"></div><span class="go">(512, 512)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">filtered_camera</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">filtered_camera</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&lt;class &#39;numpy.ndarray&#39;&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="example-data">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">3.3.3. </span>Example data</a><a class="headerlink" href="#example-data" title="Link to this heading">¶</a></h2>
+<p>To start off, we need example images to work with.
+The library ships with a few of these:</p>
+<p><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.data.html#module-skimage.data" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skimage.data</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cat</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+<div class="newline"></div><span class="go">(300, 451, 3)</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="input-output-data-types-and-colorspaces">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">3.3.4. </span>Input/output, data types and colorspaces</a><a class="headerlink" href="#input-output-data-types-and-colorspaces" title="Link to this heading">¶</a></h2>
+<p>I/O: <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.io.html#module-skimage.io" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skimage.io</span></code></a></p>
+<p>Save an image to disk: <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.io.html#skimage.io.imsave" title="(in skimage v0.22.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.io.imsave()</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ski</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="s2">&quot;cat.png&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Reading from files: <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.io.html#skimage.io.imread" title="(in skimage v0.22.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.io.imread()</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cat</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;cat.png&quot;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="auto_examples/plot_camera.html"><img alt="../../_images/sphx_glr_plot_camera_001.png" class="align-center" src="../../_images/sphx_glr_plot_camera_001.png" style="width: 50%;" /></a>
+<p>This works with many data formats supported by the
+<a class="reference external" href="https://imageio.readthedocs.io">ImageIO</a> library.</p>
+<p>Loading also works with URLs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">logo</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;https://scikit-image.org/_static/img/logo.png&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<section id="data-types">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">3.3.4.1. </span>Data types</a><a class="headerlink" href="#data-types" title="Link to this heading">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_camera_uint.html"><img alt="../../_images/sphx_glr_plot_camera_uint_001.png" class="align-right" src="../../_images/sphx_glr_plot_camera_uint_001.png" style="width: 50%;" /></a>
+<p>Image ndarrays can be represented either by integers (signed or unsigned) or
+floats.</p>
+<p>Careful with overflows with integer data types</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="o">.</span><span class="n">dtype</span>
+<div class="newline"></div><span class="go">dtype(&#39;uint8&#39;)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">camera_multiply</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">camera</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Different integer sizes are possible: 8-, 16- or 32-bytes, signed or
+unsigned.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>An important (if questionable) <code class="docutils literal notranslate"><span class="pre">skimage</span></code> <strong>convention</strong>: float images
+are supposed to lie in [-1, 1] (in order to have comparable contrast for
+all float images)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">camera_float</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">img_as_float</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">camera_float</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class="newline"></div><span class="go">(255, 1.0)</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
+<p>Some image processing routines need to work with float arrays, and may
+hence output an array with a different type and the data range from the
+input array</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">camera_sobel</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">sobel</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">camera_sobel</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class="newline"></div><span class="go">0.644...</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Utility functions are provided in <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.html#module-skimage" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skimage</span></code></a> to convert both the
+dtype and the data range, following skimage’s conventions:
+<code class="docutils literal notranslate"><span class="pre">util.img_as_float</span></code>, <code class="docutils literal notranslate"><span class="pre">util.img_as_ubyte</span></code>, etc.</p>
+<p>See the <a class="reference external" href="https://scikit-image.org/docs/stable/user_guide/data_types.html">user guide</a> for
+more details.</p>
+</section>
+<section id="colorspaces">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">3.3.4.2. </span>Colorspaces</a><a class="headerlink" href="#colorspaces" title="Link to this heading">¶</a></h3>
+<p>Color images are of shape (N, M, 3) or (N, M, 4) (when an alpha channel
+encodes transparency)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">face</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">face</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">face</span><span class="o">.</span><span class="n">shape</span>
+<div class="newline"></div><span class="go">(768, 1024, 3)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Routines converting between different colorspaces (RGB, HSV, LAB etc.)
+are available in <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.color.html#module-skimage.color" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skimage.color</span></code></a> : <code class="docutils literal notranslate"><span class="pre">color.rgb2hsv</span></code>, <code class="docutils literal notranslate"><span class="pre">color.lab2rgb</span></code>,
+etc. Check the docstring for the expected dtype (and data range) of input
+images.</p>
+<aside class="topic">
+<p class="topic-title">3D images</p>
+<p>Most functions of <code class="docutils literal notranslate"><span class="pre">skimage</span></code> can take 3D images as input arguments.
+Check the docstring to know if a function can be used on 3D images
+(for example MRI or CT images).</p>
+</aside>
+<aside class="topic green">
+<p class="topic-title">Exercise</p>
+<blockquote>
+<div><p>Open a color image on your disk as a NumPy array.</p>
+<p>Find a skimage function computing the histogram of an image and
+plot the histogram of each color channel</p>
+<p>Convert the image to grayscale and plot its histogram.</p>
+</div></blockquote>
+</aside>
+</section>
+</section>
+<section id="image-preprocessing-enhancement">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">3.3.5. </span>Image preprocessing / enhancement</a><a class="headerlink" href="#image-preprocessing-enhancement" title="Link to this heading">¶</a></h2>
+<p>Goals: denoising, feature (edges) extraction, …</p>
+<section id="local-filters">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">3.3.5.1. </span>Local filters</a><a class="headerlink" href="#local-filters" title="Link to this heading">¶</a></h3>
+<p>Local filters replace the value of pixels by a function of the
+values of neighboring pixels. The function can be linear or non-linear.</p>
+<p>Neighbourhood: square (choose size), disk, or more complicated
+<em>structuring element</em>.</p>
+<a class="reference internal image-reference" href="../../_images/kernels.png"><img alt="../../_images/kernels.png" class="align-center" src="../../_images/kernels.png" style="width: 80%;" /></a>
+<p>Example : horizontal Sobel filter</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">hsobel_text</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">sobel_h</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Uses the following linear kernel for computing horizontal gradients:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">1</span>
+<div class="newline"></div><span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+<div class="newline"></div><span class="o">-</span><span class="mi">1</span>  <span class="o">-</span><span class="mi">2</span>  <span class="o">-</span><span class="mi">1</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="auto_examples/plot_sobel.html"><img alt="../../_images/sphx_glr_plot_sobel_001.png" class="align-center" src="../../_images/sphx_glr_plot_sobel_001.png" style="width: 70%;" /></a>
+</section>
+<section id="non-local-filters">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">3.3.5.2. </span>Non-local filters</a><a class="headerlink" href="#non-local-filters" title="Link to this heading">¶</a></h3>
+<p>Non-local filters use a large region of the image (or all the image) to
+transform the value of one pixel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">camera_equalized</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">exposure</span><span class="o">.</span><span class="n">equalize_hist</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Enhances contrast in large almost uniform regions.</p>
+<a class="reference external image-reference" href="auto_examples/plot_equalize_hist.html"><img alt="../../_images/sphx_glr_plot_equalize_hist_001.png" class="align-center" src="../../_images/sphx_glr_plot_equalize_hist_001.png" style="width: 70%;" /></a>
+</section>
+<section id="mathematical-morphology">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">3.3.5.3. </span>Mathematical morphology</a><a class="headerlink" href="#mathematical-morphology" title="Link to this heading">¶</a></h3>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Mathematical_morphology">wikipedia</a>
+for an introduction on mathematical morphology.</p>
+<p>Probe an image with a simple shape (a <strong>structuring element</strong>), and
+modify this image according to how the shape locally fits or misses the
+image.</p>
+<p>Default structuring element: 4-connectivity of a pixel</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Import structuring elements to make them more easily accessible</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">disk</span><span class="p">,</span> <span class="n">diamond</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">diamond</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([[0, 1, 0],</span>
+<div class="newline"></div><span class="go">       [1, 1, 1],</span>
+<div class="newline"></div><span class="go">       [0, 1, 0]], dtype=uint8)</span>
+<div class="newline"></div></pre></div>
+</div>
+<img alt="../../_images/diamond_kernel.png" class="align-center" src="../../_images/diamond_kernel.png" />
+<p><strong>Erosion</strong> = minimum filter. Replace the value of a pixel by the minimal value covered by the structuring element.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<div class="newline"></div><span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 1, 1, 1, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 1, 1, 1, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 1, 1, 1, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 1, 1, 1, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 1, 1, 1, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0, 0, 0]], dtype=uint8)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">ski</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">diamond</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 1, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 1, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 1, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0, 0, 0]], dtype=uint8)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c1">#Erosion removes objects smaller than the structure</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">ski</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">diamond</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0, 0, 0]], dtype=uint8)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Dilation</strong>: maximum filter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<div class="newline"></div><span class="go">array([[0.,  0.,  0.,  0.,  0.],</span>
+<div class="newline"></div><span class="go">       [0.,  0.,  0.,  0.,  0.],</span>
+<div class="newline"></div><span class="go">       [0.,  0.,  1.,  0.,  0.],</span>
+<div class="newline"></div><span class="go">       [0.,  0.,  0.,  0.,  0.],</span>
+<div class="newline"></div><span class="go">       [0.,  0.,  0.,  0.,  0.]])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">ski</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">binary_dilation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">diamond</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([[0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 1, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 1, 1, 1, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 1, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0]], dtype=uint8)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Opening</strong>: erosion + dilation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<div class="newline"></div><span class="go">array([[0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 1, 1, 1, 0],</span>
+<div class="newline"></div><span class="go">       [0, 1, 1, 1, 0],</span>
+<div class="newline"></div><span class="go">       [0, 1, 1, 1, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 1]])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">ski</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">binary_opening</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">diamond</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([[0, 0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 1, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 1, 1, 1, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 1, 0, 0],</span>
+<div class="newline"></div><span class="go">       [0, 0, 0, 0, 0]], dtype=uint8)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Opening removes small objects and smoothes corners.</p>
+<aside class="topic">
+<p class="topic-title">Grayscale mathematical morphology</p>
+<p>Mathematical morphology operations are also available for
+(non-binary) grayscale images (int or float type). Erosion and dilation
+correspond to minimum (resp. maximum) filters.</p>
+</aside>
+<p>Higher-level mathematical morphology are available: tophat,
+skeletonization, etc.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Basic mathematical morphology is also implemented in
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.ndimage.morphology</span></code>. The <code class="docutils literal notranslate"><span class="pre">scipy.ndimage</span></code> implementation
+works on arbitrary-dimensional arrays.</p>
+</div>
+<hr class="docutils" />
+<aside class="topic">
+<p class="topic-title">Example of filters comparison: image denoising</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coins</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">coins_zoom</span> <span class="o">=</span> <span class="n">coins</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span> <span class="mi">300</span><span class="p">:</span><span class="mi">370</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">median_coins</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">median</span><span class="p">(</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="n">coins_zoom</span><span class="p">,</span> <span class="n">disk</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">tv_coins</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">restoration</span><span class="o">.</span><span class="n">denoise_tv_chambolle</span><span class="p">(</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="n">coins_zoom</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">0.1</span>
+<div class="newline"></div><span class="gp">... </span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian_coins</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="auto_examples/plot_filter_coins.html"><img alt="../../_images/sphx_glr_plot_filter_coins_001.png" src="../../_images/sphx_glr_plot_filter_coins_001.png" style="width: 99%;" /></a>
+</aside>
+</section>
+</section>
+<section id="image-segmentation">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">3.3.6. </span>Image segmentation</a><a class="headerlink" href="#image-segmentation" title="Link to this heading">¶</a></h2>
+<p>Image segmentation is the attribution of different labels to different
+regions of the image, for example in order to extract the pixels of an
+object of interest.</p>
+<section id="binary-segmentation-foreground-background">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">3.3.6.1. </span>Binary segmentation: foreground + background</a><a class="headerlink" href="#binary-segmentation-foreground-background" title="Link to this heading">¶</a></h3>
+<section id="histogram-based-method-otsu-thresholding">
+<h4>Histogram-based method: <strong>Otsu thresholding</strong><a class="headerlink" href="#histogram-based-method-otsu-thresholding" title="Link to this heading">¶</a></h4>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Otsu%27s_method">Otsu method</a> is a
+simple heuristic to find a threshold to separate the foreground from
+the background.</p>
+</div>
+<aside class="sidebar">
+<p class="sidebar-title">Earlier scikit-image versions</p>
+<p><a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.filters.html#module-skimage.filters" title="(in skimage v0.22.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skimage.filters</span></code></a> is called <code class="xref py py-mod docutils literal notranslate"><span class="pre">skimage.filter</span></code> in earlier
+versions of scikit-image</p>
+</aside>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">camera</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
+<div class="newline"></div><span class="n">val</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
+<div class="newline"></div><span class="n">mask</span> <span class="o">=</span> <span class="n">camera</span> <span class="o">&lt;</span> <span class="n">val</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="auto_examples/plot_threshold.html"><img alt="../../_images/sphx_glr_plot_threshold_001.png" class="align-center" src="../../_images/sphx_glr_plot_threshold_001.png" style="width: 70%;" /></a>
+</section>
+<section id="labeling-connected-components-of-a-discrete-image">
+<h4>Labeling connected components of a discrete image<a class="headerlink" href="#labeling-connected-components-of-a-discrete-image" title="Link to this heading">¶</a></h4>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Once you have separated foreground objects, it is use to separate them
+from each other. For this, we can assign a different integer labels to
+each one.</p>
+</div>
+<p>Synthetic data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="mi">256</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">points</span> <span class="o">=</span> <span class="n">l</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="p">[(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">l</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.</span> <span class="o">*</span> <span class="n">n</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">blobs</span> <span class="o">=</span> <span class="n">im</span> <span class="o">&gt;</span> <span class="n">im</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Label all connected components:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">all_labels</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">blobs</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Label only foreground connected components:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">blobs_labels</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">blobs</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="auto_examples/plot_labels.html"><img alt="../../_images/sphx_glr_plot_labels_001.png" class="align-center" src="../../_images/sphx_glr_plot_labels_001.png" style="width: 90%;" /></a>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.find_objects.html#scipy.ndimage.find_objects" title="(in SciPy v1.12.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.ndimage.find_objects()</span></code></a> is useful to return slices on
+object in an image.</p>
+</div>
+</section>
+</section>
+<section id="marker-based-methods">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">3.3.6.2. </span>Marker based methods</a><a class="headerlink" href="#marker-based-methods" title="Link to this heading">¶</a></h3>
+<p>If you have markers inside a set of regions, you can use these to segment
+the regions.</p>
+<section id="watershed-segmentation">
+<h4><em>Watershed</em> segmentation<a class="headerlink" href="#watershed-segmentation" title="Link to this heading">¶</a></h4>
+<p>The Watershed (<a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.watershed" title="(in skimage v0.22.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.segmentation.watershed()</span></code></a>) is a region-growing
+approach that fills “basins” in the image</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Generate an initial image with two overlapping circles</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">52</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">20</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mask_circle1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="n">r1</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mask_circle2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="n">r2</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">mask_circle1</span><span class="p">,</span> <span class="n">mask_circle2</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Now we want to separate the two objects in image</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Generate the markers as local maxima of the distance</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c1"># to the background</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">distance</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">ndimage</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">peak_idx</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">peak_local_max</span><span class="p">(</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="n">distance</span><span class="p">,</span> <span class="n">footprint</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">labels</span><span class="o">=</span><span class="n">image</span>
+<div class="newline"></div><span class="gp">... </span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">peak_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">peak_mask</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">peak_idx</span><span class="o">.</span><span class="n">T</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">markers</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">peak_mask</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_ws</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">watershed</span><span class="p">(</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="o">-</span><span class="n">distance</span><span class="p">,</span> <span class="n">markers</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">image</span>
+<div class="newline"></div><span class="gp">... </span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="random-walker-segmentation">
+<h4><em>Random walker</em> segmentation<a class="headerlink" href="#random-walker-segmentation" title="Link to this heading">¶</a></h4>
+<p>The random walker algorithm (<a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.random_walker" title="(in skimage v0.22.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.segmentation.random_walker()</span></code></a>)
+is similar to the Watershed, but with a more “probabilistic” approach. It
+is based on the idea of the diffusion of labels in the image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Transform markers image so that 0-valued pixels are to</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c1"># be labelled, and -1-valued pixels represent background</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">markers</span><span class="p">[</span><span class="o">~</span><span class="n">image</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_rw</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">random_walker</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">markers</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="auto_examples/plot_segmentations.html"><img alt="../../_images/sphx_glr_plot_segmentations_001.png" class="align-center" src="../../_images/sphx_glr_plot_segmentations_001.png" style="width: 90%;" /></a>
+<aside class="topic">
+<p class="topic-title">Postprocessing label images</p>
+<p><code class="docutils literal notranslate"><span class="pre">skimage</span></code> provides several utility functions that can be used on
+label images (ie images where different discrete values identify
+different regions). Functions names are often self-explaining:
+<a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.clear_border" title="(in skimage v0.22.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.segmentation.clear_border()</span></code></a>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.segmentation.relabel_from_one()</span></code>,
+<a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.remove_small_objects" title="(in skimage v0.22.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_objects()</span></code></a>, etc.</p>
+</aside>
+<aside class="topic green">
+<p class="topic-title">Exercise</p>
+<ul class="simple">
+<li><p>Load the <code class="docutils literal notranslate"><span class="pre">coins</span></code> image from the <code class="docutils literal notranslate"><span class="pre">data</span></code> submodule.</p></li>
+<li><p>Separate the coins from the background by testing several
+segmentation methods: Otsu thresholding, adaptive thresholding, and
+watershed or random walker segmentation.</p></li>
+<li><p>If necessary, use a postprocessing function to improve the coins /
+background segmentation.</p></li>
+</ul>
+</aside>
+</section>
+</section>
+</section>
+<section id="measuring-regions-properties">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">3.3.7. </span>Measuring regions’ properties</a><a class="headerlink" href="#measuring-regions-properties" title="Link to this heading">¶</a></h2>
+<p>Example: compute the size and perimeter of the two segmented regions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">properties</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops</span><span class="p">(</span><span class="n">labels_rw</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">prop</span><span class="o">.</span><span class="n">area</span><span class="p">)</span> <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">properties</span><span class="p">]</span>
+<div class="newline"></div><span class="go">[770.0, 1168.0]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">prop</span><span class="o">.</span><span class="n">perimeter</span> <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">properties</span><span class="p">]</span>
+<div class="newline"></div><span class="go">[100.91..., 126.81...]</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>for some properties, functions are available as well in
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.ndimage.measurements</span></code> with a different API (a list is
+returned).</p>
+</div>
+<aside class="topic green">
+<p class="topic-title">Exercise (continued)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use the binary image of the coins and background from the previous
+exercise.</p></li>
+<li><p>Compute an image of labels for the different coins.</p></li>
+<li><p>Compute the size and eccentricity of all coins.</p></li>
+</ul>
+</div></blockquote>
+</aside>
+</section>
+<section id="data-visualization-and-interaction">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">3.3.8. </span>Data visualization and interaction</a><a class="headerlink" href="#data-visualization-and-interaction" title="Link to this heading">¶</a></h2>
+<p>Meaningful visualizations are useful when testing a given processing
+pipeline.</p>
+<p>Some image processing operations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coins</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">coins</span> <span class="o">&gt;</span> <span class="n">ski</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">coins</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">clean_border</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Visualize binary result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="newline"></div><span class="go">&lt;Figure size ... with 0 Axes&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">clean_border</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&lt;matplotlib.image.AxesImage object at 0x...&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Visualize contour</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="newline"></div><span class="go">&lt;Figure size ... with 0 Axes&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&lt;matplotlib.image.AxesImage object at 0x...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">clean_border</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">])</span>
+<div class="newline"></div><span class="go">&lt;matplotlib.contour.QuadContourSet ...&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">skimage</span></code> dedicated utility function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coins_edges</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">mark_boundaries</span><span class="p">(</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="n">coins</span><span class="p">,</span> <span class="n">clean_border</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="auto_examples/plot_boundaries.html"><img alt="../../_images/sphx_glr_plot_boundaries_001.png" class="align-center" src="../../_images/sphx_glr_plot_boundaries_001.png" style="width: 90%;" /></a>
+</section>
+<section id="feature-extraction-for-computer-vision">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">3.3.9. </span>Feature extraction for computer vision</a><a class="headerlink" href="#feature-extraction-for-computer-vision" title="Link to this heading">¶</a></h2>
+<p>Geometric or textural descriptor can be extracted from images in order to</p>
+<ul class="simple">
+<li><p>classify parts of the image (e.g. sky vs. buildings)</p></li>
+<li><p>match parts of different images (e.g. for object detection)</p></li>
+<li><p>and many other applications of
+<a class="reference external" href="https://en.wikipedia.org/wiki/Computer_vision">Computer Vision</a></p></li>
+</ul>
+<p>Example: detecting corners using Harris detector</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tform</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">AffineTransform</span><span class="p">(</span>
+<div class="newline"></div>    <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shear</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+<div class="newline"></div>    <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">210</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="newline"></div><span class="p">)</span>
+<div class="newline"></div><span class="n">image</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">warp</span><span class="p">(</span>
+<div class="newline"></div>    <span class="n">data</span><span class="o">.</span><span class="n">checkerboard</span><span class="p">(),</span> <span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">,</span> <span class="n">output_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">350</span><span class="p">)</span>
+<div class="newline"></div><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">coords</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">corner_peaks</span><span class="p">(</span>
+<div class="newline"></div>    <span class="n">ski</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">corner_harris</span><span class="p">(</span><span class="n">image</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">5</span>
+<div class="newline"></div><span class="p">)</span>
+<div class="newline"></div><span class="n">coords_subpix</span> <span class="o">=</span> <span class="n">ski</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">corner_subpix</span><span class="p">(</span>
+<div class="newline"></div>    <span class="n">image</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">13</span>
+<div class="newline"></div><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="auto_examples/plot_features.html"><img alt="../../_images/sphx_glr_plot_features_001.png" class="align-center" src="../../_images/sphx_glr_plot_features_001.png" style="width: 90%;" /></a>
+<p>(this example is taken from the <a class="reference external" href="https://scikit-image.org/docs/stable/auto_examples/features_detection/plot_corner.html">plot_corner</a>
+example in scikit-image)</p>
+<p>Points of interest such as corners can then be used to match objects in
+different images, as described in the <a class="reference external" href="https://scikit-image.org/docs/stable/auto_examples/transform/plot_matching.html">plot_matching</a>
+example of scikit-image.</p>
+</section>
+<section id="full-code-examples">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">3.3.10. </span>Full code examples</a><a class="headerlink" href="#full-code-examples" title="Link to this heading">¶</a></h2>
+</section>
+<section id="examples-for-the-scikit-image-chapter">
+<h2><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">3.3.11. </span>Examples for the scikit-image chapter</a><a class="headerlink" href="#examples-for-the-scikit-image-chapter" title="Link to this heading">¶</a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="How to create an image with basic NumPy commands : np.zeros, slicing..."><img alt="" src="../../_images/sphx_glr_plot_check_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_check.html#sphx-glr-packages-scikit-image-auto-examples-plot-check-py"><span class="std std-ref">Creating an image</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Creating an image</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Load and display an image"><img alt="" src="../../_images/sphx_glr_plot_camera_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_camera.html#sphx-glr-packages-scikit-image-auto-examples-plot-camera-py"><span class="std std-ref">Displaying a simple image</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Displaying a simple image</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An illustration of overflow problem arising when working with integers"><img alt="" src="../../_images/sphx_glr_plot_camera_uint_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_camera_uint.html#sphx-glr-packages-scikit-image-auto-examples-plot-camera-uint-py"><span class="std std-ref">Integers can overflow</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Integers can overflow</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Histogram equalizing makes images have a uniform histogram."><img alt="" src="../../_images/sphx_glr_plot_equalize_hist_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_equalize_hist.html#sphx-glr-packages-scikit-image-auto-examples-plot-equalize-hist-py"><span class="std std-ref">Equalizing the histogram of an image</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Equalizing the histogram of an image</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of the horizontal Sobel filter, to compute horizontal gradient..."><img alt="" src="../../_images/sphx_glr_plot_sobel_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_sobel.html#sphx-glr-packages-scikit-image-auto-examples-plot-sobel-py"><span class="std std-ref">Computing horizontal gradients with the Sobel filter</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Computing horizontal gradients with the Sobel filter</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Visualize segmentation contours on original grayscale image."><img alt="" src="../../_images/sphx_glr_plot_boundaries_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_boundaries.html#sphx-glr-packages-scikit-image-auto-examples-plot-boundaries-py"><span class="std std-ref">Segmentation contours</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Segmentation contours</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates automatic Otsu thresholding."><img alt="" src="../../_images/sphx_glr_plot_threshold_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_threshold.html#sphx-glr-packages-scikit-image-auto-examples-plot-threshold-py"><span class="std std-ref">Otsu thresholding</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Otsu thresholding</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Warping and affine transforms of images."><img alt="" src="../../_images/sphx_glr_plot_features_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_features.html#sphx-glr-packages-scikit-image-auto-examples-plot-features-py"><span class="std std-ref">Affine transform</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Affine transform</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to label connected components of a binary image, using the dedicated ski..."><img alt="" src="../../_images/sphx_glr_plot_labels_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_labels.html#sphx-glr-packages-scikit-image-auto-examples-plot-labels-py"><span class="std std-ref">Labelling connected components of an image</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Labelling connected components of an image</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example compares several denoising filters available in scikit-image: a Gaussian filter, a..."><img alt="" src="../../_images/sphx_glr_plot_filter_coins_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_filter_coins.html#sphx-glr-packages-scikit-image-auto-examples-plot-filter-coins-py"><span class="std std-ref">Various denoising filters</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Various denoising filters</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example compares two segmentation methods in order to separate two connected disks: the wa..."><img alt="" src="../../_images/sphx_glr_plot_segmentations_thumb.png" />
+<p><a class="reference internal" href="auto_examples/plot_segmentations.html#sphx-glr-packages-scikit-image-auto-examples-plot-segmentations-py"><span class="std std-ref">Watershed and random walker for segmentation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Watershed and random walker for segmentation</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/fef51fefbc4306cd767710473a730af7/auto_examples_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/6db0bb911897ac73e48f2e61eccb9f04/auto_examples_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">3.3. <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>: image processing</a><ul>
+<li><a class="reference internal" href="#introduction-and-concepts">3.3.1. Introduction and concepts</a><ul>
+<li><a class="reference internal" href="#scikit-image-and-the-scientific-python-ecosystem">3.3.1.1. <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> and the scientific Python ecosystem</a></li>
+<li><a class="reference internal" href="#what-is-included-in-scikit-image">3.3.1.2. What is included in scikit-image</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#importing">3.3.2. Importing</a></li>
+<li><a class="reference internal" href="#example-data">3.3.3. Example data</a></li>
+<li><a class="reference internal" href="#input-output-data-types-and-colorspaces">3.3.4. Input/output, data types and colorspaces</a><ul>
+<li><a class="reference internal" href="#data-types">3.3.4.1. Data types</a></li>
+<li><a class="reference internal" href="#colorspaces">3.3.4.2. Colorspaces</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-preprocessing-enhancement">3.3.5. Image preprocessing / enhancement</a><ul>
+<li><a class="reference internal" href="#local-filters">3.3.5.1. Local filters</a></li>
+<li><a class="reference internal" href="#non-local-filters">3.3.5.2. Non-local filters</a></li>
+<li><a class="reference internal" href="#mathematical-morphology">3.3.5.3. Mathematical morphology</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-segmentation">3.3.6. Image segmentation</a><ul>
+<li><a class="reference internal" href="#binary-segmentation-foreground-background">3.3.6.1. Binary segmentation: foreground + background</a><ul>
+<li><a class="reference internal" href="#histogram-based-method-otsu-thresholding">Histogram-based method: <strong>Otsu thresholding</strong></a></li>
+<li><a class="reference internal" href="#labeling-connected-components-of-a-discrete-image">Labeling connected components of a discrete image</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#marker-based-methods">3.3.6.2. Marker based methods</a><ul>
+<li><a class="reference internal" href="#watershed-segmentation"><em>Watershed</em> segmentation</a></li>
+<li><a class="reference internal" href="#random-walker-segmentation"><em>Random walker</em> segmentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#measuring-regions-properties">3.3.7. Measuring regions’ properties</a></li>
+<li><a class="reference internal" href="#data-visualization-and-interaction">3.3.8. Data visualization and interaction</a></li>
+<li><a class="reference internal" href="#feature-extraction-for-computer-vision">3.3.9. Feature extraction for computer vision</a></li>
+<li><a class="reference internal" href="#full-code-examples">3.3.10. Full code examples</a></li>
+<li><a class="reference internal" href="#examples-for-the-scikit-image-chapter">3.3.11. Examples for the scikit-image chapter</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../sympy.html"
+                          title="previous chapter"><span class="section-number">3.2. </span>Sympy : Symbolic Mathematics in Python</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="auto_examples/plot_check.html"
+                          title="next chapter"><span class="section-number">3.3.11.1. </span>Creating an image</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/packages/scikit-image/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="auto_examples/plot_check.html" title="3.3.11.1. Creating an image"
+             >next</a></li>
+        <li class="right" >
+          <a href="../sympy.html" title="3.2. Sympy : Symbolic Mathematics in Python"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.3. </span><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>: image processing</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/scikit-image/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.2.7. Standard Library &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2.8. Exception handling in Python" href="exceptions.html" />
+    <link rel="prev" title="1.2.6. Input and Output" href="io.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="exceptions.html" title="1.2.8. Exception handling in Python"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="io.html" title="1.2.6. Input and Output"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python_language.html" accesskey="U"><span class="section-number">1.2. </span>The Python language</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.7. </span>Standard Library</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/standard_library.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="standard-library">
+<h1><span class="section-number">1.2.7. </span>Standard Library<a class="headerlink" href="#standard-library" title="Link to this heading">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reference document for this section:</p>
+<ul class="simple">
+<li><p>The Python Standard Library documentation:
+<a class="reference external" href="https://docs.python.org/3/library/index.html">https://docs.python.org/3/library/index.html</a></p></li>
+<li><p>Python Essential Reference, David Beazley, Addison-Wesley Professional</p></li>
+</ul>
+</div>
+<section id="os-module-operating-system-functionality">
+<h2><span class="section-number">1.2.7.1. </span><code class="docutils literal notranslate"><span class="pre">os</span></code> module: operating system functionality<a class="headerlink" href="#os-module-operating-system-functionality" title="Link to this heading">¶</a></h2>
+<p><em>“A portable way of using operating system dependent functionality.”</em></p>
+<section id="directory-and-file-manipulation">
+<h3>Directory and file manipulation<a class="headerlink" href="#directory-and-file-manipulation" title="Link to this heading">¶</a></h3>
+<p>Current directory:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<div class="newline"></div><span class="gh">Out[1]: </span><span class="go">&#39;/tmp&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>List a directory:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[2]: </span>
+<div class="newline"></div><span class="go">[&#39;profile_ck2k8f7z&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_26m682xb&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_9uubmu6o&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_7mq49vl8&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_3rb9vdbi&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_y1p3rvyo&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_kyykqxou&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_dpqx0_vw&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_pwzbmtp3&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_ihf87a62&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_hwt5gl3k&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_4_9n3ryf&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_vla8egnu&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_9b7x_pag&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-1617-5179-in&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_pc7fylc7&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile__p5h5ppc&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-595-814-in&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_x4mstgaw&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_310tdq6r&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_pebpmsqb&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile__ywru9nv&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_9chgyidj&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_jwax2bhl&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_qcv2_jni&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_i9q659ew&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_oc_h6zir&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_t_0h4o8i&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_c_2eyrp8&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_lkjppp5x&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-1601-4963-out&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_x2t_oxup&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_hbj21aea&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;systemd-private-3795adbe5b1b42309183d6a067bccaf5-chrony.service-8HHZaX&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_cesu8d60&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-1601-4963-in&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_spqcyhij&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_apx_iqtc&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;systemd-private-3795adbe5b1b42309183d6a067bccaf5-systemd-logind.service-n77a4k&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_4alaajpc&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_hljp9ndj&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.font-unix&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_odnphug0&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_z8fuwnu4&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_xdxzjzz7&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;systemd-private-3795adbe5b1b42309183d6a067bccaf5-haveged.service-xQvBRa&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_6clt2rjv&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_s4jdupe7&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-1617-5179-out&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_2ezqschg&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_lyr8jq60&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_7laigamd&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_pvbtrkwv&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_2t63ypn4&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_mpl_stbo&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_4eyx_j57&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.X11-unix&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_rqiwxfvj&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_peqvaz3i&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;dotnet-diagnostic-1601-4963-socket&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_zz6rwara&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_f75dn8vq&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_jux17vrr&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.XIM-unix&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_2f16_1a8&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_crzc5e8o&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;snap-private-tmp&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-595-814-out&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_12eedl69&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_5nrrvojn&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_64yeljxq&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;dotnet-diagnostic-1617-5179-socket&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_325dps4w&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_7317plqv&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_bdozhfn9&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_h926ob79&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;www-data-temp-aspnet-0&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_4n9he534&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.ICE-unix&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_b4xeiklx&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_69sm2u8_&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.Test-unix&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;dotnet-diagnostic-595-814-socket&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;systemd-private-3795adbe5b1b42309183d6a067bccaf5-systemd-resolved.service-4jB2qV&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_et_7iubf&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_rsy5e_95&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_ua_gk06t&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_e7z7326y&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_lf71uewc&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_mfkryvja&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_pe2iwp3d&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_zuw06usv&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Make a directory:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;junkdir&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="s1">&#39;junkdir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[4]: </span><span class="go">True</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Rename the directory:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;junkdir&#39;</span><span class="p">,</span> <span class="s1">&#39;foodir&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [6]: </span><span class="s1">&#39;junkdir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[6]: </span><span class="go">False</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [7]: </span><span class="s1">&#39;foodir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[7]: </span><span class="go">True</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [8]: </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s1">&#39;foodir&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [9]: </span><span class="s1">&#39;foodir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[9]: </span><span class="go">False</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Delete a file:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [11]: </span><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [12]: </span><span class="s1">&#39;junk.txt&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[12]: </span><span class="go">True</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [13]: </span><span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [14]: </span><span class="s1">&#39;junk.txt&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[14]: </span><span class="go">False</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="os-path-path-manipulations">
+<h3><code class="docutils literal notranslate"><span class="pre">os.path</span></code>: path manipulations<a class="headerlink" href="#os-path-path-manipulations" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">os.path</span></code> provides common operations on pathnames.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [16]: </span><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [17]: </span><span class="n">a</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [18]: </span><span class="n">a</span>
+<div class="newline"></div><span class="gh">Out[18]: </span><span class="go">&#39;/tmp/junk.txt&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [19]: </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[19]: </span><span class="go">(&#39;/tmp&#39;, &#39;junk.txt&#39;)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [20]: </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[20]: </span><span class="go">&#39;/tmp&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [21]: </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[21]: </span><span class="go">&#39;junk.txt&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [22]: </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<div class="newline"></div><span class="gh">Out[22]: </span><span class="go">(&#39;junk&#39;, &#39;.txt&#39;)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [23]: </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[23]: </span><span class="go">True</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [24]: </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[24]: </span><span class="go">True</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [25]: </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;junk.txt&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[25]: </span><span class="go">False</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [26]: </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/local&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[26]: </span><span class="go">&#39;/home/runner/local&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [27]: </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">),</span> <span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[27]: </span><span class="go">&#39;/home/runner/local/bin&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="running-an-external-command">
+<h3>Running an external command<a class="headerlink" href="#running-an-external-command" title="Link to this heading">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[28]: </span><span class="go">0</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Alternative to <code class="docutils literal notranslate"><span class="pre">os.system</span></code></p>
+<p>A noteworthy alternative to <code class="docutils literal notranslate"><span class="pre">os.system</span></code> is the <a class="reference external" href="https://amoffat.github.com/sh/">sh module</a>. Which provides much more convenient ways to
+obtain the output, error stream and exit code of the external command.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="kn">import</span> <span class="nn">sh</span>
+<div class="newline"></div><span class="gp">In [20]: </span><span class="n">com</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [30]: </span><span class="nb">print</span><span class="p">(</span><span class="n">com</span><span class="p">)</span>
+<div class="newline"></div><span class="go">basic_types.rst   exceptions.rst   oop.rst              standard_library.rst</span>
+<div class="newline"></div><span class="go">control_flow.rst  first_steps.rst  python_language.rst</span>
+<div class="newline"></div><span class="go">demo2.py          functions.rst    python-logo.png</span>
+<div class="newline"></div><span class="go">demo.py           io.rst           reusing_code.rst</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [31]: </span><span class="nb">print</span><span class="p">(</span><span class="n">com</span><span class="o">.</span><span class="n">exit_code</span><span class="p">)</span>
+<div class="newline"></div><span class="go">0</span>
+<div class="newline"></div><span class="gp">In [23]: </span><span class="nb">type</span><span class="p">(</span><span class="n">com</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[31]: </span><span class="go">sh.RunningCommand</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
+</section>
+<section id="walking-a-directory">
+<h3>Walking a directory<a class="headerlink" href="#walking-a-directory" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">os.path.walk</span></code> generates a list of filenames in a directory tree.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">   ....: </span>    <span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>        <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">fp</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">   ....: </span>
+<div class="newline"></div><span class="gp">   ....: </span>
+<div class="newline"></div><span class="go">/tmp/clr-debug-pipe-1617-5179-in</span>
+<div class="newline"></div><span class="go">/tmp/clr-debug-pipe-595-814-in</span>
+<div class="newline"></div><span class="go">/tmp/clr-debug-pipe-1601-4963-out</span>
+<div class="newline"></div><span class="go">/tmp/clr-debug-pipe-1601-4963-in</span>
+<div class="newline"></div><span class="go">/tmp/clr-debug-pipe-1617-5179-out</span>
+<div class="newline"></div><span class="go">/tmp/dotnet-diagnostic-1601-4963-socket</span>
+<div class="newline"></div><span class="go">/tmp/clr-debug-pipe-595-814-out</span>
+<div class="newline"></div><span class="go">/tmp/dotnet-diagnostic-1617-5179-socket</span>
+<div class="newline"></div><span class="go">/tmp/junk.txt</span>
+<div class="newline"></div><span class="go">/tmp/dotnet-diagnostic-595-814-socket</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/dhist</span>
+<div class="newline"></div><span class="go">/tmp/bookmarks</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div><span class="go">/tmp/README</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="environment-variables">
+<h3>Environment variables:<a class="headerlink" href="#environment-variables" title="Link to this heading">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [33]: </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [34]: </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<div class="newline"></div><span class="gh">Out[34]: </span>
+<div class="newline"></div><span class="go">[&#39;_&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;FSLDIR&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;TERM_PROGRAM_VERSION&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;FSLREMOTECALL&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;USER&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;HOME&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;PATH&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;PS1&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;SHELL&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;EDITOR&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;WORKON_HOME&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;PYTHONPATH&#39;,</span>
+<div class="newline"></div><span class="go"> ...</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [35]: </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PYTHONPATH&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="gh">Out[35]: </span><span class="go">&#39;.:/Users/cburns/src/utils:/Users/cburns/src/nitools:</span>
+<div class="newline"></div><span class="go">/Users/cburns/local/lib/python2.5/site-packages/:</span>
+<div class="newline"></div><span class="go">/usr/local/lib/python2.5/site-packages/:</span>
+<div class="newline"></div><span class="go">/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [36]: </span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PYTHONPATH&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[36]: </span><span class="go">&#39;.:/Users/cburns/src/utils:/Users/cburns/src/nitools:</span>
+<div class="newline"></div><span class="go">/Users/cburns/local/lib/python2.5/site-packages/:</span>
+<div class="newline"></div><span class="go">/usr/local/lib/python2.5/site-packages/:</span>
+<div class="newline"></div><span class="go">/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+</section>
+<section id="shutil-high-level-file-operations">
+<h2><span class="section-number">1.2.7.2. </span><code class="docutils literal notranslate"><span class="pre">shutil</span></code>: high-level file operations<a class="headerlink" href="#shutil-high-level-file-operations" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">shutil</span></code> provides useful file operations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shutil.rmtree</span></code>: Recursively delete a directory tree.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shutil.move</span></code>: Recursively move a file or directory to another location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shutil.copy</span></code>: Copy files or directories.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="glob-pattern-matching-on-files">
+<h2><span class="section-number">1.2.7.3. </span><code class="docutils literal notranslate"><span class="pre">glob</span></code>: Pattern matching on files<a class="headerlink" href="#glob-pattern-matching-on-files" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">glob</span></code> module provides convenient file pattern matching.</p>
+<p>Find all files ending in <code class="docutils literal notranslate"><span class="pre">.txt</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="kn">import</span> <span class="nn">glob</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [38]: </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.txt&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[38]: </span><span class="go">[&#39;junk.txt&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="sys-module-system-specific-information">
+<h2><span class="section-number">1.2.7.4. </span><code class="docutils literal notranslate"><span class="pre">sys</span></code> module: system-specific information<a class="headerlink" href="#sys-module-system-specific-information" title="Link to this heading">¶</a></h2>
+<p>System-specific information related to the Python interpreter.</p>
+<ul>
+<li><p>Which version of python are you running and where is it installed:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [39]: </span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span>
+<div class="newline"></div><span class="gh">Out[39]: </span><span class="go">&#39;linux&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [40]: </span><span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+<div class="newline"></div><span class="gh">Out[40]: </span><span class="go">&#39;3.11.8 (main, Feb  7 2024, 04:02:05) [GCC 11.4.0]&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [41]: </span><span class="n">sys</span><span class="o">.</span><span class="n">prefix</span>
+<div class="newline"></div><span class="gh">Out[41]: </span><span class="go">&#39;/opt/hostedtoolcache/Python/3.11.8/x64&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p>List of command line arguments passed to a Python script:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [42]: </span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
+<div class="newline"></div><span class="gh">Out[42]: </span>
+<div class="newline"></div><span class="go">[&#39;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/sphinx/__main__.py&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;-b&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;latex&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;-d&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;build/doctrees&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;build/latex&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">sys.path</span></code> is a list of strings that specifies the search path for
+modules.  Initialized from PYTHONPATH:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [43]: </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<div class="newline"></div><span class="gh">Out[43]: </span>
+<div class="newline"></div><span class="go">[&#39;/home/runner/work/scientific-python-lectures/scientific-python-lectures&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python311.zip&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/lib-dynload&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="pickle-easy-persistence">
+<h2><span class="section-number">1.2.7.5. </span><code class="docutils literal notranslate"><span class="pre">pickle</span></code>: easy persistence<a class="headerlink" href="#pickle-easy-persistence" title="Link to this heading">¶</a></h2>
+<p>Useful to store arbitrary objects to a file. Not safe or fast!</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [44]: </span><span class="kn">import</span> <span class="nn">pickle</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [45]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Stan&#39;</span><span class="p">]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [46]: </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....: </span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [47]: </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>    <span class="n">out</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....: </span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [48]: </span><span class="n">out</span>
+<div class="newline"></div><span class="gh">Out[48]: </span><span class="go">[1, None, &#39;Stan&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+<aside class="topic">
+<p class="topic-title">Exercise</p>
+<p>Write a program to search your <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> for the module <code class="docutils literal notranslate"><span class="pre">site.py</span></code>.</p>
+</aside>
+<p><a class="reference internal" href="../scipy/solutions.html#path-site"><span class="std std-ref">The PYTHONPATH Search Solution</span></a></p>
+<p><div style="clear: both"></div></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">1.2.7. Standard Library</a><ul>
+<li><a class="reference internal" href="#os-module-operating-system-functionality">1.2.7.1. <code class="docutils literal notranslate"><span class="pre">os</span></code> module: operating system functionality</a><ul>
+<li><a class="reference internal" href="#directory-and-file-manipulation">Directory and file manipulation</a></li>
+<li><a class="reference internal" href="#os-path-path-manipulations"><code class="docutils literal notranslate"><span class="pre">os.path</span></code>: path manipulations</a></li>
+<li><a class="reference internal" href="#running-an-external-command">Running an external command</a></li>
+<li><a class="reference internal" href="#walking-a-directory">Walking a directory</a></li>
+<li><a class="reference internal" href="#environment-variables">Environment variables:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#shutil-high-level-file-operations">1.2.7.2. <code class="docutils literal notranslate"><span class="pre">shutil</span></code>: high-level file operations</a></li>
+<li><a class="reference internal" href="#glob-pattern-matching-on-files">1.2.7.3. <code class="docutils literal notranslate"><span class="pre">glob</span></code>: Pattern matching on files</a></li>
+<li><a class="reference internal" href="#sys-module-system-specific-information">1.2.7.4. <code class="docutils literal notranslate"><span class="pre">sys</span></code> module: system-specific information</a></li>
+<li><a class="reference internal" href="#pickle-easy-persistence">1.2.7.5. <code class="docutils literal notranslate"><span class="pre">pickle</span></code>: easy persistence</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="io.html"
+                          title="previous chapter"><span class="section-number">1.2.6. </span>Input and Output</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="exceptions.html"
+                          title="next chapter"><span class="section-number">1.2.8. </span>Exception handling in Python</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/intro/language/standard_library.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="exceptions.html" title="1.2.8. Exception handling in Python"
+             >next</a></li>
+        <li class="right" >
+          <a href="io.html" title="1.2.6. Input and Output"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python_language.html" ><span class="section-number">1.2. </span>The Python language</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.7. </span>Standard Library</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/standard_library.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+
+:orphan:
+
+.. _sphx_glr_intro_matplotlib_auto_examples_sg_execution_times:
+
+
+Computation times
+=================
+**00:01.903** total execution time for 22 files **from intro/matplotlib/auto_examples**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_text.py` (``plot_text.py``)
+     - 00:00.583
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_plot3d.py` (``plot_plot3d.py``)
+     - 00:00.125
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_polar.py` (``plot_polar.py``)
+     - 00:00.105
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_contour.py` (``plot_contour.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_grid.py` (``plot_grid.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_gridspec.py` (``plot_gridspec.py``)
+     - 00:00.086
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_imshow.py` (``plot_imshow.py``)
+     - 00:00.076
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_bad.py` (``plot_bad.py``)
+     - 00:00.076
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_subplot-grid.py` (``plot_subplot-grid.py``)
+     - 00:00.073
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_plot3d-2.py` (``plot_plot3d-2.py``)
+     - 00:00.063
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_good.py` (``plot_good.py``)
+     - 00:00.058
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_scatter.py` (``plot_scatter.py``)
+     - 00:00.058
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_bar.py` (``plot_bar.py``)
+     - 00:00.051
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_pie.py` (``plot_pie.py``)
+     - 00:00.050
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_subplot-horizontal.py` (``plot_subplot-horizontal.py``)
+     - 00:00.050
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_axes-2.py` (``plot_axes-2.py``)
+     - 00:00.049
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_subplot-vertical.py` (``plot_subplot-vertical.py``)
+     - 00:00.043
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_multiplot.py` (``plot_multiplot.py``)
+     - 00:00.041
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_quiver.py` (``plot_quiver.py``)
+     - 00:00.040
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_axes.py` (``plot_axes.py``)
+     - 00:00.040
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_plot.py` (``plot_plot.py``)
+     - 00:00.031
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_ugly.py` (``plot_ugly.py``)
+     - 00:00.030
+     - 0.0

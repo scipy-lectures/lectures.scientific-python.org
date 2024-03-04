@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.2.5. Reusing code: scripts and modules &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2.6. Input and Output" href="io.html" />
+    <link rel="prev" title="1.2.4. Defining functions" href="functions.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="io.html" title="1.2.6. Input and Output"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="functions.html" title="1.2.4. Defining functions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python_language.html" accesskey="U"><span class="section-number">1.2. </span>The Python language</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.5. </span>Reusing code: scripts and modules</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/reusing_code.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="reusing-code-scripts-and-modules">
+<h1><span class="section-number">1.2.5. </span>Reusing code: scripts and modules<a class="headerlink" href="#reusing-code-scripts-and-modules" title="Link to this heading">¶</a></h1>
+<p>For now, we have typed all instructions in the interpreter. For longer
+sets of instructions we need to change track and write the code in text
+files (using a text editor), that we will call either <em>scripts</em> or
+<em>modules</em>. Use your favorite text editor (provided it offers syntax
+highlighting for Python), or the editor that comes with the Scientific
+Python Suite you may be using.</p>
+<section id="scripts">
+<h2><span class="section-number">1.2.5.1. </span>Scripts<a class="headerlink" href="#scripts" title="Link to this heading">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Let us first write a <em>script</em>, that is a file with a sequence of
+instructions that are executed each time the script is called.
+Instructions may be e.g. copied-and-pasted from the interpreter (but
+take care to respect indentation rules!).</p>
+</div>
+<p>The extension for Python files is <code class="docutils literal notranslate"><span class="pre">.py</span></code>. Write or copy-and-paste the
+following lines in a file called <code class="docutils literal notranslate"><span class="pre">test.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hello how are you?&quot;</span>
+<div class="newline"></div><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+<div class="newline"></div>    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Let us now execute the script interactively, that is inside the
+Ipython interpreter. This is maybe the most common use of scripts in
+scientific computing.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>in Ipython, the syntax to execute a script is <code class="docutils literal notranslate"><span class="pre">%run</span> <span class="pre">script.py</span></code>. For
+example,</p>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="o">%</span><span class="k">run</span> test.py
+<div class="newline"></div><span class="go">Hello</span>
+<div class="newline"></div><span class="go">how</span>
+<div class="newline"></div><span class="go">are</span>
+<div class="newline"></div><span class="go">you?</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">message</span>
+<div class="newline"></div><span class="gh">Out[2]: </span><span class="go">&#39;Hello how are you?&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>The script has been executed. Moreover the variables defined in the
+script (such as <code class="docutils literal notranslate"><span class="pre">message</span></code>) are now available inside the interpreter’s
+namespace.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Other interpreters also offer the possibility to execute scripts
+(e.g., <code class="docutils literal notranslate"><span class="pre">execfile</span></code> in the plain Python interpreter, etc.).</p>
+</div>
+<p>It is also possible In order to execute this script as a <em>standalone
+program</em>, by executing the script inside a shell terminal (Linux/Mac
+console or cmd Windows console). For example, if we are in the same
+directory as the test.py file, we can execute this in a console:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>test.py
+<div class="newline"></div>Hello
+<div class="newline"></div>how
+<div class="newline"></div>are
+<div class="newline"></div>you?
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Standalone scripts may also take command-line arguments</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">file.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="newline"></div><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>file.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>arguments
+<div class="newline"></div><span class="o">[</span><span class="s1">&#39;file.py&#39;</span>,<span class="w"> </span><span class="s1">&#39;test&#39;</span>,<span class="w"> </span><span class="s1">&#39;arguments&#39;</span><span class="o">]</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Don’t implement option parsing yourself. Use a dedicated module such as
+<a class="reference external" href="https://docs.python.org/3/library/argparse.html#module-argparse" title="(in Python v3.12)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">argparse</span></code></a>.</p>
+</div>
+</div>
+</section>
+<section id="importing-objects-from-modules">
+<h2><span class="section-number">1.2.5.2. </span>Importing objects from modules<a class="headerlink" href="#importing-objects-from-modules" title="Link to this heading">¶</a></h2>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">os</span>
+<div class="newline"></div><span class="gh">Out[4]: </span><span class="go">&lt;module &#39;os&#39; (frozen)&gt;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [5]: </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[5]: </span>
+<div class="newline"></div><span class="go">[&#39;profile_ck2k8f7z&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_26m682xb&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_9uubmu6o&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_7mq49vl8&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_3rb9vdbi&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_y1p3rvyo&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_kyykqxou&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_dpqx0_vw&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_pwzbmtp3&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_4_9n3ryf&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_9b7x_pag&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-1617-5179-in&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_pc7fylc7&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile__p5h5ppc&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-595-814-in&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_x4mstgaw&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_310tdq6r&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_pebpmsqb&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile__ywru9nv&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_9chgyidj&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_jwax2bhl&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_qcv2_jni&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_oc_h6zir&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_t_0h4o8i&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_c_2eyrp8&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_lkjppp5x&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-1601-4963-out&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_x2t_oxup&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_hbj21aea&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;systemd-private-3795adbe5b1b42309183d6a067bccaf5-chrony.service-8HHZaX&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_cesu8d60&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-1601-4963-in&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_apx_iqtc&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;systemd-private-3795adbe5b1b42309183d6a067bccaf5-systemd-logind.service-n77a4k&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_hljp9ndj&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.font-unix&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_odnphug0&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_z8fuwnu4&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_xdxzjzz7&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;systemd-private-3795adbe5b1b42309183d6a067bccaf5-haveged.service-xQvBRa&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_6clt2rjv&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_s4jdupe7&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-1617-5179-out&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_2ezqschg&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_pvbtrkwv&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_mpl_stbo&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_4eyx_j57&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.X11-unix&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_rqiwxfvj&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_peqvaz3i&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;dotnet-diagnostic-1601-4963-socket&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_zz6rwara&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_f75dn8vq&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_jux17vrr&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.XIM-unix&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_crzc5e8o&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;snap-private-tmp&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;clr-debug-pipe-595-814-out&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_12eedl69&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_5nrrvojn&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_64yeljxq&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;dotnet-diagnostic-1617-5179-socket&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_325dps4w&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_7317plqv&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_bdozhfn9&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_h926ob79&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;www-data-temp-aspnet-0&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_4n9he534&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.ICE-unix&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_b4xeiklx&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_69sm2u8_&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;.Test-unix&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;dotnet-diagnostic-595-814-socket&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;systemd-private-3795adbe5b1b42309183d6a067bccaf5-systemd-resolved.service-4jB2qV&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_et_7iubf&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_rsy5e_95&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_ua_gk06t&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_e7z7326y&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_lf71uewc&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_mfkryvja&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;profile_zuw06usv&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>And also:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Importing shorthands:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>This is called the <em>star import</em> and please, <strong>Do not use it</strong></p>
+<ul class="simple">
+<li><p>Makes the code harder to read and understand: where do symbols come
+from?</p></li>
+<li><p>Makes it impossible to guess the functionality by the context and
+the name (hint: <cite>os.name</cite> is the name of the OS), and to profit
+usefully from tab completion.</p></li>
+<li><p>Restricts the variable names you can use: <cite>os.name</cite> might override
+<cite>name</cite>, or vise-versa.</p></li>
+<li><p>Creates possible name clashes between modules.</p></li>
+<li><p>Makes the code impossible to statically check for undefined
+symbols.</p></li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Modules are thus a good way to organize code in a hierarchical way. Actually,
+all the scientific computing tools we are going to use are modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># data arrays</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([  0.,   2.,   4.,   6.,   8.,  10.])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>  <span class="c1"># scientific computing</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
+</section>
+<section id="creating-modules">
+<h2><span class="section-number">1.2.5.3. </span>Creating modules<a class="headerlink" href="#creating-modules" title="Link to this heading">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If we want to write larger and better organized programs (compared to
+simple scripts), where some objects are defined, (variables,
+functions, classes) and that we want to reuse several times, we have
+to create our own <em>modules</em>.</p>
+</div>
+<p>Let us create a module <code class="docutils literal notranslate"><span class="pre">demo</span></code> contained in the file <code class="docutils literal notranslate"><span class="pre">demo.py</span></code>:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;A demo module.&quot;</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">print_b</span><span class="p">():</span>
+<div class="newline"></div>    <span class="s2">&quot;Prints b.&quot;</span>
+<div class="newline"></div>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">print_a</span><span class="p">():</span>
+<div class="newline"></div>    <span class="s2">&quot;Prints a.&quot;</span>
+<div class="newline"></div>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">c</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="newline"></div><span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="newline"></div></pre></div>
+</div>
+</div></blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In this file, we defined two functions <code class="docutils literal notranslate"><span class="pre">print_a</span></code> and <code class="docutils literal notranslate"><span class="pre">print_b</span></code>. Suppose
+we want to call the <code class="docutils literal notranslate"><span class="pre">print_a</span></code> function from the interpreter. We could
+execute the file as a script, but since we just want to have access to
+the function <code class="docutils literal notranslate"><span class="pre">print_a</span></code>, we are rather going to <strong>import it as a module</strong>.
+The syntax is as follows.</p>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="kn">import</span> <span class="nn">demo</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [9]: </span><span class="n">demo</span><span class="o">.</span><span class="n">print_a</span><span class="p">()</span>
+<div class="newline"></div><span class="go">a</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [10]: </span><span class="n">demo</span><span class="o">.</span><span class="n">print_b</span><span class="p">()</span>
+<div class="newline"></div><span class="go">b</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Importing the module gives access to its objects, using the
+<code class="docutils literal notranslate"><span class="pre">module.object</span></code> syntax. Don’t forget to put the module’s name before the
+object’s name, otherwise Python won’t recognize the instruction.</p>
+<p>Introspection</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span>demo<span class="o">?</span>
+<div class="newline"></div><span class="go">Type:               module</span>
+<div class="newline"></div><span class="go">Base Class: &lt;type &#39;module&#39;&gt;</span>
+<div class="newline"></div><span class="go">String Form:        &lt;module &#39;demo&#39; from &#39;demo.py&#39;&gt;</span>
+<div class="newline"></div><span class="go">Namespace:  Interactive</span>
+<div class="newline"></div><span class="go">File:               /home/varoquau/Projects/Python_talks/scipy_2009_tutorial/source/demo.py</span>
+<div class="newline"></div><span class="go">Docstring:</span>
+<div class="newline"></div><span class="go">    A demo module.</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [12]: </span><span class="n">who</span>
+<div class="newline"></div><span class="go">demo</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [13]: </span><span class="n">whos</span>
+<div class="newline"></div><span class="go">Variable   Type      Data/Info</span>
+<div class="newline"></div><span class="gt">------------------------------</span>
+<div class="newline"></div><span class="n">demo</span>       <span class="n">module</span>    <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;demo&#39;</span> <span class="kn">from</span> <span class="s1">&#39;demo.py&#39;</span><span class="o">&gt;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [14]: </span><span class="nb">dir</span><span class="p">(</span><span class="n">demo</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[14]: </span>
+<div class="newline"></div><span class="go">[&#39;__builtins__&#39;,</span>
+<div class="newline"></div><span class="go">&#39;__doc__&#39;,</span>
+<div class="newline"></div><span class="go">&#39;__file__&#39;,</span>
+<div class="newline"></div><span class="go">&#39;__name__&#39;,</span>
+<div class="newline"></div><span class="go">&#39;__package__&#39;,</span>
+<div class="newline"></div><span class="go">&#39;c&#39;,</span>
+<div class="newline"></div><span class="go">&#39;d&#39;,</span>
+<div class="newline"></div><span class="go">&#39;print_a&#39;,</span>
+<div class="newline"></div><span class="go">&#39;print_b&#39;]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [15]: </span><span class="n">demo</span><span class="o">.&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
+<div class="newline"></div><span class="go">demo.c        demo.print_a  demo.py</span>
+<div class="newline"></div><span class="go">demo.d        demo.print_b  demo.pyc</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Importing objects from modules into the main namespace</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="kn">from</span> <span class="nn">demo</span> <span class="kn">import</span> <span class="n">print_a</span><span class="p">,</span> <span class="n">print_b</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [17]: </span><span class="n">whos</span>
+<div class="newline"></div><span class="go">Variable   Type        Data/Info</span>
+<div class="newline"></div><span class="gt">--------------------------------</span>
+<div class="newline"></div><span class="n">demo</span>       <span class="n">module</span>      <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;demo&#39;</span> <span class="kn">from</span> <span class="s1">&#39;demo.py&#39;</span><span class="o">&gt;</span>
+<div class="newline"></div><span class="n">print_a</span>    <span class="n">function</span>    <span class="o">&lt;</span><span class="n">function</span> <span class="n">print_a</span> <span class="n">at</span> <span class="mh">0xb7421534</span><span class="o">&gt;</span>
+<div class="newline"></div><span class="n">print_b</span>    <span class="n">function</span>    <span class="o">&lt;</span><span class="n">function</span> <span class="n">print_b</span> <span class="n">at</span> <span class="mh">0xb74214c4</span><span class="o">&gt;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [18]: </span><span class="n">print_a</span><span class="p">()</span>
+<div class="newline"></div><span class="go">a</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Module caching</strong></p>
+<blockquote>
+<div><p>Modules are cached: if you modify <code class="docutils literal notranslate"><span class="pre">demo.py</span></code> and re-import it in the
+old session, you will get the old one.</p>
+</div></blockquote>
+<p>Solution:</p>
+<blockquote>
+<div><div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">demo</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+</div></blockquote>
+</div>
+</section>
+<section id="main-and-module-loading">
+<h2><span class="section-number">1.2.5.4. </span>‘__main__’ and module loading<a class="headerlink" href="#main-and-module-loading" title="Link to this heading">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Sometimes we want code to be executed when a module is
+run directly, but not when it is imported by another module.
+<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> allows us to check whether the
+module is being run directly.</p>
+</div>
+<p>File <code class="docutils literal notranslate"><span class="pre">demo2.py</span></code>:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_b</span><span class="p">():</span>
+<div class="newline"></div>    <span class="s2">&quot;Prints b.&quot;</span>
+<div class="newline"></div>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">print_a</span><span class="p">():</span>
+<div class="newline"></div>    <span class="s2">&quot;Prints a.&quot;</span>
+<div class="newline"></div>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># print_b() runs on import</span>
+<div class="newline"></div><span class="n">print_b</span><span class="p">()</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<div class="newline"></div>    <span class="c1"># print_a() is only executed when the module is run directly.</span>
+<div class="newline"></div>    <span class="n">print_a</span><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+</div></blockquote>
+<p>Importing it:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="kn">import</span> <span class="nn">demo2</span>
+<div class="newline"></div><span class="go">b</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [20]: </span><span class="kn">import</span> <span class="nn">demo2</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Running it:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="o">%</span><span class="k">run</span> demo2
+<div class="newline"></div><span class="go">b</span>
+<div class="newline"></div><span class="go">a</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="scripts-or-modules-how-to-organize-your-code">
+<h2><span class="section-number">1.2.5.5. </span>Scripts or modules? How to organize your code<a class="headerlink" href="#scripts-or-modules-how-to-organize-your-code" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Rule of thumb</p>
+<ul class="simple">
+<li><p>Sets of instructions that are called several times should be
+written inside <strong>functions</strong> for better code reusability.</p></li>
+<li><p>Functions (or other bits of code) that are called from several
+scripts should be written inside a <strong>module</strong>, so that only the
+module is imported in the different scripts (do not copy-and-paste
+your functions in the different scripts!).</p></li>
+</ul>
+</div>
+<section id="how-modules-are-found-and-imported">
+<h3>How modules are found and imported<a class="headerlink" href="#how-modules-are-found-and-imported" title="Link to this heading">¶</a></h3>
+<p>When the <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">mymodule</span></code> statement is executed, the module <code class="docutils literal notranslate"><span class="pre">mymodule</span></code>
+is searched in a given list of directories. This list includes a list
+of installation-dependent default path (e.g., <code class="docutils literal notranslate"><span class="pre">/usr/lib64/python3.11</span></code>) as
+well as the list of directories specified by the environment variable
+<code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.</p>
+<p>The list of directories searched by Python is given by the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>
+variable</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [23]: </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<div class="newline"></div><span class="gh">Out[23]: </span>
+<div class="newline"></div><span class="go">[&#39;/home/runner/work/scientific-python-lectures/scientific-python-lectures&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python311.zip&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/lib-dynload&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Modules must be located in the search path, therefore you can:</p>
+<ul>
+<li><p>write your own modules within directories already defined in the
+search path (e.g. <code class="docutils literal notranslate"><span class="pre">$HOME/.venv/lectures/lib64/python3.11/site-packages</span></code>).
+You may use symbolic links (on Linux) to keep the code somewhere else.</p></li>
+<li><p>modify the environment variable <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> to include the
+directories containing the user-defined modules.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>On Linux/Unix, add the following line to a file read by the shell at
+startup (e.g. /etc/profile, .profile)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PYTHONPATH=$PYTHONPATH:/home/emma/user_defined_modules
+<div class="newline"></div></pre></div>
+</div>
+<p>On Windows, <a class="reference external" href="https://support.microsoft.com/kb/310519">https://support.microsoft.com/kb/310519</a> explains how to
+handle environment variables.</p>
+</div>
+</li>
+<li><p>or modify the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> variable itself within a Python script.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="newline"></div><span class="n">new_path</span> <span class="o">=</span> <span class="s1">&#39;/home/emma/user_defined_modules&#39;</span>
+<div class="newline"></div><span class="k">if</span> <span class="n">new_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+<div class="newline"></div>    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_path</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>This method is not very robust, however, because it makes the code
+less portable (user-dependent path) and because you have to add the
+directory to your sys.path each time you want to import from a module
+in this directory.</p>
+</div>
+</li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>See <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a> for more information
+about modules.</p>
+</div>
+</section>
+</section>
+<section id="packages">
+<h2><span class="section-number">1.2.5.6. </span>Packages<a class="headerlink" href="#packages" title="Link to this heading">¶</a></h2>
+<p>A directory that contains many modules is called a <em>package</em>. A package
+is a module with submodules (which can have submodules themselves, etc.).
+A special file called <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> (which may be empty) tells Python
+that the directory is a Python package, from which modules can be
+imported.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
+<div class="newline"></div>_build_utils/<span class="w">         </span>fft/<span class="w">          </span>_lib/<span class="w">        </span>odr/<span class="w">          </span>spatial/
+<div class="newline"></div>cluster/<span class="w">              </span>fftpack/<span class="w">      </span>linalg/<span class="w">      </span>optimize/<span class="w">     </span>special/
+<div class="newline"></div>conftest.py<span class="w">           </span>__init__.py<span class="w">   </span>linalg.pxd<span class="w">   </span>optimize.pxd<span class="w">  </span>special.pxd
+<div class="newline"></div>constants/<span class="w">            </span>integrate/<span class="w">    </span>meson.build<span class="w">  </span>setup.py<span class="w">      </span>stats/
+<div class="newline"></div>datasets/<span class="w">             </span>interpolate/<span class="w">  </span>misc/<span class="w">        </span>signal/
+<div class="newline"></div>_distributor_init.py<span class="w">  </span>io/<span class="w">           </span>ndimage/<span class="w">     </span>sparse/
+<div class="newline"></div>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>ndimage
+<div class="newline"></div>$<span class="w"> </span>ls
+<div class="newline"></div>_filters.py<span class="w">  </span>__init__.py<span class="w">        </span>_measurements.py<span class="w">  </span>morphology.py<span class="w">      </span>src/
+<div class="newline"></div>filters.py<span class="w">   </span>_interpolation.py<span class="w">  </span>measurements.py<span class="w">   </span>_ni_docstrings.py<span class="w">  </span>tests/
+<div class="newline"></div>_fourier.py<span class="w">  </span>interpolation.py<span class="w">   </span>meson.build<span class="w">       </span>_ni_support.py<span class="w">     </span>utils/
+<div class="newline"></div>fourier.py<span class="w">   </span>LICENSE.txt<span class="w">        </span>_morphology.py<span class="w">    </span>setup.py
+<div class="newline"></div></pre></div>
+</div>
+<p>From Ipython:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [25]: </span><span class="n">sp</span><span class="o">.</span><span class="vm">__file__</span>
+<div class="newline"></div><span class="gh">Out[25]: </span><span class="go">&#39;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/scipy/__init__.py&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [26]: </span><span class="n">sp</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">version</span>
+<div class="newline"></div><span class="gh">Out[26]: </span><span class="go">&#39;1.12.0&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [27]: </span>sp.ndimage.morphology.binary_dilation<span class="o">?</span>
+<div class="newline"></div><span class="go">Signature:</span>
+<div class="newline"></div><span class="go">sp.ndimage.morphology.binary_dilation(</span>
+<div class="newline"></div><span class="go">    input,</span>
+<div class="newline"></div><span class="go">    structure=None,</span>
+<div class="newline"></div><span class="go">    iterations=1,</span>
+<div class="newline"></div><span class="go">    mask=None,</span>
+<div class="newline"></div><span class="go">    output=None,</span>
+<div class="newline"></div><span class="go">    border_value=0,</span>
+<div class="newline"></div><span class="go">    origin=0,</span>
+<div class="newline"></div><span class="go">    brute_force=False,</span>
+<div class="newline"></div><span class="go">)</span>
+<div class="newline"></div><span class="go">Docstring:</span>
+<div class="newline"></div><span class="go">Multidimensional binary dilation with the given structuring element.</span>
+<div class="newline"></div><span class="go">...</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="good-practices">
+<h2><span class="section-number">1.2.5.7. </span>Good practices<a class="headerlink" href="#good-practices" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>Use <strong>meaningful</strong> object <strong>names</strong></p></li>
+<li><p><strong>Indentation: no choice!</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Indenting is compulsory in Python! Every command block following a
+colon bears an additional indentation level with respect to the
+previous line with a colon. One must therefore indent after
+<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f():</span></code> or <code class="docutils literal notranslate"><span class="pre">while:</span></code>. At the end of such logical blocks, one
+decreases the indentation depth (and re-increases it if a new block
+is entered, etc.)</p>
+<p>Strict respect of indentation is the price to pay for getting rid of
+<code class="docutils literal notranslate"><span class="pre">{</span></code> or <code class="docutils literal notranslate"><span class="pre">;</span></code> characters that delineate logical blocks in other
+languages. Improper indentation leads to errors such as</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="o">------------------------------------------------------------</span>
+<div class="newline"></div><span class="ne">IndentationError</span><span class="p">:</span> <span class="n">unexpected</span> <span class="n">indent</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">py</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>All this indentation business can be a bit confusing in the
+beginning. However, with the clear indentation, and in the absence of
+extra characters, the resulting code is very nice to read compared to
+other languages.</p>
+</div>
+</li>
+<li><p><strong>Indentation depth</strong>: Inside your text editor, you may choose to
+indent with any positive number of spaces (1, 2, 3, 4, …). However,
+it is considered good practice to <strong>indent with 4 spaces</strong>. You may
+configure your editor to map the <code class="docutils literal notranslate"><span class="pre">Tab</span></code> key to a 4-space
+indentation.</p></li>
+<li><p><strong>Style guidelines</strong></p>
+<p><strong>Long lines</strong>: you should not write very long lines that span over more
+than (e.g.) 80 characters. Long lines can be broken with the <code class="docutils literal notranslate"><span class="pre">\</span></code>
+character</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">long_line</span> <span class="o">=</span> <span class="s2">&quot;Here is a very very long line </span><span class="se">\</span>
+<div class="newline"></div><span class="gp">... </span><span class="s2">that we break in two parts.&quot;</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Spaces</strong></p>
+<p>Write well-spaced code: put whitespaces after commas, around arithmetic
+operators, etc.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># yes</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># too cramped</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>A certain number of rules
+for writing “beautiful” code (and more importantly using the same
+conventions as anybody else!) are given in the <a class="reference external" href="https://peps.python.org/pep-0008">Style Guide for Python
+Code</a>.</p>
+</li>
+</ul>
+<hr class="docutils" />
+<aside class="topic">
+<p class="topic-title"><strong>Quick read</strong></p>
+<p>If you want to do a first quick pass through the Scientific Python Lectures
+to learn the ecosystem, you can directly skip to the next chapter:
+<a class="reference internal" href="../numpy/index.html#numpy"><span class="std std-ref">NumPy: creating and manipulating numerical data</span></a>.</p>
+<p>The remainder of this chapter is not necessary to follow the rest of
+the intro part. But be sure to come back and finish this chapter later.</p>
+</aside>
+<p><div style="clear: both"></div></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">1.2.5. Reusing code: scripts and modules</a><ul>
+<li><a class="reference internal" href="#scripts">1.2.5.1. Scripts</a></li>
+<li><a class="reference internal" href="#importing-objects-from-modules">1.2.5.2. Importing objects from modules</a></li>
+<li><a class="reference internal" href="#creating-modules">1.2.5.3. Creating modules</a></li>
+<li><a class="reference internal" href="#main-and-module-loading">1.2.5.4. ‘__main__’ and module loading</a></li>
+<li><a class="reference internal" href="#scripts-or-modules-how-to-organize-your-code">1.2.5.5. Scripts or modules? How to organize your code</a><ul>
+<li><a class="reference internal" href="#how-modules-are-found-and-imported">How modules are found and imported</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#packages">1.2.5.6. Packages</a></li>
+<li><a class="reference internal" href="#good-practices">1.2.5.7. Good practices</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="functions.html"
+                          title="previous chapter"><span class="section-number">1.2.4. </span>Defining functions</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="io.html"
+                          title="next chapter"><span class="section-number">1.2.6. </span>Input and Output</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/intro/language/reusing_code.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="io.html" title="1.2.6. Input and Output"
+             >next</a></li>
+        <li class="right" >
+          <a href="functions.html" title="1.2.4. Defining functions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python_language.html" ><span class="section-number">1.2. </span>The Python language</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.5. </span>Reusing code: scripts and modules</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/reusing_code.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

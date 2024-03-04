@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.4.8.12. Nearest-neighbor prediction on iris &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.4.8.13. Simple visualization and classification of the digits dataset" href="plot_digits_simple_classif.html" />
+    <link rel="prev" title="3.4.8.11. A simple regression analysis on the California housing data" href="plot_california_prediction.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_digits_simple_classif.html" title="3.4.8.13. Simple visualization and classification of the digits dataset"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="plot_california_prediction.html" title="3.4.8.11. A simple regression analysis on the California housing data"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U"><span class="section-number">3.4. </span>scikit-learn: machine learning in Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.4.8.12. </span>Nearest-neighbor prediction on iris</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/scikit-learn/auto_examples/plot_iris_knn.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-packages-scikit-learn-auto-examples-plot-iris-knn-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="nearest-neighbor-prediction-on-iris">
+<span id="sphx-glr-packages-scikit-learn-auto-examples-plot-iris-knn-py"></span><h1><span class="section-number">3.4.8.12. </span>Nearest-neighbor prediction on iris<a class="headerlink" href="#nearest-neighbor-prediction-on-iris" title="Link to this heading">¶</a></h1>
+<p>Plot the decision boundary of nearest neighbor decision on iris, first
+with a single nearest neighbor, and then using 3 nearest neighbors.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">datasets</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap" title="matplotlib.colors.ListedColormap" class="sphx-glr-backref-module-matplotlib-colors sphx-glr-backref-type-py-class"><span class="n">ListedColormap</span></a>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Create color maps for 3-class classification problem, as with iris</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap" title="matplotlib.colors.ListedColormap" class="sphx-glr-backref-module-matplotlib-colors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cmap_light</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap" title="matplotlib.colors.ListedColormap" class="sphx-glr-backref-module-matplotlib-colors sphx-glr-backref-type-py-class"><span class="n">ListedColormap</span></a><span class="p">([</span><span class="s2">&quot;#FFAAAA&quot;</span><span class="p">,</span> <span class="s2">&quot;#AAFFAA&quot;</span><span class="p">,</span> <span class="s2">&quot;#AAAAFF&quot;</span><span class="p">])</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap" title="matplotlib.colors.ListedColormap" class="sphx-glr-backref-module-matplotlib-colors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cmap_bold</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap" title="matplotlib.colors.ListedColormap" class="sphx-glr-backref-module-matplotlib-colors sphx-glr-backref-type-py-class"><span class="n">ListedColormap</span></a><span class="p">([</span><span class="s2">&quot;#FF0000&quot;</span><span class="p">,</span> <span class="s2">&quot;#00FF00&quot;</span><span class="p">,</span> <span class="s2">&quot;#0000FF&quot;</span><span class="p">])</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.Bunch.html#sklearn.utils.Bunch" title="sklearn.utils.Bunch" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">iris</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span></a><span class="p">()</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">iris</span><span class="o">.</span><span class="n">data</span></a><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># we only take the first two features. We could</span>
+<div class="newline"></div><span class="c1"># avoid this ugly slicing by using a two-dim dataset</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">iris</span><span class="o">.</span><span class="n">target</span></a>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">knn</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class"><span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span></a><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="newline"></div><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.fit" title="sklearn.neighbors.KNeighborsClassifier.fit" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-method"><span class="n">knn</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">x_min</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">x_max</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.1</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">y_min</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">y_max</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.1</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">xx</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">yy</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.meshgrid.html#numpy.meshgrid" title="numpy.meshgrid" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html#numpy.linspace" title="numpy.linspace" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">x_min</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">x_max</span></a><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html#numpy.linspace" title="numpy.linspace" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">y_min</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">y_max</span></a><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Z</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.predict" title="sklearn.neighbors.KNeighborsClassifier.predict" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-method"><span class="n">knn</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.c_.html#numpy.c_" title="numpy.c_" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">c_</span></a><span class="p">[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">xx</span></a><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">yy</span></a><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Put the result into a color plot</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Z</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Z</span></a><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">xx</span><span class="o">.</span><span class="n">shape</span></a><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.pcolormesh.html#matplotlib.pyplot.pcolormesh" title="matplotlib.pyplot.pcolormesh" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">xx</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">yy</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Z</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap" title="matplotlib.colors.ListedColormap" class="sphx-glr-backref-module-matplotlib-colors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cmap_light</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Plot also the training points</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter" title="matplotlib.pyplot.scatter" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap" title="matplotlib.colors.ListedColormap" class="sphx-glr-backref-module-matplotlib-colors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cmap_bold</span></a><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlabel.html#matplotlib.pyplot.xlabel" title="matplotlib.pyplot.xlabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s2">&quot;sepal length (cm)&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylabel.html#matplotlib.pyplot.ylabel" title="matplotlib.pyplot.ylabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s2">&quot;sepal width (cm)&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib.pyplot.axis" title="matplotlib.pyplot.axis" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<img src="../../../_images/sphx_glr_plot_iris_knn_001.png" srcset="../../../_images/sphx_glr_plot_iris_knn_001.png" alt="plot iris knn" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(4.180808080808081, 8.019191919191918, 1.8868686868686868, 4.513131313131313)
+<div class="newline"></div></pre></div>
+</div>
+<p>And now, redo the analysis with 3 neighbors</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">knn</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class"><span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span></a><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="newline"></div><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.fit" title="sklearn.neighbors.KNeighborsClassifier.fit" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-method"><span class="n">knn</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Z</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.predict" title="sklearn.neighbors.KNeighborsClassifier.predict" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-method"><span class="n">knn</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.c_.html#numpy.c_" title="numpy.c_" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">c_</span></a><span class="p">[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">xx</span></a><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">yy</span></a><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Put the result into a color plot</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Z</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Z</span></a><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">xx</span><span class="o">.</span><span class="n">shape</span></a><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.pcolormesh.html#matplotlib.pyplot.pcolormesh" title="matplotlib.pyplot.pcolormesh" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">xx</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">yy</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Z</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap" title="matplotlib.colors.ListedColormap" class="sphx-glr-backref-module-matplotlib-colors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cmap_light</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Plot also the training points</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter" title="matplotlib.pyplot.scatter" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap" title="matplotlib.colors.ListedColormap" class="sphx-glr-backref-module-matplotlib-colors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cmap_bold</span></a><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlabel.html#matplotlib.pyplot.xlabel" title="matplotlib.pyplot.xlabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s2">&quot;sepal length (cm)&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylabel.html#matplotlib.pyplot.ylabel" title="matplotlib.pyplot.ylabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s2">&quot;sepal width (cm)&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib.pyplot.axis" title="matplotlib.pyplot.axis" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<img src="../../../_images/sphx_glr_plot_iris_knn_002.png" srcset="../../../_images/sphx_glr_plot_iris_knn_002.png" alt="plot iris knn" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.678 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-packages-scikit-learn-auto-examples-plot-iris-knn-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/2e413415c9ccb5cee9a8b3f1ff88ec74/plot_iris_knn.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_iris_knn.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/25b4ba8d2913f444a091b98df1be7f4c/plot_iris_knn.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_iris_knn.py</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="plot_california_prediction.html"
+                          title="previous chapter"><span class="section-number">3.4.8.11. </span>A simple regression analysis on the California housing data</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="plot_digits_simple_classif.html"
+                          title="next chapter"><span class="section-number">3.4.8.13. </span>Simple visualization and classification of the digits dataset</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/packages/scikit-learn/auto_examples/plot_iris_knn.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_digits_simple_classif.html" title="3.4.8.13. Simple visualization and classification of the digits dataset"
+             >next</a></li>
+        <li class="right" >
+          <a href="plot_california_prediction.html" title="3.4.8.11. A simple regression analysis on the California housing data"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" ><span class="section-number">3.4. </span>scikit-learn: machine learning in Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.4.8.12. </span>Nearest-neighbor prediction on iris</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/scikit-learn/auto_examples/plot_iris_knn.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Computation times &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="search" title="Search" href="search.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Computation times</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/sg_execution_times.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="computation-times">
+<span id="sphx-glr-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Link to this heading">¶</a></h1>
+<p><strong>01:08.268</strong> total execution time for 173 files <strong>from all galleries</strong>:</p>
+<div class="docutils container">
+<style scoped>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+</style>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" class="init">
+$(document).ready( function () {
+    $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+} );
+</script><table class="table table-striped sg-datatable docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>Mem (MB)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/statistics/auto_examples/plot_wage_data.html#sphx-glr-packages-statistics-auto-examples-plot-wage-data-py"><span class="std std-ref">Visualizing factors influencing wages</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/statistics/examples/plot_wage_data.py</span></code>)</p></td>
+<td><p>00:08.789</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/statistics/auto_examples/plot_airfare.html#sphx-glr-packages-statistics-auto-examples-plot-airfare-py"><span class="std std-ref">Air fares before and after 9/11</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/statistics/examples/plot_airfare.py</span></code>)</p></td>
+<td><p>00:07.625</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_gradient_descent.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-gradient-descent-py"><span class="std std-ref">Gradient descent</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_gradient_descent.py</span></code>)</p></td>
+<td><p>00:06.411</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_features.html#sphx-glr-packages-scikit-image-auto-examples-plot-features-py"><span class="std std-ref">Affine transform</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_features.py</span></code>)</p></td>
+<td><p>00:05.342</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_california_prediction.html#sphx-glr-packages-scikit-learn-auto-examples-plot-california-prediction-py"><span class="std std-ref">A simple regression analysis on the California housing data</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_california_prediction.py</span></code>)</p></td>
+<td><p>00:04.398</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_eigenfaces.html#sphx-glr-packages-scikit-learn-auto-examples-plot-eigenfaces-py"><span class="std std-ref">The eigenfaces example: chaining PCA and SVMs</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_eigenfaces.py</span></code>)</p></td>
+<td><p>00:03.658</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_digits_simple_classif.html#sphx-glr-packages-scikit-learn-auto-examples-plot-digits-simple-classif-py"><span class="std std-ref">Simple visualization and classification of the digits dataset</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_digits_simple_classif.py</span></code>)</p></td>
+<td><p>00:01.624</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_measuring_performance.html#sphx-glr-packages-scikit-learn-auto-examples-plot-measuring-performance-py"><span class="std std-ref">Measuring Decision Tree performance</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_measuring_performance.py</span></code>)</p></td>
+<td><p>00:01.507</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_exercise_ill_conditioned.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-exercise-ill-conditioned-py"><span class="std std-ref">Alternating optimization</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_exercise_ill_conditioned.py</span></code>)</p></td>
+<td><p>00:01.497</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_bias_variance.html#sphx-glr-packages-scikit-learn-auto-examples-plot-bias-variance-py"><span class="std std-ref">Bias and variance of polynomial fit</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_bias_variance.py</span></code>)</p></td>
+<td><p>00:01.411</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_colormaps.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-colormaps-py"><span class="std std-ref">Colormaps</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_colormaps.py</span></code>)</p></td>
+<td><p>00:01.354</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_tsne.html#sphx-glr-packages-scikit-learn-auto-examples-plot-tsne-py"><span class="std std-ref">tSNE to visualize digits</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_tsne.py</span></code>)</p></td>
+<td><p>00:01.185</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_image_transform.html#sphx-glr-intro-scipy-auto-examples-plot-image-transform-py"><span class="std std-ref">Plot geometrical transformations on images</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_image_transform.py</span></code>)</p></td>
+<td><p>00:00.947</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/solutions/plot_fft_image_denoise.html#sphx-glr-intro-scipy-auto-examples-solutions-plot-fft-image-denoise-py"><span class="std std-ref">Image denoising by FFT</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/solutions/plot_fft_image_denoise.py</span></code>)</p></td>
+<td><p>00:00.841</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_ticks.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-ticks-py"><span class="std std-ref">Locators for tick on axis</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_ticks.py</span></code>)</p></td>
+<td><p>00:00.767</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_iris_knn.html#sphx-glr-packages-scikit-learn-auto-examples-plot-iris-knn-py"><span class="std std-ref">Nearest-neighbor prediction on iris</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_iris_knn.py</span></code>)</p></td>
+<td><p>00:00.678</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_text.html#sphx-glr-intro-matplotlib-auto-examples-plot-text-py"><span class="std std-ref">Demo text printing</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_text.py</span></code>)</p></td>
+<td><p>00:00.583</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/statistics/auto_examples/plot_pandas.html#sphx-glr-packages-statistics-auto-examples-plot-pandas-py"><span class="std std-ref">Plotting simple quantities of a pandas dataframe</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/statistics/examples/plot_pandas.py</span></code>)</p></td>
+<td><p>00:00.573</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-face-py"><span class="std std-ref">Displaying a Raccoon Face</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_face.py</span></code>)</p></td>
+<td><p>00:00.558</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_compare_optimizers.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-compare-optimizers-py"><span class="std std-ref">Plotting the comparison of optimizers</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_compare_optimizers.py</span></code>)</p></td>
+<td><p>00:00.548</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_text_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-text-ext-py"><span class="std std-ref">Text printing decorated</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_text_ext.py</span></code>)</p></td>
+<td><p>00:00.485</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_image_filters.html#sphx-glr-intro-scipy-auto-examples-plot-image-filters-py"><span class="std std-ref">Plot filtering on images</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_image_filters.py</span></code>)</p></td>
+<td><p>00:00.477</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/statistics/auto_examples/plot_wage_education_gender.html#sphx-glr-packages-statistics-auto-examples-plot-wage-education-gender-py"><span class="std std-ref">Test for an education/gender interaction in wages</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/statistics/examples/plot_wage_education_gender.py</span></code>)</p></td>
+<td><p>00:00.455</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_geom_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-geom-face-py"><span class="std std-ref">Geometrical transformations</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_geom_face.py</span></code>)</p></td>
+<td><p>00:00.454</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_sharpen.html#sphx-glr-advanced-image-processing-auto-examples-plot-sharpen-py"><span class="std std-ref">Image sharpening</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_sharpen.py</span></code>)</p></td>
+<td><p>00:00.450</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_GMM.html#sphx-glr-advanced-image-processing-auto-examples-plot-gmm-py"><span class="std std-ref">Segmentation with Gaussian mixture models</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_GMM.py</span></code>)</p></td>
+<td><p>00:00.449</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_spectral_clustering.html#sphx-glr-advanced-image-processing-auto-examples-plot-spectral-clustering-py"><span class="std std-ref">Segmentation with spectral clustering</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_spectral_clustering.py</span></code>)</p></td>
+<td><p>00:00.436</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_spectrogram.html#sphx-glr-intro-scipy-auto-examples-plot-spectrogram-py"><span class="std std-ref">Spectrogram, power spectral density</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_spectrogram.py</span></code>)</p></td>
+<td><p>00:00.434</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_compare_classifiers.html#sphx-glr-packages-scikit-learn-auto-examples-plot-compare-classifiers-py"><span class="std std-ref">Compare classifiers on the digits data</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_compare_classifiers.py</span></code>)</p></td>
+<td><p>00:00.425</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/statistics/auto_examples/plot_iris_analysis.html#sphx-glr-packages-statistics-auto-examples-plot-iris-analysis-py"><span class="std std-ref">Analysis of Iris petal and sepal sizes</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/statistics/examples/plot_iris_analysis.py</span></code>)</p></td>
+<td><p>00:00.414</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_2d_minimization.html#sphx-glr-intro-scipy-auto-examples-plot-2d-minimization-py"><span class="std std-ref">Optimization of a two-parameter function</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_2d_minimization.py</span></code>)</p></td>
+<td><p>00:00.381</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/solutions/plot_image_blur.html#sphx-glr-intro-scipy-auto-examples-solutions-plot-image-blur-py"><span class="std std-ref">Simple image blur by convolution with a Gaussian kernel</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/solutions/plot_image_blur.py</span></code>)</p></td>
+<td><p>00:00.377</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_display_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-display-face-py"><span class="std std-ref">Display a Raccoon Face</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_display_face.py</span></code>)</p></td>
+<td><p>00:00.364</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_linear_model_cv.html#sphx-glr-packages-scikit-learn-auto-examples-plot-linear-model-cv-py"><span class="std std-ref">Use the RidgeCV and LassoCV to set the regularization parameter</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_linear_model_cv.py</span></code>)</p></td>
+<td><p>00:00.343</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/numpy/auto_examples/plot_elephant.html#sphx-glr-intro-numpy-auto-examples-plot-elephant-py"><span class="std std-ref">Reading and writing an elephant</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/numpy/examples/plot_elephant.py</span></code>)</p></td>
+<td><p>00:00.297</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_blur.html#sphx-glr-advanced-image-processing-auto-examples-plot-blur-py"><span class="std std-ref">Blurring of images</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_blur.py</span></code>)</p></td>
+<td><p>00:00.285</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_granulo.html#sphx-glr-advanced-image-processing-auto-examples-plot-granulo-py"><span class="std std-ref">Granulometry</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_granulo.py</span></code>)</p></td>
+<td><p>00:00.254</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/statistics/auto_examples/solutions/plot_brain_size.html#sphx-glr-packages-statistics-auto-examples-solutions-plot-brain-size-py"><span class="std std-ref">Relating Gender and IQ</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/statistics/examples/solutions/plot_brain_size.py</span></code>)</p></td>
+<td><p>00:00.245</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_fftpack.html#sphx-glr-intro-scipy-auto-examples-plot-fftpack-py"><span class="std std-ref">Plotting and manipulating FFTs for filtering</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_fftpack.py</span></code>)</p></td>
+<td><p>00:00.242</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_find_edges.html#sphx-glr-advanced-image-processing-auto-examples-plot-find-edges-py"><span class="std std-ref">Finding edges with Sobel filters</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_find_edges.py</span></code>)</p></td>
+<td><p>00:00.221</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_polynomial_regression.html#sphx-glr-packages-scikit-learn-auto-examples-plot-polynomial-regression-py"><span class="std std-ref">Plot fitting a 9th order polynomial</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_polynomial_regression.py</span></code>)</p></td>
+<td><p>00:00.219</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_face_tv_denoise.html#sphx-glr-advanced-image-processing-auto-examples-plot-face-tv-denoise-py"><span class="std std-ref">Total Variation denoising</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_face_tv_denoise.py</span></code>)</p></td>
+<td><p>00:00.218</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/summary-exercises/auto_examples/plot_optimize_lidar_data_fit.html#sphx-glr-intro-scipy-summary-exercises-auto-examples-plot-optimize-lidar-data-fit-py"><span class="std std-ref">The lidar system, data and fit (1 of 2 datasets)</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/summary-exercises/examples/plot_optimize_lidar_data_fit.py</span></code>)</p></td>
+<td><p>00:00.217</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/summary-exercises/auto_examples/plot_sprog_annual_maxima.html#sphx-glr-intro-scipy-summary-exercises-auto-examples-plot-sprog-annual-maxima-py"><span class="std std-ref">The Gumbell distribution, results</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/summary-exercises/examples/plot_sprog_annual_maxima.py</span></code>)</p></td>
+<td><p>00:00.217</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_1d_optim.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-1d-optim-py"><span class="std std-ref">Brent’s method</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_1d_optim.py</span></code>)</p></td>
+<td><p>00:00.214</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_resample.html#sphx-glr-intro-scipy-auto-examples-plot-resample-py"><span class="std std-ref">Resample a signal with scipy.signal.resample</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_resample.py</span></code>)</p></td>
+<td><p>00:00.211</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_face_denoise.html#sphx-glr-advanced-image-processing-auto-examples-plot-face-denoise-py"><span class="std std-ref">Image denoising</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_face_denoise.py</span></code>)</p></td>
+<td><p>00:00.207</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_ML_flow_chart.html#sphx-glr-packages-scikit-learn-auto-examples-plot-ml-flow-chart-py"><span class="std std-ref">Tutorial Diagrams</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_ML_flow_chart.py</span></code>)</p></td>
+<td><p>00:00.192</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_block_mean.html#sphx-glr-advanced-image-processing-auto-examples-plot-block-mean-py"><span class="std std-ref">Plot the block mean of an image</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_block_mean.py</span></code>)</p></td>
+<td><p>00:00.176</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_radial_mean.html#sphx-glr-advanced-image-processing-auto-examples-plot-radial-mean-py"><span class="std std-ref">Radial mean</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_radial_mean.py</span></code>)</p></td>
+<td><p>00:00.174</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_numpy_array.html#sphx-glr-advanced-image-processing-auto-examples-plot-numpy-array-py"><span class="std std-ref">Image manipulation and NumPy arrays</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_numpy_array.py</span></code>)</p></td>
+<td><p>00:00.161</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/solutions/plot_periodicity_finder.html#sphx-glr-intro-scipy-auto-examples-solutions-plot-periodicity-finder-py"><span class="std std-ref">Crude periodicity finding</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/solutions/plot_periodicity_finder.py</span></code>)</p></td>
+<td><p>00:00.155</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_interpolation_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-interpolation-face-py"><span class="std std-ref">Image interpolation</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_interpolation_face.py</span></code>)</p></td>
+<td><p>00:00.152</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_segmentations.html#sphx-glr-packages-scikit-image-auto-examples-plot-segmentations-py"><span class="std std-ref">Watershed and random walker for segmentation</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_segmentations.py</span></code>)</p></td>
+<td><p>00:00.151</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_filter_coins.html#sphx-glr-packages-scikit-image-auto-examples-plot-filter-coins-py"><span class="std std-ref">Various denoising filters</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_filter_coins.py</span></code>)</p></td>
+<td><p>00:00.149</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_denoising.html#sphx-glr-advanced-image-processing-auto-examples-plot-denoising-py"><span class="std std-ref">Denoising an image with the median filter</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_denoising.py</span></code>)</p></td>
+<td><p>00:00.141</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_curve_fit.html#sphx-glr-intro-scipy-auto-examples-plot-curve-fit-py"><span class="std std-ref">Curve fitting</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_curve_fit.py</span></code>)</p></td>
+<td><p>00:00.134</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_connect_measurements.html#sphx-glr-intro-scipy-auto-examples-plot-connect-measurements-py"><span class="std std-ref">Demo connected components</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_connect_measurements.py</span></code>)</p></td>
+<td><p>00:00.130</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_histo_segmentation.html#sphx-glr-advanced-image-processing-auto-examples-plot-histo-segmentation-py"><span class="std std-ref">Histogram segmentation</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_histo_segmentation.py</span></code>)</p></td>
+<td><p>00:00.129</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/solutions/plot_curvefit_temperature_data.html#sphx-glr-intro-scipy-auto-examples-solutions-plot-curvefit-temperature-data-py"><span class="std std-ref">Curve fitting: temperature as a function of month of the year</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/solutions/plot_curvefit_temperature_data.py</span></code>)</p></td>
+<td><p>00:00.128</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/statistics/auto_examples/plot_regression.html#sphx-glr-packages-statistics-auto-examples-plot-regression-py"><span class="std std-ref">Simple Regression</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/statistics/examples/plot_regression.py</span></code>)</p></td>
+<td><p>00:00.128</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_plot3d.html#sphx-glr-intro-matplotlib-auto-examples-plot-plot3d-py"><span class="std std-ref">3D plotting</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_plot3d.py</span></code>)</p></td>
+<td><p>00:00.125</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_polar_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-polar-ext-py"><span class="std std-ref">Plotting in polar, decorated</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_polar_ext.py</span></code>)</p></td>
+<td><p>00:00.122</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/statistics/auto_examples/plot_regression_3d.html#sphx-glr-packages-statistics-auto-examples-plot-regression-3d-py"><span class="std std-ref">Multiple Regression</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/statistics/examples/plot_regression_3d.py</span></code>)</p></td>
+<td><p>00:00.115</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_normal_distribution.html#sphx-glr-intro-scipy-auto-examples-plot-normal-distribution-py"><span class="std std-ref">Normal distribution: histogram and PDF</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_normal_distribution.py</span></code>)</p></td>
+<td><p>00:00.113</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_camera_uint.html#sphx-glr-packages-scikit-image-auto-examples-plot-camera-uint-py"><span class="std std-ref">Integers can overflow</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_camera_uint.py</span></code>)</p></td>
+<td><p>00:00.113</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_threshold.html#sphx-glr-packages-scikit-image-auto-examples-plot-threshold-py"><span class="std std-ref">Otsu thresholding</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_threshold.py</span></code>)</p></td>
+<td><p>00:00.111</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_exercise_flat_minimum.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-exercise-flat-minimum-py"><span class="std std-ref">Finding a minimum in a flat neighborhood</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_exercise_flat_minimum.py</span></code>)</p></td>
+<td><p>00:00.110</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_t_test.html#sphx-glr-intro-scipy-auto-examples-plot-t-test-py"><span class="std std-ref">Comparing 2 sets of samples from Gaussians</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_t_test.py</span></code>)</p></td>
+<td><p>00:00.109</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_polar.html#sphx-glr-intro-matplotlib-auto-examples-plot-polar-py"><span class="std std-ref">Plotting in polar coordinates</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_polar.py</span></code>)</p></td>
+<td><p>00:00.105</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_mathematical_morpho.html#sphx-glr-intro-scipy-auto-examples-plot-mathematical-morpho-py"><span class="std std-ref">Demo mathematical morphology</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_mathematical_morpho.py</span></code>)</p></td>
+<td><p>00:00.102</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_variance_linear_regr.html#sphx-glr-packages-scikit-learn-auto-examples-plot-variance-linear-regr-py"><span class="std std-ref">Plot variance and regularization in linear models</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_variance_linear_regr.py</span></code>)</p></td>
+<td><p>00:00.101</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_boundaries.html#sphx-glr-packages-scikit-image-auto-examples-plot-boundaries-py"><span class="std std-ref">Segmentation contours</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_boundaries.py</span></code>)</p></td>
+<td><p>00:00.100</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_sobel.html#sphx-glr-packages-scikit-image-auto-examples-plot-sobel-py"><span class="std std-ref">Computing horizontal gradients with the Sobel filter</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_sobel.py</span></code>)</p></td>
+<td><p>00:00.097</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/summary-exercises/auto_examples/plot_optimize_lidar_complex_data.html#sphx-glr-intro-scipy-summary-exercises-auto-examples-plot-optimize-lidar-complex-data-py"><span class="std std-ref">The lidar system, data (2 of 2 datasets)</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/summary-exercises/examples/plot_optimize_lidar_complex_data.py</span></code>)</p></td>
+<td><p>00:00.096</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/summary-exercises/auto_examples/plot_optimize_lidar_complex_data_fit.html#sphx-glr-intro-scipy-summary-exercises-auto-examples-plot-optimize-lidar-complex-data-fit-py"><span class="std std-ref">The lidar system, data and fit (2 of 2 datasets)</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/summary-exercises/examples/plot_optimize_lidar_complex_data_fit.py</span></code>)</p></td>
+<td><p>00:00.091</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/exercises/plot_exercise_9.html#sphx-glr-intro-matplotlib-auto-examples-exercises-plot-exercise-9-py"><span class="std std-ref">Exercise 9</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/exercises/plot_exercise_9.py</span></code>)</p></td>
+<td><p>00:00.091</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_pca.html#sphx-glr-packages-scikit-learn-auto-examples-plot-pca-py"><span class="std std-ref">Demo PCA in 2D</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_pca.py</span></code>)</p></td>
+<td><p>00:00.090</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_multiplot_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-multiplot-ext-py"><span class="std std-ref">Multiple plots vignette</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_multiplot_ext.py</span></code>)</p></td>
+<td><p>00:00.089</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_contour_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-contour-ext-py"><span class="std std-ref">Display the contours of a function</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_contour_ext.py</span></code>)</p></td>
+<td><p>00:00.089</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_solve_ivp_simple.html#sphx-glr-intro-scipy-auto-examples-plot-solve-ivp-simple-py"><span class="std std-ref">Integrating a simple ODE</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_solve_ivp_simple.py</span></code>)</p></td>
+<td><p>00:00.089</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_iris_scatter.html#sphx-glr-packages-scikit-learn-auto-examples-plot-iris-scatter-py"><span class="std std-ref">Plot 2D views of the iris dataset</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_iris_scatter.py</span></code>)</p></td>
+<td><p>00:00.088</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_contour.html#sphx-glr-intro-matplotlib-auto-examples-plot-contour-py"><span class="std std-ref">Displaying the contours of a function</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_contour.py</span></code>)</p></td>
+<td><p>00:00.088</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_grid.html#sphx-glr-intro-matplotlib-auto-examples-plot-grid-py"><span class="std std-ref">Grid</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_grid.py</span></code>)</p></td>
+<td><p>00:00.088</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/summary-exercises/auto_examples/plot_cumulative_wind_speed_prediction.html#sphx-glr-intro-scipy-summary-exercises-auto-examples-plot-cumulative-wind-speed-prediction-py"><span class="std std-ref">Cumulative wind speed prediction</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/summary-exercises/examples/plot_cumulative_wind_speed_prediction.py</span></code>)</p></td>
+<td><p>00:00.088</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_grid_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-grid-ext-py"><span class="std std-ref">Grid elaborate</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_grid_ext.py</span></code>)</p></td>
+<td><p>00:00.088</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/exercises/plot_exercise_10.html#sphx-glr-intro-matplotlib-auto-examples-exercises-plot-exercise-10-py"><span class="std std-ref">Exercise</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/exercises/plot_exercise_10.py</span></code>)</p></td>
+<td><p>00:00.088</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_gridspec.html#sphx-glr-intro-matplotlib-auto-examples-plot-gridspec-py"><span class="std std-ref">GridSpec</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_gridspec.py</span></code>)</p></td>
+<td><p>00:00.086</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/numpy/auto_examples/plot_mandelbrot.html#sphx-glr-intro-numpy-auto-examples-plot-mandelbrot-py"><span class="std std-ref">Mandelbrot set</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/numpy/examples/plot_mandelbrot.py</span></code>)</p></td>
+<td><p>00:00.085</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_equalize_hist.html#sphx-glr-packages-scikit-image-auto-examples-plot-equalize-hist-py"><span class="std std-ref">Equalizing the histogram of an image</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_equalize_hist.py</span></code>)</p></td>
+<td><p>00:00.085</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/summary-exercises/auto_examples/plot_optimize_lidar_data.html#sphx-glr-intro-scipy-summary-exercises-auto-examples-plot-optimize-lidar-data-py"><span class="std std-ref">The lidar system, data (1 of 2 datasets)</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/summary-exercises/examples/plot_optimize_lidar_data.py</span></code>)</p></td>
+<td><p>00:00.084</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/numpy/auto_examples/plot_chebyfit.html#sphx-glr-intro-numpy-auto-examples-plot-chebyfit-py"><span class="std std-ref">Fitting in Chebyshev basis</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/numpy/examples/plot_chebyfit.py</span></code>)</p></td>
+<td><p>00:00.084</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/numpy/auto_examples/plot_randomwalk.html#sphx-glr-intro-numpy-auto-examples-plot-randomwalk-py"><span class="std std-ref">Random walk exercise</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/numpy/examples/plot_randomwalk.py</span></code>)</p></td>
+<td><p>00:00.084</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_constraints.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-constraints-py"><span class="std std-ref">Constraint optimization: visualizing the geometry</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_constraints.py</span></code>)</p></td>
+<td><p>00:00.082</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_clean_morpho.html#sphx-glr-advanced-image-processing-auto-examples-plot-clean-morpho-py"><span class="std std-ref">Cleaning segmentation with mathematical morphology</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_clean_morpho.py</span></code>)</p></td>
+<td><p>00:00.080</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/numpy/auto_examples/plot_basic2dplot.html#sphx-glr-intro-numpy-auto-examples-plot-basic2dplot-py"><span class="std std-ref">2D plotting</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/numpy/examples/plot_basic2dplot.py</span></code>)</p></td>
+<td><p>00:00.079</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_optimize_example2.html#sphx-glr-intro-scipy-auto-examples-plot-optimize-example2-py"><span class="std std-ref">Minima and roots of a function</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_optimize_example2.py</span></code>)</p></td>
+<td><p>00:00.079</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/summary-exercises/auto_examples/plot_gumbell_wind_speed_prediction.html#sphx-glr-intro-scipy-summary-exercises-auto-examples-plot-gumbell-wind-speed-prediction-py"><span class="std std-ref">The Gumbell distribution</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/summary-exercises/examples/plot_gumbell_wind_speed_prediction.py</span></code>)</p></td>
+<td><p>00:00.078</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/statistics/auto_examples/plot_paired_boxplots.html#sphx-glr-packages-statistics-auto-examples-plot-paired-boxplots-py"><span class="std std-ref">Boxplots and paired differences</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/statistics/examples/plot_paired_boxplots.py</span></code>)</p></td>
+<td><p>00:00.078</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_imshow.html#sphx-glr-intro-matplotlib-auto-examples-plot-imshow-py"><span class="std std-ref">Imshow elaborate</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_imshow.py</span></code>)</p></td>
+<td><p>00:00.076</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_bad.html#sphx-glr-intro-matplotlib-auto-examples-plot-bad-py"><span class="std std-ref">A simple plotting example</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_bad.py</span></code>)</p></td>
+<td><p>00:00.076</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/numpy/auto_examples/plot_distances.html#sphx-glr-intro-numpy-auto-examples-plot-distances-py"><span class="std std-ref">Distances exercise</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/numpy/examples/plot_distances.py</span></code>)</p></td>
+<td><p>00:00.074</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_synthetic_data.html#sphx-glr-advanced-image-processing-auto-examples-plot-synthetic-data-py"><span class="std std-ref">Synthetic data</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_synthetic_data.py</span></code>)</p></td>
+<td><p>00:00.073</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_interpolation.html#sphx-glr-intro-scipy-auto-examples-plot-interpolation-py"><span class="std std-ref">A demo of 1D interpolation</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_interpolation.py</span></code>)</p></td>
+<td><p>00:00.073</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_subplot-grid.html#sphx-glr-intro-matplotlib-auto-examples-plot-subplot-grid-py"><span class="std std-ref">Subplot grid</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_subplot-grid.py</span></code>)</p></td>
+<td><p>00:00.073</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/numpy/auto_examples/plot_populations.html#sphx-glr-intro-numpy-auto-examples-plot-populations-py"><span class="std std-ref">Population exercise</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/numpy/examples/plot_populations.py</span></code>)</p></td>
+<td><p>00:00.072</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_labels.html#sphx-glr-packages-scikit-image-auto-examples-plot-labels-py"><span class="std std-ref">Labelling connected components of an image</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_labels.py</span></code>)</p></td>
+<td><p>00:00.071</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/advanced_numpy/auto_examples/plot_maskedstats.html#sphx-glr-advanced-advanced-numpy-auto-examples-plot-maskedstats-py"><span class="std std-ref">Example: Masked statistics</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/advanced_numpy/examples/plots/plot_maskedstats.py</span></code>)</p></td>
+<td><p>00:00.071</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_camera.html#sphx-glr-packages-scikit-image-auto-examples-plot-camera-py"><span class="std std-ref">Displaying a simple image</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_camera.py</span></code>)</p></td>
+<td><p>00:00.071</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/exercises/plot_exercise_1.html#sphx-glr-intro-matplotlib-auto-examples-exercises-plot-exercise-1-py"><span class="std std-ref">Exercise 1</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/exercises/plot_exercise_1.py</span></code>)</p></td>
+<td><p>00:00.069</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_svm_non_linear.html#sphx-glr-packages-scikit-learn-auto-examples-plot-svm-non-linear-py"><span class="std std-ref">Example of linear and non-linear models</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_svm_non_linear.py</span></code>)</p></td>
+<td><p>00:00.065</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="guide/auto_examples/plot_simple.html#sphx-glr-guide-auto-examples-plot-simple-py"><span class="std std-ref">A simple example</span></a> (<code class="docutils literal notranslate"><span class="pre">guide/examples/plot_simple.py</span></code>)</p></td>
+<td><p>00:00.065</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/exercises/plot_exercise_4.html#sphx-glr-intro-matplotlib-auto-examples-exercises-plot-exercise-4-py"><span class="std std-ref">Exercise 4</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/exercises/plot_exercise_4.py</span></code>)</p></td>
+<td><p>00:00.065</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_detrend.html#sphx-glr-intro-scipy-auto-examples-plot-detrend-py"><span class="std std-ref">Detrending a signal</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_detrend.py</span></code>)</p></td>
+<td><p>00:00.064</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_plot3d-2.html#sphx-glr-intro-matplotlib-auto-examples-plot-plot3d-2-py"><span class="std std-ref">3D plotting</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_plot3d-2.py</span></code>)</p></td>
+<td><p>00:00.063</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_solve_ivp_damped_spring_mass.html#sphx-glr-intro-scipy-auto-examples-plot-solve-ivp-damped-spring-mass-py"><span class="std std-ref">Integrate the Damped spring-mass oscillator</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_solve_ivp_damped_spring_mass.py</span></code>)</p></td>
+<td><p>00:00.058</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_good.html#sphx-glr-intro-matplotlib-auto-examples-plot-good-py"><span class="std std-ref">A simple, good-looking plot</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_good.py</span></code>)</p></td>
+<td><p>00:00.058</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_scatter_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-scatter-ext-py"><span class="std std-ref">Plot scatter decorated</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_scatter_ext.py</span></code>)</p></td>
+<td><p>00:00.058</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_scatter.html#sphx-glr-intro-matplotlib-auto-examples-plot-scatter-py"><span class="std std-ref">Plotting a scatter of points</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_scatter.py</span></code>)</p></td>
+<td><p>00:00.058</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_watershed_segmentation.html#sphx-glr-advanced-image-processing-auto-examples-plot-watershed-segmentation-py"><span class="std std-ref">Watershed segmentation</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_watershed_segmentation.py</span></code>)</p></td>
+<td><p>00:00.057</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_markers.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-markers-py"><span class="std std-ref">Markers</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_markers.py</span></code>)</p></td>
+<td><p>00:00.057</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/scipy/auto_examples/plot_optimize_example1.html#sphx-glr-intro-scipy-auto-examples-plot-optimize-example1-py"><span class="std std-ref">Finding the minimum of a smooth function</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/scipy/examples/plot_optimize_example1.py</span></code>)</p></td>
+<td><p>00:00.057</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/numpy/auto_examples/plot_basic1dplot.html#sphx-glr-intro-numpy-auto-examples-plot-basic1dplot-py"><span class="std std-ref">1D plotting</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/numpy/examples/plot_basic1dplot.py</span></code>)</p></td>
+<td><p>00:00.056</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-image/auto_examples/plot_check.html#sphx-glr-packages-scikit-image-auto-examples-plot-check-py"><span class="std std-ref">Creating an image</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-image/examples/plot_check.py</span></code>)</p></td>
+<td><p>00:00.055</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/numpy/auto_examples/plot_polyfit.html#sphx-glr-intro-numpy-auto-examples-plot-polyfit-py"><span class="std std-ref">Fitting to polynomial</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/numpy/examples/plot_polyfit.py</span></code>)</p></td>
+<td><p>00:00.055</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/exercises/plot_exercise_8.html#sphx-glr-intro-matplotlib-auto-examples-exercises-plot-exercise-8-py"><span class="std std-ref">Exercise 8</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/exercises/plot_exercise_8.py</span></code>)</p></td>
+<td><p>00:00.055</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_greyscale_dilation.html#sphx-glr-advanced-image-processing-auto-examples-plot-greyscale-dilation-py"><span class="std std-ref">Greyscale dilation</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_greyscale_dilation.py</span></code>)</p></td>
+<td><p>00:00.054</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_pie_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-pie-ext-py"><span class="std std-ref">Pie chart vignette</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_pie_ext.py</span></code>)</p></td>
+<td><p>00:00.051</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/exercises/plot_exercise_7.html#sphx-glr-intro-matplotlib-auto-examples-exercises-plot-exercise-7-py"><span class="std std-ref">Exercise 7</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/exercises/plot_exercise_7.py</span></code>)</p></td>
+<td><p>00:00.051</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_bar.html#sphx-glr-intro-matplotlib-auto-examples-plot-bar-py"><span class="std std-ref">Bar plots</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_bar.py</span></code>)</p></td>
+<td><p>00:00.051</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_pie.html#sphx-glr-intro-matplotlib-auto-examples-plot-pie-py"><span class="std std-ref">Pie chart</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_pie.py</span></code>)</p></td>
+<td><p>00:00.050</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_subplot-horizontal.html#sphx-glr-intro-matplotlib-auto-examples-plot-subplot-horizontal-py"><span class="std std-ref">Horizontal arrangement of subplots</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_subplot-horizontal.py</span></code>)</p></td>
+<td><p>00:00.050</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_curve_fitting.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-curve-fitting-py"><span class="std std-ref">Curve fitting</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_curve_fitting.py</span></code>)</p></td>
+<td><p>00:00.049</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_separator.html#sphx-glr-packages-scikit-learn-auto-examples-plot-separator-py"><span class="std std-ref">Simple picture of the formal problem of machine learning</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_separator.py</span></code>)</p></td>
+<td><p>00:00.049</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_axes-2.html#sphx-glr-intro-matplotlib-auto-examples-plot-axes-2-py"><span class="std std-ref">Axes</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_axes-2.py</span></code>)</p></td>
+<td><p>00:00.049</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_non_bounds_constraints.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-non-bounds-constraints-py"><span class="std std-ref">Optimization with constraints</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_non_bounds_constraints.py</span></code>)</p></td>
+<td><p>00:00.046</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/exercises/plot_exercise_6.html#sphx-glr-intro-matplotlib-auto-examples-exercises-plot-exercise-6-py"><span class="std std-ref">Exercise 6</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/exercises/plot_exercise_6.py</span></code>)</p></td>
+<td><p>00:00.046</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/exercises/plot_exercise_2.html#sphx-glr-intro-matplotlib-auto-examples-exercises-plot-exercise-2-py"><span class="std std-ref">Exercise 2</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/exercises/plot_exercise_2.py</span></code>)</p></td>
+<td><p>00:00.045</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_convex.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-convex-py"><span class="std std-ref">Convex function</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_convex.py</span></code>)</p></td>
+<td><p>00:00.045</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_bar_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-bar-ext-py"><span class="std std-ref">Bar plot advanced</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_bar_ext.py</span></code>)</p></td>
+<td><p>00:00.044</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_plot3d_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-plot3d-ext-py"><span class="std std-ref">3D plotting vignette</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_plot3d_ext.py</span></code>)</p></td>
+<td><p>00:00.044</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_quiver_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-quiver-ext-py"><span class="std std-ref">Plotting quiver decorated</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_quiver_ext.py</span></code>)</p></td>
+<td><p>00:00.043</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/exercises/plot_exercise_3.html#sphx-glr-intro-matplotlib-auto-examples-exercises-plot-exercise-3-py"><span class="std std-ref">Exercise 3</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/exercises/plot_exercise_3.py</span></code>)</p></td>
+<td><p>00:00.043</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_subplot-vertical.html#sphx-glr-intro-matplotlib-auto-examples-plot-subplot-vertical-py"><span class="std std-ref">Subplot plot arrangement vertical</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_subplot-vertical.py</span></code>)</p></td>
+<td><p>00:00.043</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="packages/scikit-learn/auto_examples/plot_linear_regression.html#sphx-glr-packages-scikit-learn-auto-examples-plot-linear-regression-py"><span class="std std-ref">A simple linear regression</span></a> (<code class="docutils literal notranslate"><span class="pre">packages/scikit-learn/examples/plot_linear_regression.py</span></code>)</p></td>
+<td><p>00:00.042</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_multiplot.html#sphx-glr-intro-matplotlib-auto-examples-plot-multiplot-py"><span class="std std-ref">Subplots</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_multiplot.py</span></code>)</p></td>
+<td><p>00:00.041</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_quiver.html#sphx-glr-intro-matplotlib-auto-examples-plot-quiver-py"><span class="std std-ref">Plotting a vector field: quiver</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_quiver.py</span></code>)</p></td>
+<td><p>00:00.040</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_measure_data.html#sphx-glr-advanced-image-processing-auto-examples-plot-measure-data-py"><span class="std std-ref">Measurements from images</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_measure_data.py</span></code>)</p></td>
+<td><p>00:00.040</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_axes.html#sphx-glr-intro-matplotlib-auto-examples-plot-axes-py"><span class="std std-ref">Simple axes example</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_axes.py</span></code>)</p></td>
+<td><p>00:00.040</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_boxplot_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-boxplot-ext-py"><span class="std std-ref">Boxplot with matplotlib</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_boxplot_ext.py</span></code>)</p></td>
+<td><p>00:00.039</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_linestyles.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-linestyles-py"><span class="std std-ref">Linestyles</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_linestyles.py</span></code>)</p></td>
+<td><p>00:00.038</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_propagation.html#sphx-glr-advanced-image-processing-auto-examples-plot-propagation-py"><span class="std std-ref">Opening, erosion, and propagation</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_propagation.py</span></code>)</p></td>
+<td><p>00:00.038</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_smooth.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-smooth-py"><span class="std std-ref">Smooth vs non-smooth</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_smooth.py</span></code>)</p></td>
+<td><p>00:00.037</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/exercises/plot_exercise_5.html#sphx-glr-intro-matplotlib-auto-examples-exercises-plot-exercise-5-py"><span class="std std-ref">Exercise 5</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/exercises/plot_exercise_5.py</span></code>)</p></td>
+<td><p>00:00.035</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_imshow_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-imshow-ext-py"><span class="std std-ref">Imshow demo</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_imshow_ext.py</span></code>)</p></td>
+<td><p>00:00.034</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_plot.html#sphx-glr-intro-matplotlib-auto-examples-plot-plot-py"><span class="std std-ref">Plot and filled plots</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_plot.py</span></code>)</p></td>
+<td><p>00:00.031</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/plot_ugly.html#sphx-glr-intro-matplotlib-auto-examples-plot-ugly-py"><span class="std std-ref">A example of plotting not quite right</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/plot_ugly.py</span></code>)</p></td>
+<td><p>00:00.030</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/pretty_plots/plot_plot_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-plot-ext-py"><span class="std std-ref">Plot example vignette</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/pretty_plots/plot_plot_ext.py</span></code>)</p></td>
+<td><p>00:00.028</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/image_processing/auto_examples/plot_find_object.html#sphx-glr-advanced-image-processing-auto-examples-plot-find-object-py"><span class="std std-ref">Find the bounding box of an object</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/image_processing/examples/plot_find_object.py</span></code>)</p></td>
+<td><p>00:00.019</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_alpha.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-alpha-py"><span class="std std-ref">Alpha: transparency</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_alpha.py</span></code>)</p></td>
+<td><p>00:00.018</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="advanced/mathematical_optimization/auto_examples/plot_noisy.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-noisy-py"><span class="std std-ref">Noisy optimization problem</span></a> (<code class="docutils literal notranslate"><span class="pre">advanced/mathematical_optimization/examples/plot_noisy.py</span></code>)</p></td>
+<td><p>00:00.016</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_ms.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-ms-py"><span class="std std-ref">Marker size</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_ms.py</span></code>)</p></td>
+<td><p>00:00.014</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_mfc.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-mfc-py"><span class="std std-ref">Marker face color</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_mfc.py</span></code>)</p></td>
+<td><p>00:00.014</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_mec.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-mec-py"><span class="std std-ref">Marker edge color</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_mec.py</span></code>)</p></td>
+<td><p>00:00.014</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_mew.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-mew-py"><span class="std std-ref">Marker edge width</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_mew.py</span></code>)</p></td>
+<td><p>00:00.014</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_aliased.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-aliased-py"><span class="std std-ref">Aliased versus anti-aliased</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_aliased.py</span></code>)</p></td>
+<td><p>00:00.014</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_linewidth.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-linewidth-py"><span class="std std-ref">Linewidth</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_linewidth.py</span></code>)</p></td>
+<td><p>00:00.013</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_color.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-color-py"><span class="std std-ref">The colors matplotlib line plots</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_color.py</span></code>)</p></td>
+<td><p>00:00.013</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_solid_joinstyle.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-solid-joinstyle-py"><span class="std std-ref">Solid joint style</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_solid_joinstyle.py</span></code>)</p></td>
+<td><p>00:00.012</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_dash_joinstyle.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-dash-joinstyle-py"><span class="std std-ref">Dash join style</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_dash_joinstyle.py</span></code>)</p></td>
+<td><p>00:00.012</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_dash_capstyle.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-dash-capstyle-py"><span class="std std-ref">Dash capstyle</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_dash_capstyle.py</span></code>)</p></td>
+<td><p>00:00.011</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_solid_capstyle.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-solid-capstyle-py"><span class="std std-ref">Solid cap style</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_solid_capstyle.py</span></code>)</p></td>
+<td><p>00:00.011</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="intro/matplotlib/auto_examples/options/plot_antialiased.html#sphx-glr-intro-matplotlib-auto-examples-options-plot-antialiased-py"><span class="std std-ref">Aliased versus anti-aliased</span></a> (<code class="docutils literal notranslate"><span class="pre">intro/matplotlib/examples/options/plot_antialiased.py</span></code>)</p></td>
+<td><p>00:00.011</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/sg_execution_times.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Computation times</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/sg_execution_times.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

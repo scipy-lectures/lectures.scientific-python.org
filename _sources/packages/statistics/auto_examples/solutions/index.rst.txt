@@ -1,0 +1,41 @@
+
+
+.. _sphx_glr_packages_statistics_auto_examples_solutions:
+
+Solutions to this chapter's exercises
+======================================
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Going back to the brain size + IQ data, test if the VIQ of male and female are different after ...">
+
+.. only:: html
+
+  .. image:: /packages/statistics/auto_examples/solutions/images/thumb/sphx_glr_plot_brain_size_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_statistics_auto_examples_solutions_plot_brain_size.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Relating Gender and IQ</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /packages/statistics/auto_examples/solutions/plot_brain_size
+

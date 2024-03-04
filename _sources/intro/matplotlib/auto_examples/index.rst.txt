@@ -1,0 +1,1179 @@
+:orphan:
+
+
+
+Code samples for Matplotlib
+----------------------------
+
+The examples here are only examples relevant to the points raised in this
+chapter. The matplotlib documentation comes with a much more exhaustive
+`gallery <http://matplotlib.org/gallery.html>`__.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A simple pie chart example with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_pie_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_pie.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pie chart</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demoing some simple features of matplotlib">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_good_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_good.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">A simple, good-looking plot</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A simple example showing how to plot a scatter of points with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_scatter_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_scatter.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plotting a scatter of points</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Show multiple subplots in matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_multiplot_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_multiplot.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Subplots</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing horizontal arrangement of subplots with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_subplot-horizontal_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_subplot-horizontal.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Horizontal arrangement of subplots</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing vertical arrangement of subplots with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_subplot-vertical_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_subplot-vertical.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Subplot plot arrangement vertical</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A plotting example with a few simple tweaks">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_bad_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_bad.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">A simple plotting example</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows a couple of simple usage of axes.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_axes_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_axes.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Simple axes example</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A simple example of 3D plotting.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_plot3d_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_plot3d.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3D plotting</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing imshow and styling the figure.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_imshow_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_imshow.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Imshow elaborate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A simple example showing how to plot a vector field (quiver) with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_quiver_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_quiver.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plotting a vector field: quiver</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An &quot;ugly&quot; example of plotting.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_ugly_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_ugly.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">A example of plotting not quite right</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing how to display the contours of a function with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_contour_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_contour.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Displaying the contours of a function</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A simple example showing how to plot in polar coordinates with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_polar_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_polar.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plotting in polar coordinates</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple example of plots and filling between them with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_plot_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_plot.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot and filled plots</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example of bar plots with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_bar_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_bar.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bar plots</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing the subplot grid in matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_subplot-grid_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_subplot-grid.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Subplot grid</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows various axes command to position matplotlib axes.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_axes-2_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_axes-2.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Axes</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Displaying a grid on the axes in matploblib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_grid_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_grid.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Grid</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo 3D plotting with matplotlib and style the figure.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_plot3d-2_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_plot3d-2.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3D plotting</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing gridspec">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_gridspec_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_gridspec.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">GridSpec</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A example showing off elaborate text printing with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/images/thumb/sphx_glr_plot_text_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_text.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Demo text printing</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/matplotlib/auto_examples/plot_pie
+   /intro/matplotlib/auto_examples/plot_good
+   /intro/matplotlib/auto_examples/plot_scatter
+   /intro/matplotlib/auto_examples/plot_multiplot
+   /intro/matplotlib/auto_examples/plot_subplot-horizontal
+   /intro/matplotlib/auto_examples/plot_subplot-vertical
+   /intro/matplotlib/auto_examples/plot_bad
+   /intro/matplotlib/auto_examples/plot_axes
+   /intro/matplotlib/auto_examples/plot_plot3d
+   /intro/matplotlib/auto_examples/plot_imshow
+   /intro/matplotlib/auto_examples/plot_quiver
+   /intro/matplotlib/auto_examples/plot_ugly
+   /intro/matplotlib/auto_examples/plot_contour
+   /intro/matplotlib/auto_examples/plot_polar
+   /intro/matplotlib/auto_examples/plot_plot
+   /intro/matplotlib/auto_examples/plot_bar
+   /intro/matplotlib/auto_examples/plot_subplot-grid
+   /intro/matplotlib/auto_examples/plot_axes-2
+   /intro/matplotlib/auto_examples/plot_grid
+   /intro/matplotlib/auto_examples/plot_plot3d-2
+   /intro/matplotlib/auto_examples/plot_gridspec
+   /intro/matplotlib/auto_examples/plot_text
+
+
+
+Code for the chapter's exercises
+--------------------------------
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Solution of the exercise 1 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_1_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_1.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 1</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 4 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_4_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_4.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 4</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 3 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_3_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_3.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 3</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 5 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_5_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_5.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 5</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 6 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_6_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_6.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 6</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 2 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_2_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_2.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 2</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 7 with matplotlib">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_7_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_7.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 7</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 8 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_8_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_8.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 8</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercise 9 with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_9_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_9.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise 9</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Exercises with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/exercises/images/thumb/sphx_glr_plot_exercise_10_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_10.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exercise</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+
+Example demoing choices for an option
+--------------------------------------
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing the various colors taken by matplotlib&#x27;s plot.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_color_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_color.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The colors matplotlib line plots</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot various linewidth with matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_linewidth_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_linewidth.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Linewidth</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates using alpha for transparency.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_alpha_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_alpha.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Alpha: transparency</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates aliased versus anti-aliased text.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_aliased_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_aliased.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Aliased versus anti-aliased</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The example shows aliased versus anti-aliased text.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_antialiased_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_antialiased.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Aliased versus anti-aliased</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo the marker size control in matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_ms_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_ms.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Marker size</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo the marker edge widths of matplotlib&#x27;s markers.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_mew_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mew.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Marker edge width</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example plotting the matplotlib colormaps.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_colormaps_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_colormaps.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Colormaps</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing the different solid joint styles in matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_solid_joinstyle_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_solid_joinstyle.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Solid joint style</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing the solide cap style in matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_solid_capstyle_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_solid_capstyle.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Solid cap style</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo the marker edge color of matplotlib&#x27;s markers.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_mec_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mec.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Marker edge color</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo the marker face color of matplotlib&#x27;s markers.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_mfc_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mfc.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Marker face color</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing the dash capstyle.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_dash_capstyle_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_dash_capstyle.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dash capstyle</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example demoing the dash join style.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_dash_joinstyle_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_dash_joinstyle.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dash join style</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Show the different markers of matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_markers_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_markers.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Markers</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the different line styles.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_linestyles_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_linestyles.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Linestyles</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing different locators to position ticks on axis for matplotlib.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/options/images/thumb/sphx_glr_plot_ticks_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_ticks.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Locators for tick on axis</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+Code generating the summary figures with a title
+-------------------------------------------------
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo 3D plotting with matplotlib and decorate the figure.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_plot3d_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_plot3d_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3D plotting vignette</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing how to plot in polar coordinate, and some decorations.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_polar_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_polar_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plotting in polar, decorated</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example of plots with matplotlib, and added annotations.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_plot_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_plot_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot example vignette</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo multiple plots and style the figure.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_multiplot_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_multiplot_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Multiple plots vignette</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example of doing box plots with matplotlib">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_boxplot_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_boxplot_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Boxplot with matplotlib</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing the scatter function, with decorations.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_scatter_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_scatter_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot scatter decorated</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demo pie chart with matplotlib and style the figure.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_pie_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_pie_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pie chart vignette</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demoing imshow">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_imshow_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_imshow_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Imshow demo</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An more elaborate bar plot example">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_bar_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_bar_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bar plot advanced</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing quiver with decorations.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_quiver_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_quiver_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plotting quiver decorated</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example demoing how to plot the contours of a function, with additional layout tweaks.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_contour_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_contour_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Display the contours of a function</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example displaying a grid on the axes and tweaking the layout.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_grid_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_grid_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Grid elaborate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing text printing and decorating the resulting figure.">
+
+.. only:: html
+
+  .. image:: /intro/matplotlib/auto_examples/pretty_plots/images/thumb/sphx_glr_plot_text_ext_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_text_ext.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Text printing decorated</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /intro/matplotlib/auto_examples/exercises/index.rst
+   /intro/matplotlib/auto_examples/options/index.rst
+   /intro/matplotlib/auto_examples/pretty_plots/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: auto_examples_python.zip </intro/matplotlib/auto_examples/auto_examples_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip </intro/matplotlib/auto_examples/auto_examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

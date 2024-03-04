@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Code generating the summary figures with a title &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/foldable_toc.css?v=38a22cee" />
+    <script src="../../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <script src="../../../../_static/foldable_toc.js?v=d65ca516"></script>
+    <link rel="icon" href="../../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="3D plotting vignette" href="plot_plot3d_ext.html" />
+    <link rel="prev" title="Locators for tick on axis" href="../options/plot_ticks.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_plot3d_ext.html" title="3D plotting vignette"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../options/plot_ticks.html" title="Locators for tick on axis"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../index.html" accesskey="U"><span class="section-number">1.4. </span>Matplotlib: plotting</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Code generating the summary figures with a title</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/matplotlib/auto_examples/pretty_plots/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="code-generating-the-summary-figures-with-a-title">
+<span id="sphx-glr-intro-matplotlib-auto-examples-pretty-plots"></span><h1>Code generating the summary figures with a title<a class="headerlink" href="#code-generating-the-summary-figures-with-a-title" title="Link to this heading">¶</a></h1>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Demo 3D plotting with matplotlib and decorate the figure."><img alt="" src="../../../../_images/sphx_glr_plot_plot3d_ext_thumb.png" />
+<p><a class="reference internal" href="plot_plot3d_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-plot3d-ext-py"><span class="std std-ref">3D plotting vignette</span></a></p>
+  <div class="sphx-glr-thumbnail-title">3D plotting vignette</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing how to plot in polar coordinate, and some decorations."><img alt="" src="../../../../_images/sphx_glr_plot_polar_ext_thumb.png" />
+<p><a class="reference internal" href="plot_polar_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-polar-ext-py"><span class="std std-ref">Plotting in polar, decorated</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plotting in polar, decorated</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example of plots with matplotlib, and added annotations."><img alt="" src="../../../../_images/sphx_glr_plot_plot_ext_thumb.png" />
+<p><a class="reference internal" href="plot_plot_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-plot-ext-py"><span class="std std-ref">Plot example vignette</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plot example vignette</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demo multiple plots and style the figure."><img alt="" src="../../../../_images/sphx_glr_plot_multiplot_ext_thumb.png" />
+<p><a class="reference internal" href="plot_multiplot_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-multiplot-ext-py"><span class="std std-ref">Multiple plots vignette</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Multiple plots vignette</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example of doing box plots with matplotlib"><img alt="" src="../../../../_images/sphx_glr_plot_boxplot_ext_thumb.png" />
+<p><a class="reference internal" href="plot_boxplot_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-boxplot-ext-py"><span class="std std-ref">Boxplot with matplotlib</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Boxplot with matplotlib</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the scatter function, with decorations."><img alt="" src="../../../../_images/sphx_glr_plot_scatter_ext_thumb.png" />
+<p><a class="reference internal" href="plot_scatter_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-scatter-ext-py"><span class="std std-ref">Plot scatter decorated</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plot scatter decorated</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demo pie chart with matplotlib and style the figure."><img alt="" src="../../../../_images/sphx_glr_plot_pie_ext_thumb.png" />
+<p><a class="reference internal" href="plot_pie_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-pie-ext-py"><span class="std std-ref">Pie chart vignette</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pie chart vignette</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demoing imshow"><img alt="" src="../../../../_images/sphx_glr_plot_imshow_ext_thumb.png" />
+<p><a class="reference internal" href="plot_imshow_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-imshow-ext-py"><span class="std std-ref">Imshow demo</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Imshow demo</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An more elaborate bar plot example"><img alt="" src="../../../../_images/sphx_glr_plot_bar_ext_thumb.png" />
+<p><a class="reference internal" href="plot_bar_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-bar-ext-py"><span class="std std-ref">Bar plot advanced</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Bar plot advanced</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing quiver with decorations."><img alt="" src="../../../../_images/sphx_glr_plot_quiver_ext_thumb.png" />
+<p><a class="reference internal" href="plot_quiver_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-quiver-ext-py"><span class="std std-ref">Plotting quiver decorated</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plotting quiver decorated</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example demoing how to plot the contours of a function, with additional layout tweaks."><img alt="" src="../../../../_images/sphx_glr_plot_contour_ext_thumb.png" />
+<p><a class="reference internal" href="plot_contour_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-contour-ext-py"><span class="std std-ref">Display the contours of a function</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Display the contours of a function</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example displaying a grid on the axes and tweaking the layout."><img alt="" src="../../../../_images/sphx_glr_plot_grid_ext_thumb.png" />
+<p><a class="reference internal" href="plot_grid_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-grid-ext-py"><span class="std std-ref">Grid elaborate</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Grid elaborate</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing text printing and decorating the resulting figure."><img alt="" src="../../../../_images/sphx_glr_plot_text_ext_thumb.png" />
+<p><a class="reference internal" href="plot_text_ext.html#sphx-glr-intro-matplotlib-auto-examples-pretty-plots-plot-text-ext-py"><span class="std std-ref">Text printing decorated</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Text printing decorated</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../options/plot_ticks.html"
+                          title="previous chapter">Locators for tick on axis</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="plot_plot3d_ext.html"
+                          title="next chapter">3D plotting vignette</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../../_sources/intro/matplotlib/auto_examples/pretty_plots/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_plot3d_ext.html" title="3D plotting vignette"
+             >next</a></li>
+        <li class="right" >
+          <a href="../options/plot_ticks.html" title="Locators for tick on axis"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../index.html" ><span class="section-number">1.4. </span>Matplotlib: plotting</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Code generating the summary figures with a title</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/matplotlib/auto_examples/pretty_plots/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

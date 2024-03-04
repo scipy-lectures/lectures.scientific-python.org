@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Full code for the figures &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/foldable_toc.css?v=38a22cee" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <script src="../../../_static/foldable_toc.js?v=d65ca516"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Full code for the figures</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/statistics/auto_examples/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="full-code-for-the-figures">
+<h1>Full code for the figures<a class="headerlink" href="#full-code-for-the-figures" title="Link to this heading">¶</a></h1>
+<p>Code examples for the statistics chapter.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Plot boxplots for FSIQ, PIQ, and the paired difference between the two: while the spread (error..."><img alt="" src="../../../_images/sphx_glr_plot_paired_boxplots_thumb.png" />
+<p><a class="reference internal" href="plot_paired_boxplots.html#sphx-glr-packages-statistics-auto-examples-plot-paired-boxplots-py"><span class="std std-ref">Boxplots and paired differences</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Boxplots and paired differences</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example loads from a CSV file data with mixed numerical and categorical entries, and plots..."><img alt="" src="../../../_images/sphx_glr_plot_pandas_thumb.png" />
+<p><a class="reference internal" href="plot_pandas.html#sphx-glr-packages-statistics-auto-examples-plot-pandas-py"><span class="std std-ref">Plotting simple quantities of a pandas dataframe</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plotting simple quantities of a pandas dataframe</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Illustrate an analysis on a real dataset:"><img alt="" src="../../../_images/sphx_glr_plot_iris_analysis_thumb.png" />
+<p><a class="reference internal" href="plot_iris_analysis.html#sphx-glr-packages-statistics-auto-examples-plot-iris-analysis-py"><span class="std std-ref">Analysis of Iris petal and sepal sizes</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Analysis of Iris petal and sepal sizes</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Fit a simple linear regression using &#x27;statsmodels&#x27;, compute corresponding p-values."><img alt="" src="../../../_images/sphx_glr_plot_regression_thumb.png" />
+<p><a class="reference internal" href="plot_regression.html#sphx-glr-packages-statistics-auto-examples-plot-regression-py"><span class="std std-ref">Simple Regression</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Simple Regression</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Wages depend mostly on education. Here we investigate how this dependence is related to gender:..."><img alt="" src="../../../_images/sphx_glr_plot_wage_education_gender_thumb.png" />
+<p><a class="reference internal" href="plot_wage_education_gender.html#sphx-glr-packages-statistics-auto-examples-plot-wage-education-gender-py"><span class="std std-ref">Test for an education/gender interaction in wages</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Test for an education/gender interaction in wages</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Calculate using &#x27;statsmodels&#x27; just the best fit, or all the corresponding statistical parameter..."><img alt="" src="../../../_images/sphx_glr_plot_regression_3d_thumb.png" />
+<p><a class="reference internal" href="plot_regression_3d.html#sphx-glr-packages-statistics-auto-examples-plot-regression-3d-py"><span class="std std-ref">Multiple Regression</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Multiple Regression</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example uses seaborn to quickly plot various factors relating wages, experience and educti..."><img alt="" src="../../../_images/sphx_glr_plot_wage_data_thumb.png" />
+<p><a class="reference internal" href="plot_wage_data.html#sphx-glr-packages-statistics-auto-examples-plot-wage-data-py"><span class="std std-ref">Visualizing factors influencing wages</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Visualizing factors influencing wages</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This is a business-intelligence (BI) like application."><img alt="" src="../../../_images/sphx_glr_plot_airfare_thumb.png" />
+<p><a class="reference internal" href="plot_airfare.html#sphx-glr-packages-statistics-auto-examples-plot-airfare-py"><span class="std std-ref">Air fares before and after 9/11</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Air fares before and after 9/11</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="solutions-to-this-chapter-s-exercises">
+<h1>Solutions to this chapter’s exercises<a class="headerlink" href="#solutions-to-this-chapter-s-exercises" title="Link to this heading">¶</a></h1>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Going back to the brain size + IQ data, test if the VIQ of male and female are different after ..."><img alt="" src="../../../_images/sphx_glr_plot_brain_size_thumb.png" />
+<p><a class="reference internal" href="solutions/plot_brain_size.html#sphx-glr-packages-statistics-auto-examples-solutions-plot-brain-size-py"><span class="std std-ref">Relating Gender and IQ</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Relating Gender and IQ</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/1b9ca3c48567ac6a258ea9a99b43bea0/auto_examples_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/0f7a3cacf11ec37fcbe522bb150f459a/auto_examples_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Full code for the figures</a></li>
+<li><a class="reference internal" href="#solutions-to-this-chapter-s-exercises">Solutions to this chapter’s exercises</a></li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/packages/statistics/auto_examples/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Full code for the figures</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/statistics/auto_examples/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

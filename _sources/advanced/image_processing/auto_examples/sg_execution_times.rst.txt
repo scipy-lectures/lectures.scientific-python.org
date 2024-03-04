@@ -1,0 +1,106 @@
+
+:orphan:
+
+.. _sphx_glr_advanced_image_processing_auto_examples_sg_execution_times:
+
+
+Computation times
+=================
+**00:05.190** total execution time for 24 files **from advanced/image_processing/auto_examples**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_face.py` (``plot_face.py``)
+     - 00:00.558
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_geom_face.py` (``plot_geom_face.py``)
+     - 00:00.454
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_sharpen.py` (``plot_sharpen.py``)
+     - 00:00.450
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_GMM.py` (``plot_GMM.py``)
+     - 00:00.449
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_spectral_clustering.py` (``plot_spectral_clustering.py``)
+     - 00:00.436
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_display_face.py` (``plot_display_face.py``)
+     - 00:00.364
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_blur.py` (``plot_blur.py``)
+     - 00:00.285
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_granulo.py` (``plot_granulo.py``)
+     - 00:00.254
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_find_edges.py` (``plot_find_edges.py``)
+     - 00:00.221
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_face_tv_denoise.py` (``plot_face_tv_denoise.py``)
+     - 00:00.218
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_face_denoise.py` (``plot_face_denoise.py``)
+     - 00:00.207
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_block_mean.py` (``plot_block_mean.py``)
+     - 00:00.176
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_radial_mean.py` (``plot_radial_mean.py``)
+     - 00:00.174
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_numpy_array.py` (``plot_numpy_array.py``)
+     - 00:00.161
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_interpolation_face.py` (``plot_interpolation_face.py``)
+     - 00:00.152
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_denoising.py` (``plot_denoising.py``)
+     - 00:00.141
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_histo_segmentation.py` (``plot_histo_segmentation.py``)
+     - 00:00.129
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_clean_morpho.py` (``plot_clean_morpho.py``)
+     - 00:00.080
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_synthetic_data.py` (``plot_synthetic_data.py``)
+     - 00:00.073
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_watershed_segmentation.py` (``plot_watershed_segmentation.py``)
+     - 00:00.057
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_greyscale_dilation.py` (``plot_greyscale_dilation.py``)
+     - 00:00.054
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_measure_data.py` (``plot_measure_data.py``)
+     - 00:00.040
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_propagation.py` (``plot_propagation.py``)
+     - 00:00.038
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_find_object.py` (``plot_find_object.py``)
+     - 00:00.019
+     - 0.0

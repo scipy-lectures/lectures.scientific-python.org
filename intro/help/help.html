@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.6. Getting help and finding documentation &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. Advanced topics" href="../../advanced/index.html" />
+    <link rel="prev" title="Image denoising by FFT" href="../scipy/auto_examples/solutions/plot_fft_image_denoise.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../advanced/index.html" title="2. Advanced topics"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../scipy/auto_examples/solutions/plot_fft_image_denoise.html" title="Image denoising by FFT"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U"><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.6. </span>Getting help and finding documentation</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/help/help.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="getting-help-and-finding-documentation">
+<span id="help"></span><h1><span class="section-number">1.6. </span>Getting help and finding documentation<a class="headerlink" href="#getting-help-and-finding-documentation" title="Link to this heading">¶</a></h1>
+<p><strong>Author</strong>: <em>Emmanuelle Gouillart</em></p>
+<p>Rather than knowing all functions in NumPy and SciPy, it is important to
+find rapidly information throughout the documentation and the available
+help. Here are some ways to get information:</p>
+<ul>
+<li><p>In Ipython, <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">function</span></code> opens the docstring of the function. Only
+type the beginning of the function’s name and use tab completion to
+display the matching functions.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">van</span><span class="o">&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vander</span><span class="p">)</span>
+<div class="newline"></div><span class="go">Help on _ArrayFunctionDispatcher in module numpy:</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">vander(x, N=None, increasing=False)</span>
+<div class="newline"></div><span class="go">    Generate a Vandermonde matrix.</span>
+<div class="newline"></div><span class="go">    </span>
+<div class="newline"></div><span class="go">    The columns of the output matrix are powers of the input vector. The</span>
+<div class="newline"></div><span class="go">    order of the powers is determined by the `increasing` boolean argument.</span>
+<div class="newline"></div><span class="go">    Specifically, when `increasing` is False, the `i`-th output column is</span>
+<div class="newline"></div><span class="go">    the input vector raised element-wise to the power of ``N - i - 1``. Such</span>
+<div class="newline"></div><span class="go">    a matrix with a geometric progression in each row is named for Alexandre-</span>
+<div class="newline"></div><span class="go">    Theophile Vandermonde.</span>
+<div class="newline"></div><span class="go">    </span>
+<div class="newline"></div><span class="go">    Parameters</span>
+<div class="newline"></div><span class="go">    ----------</span>
+<div class="newline"></div><span class="go">    x : array_like</span>
+<div class="newline"></div><span class="go">        1-D input array.</span>
+<div class="newline"></div><span class="go">    N : int, optional</span>
+<div class="newline"></div><span class="go">        Number of columns in the output.  If `N` is not specified, a square</span>
+<div class="newline"></div><span class="go">        array is returned (``N = len(x)``).</span>
+<div class="newline"></div><span class="go">    increasing : bool, optional</span>
+<div class="newline"></div><span class="go">        Order of the powers of the columns.  If True, the powers increase</span>
+<div class="newline"></div><span class="go">        from left to right, if False (the default) they are reversed.</span>
+<div class="newline"></div><span class="go">    </span>
+<div class="newline"></div><span class="go">        .. versionadded:: 1.9.0</span>
+<div class="newline"></div><span class="go">    </span>
+<div class="newline"></div><span class="go">    Returns</span>
+<div class="newline"></div><span class="go">    -------</span>
+<div class="newline"></div><span class="go">    out : ndarray</span>
+<div class="newline"></div><span class="go">        Vandermonde matrix.  If `increasing` is False, the first column is</span>
+<div class="newline"></div><span class="go">        ``x^(N-1)``, the second ``x^(N-2)`` and so forth. If `increasing` is</span>
+<div class="newline"></div><span class="go">        True, the columns are ``x^0, x^1, ..., x^(N-1)``.</span>
+<div class="newline"></div><span class="go">    </span>
+<div class="newline"></div><span class="go">    See Also</span>
+<div class="newline"></div><span class="go">    --------</span>
+<div class="newline"></div><span class="go">    polynomial.polynomial.polyvander</span>
+<div class="newline"></div><span class="go">    </span>
+<div class="newline"></div><span class="go">    Examples</span>
+<div class="newline"></div><span class="go">    --------</span>
+<div class="newline"></div><span class="go">    &gt;&gt;&gt; x = np.array([1, 2, 3, 5])</span>
+<div class="newline"></div><span class="go">    &gt;&gt;&gt; N = 3</span>
+<div class="newline"></div><span class="go">    &gt;&gt;&gt; np.vander(x, N)</span>
+<div class="newline"></div><span class="go">    array([[ 1,  1,  1],</span>
+<div class="newline"></div><span class="go">           [ 4,  2,  1],</span>
+<div class="newline"></div><span class="go">           [ 9,  3,  1],</span>
+<div class="newline"></div><span class="go">           [25,  5,  1]])</span>
+<div class="newline"></div><span class="go">    </span>
+<div class="newline"></div><span class="go">    &gt;&gt;&gt; np.column_stack([x**(N-1-i) for i in range(N)])</span>
+<div class="newline"></div><span class="go">    array([[ 1,  1,  1],</span>
+<div class="newline"></div><span class="go">           [ 4,  2,  1],</span>
+<div class="newline"></div><span class="go">           [ 9,  3,  1],</span>
+<div class="newline"></div><span class="go">           [25,  5,  1]])</span>
+<div class="newline"></div><span class="go">    </span>
+<div class="newline"></div><span class="go">    &gt;&gt;&gt; x = np.array([1, 2, 3, 5])</span>
+<div class="newline"></div><span class="go">    &gt;&gt;&gt; np.vander(x)</span>
+<div class="newline"></div><span class="go">    array([[  1,   1,   1,   1],</span>
+<div class="newline"></div><span class="go">           [  8,   4,   2,   1],</span>
+<div class="newline"></div><span class="go">           [ 27,   9,   3,   1],</span>
+<div class="newline"></div><span class="go">           [125,  25,   5,   1]])</span>
+<div class="newline"></div><span class="go">    &gt;&gt;&gt; np.vander(x, increasing=True)</span>
+<div class="newline"></div><span class="go">    array([[  1,   1,   1,   1],</span>
+<div class="newline"></div><span class="go">           [  1,   2,   4,   8],</span>
+<div class="newline"></div><span class="go">           [  1,   3,   9,  27],</span>
+<div class="newline"></div><span class="go">           [  1,   5,  25, 125]])</span>
+<div class="newline"></div><span class="go">    </span>
+<div class="newline"></div><span class="go">    The determinant of a square Vandermonde matrix is the product</span>
+<div class="newline"></div><span class="go">    of the differences between the values of the input vector:</span>
+<div class="newline"></div><span class="go">    </span>
+<div class="newline"></div><span class="go">    &gt;&gt;&gt; np.linalg.det(np.vander(x))</span>
+<div class="newline"></div><span class="go">    48.000000000000043 # may vary</span>
+<div class="newline"></div><span class="go">    &gt;&gt;&gt; (5-3)*(5-2)*(5-1)*(3-2)*(3-1)*(2-1)</span>
+<div class="newline"></div><span class="go">    48</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+</ul>
+<p>In Ipython it is not possible to open a separated window for help and
+documentation; however one can always open a second <code class="docutils literal notranslate"><span class="pre">Ipython</span></code> shell
+just to display help and docstrings…</p>
+<ul>
+<li><p>Numpy’s and Scipy’s documentations can be browsed online on
+<a class="reference external" href="https://scipy.org">https://scipy.org</a> and <a class="reference external" href="https://numpy.org">https://numpy.org</a>. The <code class="docutils literal notranslate"><span class="pre">search</span></code> button is quite
+useful inside
+the reference documentation of the two packages.</p>
+<p>Tutorials on various topics as well as the complete API with all
+docstrings are found on this website.</p>
+</li>
+<li><p>Numpy’s and Scipy’s documentation is enriched and updated on a regular
+basis by users on a wiki <a class="reference external" href="https://numpy.org/doc/stable/">https://numpy.org/doc/stable/</a>. As a result,
+some docstrings are clearer or more detailed on the wiki, and you may
+want to read directly the documentation on the wiki instead of the
+official documentation website. Note that anyone can create an account on
+the wiki and write better documentation; this is an easy way to
+contribute to an open-source project and improve the tools you are
+using!</p></li>
+<li><p>The SciPy Cookbook <a class="reference external" href="https://scipy-cookbook.readthedocs.io">https://scipy-cookbook.readthedocs.io</a> gives recipes on many
+common problems frequently encountered, such as fitting data points,
+solving ODE, etc.</p></li>
+<li><p>Matplotlib’s website <a class="reference external" href="https://matplotlib.org/">https://matplotlib.org/</a> features a very
+nice <strong>gallery</strong> with a large number of plots, each of them shows both
+the source code and the resulting plot. This is very useful for
+learning by example. More standard documentation is also available.</p></li>
+</ul>
+<p>Finally, two more “technical” possibilities are useful as well:</p>
+<ul>
+<li><p>In Ipython, the magical function <code class="docutils literal notranslate"><span class="pre">%psearch</span></code> search for objects
+matching patterns. This is useful if, for example, one does not know
+the exact name  of a function.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p>numpy.lookfor looks for keywords inside the docstrings of specified modules.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">np</span><span class="o">.</span><span class="n">lookfor</span><span class="p">(</span><span class="s1">&#39;convolution&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">Search results for &#39;convolution&#39;</span>
+<div class="newline"></div><span class="gt">--------------------------------</span>
+<div class="newline"></div><span class="n">numpy</span><span class="o">.</span><span class="n">convolve</span>
+<div class="newline"></div>    <span class="n">Returns</span> <span class="n">the</span> <span class="n">discrete</span><span class="p">,</span> <span class="n">linear</span> <span class="n">convolution</span> <span class="n">of</span> <span class="n">two</span> <span class="n">one</span><span class="o">-</span><span class="n">dimensional</span> <span class="n">sequences</span><span class="o">.</span>
+<div class="newline"></div><span class="n">numpy</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">convolve</span>
+<div class="newline"></div>    <span class="n">Returns</span> <span class="n">the</span> <span class="n">discrete</span><span class="p">,</span> <span class="n">linear</span> <span class="n">convolution</span> <span class="n">of</span> <span class="n">two</span> <span class="n">one</span><span class="o">-</span><span class="n">dimensional</span> <span class="n">sequences</span><span class="o">.</span>
+<div class="newline"></div><span class="n">numpy</span><span class="o">.</span><span class="n">polymul</span>
+<div class="newline"></div>    <span class="n">Find</span> <span class="n">the</span> <span class="n">product</span> <span class="n">of</span> <span class="n">two</span> <span class="n">polynomials</span><span class="o">.</span>
+<div class="newline"></div><span class="n">numpy</span><span class="o">.</span><span class="n">bartlett</span>
+<div class="newline"></div>    <span class="n">Return</span> <span class="n">the</span> <span class="n">Bartlett</span> <span class="n">window</span><span class="o">.</span>
+<div class="newline"></div><span class="n">numpy</span><span class="o">.</span><span class="n">correlate</span>
+<div class="newline"></div>    <span class="n">Cross</span><span class="o">-</span><span class="n">correlation</span> <span class="n">of</span> <span class="n">two</span> <span class="mi">1</span><span class="o">-</span><span class="n">dimensional</span> <span class="n">sequences</span><span class="o">.</span>
+<div class="newline"></div><span class="n">numpy</span><span class="o">.</span><span class="n">vectorize</span>
+<div class="newline"></div>    <span class="n">vectorize</span><span class="p">(</span><span class="n">pyfunc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">_NoValue</span><span class="p">,</span> <span class="n">otypes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">excluded</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p>If everything listed above fails (and Google doesn’t have the
+answer)… don’t despair! There is a vibrant Scientific Python community.
+Scientific Python is present on various platform.
+<a class="reference external" href="https://scientific-python.org/community/">https://scientific-python.org/community/</a></p>
+<p>Packages like SciPy and NumPy also have their own channels. Have a look at
+their respective websites to find out how to engage with users and
+maintainers.</p>
+</li>
+</ul>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../scipy/auto_examples/solutions/plot_fft_image_denoise.html"
+                          title="previous chapter">Image denoising by FFT</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../../advanced/index.html"
+                          title="next chapter"><span class="section-number">2. </span>Advanced topics</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/intro/help/help.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../advanced/index.html" title="2. Advanced topics"
+             >next</a></li>
+        <li class="right" >
+          <a href="../scipy/auto_examples/solutions/plot_fft_image_denoise.html" title="Image denoising by FFT"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.6. </span>Getting help and finding documentation</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/help/help.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

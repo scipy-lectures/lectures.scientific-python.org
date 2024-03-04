@@ -1,0 +1,553 @@
+
+:orphan:
+
+.. _sphx_glr_sg_execution_times:
+
+
+Computation times
+=================
+**01:08.268** total execution time for 173 files **from all galleries**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_packages_statistics_auto_examples_plot_wage_data.py` (``packages/statistics/examples/plot_wage_data.py``)
+     - 00:08.789
+     - 0.0
+   * - :ref:`sphx_glr_packages_statistics_auto_examples_plot_airfare.py` (``packages/statistics/examples/plot_airfare.py``)
+     - 00:07.625
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_gradient_descent.py` (``advanced/mathematical_optimization/examples/plot_gradient_descent.py``)
+     - 00:06.411
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_features.py` (``packages/scikit-image/examples/plot_features.py``)
+     - 00:05.342
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_california_prediction.py` (``packages/scikit-learn/examples/plot_california_prediction.py``)
+     - 00:04.398
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_eigenfaces.py` (``packages/scikit-learn/examples/plot_eigenfaces.py``)
+     - 00:03.658
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_digits_simple_classif.py` (``packages/scikit-learn/examples/plot_digits_simple_classif.py``)
+     - 00:01.624
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_measuring_performance.py` (``packages/scikit-learn/examples/plot_measuring_performance.py``)
+     - 00:01.507
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_exercise_ill_conditioned.py` (``advanced/mathematical_optimization/examples/plot_exercise_ill_conditioned.py``)
+     - 00:01.497
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_bias_variance.py` (``packages/scikit-learn/examples/plot_bias_variance.py``)
+     - 00:01.411
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_colormaps.py` (``intro/matplotlib/examples/options/plot_colormaps.py``)
+     - 00:01.354
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_tsne.py` (``packages/scikit-learn/examples/plot_tsne.py``)
+     - 00:01.185
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_image_transform.py` (``intro/scipy/examples/plot_image_transform.py``)
+     - 00:00.947
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_fft_image_denoise.py` (``intro/scipy/examples/solutions/plot_fft_image_denoise.py``)
+     - 00:00.841
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_ticks.py` (``intro/matplotlib/examples/options/plot_ticks.py``)
+     - 00:00.767
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_iris_knn.py` (``packages/scikit-learn/examples/plot_iris_knn.py``)
+     - 00:00.678
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_text.py` (``intro/matplotlib/examples/plot_text.py``)
+     - 00:00.583
+     - 0.0
+   * - :ref:`sphx_glr_packages_statistics_auto_examples_plot_pandas.py` (``packages/statistics/examples/plot_pandas.py``)
+     - 00:00.573
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_face.py` (``advanced/image_processing/examples/plot_face.py``)
+     - 00:00.558
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_compare_optimizers.py` (``advanced/mathematical_optimization/examples/plot_compare_optimizers.py``)
+     - 00:00.548
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_text_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_text_ext.py``)
+     - 00:00.485
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_image_filters.py` (``intro/scipy/examples/plot_image_filters.py``)
+     - 00:00.477
+     - 0.0
+   * - :ref:`sphx_glr_packages_statistics_auto_examples_plot_wage_education_gender.py` (``packages/statistics/examples/plot_wage_education_gender.py``)
+     - 00:00.455
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_geom_face.py` (``advanced/image_processing/examples/plot_geom_face.py``)
+     - 00:00.454
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_sharpen.py` (``advanced/image_processing/examples/plot_sharpen.py``)
+     - 00:00.450
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_GMM.py` (``advanced/image_processing/examples/plot_GMM.py``)
+     - 00:00.449
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_spectral_clustering.py` (``advanced/image_processing/examples/plot_spectral_clustering.py``)
+     - 00:00.436
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_spectrogram.py` (``intro/scipy/examples/plot_spectrogram.py``)
+     - 00:00.434
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_compare_classifiers.py` (``packages/scikit-learn/examples/plot_compare_classifiers.py``)
+     - 00:00.425
+     - 0.0
+   * - :ref:`sphx_glr_packages_statistics_auto_examples_plot_iris_analysis.py` (``packages/statistics/examples/plot_iris_analysis.py``)
+     - 00:00.414
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_2d_minimization.py` (``intro/scipy/examples/plot_2d_minimization.py``)
+     - 00:00.381
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_image_blur.py` (``intro/scipy/examples/solutions/plot_image_blur.py``)
+     - 00:00.377
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_display_face.py` (``advanced/image_processing/examples/plot_display_face.py``)
+     - 00:00.364
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_linear_model_cv.py` (``packages/scikit-learn/examples/plot_linear_model_cv.py``)
+     - 00:00.343
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_elephant.py` (``intro/numpy/examples/plot_elephant.py``)
+     - 00:00.297
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_blur.py` (``advanced/image_processing/examples/plot_blur.py``)
+     - 00:00.285
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_granulo.py` (``advanced/image_processing/examples/plot_granulo.py``)
+     - 00:00.254
+     - 0.0
+   * - :ref:`sphx_glr_packages_statistics_auto_examples_solutions_plot_brain_size.py` (``packages/statistics/examples/solutions/plot_brain_size.py``)
+     - 00:00.245
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_fftpack.py` (``intro/scipy/examples/plot_fftpack.py``)
+     - 00:00.242
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_find_edges.py` (``advanced/image_processing/examples/plot_find_edges.py``)
+     - 00:00.221
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_polynomial_regression.py` (``packages/scikit-learn/examples/plot_polynomial_regression.py``)
+     - 00:00.219
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_face_tv_denoise.py` (``advanced/image_processing/examples/plot_face_tv_denoise.py``)
+     - 00:00.218
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_optimize_lidar_data_fit.py` (``intro/scipy/summary-exercises/examples/plot_optimize_lidar_data_fit.py``)
+     - 00:00.217
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_sprog_annual_maxima.py` (``intro/scipy/summary-exercises/examples/plot_sprog_annual_maxima.py``)
+     - 00:00.217
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_1d_optim.py` (``advanced/mathematical_optimization/examples/plot_1d_optim.py``)
+     - 00:00.214
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_resample.py` (``intro/scipy/examples/plot_resample.py``)
+     - 00:00.211
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_face_denoise.py` (``advanced/image_processing/examples/plot_face_denoise.py``)
+     - 00:00.207
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_ML_flow_chart.py` (``packages/scikit-learn/examples/plot_ML_flow_chart.py``)
+     - 00:00.192
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_block_mean.py` (``advanced/image_processing/examples/plot_block_mean.py``)
+     - 00:00.176
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_radial_mean.py` (``advanced/image_processing/examples/plot_radial_mean.py``)
+     - 00:00.174
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_numpy_array.py` (``advanced/image_processing/examples/plot_numpy_array.py``)
+     - 00:00.161
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_periodicity_finder.py` (``intro/scipy/examples/solutions/plot_periodicity_finder.py``)
+     - 00:00.155
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_interpolation_face.py` (``advanced/image_processing/examples/plot_interpolation_face.py``)
+     - 00:00.152
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_segmentations.py` (``packages/scikit-image/examples/plot_segmentations.py``)
+     - 00:00.151
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_filter_coins.py` (``packages/scikit-image/examples/plot_filter_coins.py``)
+     - 00:00.149
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_denoising.py` (``advanced/image_processing/examples/plot_denoising.py``)
+     - 00:00.141
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_curve_fit.py` (``intro/scipy/examples/plot_curve_fit.py``)
+     - 00:00.134
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_connect_measurements.py` (``intro/scipy/examples/plot_connect_measurements.py``)
+     - 00:00.130
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_histo_segmentation.py` (``advanced/image_processing/examples/plot_histo_segmentation.py``)
+     - 00:00.129
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_curvefit_temperature_data.py` (``intro/scipy/examples/solutions/plot_curvefit_temperature_data.py``)
+     - 00:00.128
+     - 0.0
+   * - :ref:`sphx_glr_packages_statistics_auto_examples_plot_regression.py` (``packages/statistics/examples/plot_regression.py``)
+     - 00:00.128
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_plot3d.py` (``intro/matplotlib/examples/plot_plot3d.py``)
+     - 00:00.125
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_polar_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_polar_ext.py``)
+     - 00:00.122
+     - 0.0
+   * - :ref:`sphx_glr_packages_statistics_auto_examples_plot_regression_3d.py` (``packages/statistics/examples/plot_regression_3d.py``)
+     - 00:00.115
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_normal_distribution.py` (``intro/scipy/examples/plot_normal_distribution.py``)
+     - 00:00.113
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_camera_uint.py` (``packages/scikit-image/examples/plot_camera_uint.py``)
+     - 00:00.113
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_threshold.py` (``packages/scikit-image/examples/plot_threshold.py``)
+     - 00:00.111
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_exercise_flat_minimum.py` (``advanced/mathematical_optimization/examples/plot_exercise_flat_minimum.py``)
+     - 00:00.110
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_t_test.py` (``intro/scipy/examples/plot_t_test.py``)
+     - 00:00.109
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_polar.py` (``intro/matplotlib/examples/plot_polar.py``)
+     - 00:00.105
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_mathematical_morpho.py` (``intro/scipy/examples/plot_mathematical_morpho.py``)
+     - 00:00.102
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_variance_linear_regr.py` (``packages/scikit-learn/examples/plot_variance_linear_regr.py``)
+     - 00:00.101
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_boundaries.py` (``packages/scikit-image/examples/plot_boundaries.py``)
+     - 00:00.100
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_sobel.py` (``packages/scikit-image/examples/plot_sobel.py``)
+     - 00:00.097
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_optimize_lidar_complex_data.py` (``intro/scipy/summary-exercises/examples/plot_optimize_lidar_complex_data.py``)
+     - 00:00.096
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_optimize_lidar_complex_data_fit.py` (``intro/scipy/summary-exercises/examples/plot_optimize_lidar_complex_data_fit.py``)
+     - 00:00.091
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_9.py` (``intro/matplotlib/examples/exercises/plot_exercise_9.py``)
+     - 00:00.091
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_pca.py` (``packages/scikit-learn/examples/plot_pca.py``)
+     - 00:00.090
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_multiplot_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_multiplot_ext.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_contour_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_contour_ext.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_solve_ivp_simple.py` (``intro/scipy/examples/plot_solve_ivp_simple.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_iris_scatter.py` (``packages/scikit-learn/examples/plot_iris_scatter.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_contour.py` (``intro/matplotlib/examples/plot_contour.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_grid.py` (``intro/matplotlib/examples/plot_grid.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_cumulative_wind_speed_prediction.py` (``intro/scipy/summary-exercises/examples/plot_cumulative_wind_speed_prediction.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_grid_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_grid_ext.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_10.py` (``intro/matplotlib/examples/exercises/plot_exercise_10.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_gridspec.py` (``intro/matplotlib/examples/plot_gridspec.py``)
+     - 00:00.086
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_mandelbrot.py` (``intro/numpy/examples/plot_mandelbrot.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_equalize_hist.py` (``packages/scikit-image/examples/plot_equalize_hist.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_optimize_lidar_data.py` (``intro/scipy/summary-exercises/examples/plot_optimize_lidar_data.py``)
+     - 00:00.084
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_chebyfit.py` (``intro/numpy/examples/plot_chebyfit.py``)
+     - 00:00.084
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_randomwalk.py` (``intro/numpy/examples/plot_randomwalk.py``)
+     - 00:00.084
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_constraints.py` (``advanced/mathematical_optimization/examples/plot_constraints.py``)
+     - 00:00.082
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_clean_morpho.py` (``advanced/image_processing/examples/plot_clean_morpho.py``)
+     - 00:00.080
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_basic2dplot.py` (``intro/numpy/examples/plot_basic2dplot.py``)
+     - 00:00.079
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_optimize_example2.py` (``intro/scipy/examples/plot_optimize_example2.py``)
+     - 00:00.079
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_gumbell_wind_speed_prediction.py` (``intro/scipy/summary-exercises/examples/plot_gumbell_wind_speed_prediction.py``)
+     - 00:00.078
+     - 0.0
+   * - :ref:`sphx_glr_packages_statistics_auto_examples_plot_paired_boxplots.py` (``packages/statistics/examples/plot_paired_boxplots.py``)
+     - 00:00.078
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_imshow.py` (``intro/matplotlib/examples/plot_imshow.py``)
+     - 00:00.076
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_bad.py` (``intro/matplotlib/examples/plot_bad.py``)
+     - 00:00.076
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_distances.py` (``intro/numpy/examples/plot_distances.py``)
+     - 00:00.074
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_synthetic_data.py` (``advanced/image_processing/examples/plot_synthetic_data.py``)
+     - 00:00.073
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_interpolation.py` (``intro/scipy/examples/plot_interpolation.py``)
+     - 00:00.073
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_subplot-grid.py` (``intro/matplotlib/examples/plot_subplot-grid.py``)
+     - 00:00.073
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_populations.py` (``intro/numpy/examples/plot_populations.py``)
+     - 00:00.072
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_labels.py` (``packages/scikit-image/examples/plot_labels.py``)
+     - 00:00.071
+     - 0.0
+   * - :ref:`sphx_glr_advanced_advanced_numpy_auto_examples_plot_maskedstats.py` (``advanced/advanced_numpy/examples/plots/plot_maskedstats.py``)
+     - 00:00.071
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_camera.py` (``packages/scikit-image/examples/plot_camera.py``)
+     - 00:00.071
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_1.py` (``intro/matplotlib/examples/exercises/plot_exercise_1.py``)
+     - 00:00.069
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_svm_non_linear.py` (``packages/scikit-learn/examples/plot_svm_non_linear.py``)
+     - 00:00.065
+     - 0.0
+   * - :ref:`sphx_glr_guide_auto_examples_plot_simple.py` (``guide/examples/plot_simple.py``)
+     - 00:00.065
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_4.py` (``intro/matplotlib/examples/exercises/plot_exercise_4.py``)
+     - 00:00.065
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_detrend.py` (``intro/scipy/examples/plot_detrend.py``)
+     - 00:00.064
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_plot3d-2.py` (``intro/matplotlib/examples/plot_plot3d-2.py``)
+     - 00:00.063
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_solve_ivp_damped_spring_mass.py` (``intro/scipy/examples/plot_solve_ivp_damped_spring_mass.py``)
+     - 00:00.058
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_good.py` (``intro/matplotlib/examples/plot_good.py``)
+     - 00:00.058
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_scatter_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_scatter_ext.py``)
+     - 00:00.058
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_scatter.py` (``intro/matplotlib/examples/plot_scatter.py``)
+     - 00:00.058
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_watershed_segmentation.py` (``advanced/image_processing/examples/plot_watershed_segmentation.py``)
+     - 00:00.057
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_markers.py` (``intro/matplotlib/examples/options/plot_markers.py``)
+     - 00:00.057
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_optimize_example1.py` (``intro/scipy/examples/plot_optimize_example1.py``)
+     - 00:00.057
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_basic1dplot.py` (``intro/numpy/examples/plot_basic1dplot.py``)
+     - 00:00.056
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_check.py` (``packages/scikit-image/examples/plot_check.py``)
+     - 00:00.055
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_polyfit.py` (``intro/numpy/examples/plot_polyfit.py``)
+     - 00:00.055
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_8.py` (``intro/matplotlib/examples/exercises/plot_exercise_8.py``)
+     - 00:00.055
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_greyscale_dilation.py` (``advanced/image_processing/examples/plot_greyscale_dilation.py``)
+     - 00:00.054
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_pie_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_pie_ext.py``)
+     - 00:00.051
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_7.py` (``intro/matplotlib/examples/exercises/plot_exercise_7.py``)
+     - 00:00.051
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_bar.py` (``intro/matplotlib/examples/plot_bar.py``)
+     - 00:00.051
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_pie.py` (``intro/matplotlib/examples/plot_pie.py``)
+     - 00:00.050
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_subplot-horizontal.py` (``intro/matplotlib/examples/plot_subplot-horizontal.py``)
+     - 00:00.050
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_curve_fitting.py` (``advanced/mathematical_optimization/examples/plot_curve_fitting.py``)
+     - 00:00.049
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_separator.py` (``packages/scikit-learn/examples/plot_separator.py``)
+     - 00:00.049
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_axes-2.py` (``intro/matplotlib/examples/plot_axes-2.py``)
+     - 00:00.049
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_non_bounds_constraints.py` (``advanced/mathematical_optimization/examples/plot_non_bounds_constraints.py``)
+     - 00:00.046
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_6.py` (``intro/matplotlib/examples/exercises/plot_exercise_6.py``)
+     - 00:00.046
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_2.py` (``intro/matplotlib/examples/exercises/plot_exercise_2.py``)
+     - 00:00.045
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_convex.py` (``advanced/mathematical_optimization/examples/plot_convex.py``)
+     - 00:00.045
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_bar_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_bar_ext.py``)
+     - 00:00.044
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_plot3d_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_plot3d_ext.py``)
+     - 00:00.044
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_quiver_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_quiver_ext.py``)
+     - 00:00.043
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_3.py` (``intro/matplotlib/examples/exercises/plot_exercise_3.py``)
+     - 00:00.043
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_subplot-vertical.py` (``intro/matplotlib/examples/plot_subplot-vertical.py``)
+     - 00:00.043
+     - 0.0
+   * - :ref:`sphx_glr_packages_scikit-learn_auto_examples_plot_linear_regression.py` (``packages/scikit-learn/examples/plot_linear_regression.py``)
+     - 00:00.042
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_multiplot.py` (``intro/matplotlib/examples/plot_multiplot.py``)
+     - 00:00.041
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_quiver.py` (``intro/matplotlib/examples/plot_quiver.py``)
+     - 00:00.040
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_measure_data.py` (``advanced/image_processing/examples/plot_measure_data.py``)
+     - 00:00.040
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_axes.py` (``intro/matplotlib/examples/plot_axes.py``)
+     - 00:00.040
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_boxplot_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_boxplot_ext.py``)
+     - 00:00.039
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_linestyles.py` (``intro/matplotlib/examples/options/plot_linestyles.py``)
+     - 00:00.038
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_propagation.py` (``advanced/image_processing/examples/plot_propagation.py``)
+     - 00:00.038
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_smooth.py` (``advanced/mathematical_optimization/examples/plot_smooth.py``)
+     - 00:00.037
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_5.py` (``intro/matplotlib/examples/exercises/plot_exercise_5.py``)
+     - 00:00.035
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_imshow_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_imshow_ext.py``)
+     - 00:00.034
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_plot.py` (``intro/matplotlib/examples/plot_plot.py``)
+     - 00:00.031
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_plot_ugly.py` (``intro/matplotlib/examples/plot_ugly.py``)
+     - 00:00.030
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_pretty_plots_plot_plot_ext.py` (``intro/matplotlib/examples/pretty_plots/plot_plot_ext.py``)
+     - 00:00.028
+     - 0.0
+   * - :ref:`sphx_glr_advanced_image_processing_auto_examples_plot_find_object.py` (``advanced/image_processing/examples/plot_find_object.py``)
+     - 00:00.019
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_alpha.py` (``intro/matplotlib/examples/options/plot_alpha.py``)
+     - 00:00.018
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_noisy.py` (``advanced/mathematical_optimization/examples/plot_noisy.py``)
+     - 00:00.016
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_ms.py` (``intro/matplotlib/examples/options/plot_ms.py``)
+     - 00:00.014
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mfc.py` (``intro/matplotlib/examples/options/plot_mfc.py``)
+     - 00:00.014
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mec.py` (``intro/matplotlib/examples/options/plot_mec.py``)
+     - 00:00.014
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mew.py` (``intro/matplotlib/examples/options/plot_mew.py``)
+     - 00:00.014
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_aliased.py` (``intro/matplotlib/examples/options/plot_aliased.py``)
+     - 00:00.014
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_linewidth.py` (``intro/matplotlib/examples/options/plot_linewidth.py``)
+     - 00:00.013
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_color.py` (``intro/matplotlib/examples/options/plot_color.py``)
+     - 00:00.013
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_solid_joinstyle.py` (``intro/matplotlib/examples/options/plot_solid_joinstyle.py``)
+     - 00:00.012
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_dash_joinstyle.py` (``intro/matplotlib/examples/options/plot_dash_joinstyle.py``)
+     - 00:00.012
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_dash_capstyle.py` (``intro/matplotlib/examples/options/plot_dash_capstyle.py``)
+     - 00:00.011
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_solid_capstyle.py` (``intro/matplotlib/examples/options/plot_solid_capstyle.py``)
+     - 00:00.011
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_antialiased.py` (``intro/matplotlib/examples/options/plot_antialiased.py``)
+     - 00:00.011
+     - 0.0

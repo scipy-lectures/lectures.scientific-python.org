@@ -1,0 +1,238 @@
+:orphan:
+
+Examples for the scikit-image chapter
+======================================
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="How to create an image with basic NumPy commands : np.zeros, slicing...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_check_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_check.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Creating an image</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Load and display an image">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_camera_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_camera.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Displaying a simple image</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An illustration of overflow problem arising when working with integers">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_camera_uint_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_camera_uint.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Integers can overflow</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Histogram equalizing makes images have a uniform histogram.">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_equalize_hist_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_equalize_hist.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Equalizing the histogram of an image</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of the horizontal Sobel filter, to compute horizontal gradient...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_sobel_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_sobel.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Computing horizontal gradients with the Sobel filter</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Visualize segmentation contours on original grayscale image.">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_boundaries_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_boundaries.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Segmentation contours</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates automatic Otsu thresholding.">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_threshold_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_threshold.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Otsu thresholding</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Warping and affine transforms of images.">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_features_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_features.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Affine transform</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to label connected components of a binary image, using the dedicated ski...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_labels_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_labels.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Labelling connected components of an image</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example compares several denoising filters available in scikit-image: a Gaussian filter, a...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_filter_coins_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_filter_coins.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Various denoising filters</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example compares two segmentation methods in order to separate two connected disks: the wa...">
+
+.. only:: html
+
+  .. image:: /packages/scikit-image/auto_examples/images/thumb/sphx_glr_plot_segmentations_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_packages_scikit-image_auto_examples_plot_segmentations.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Watershed and random walker for segmentation</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /packages/scikit-image/auto_examples/plot_check
+   /packages/scikit-image/auto_examples/plot_camera
+   /packages/scikit-image/auto_examples/plot_camera_uint
+   /packages/scikit-image/auto_examples/plot_equalize_hist
+   /packages/scikit-image/auto_examples/plot_sobel
+   /packages/scikit-image/auto_examples/plot_boundaries
+   /packages/scikit-image/auto_examples/plot_threshold
+   /packages/scikit-image/auto_examples/plot_features
+   /packages/scikit-image/auto_examples/plot_labels
+   /packages/scikit-image/auto_examples/plot_filter_coins
+   /packages/scikit-image/auto_examples/plot_segmentations
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: auto_examples_python.zip </packages/scikit-image/auto_examples/auto_examples_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip </packages/scikit-image/auto_examples/auto_examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

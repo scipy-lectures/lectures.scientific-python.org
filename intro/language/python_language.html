@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.2. The Python language &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2.1. First steps" href="first_steps.html" />
+    <link rel="prev" title="1.1. Python scientific computing ecosystem" href="../intro.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="first_steps.html" title="1.2.1. First steps"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../intro.html" title="1.1. Python scientific computing ecosystem"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U"><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2. </span>The Python language</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/python_language.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="the-python-language">
+<span id="python-language-chapter"></span><h1><span class="section-number">1.2. </span>The Python language<a class="headerlink" href="#the-python-language" title="Link to this heading">¶</a></h1>
+<p><strong>Authors</strong>: <em>Chris Burns, Christophe Combelles, Emmanuelle Gouillart,
+Gaël Varoquaux</em></p>
+<aside class="topic">
+<p class="topic-title">Python for scientific computing</p>
+<p>We introduce here the Python language. Only the bare minimum
+necessary for getting started with NumPy and SciPy is addressed here.
+To learn more about the language, consider going through the
+excellent tutorial <a class="reference external" href="https://docs.python.org/3/tutorial">https://docs.python.org/3/tutorial</a>. Dedicated books
+are also available, such as <a class="reference external" href="https://diveintopython3.net/">Dive into Python 3</a>.</p>
+</aside>
+<img alt="../../_images/python-logo.png" class="align-right" src="../../_images/python-logo.png" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Python is a <strong>programming language</strong>, as are C, Fortran, BASIC, PHP,
+etc. Some specific features of Python are as follows:</p>
+<ul class="simple">
+<li><p>an <em>interpreted</em> (as opposed to <em>compiled</em>) language. Contrary to e.g.
+C or Fortran, one does not compile Python code before executing it. In
+addition, Python can be used <strong>interactively</strong>: many Python
+interpreters are available, from which commands and scripts can be
+executed.</p></li>
+<li><p>a free software released under an <strong>open-source</strong> license: Python can
+be used and distributed free of charge, even for building commercial
+software.</p></li>
+<li><p><strong>multi-platform</strong>: Python is available for all major operating
+systems, Windows, Linux/Unix, MacOS X, most likely your mobile phone
+OS, etc.</p></li>
+<li><p>a very readable language with clear non-verbose syntax</p></li>
+<li><p>a language for which a large variety of high-quality packages are
+available for various applications, from web frameworks to scientific
+computing.</p></li>
+<li><p>a language very easy to interface with other languages, in particular C
+and C++.</p></li>
+<li><p>Some other features of the language are illustrated just below. For
+example, Python is an object-oriented language, with dynamic typing
+(the same variable can contain objects of different types during the
+course of a program).</p></li>
+</ul>
+<p>See <a class="reference external" href="https://www.python.org/about/">https://www.python.org/about/</a> for more information about
+distinguishing features of Python.</p>
+</div>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="first_steps.html">1.2.1. First steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic_types.html">1.2.2. Basic types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic_types.html#numerical-types">1.2.2.1. Numerical types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_types.html#containers">1.2.2.2. Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_types.html#assignment-operator">1.2.2.3. Assignment operator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="control_flow.html">1.2.3. Control Flow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="control_flow.html#if-elif-else">1.2.3.1. if/elif/else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_flow.html#for-range">1.2.3.2. for/range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_flow.html#while-break-continue">1.2.3.3. while/break/continue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_flow.html#conditional-expressions">1.2.3.4. Conditional Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_flow.html#advanced-iteration">1.2.3.5. Advanced iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_flow.html#list-comprehensions">1.2.3.6. List Comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">1.2.4. Defining functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#function-definition">1.2.4.1. Function definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#return-statement">1.2.4.2. Return statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#parameters">1.2.4.3. Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#passing-by-value">1.2.4.4. Passing by value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#global-variables">1.2.4.5. Global variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#variable-number-of-parameters">1.2.4.6. Variable number of parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#docstrings">1.2.4.7. Docstrings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#functions-are-objects">1.2.4.8. Functions are objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#methods">1.2.4.9. Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#exercises">1.2.4.10. Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reusing_code.html">1.2.5. Reusing code: scripts and modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reusing_code.html#scripts">1.2.5.1. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reusing_code.html#importing-objects-from-modules">1.2.5.2. Importing objects from modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reusing_code.html#creating-modules">1.2.5.3. Creating modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reusing_code.html#main-and-module-loading">1.2.5.4. ‘__main__’ and module loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reusing_code.html#scripts-or-modules-how-to-organize-your-code">1.2.5.5. Scripts or modules? How to organize your code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reusing_code.html#packages">1.2.5.6. Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reusing_code.html#good-practices">1.2.5.7. Good practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">1.2.6. Input and Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="io.html#iterating-over-a-file">1.2.6.1. Iterating over a file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library.html">1.2.7. Standard Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library.html#os-module-operating-system-functionality">1.2.7.1. <code class="docutils literal notranslate"><span class="pre">os</span></code> module: operating system functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library.html#shutil-high-level-file-operations">1.2.7.2. <code class="docutils literal notranslate"><span class="pre">shutil</span></code>: high-level file operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library.html#glob-pattern-matching-on-files">1.2.7.3. <code class="docutils literal notranslate"><span class="pre">glob</span></code>: Pattern matching on files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library.html#sys-module-system-specific-information">1.2.7.4. <code class="docutils literal notranslate"><span class="pre">sys</span></code> module: system-specific information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library.html#pickle-easy-persistence">1.2.7.5. <code class="docutils literal notranslate"><span class="pre">pickle</span></code>: easy persistence</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">1.2.8. Exception handling in Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#exceptions">1.2.8.1. Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#catching-exceptions">1.2.8.2. Catching exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#raising-exceptions">1.2.8.3. Raising exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oop.html">1.2.9. Object-oriented programming (OOP)</a></li>
+</ul>
+</div>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../intro.html"
+                          title="previous chapter"><span class="section-number">1.1. </span>Python scientific computing ecosystem</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="first_steps.html"
+                          title="next chapter"><span class="section-number">1.2.1. </span>First steps</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/intro/language/python_language.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="first_steps.html" title="1.2.1. First steps"
+             >next</a></li>
+        <li class="right" >
+          <a href="../intro.html" title="1.1. Python scientific computing ecosystem"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2. </span>The Python language</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/python_language.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

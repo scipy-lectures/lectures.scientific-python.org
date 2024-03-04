@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples for the mathematical optimization chapter &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/foldable_toc.css?v=38a22cee" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <script src="../../../_static/foldable_toc.js?v=d65ca516"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Examples for the mathematical optimization chapter</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/advanced/mathematical_optimization/auto_examples/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="examples-for-the-mathematical-optimization-chapter">
+<h1>Examples for the mathematical optimization chapter<a class="headerlink" href="#examples-for-the-mathematical-optimization-chapter" title="Link to this heading">¶</a></h1>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Draws a figure explaining noisy vs non-noisy optimization"><img alt="" src="../../../_images/sphx_glr_plot_noisy_thumb.png" />
+<p><a class="reference internal" href="plot_noisy.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-noisy-py"><span class="std std-ref">Noisy optimization problem</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Noisy optimization problem</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Draws a figure to explain smooth versus non smooth optimization."><img alt="" src="../../../_images/sphx_glr_plot_smooth_thumb.png" />
+<p><a class="reference internal" href="plot_smooth.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-smooth-py"><span class="std std-ref">Smooth vs non-smooth</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Smooth vs non-smooth</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A curve fitting example"><img alt="" src="../../../_images/sphx_glr_plot_curve_fitting_thumb.png" />
+<p><a class="reference internal" href="plot_curve_fitting.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-curve-fitting-py"><span class="std std-ref">Curve fitting</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Curve fitting</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A figure showing the definition of a convex function"><img alt="" src="../../../_images/sphx_glr_plot_convex_thumb.png" />
+<p><a class="reference internal" href="plot_convex.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-convex-py"><span class="std std-ref">Convex function</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Convex function</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An exercise of finding minimum. This exercise is hard because the function is very flat around ..."><img alt="" src="../../../_images/sphx_glr_plot_exercise_flat_minimum_thumb.png" />
+<p><a class="reference internal" href="plot_exercise_flat_minimum.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-exercise-flat-minimum-py"><span class="std std-ref">Finding a minimum in a flat neighborhood</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Finding a minimum in a flat neighborhood</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing how to do optimization with general constraints using SLSQP and cobyla."><img alt="" src="../../../_images/sphx_glr_plot_non_bounds_constraints_thumb.png" />
+<p><a class="reference internal" href="plot_non_bounds_constraints.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-non-bounds-constraints-py"><span class="std std-ref">Optimization with constraints</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Optimization with constraints</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Illustration of 1D optimization: Brent&#x27;s method"><img alt="" src="../../../_images/sphx_glr_plot_1d_optim_thumb.png" />
+<p><a class="reference internal" href="plot_1d_optim.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-1d-optim-py"><span class="std std-ref">Brent’s method</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Brent's method</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A small figure explaining optimization with constraints"><img alt="" src="../../../_images/sphx_glr_plot_constraints_thumb.png" />
+<p><a class="reference internal" href="plot_constraints.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-constraints-py"><span class="std std-ref">Constraint optimization: visualizing the geometry</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Constraint optimization: visualizing the geometry</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Plots the results from the comparison of optimizers."><img alt="" src="../../../_images/sphx_glr_plot_compare_optimizers_thumb.png" />
+<p><a class="reference internal" href="plot_compare_optimizers.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-compare-optimizers-py"><span class="std std-ref">Plotting the comparison of optimizers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plotting the comparison of optimizers</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The challenge here is that Hessian of the problem is a very ill-conditioned matrix. This can ea..."><img alt="" src="../../../_images/sphx_glr_plot_exercise_ill_conditioned_thumb.png" />
+<p><a class="reference internal" href="plot_exercise_ill_conditioned.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-exercise-ill-conditioned-py"><span class="std std-ref">Alternating optimization</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Alternating optimization</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example demoing gradient descent by creating figures that trace the evolution of the optimiz..."><img alt="" src="../../../_images/sphx_glr_plot_gradient_descent_thumb.png" />
+<p><a class="reference internal" href="plot_gradient_descent.html#sphx-glr-advanced-mathematical-optimization-auto-examples-plot-gradient-descent-py"><span class="std std-ref">Gradient descent</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Gradient descent</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/2250da8939d81b5cc457b85593005b83/auto_examples_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/b4f7dfe5dea520e69bca7a7b06d7ba42/auto_examples_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/advanced/mathematical_optimization/auto_examples/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Examples for the mathematical optimization chapter</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/advanced/mathematical_optimization/auto_examples/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

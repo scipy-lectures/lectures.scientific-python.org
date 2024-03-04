@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Packages and applications &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/foldable_toc.css?v=38a22cee" />
+    <script src="../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <script src="../_static/foldable_toc.js?v=d65ca516"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.1. Statistics in Python" href="statistics/index.html" />
+    <link rel="prev" title="2.8. Interfacing with C" href="../advanced/interfacing_with_c/interfacing_with_c.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="statistics/index.html" title="3.1. Statistics in Python"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../advanced/interfacing_with_c/interfacing_with_c.html" title="2.8. Interfacing with C"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Packages and applications</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="packages-and-applications">
+<span id="applications-part"></span><h1><span class="section-number">3. </span>Packages and applications<a class="headerlink" href="#packages-and-applications" title="Link to this heading">¶</a></h1>
+<p>This part of the <em>Scientific Python Lectures</em> is dedicated to various
+scientific packages useful for extended needs.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<style type="text/css">
+  div.bodywrapper blockquote {
+      margin: 0 ;
+  }
+
+  div.toctree-wrapper ul {
+      margin-top: 0 ;
+      margin-bottom: 0 ;
+      padding-left: 10px ;
+  }
+
+  li.toctree-l1 {
+      padding: 0 0 0.5em 0 ;
+      list-style-type: none;
+      font-size: 150% ;
+      font-weight: bold;
+      }
+
+  li.toctree-l1 ul {
+      padding-left: 40px ;
+  }
+
+  li.toctree-l2 {
+      font-size: 70% ;
+      list-style-type: square;
+      font-weight: normal;
+      }
+
+  li.toctree-l3 {
+      font-size: 85% ;
+      list-style-type: circle;
+      font-weight: normal;
+      }
+
+</style><div class="toctree-wrapper tune compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="statistics/index.html">3.1. Statistics in Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="statistics/index.html#data-representation-and-interaction">3.1.1. Data representation and interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="statistics/index.html#data-as-a-table">3.1.1.1. Data as a table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statistics/index.html#the-pandas-data-frame">3.1.1.2. The pandas data-frame</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="statistics/index.html#hypothesis-testing-comparing-two-groups">3.1.2. Hypothesis testing: comparing two groups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="statistics/index.html#student-s-t-test-the-simplest-statistical-test">3.1.2.1. Student’s t-test: the simplest statistical test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statistics/index.html#paired-tests-repeated-measurements-on-the-same-individuals">3.1.2.2. Paired tests: repeated measurements on the same individuals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="statistics/index.html#linear-models-multiple-factors-and-analysis-of-variance">3.1.3. Linear models, multiple factors, and analysis of variance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="statistics/index.html#formulas-to-specify-statistical-models-in-python">3.1.3.1. “formulas” to specify statistical models in Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statistics/index.html#multiple-regression-including-multiple-factors">3.1.3.2. Multiple Regression: including multiple factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statistics/index.html#post-hoc-hypothesis-testing-analysis-of-variance-anova">3.1.3.3. Post-hoc hypothesis testing: analysis of variance (ANOVA)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="statistics/index.html#more-visualization-seaborn-for-statistical-exploration">3.1.4. More visualization: seaborn for statistical exploration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="statistics/index.html#pairplot-scatter-matrices">3.1.4.1. Pairplot: scatter matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statistics/index.html#lmplot-plotting-a-univariate-regression">3.1.4.2. lmplot: plotting a univariate regression</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="statistics/index.html#testing-for-interactions">3.1.5. Testing for interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics/index.html#full-code-for-the-figures">3.1.6. Full code for the figures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics/index.html#solutions-to-this-chapter-s-exercises">3.1.7. Solutions to this chapter’s exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sympy.html">3.2. Sympy : Symbolic Mathematics in Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sympy.html#first-steps-with-sympy">3.2.1. First Steps with SymPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sympy.html#using-sympy-as-a-calculator">3.2.1.1. Using SymPy as a calculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sympy.html#symbols">3.2.1.2. Symbols</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sympy.html#algebraic-manipulations">3.2.2. Algebraic manipulations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sympy.html#expand">3.2.2.1. Expand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sympy.html#simplify">3.2.2.2. Simplify</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sympy.html#calculus">3.2.3. Calculus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sympy.html#limits">3.2.3.1. Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sympy.html#differentiation">3.2.3.2. Differentiation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sympy.html#series-expansion">3.2.3.3. Series expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sympy.html#integration">3.2.3.4. Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sympy.html#equation-solving">3.2.4. Equation solving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sympy.html#linear-algebra">3.2.5. Linear Algebra</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sympy.html#matrices">3.2.5.1. Matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sympy.html#differential-equations">3.2.5.2. Differential Equations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scikit-image/index.html">3.3. <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>: image processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#introduction-and-concepts">3.3.1. Introduction and concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-image/index.html#scikit-image-and-the-scientific-python-ecosystem">3.3.1.1. <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> and the scientific Python ecosystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-image/index.html#what-is-included-in-scikit-image">3.3.1.2. What is included in scikit-image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#importing">3.3.2. Importing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#example-data">3.3.3. Example data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#input-output-data-types-and-colorspaces">3.3.4. Input/output, data types and colorspaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-image/index.html#data-types">3.3.4.1. Data types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-image/index.html#colorspaces">3.3.4.2. Colorspaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#image-preprocessing-enhancement">3.3.5. Image preprocessing / enhancement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-image/index.html#local-filters">3.3.5.1. Local filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-image/index.html#non-local-filters">3.3.5.2. Non-local filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-image/index.html#mathematical-morphology">3.3.5.3. Mathematical morphology</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#image-segmentation">3.3.6. Image segmentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-image/index.html#binary-segmentation-foreground-background">3.3.6.1. Binary segmentation: foreground + background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-image/index.html#marker-based-methods">3.3.6.2. Marker based methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#measuring-regions-properties">3.3.7. Measuring regions’ properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#data-visualization-and-interaction">3.3.8. Data visualization and interaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#feature-extraction-for-computer-vision">3.3.9. Feature extraction for computer vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#full-code-examples">3.3.10. Full code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-image/index.html#examples-for-the-scikit-image-chapter">3.3.11. Examples for the scikit-image chapter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scikit-learn/index.html">3.4. scikit-learn: machine learning in Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikit-learn/index.html#introduction-problem-settings">3.4.1. Introduction: problem settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#what-is-machine-learning">3.4.1.1. What is machine learning?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#data-in-scikit-learn">3.4.1.2. Data in scikit-learn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-learn/index.html#basic-principles-of-machine-learning-with-scikit-learn">3.4.2. Basic principles of machine learning with scikit-learn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#introducing-the-scikit-learn-estimator-object">3.4.2.1. Introducing the scikit-learn estimator object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#supervised-learning-classification-and-regression">3.4.2.2. Supervised Learning: Classification and regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#a-recap-on-scikit-learn-s-estimator-interface">3.4.2.3. A recap on Scikit-learn’s estimator interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#regularization-what-it-is-and-why-it-is-necessary">3.4.2.4. Regularization: what it is and why it is necessary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-learn/index.html#supervised-learning-classification-of-handwritten-digits">3.4.3. Supervised Learning: Classification of Handwritten Digits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#the-nature-of-the-data">3.4.3.1. The nature of the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#visualizing-the-data-on-its-principal-components">3.4.3.2. Visualizing the Data on its principal components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#gaussian-naive-bayes-classification">3.4.3.3. Gaussian Naive Bayes Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#quantitative-measurement-of-performance">3.4.3.4. Quantitative Measurement of Performance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-learn/index.html#supervised-learning-regression-of-housing-data">3.4.4. Supervised Learning: Regression of Housing Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#a-quick-look-at-the-data">3.4.4.1. A quick look at the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#predicting-home-prices-a-simple-linear-regression">3.4.4.2. Predicting Home Prices: a Simple Linear Regression</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-learn/index.html#measuring-prediction-performance">3.4.5. Measuring prediction performance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#a-quick-test-on-the-k-neighbors-classifier">3.4.5.1. A quick test on the K-neighbors classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#a-correct-approach-using-a-validation-set">3.4.5.2. A correct approach: Using a validation set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#model-selection-via-validation">3.4.5.3. Model Selection via Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#cross-validation">3.4.5.4. Cross-validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#hyperparameter-optimization-with-cross-validation">3.4.5.5. Hyperparameter optimization with cross-validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-learn/index.html#unsupervised-learning-dimensionality-reduction-and-visualization">3.4.6. Unsupervised Learning: Dimensionality Reduction and Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#dimensionality-reduction-pca">3.4.6.1. Dimensionality Reduction: PCA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#visualization-with-a-non-linear-embedding-tsne">3.4.6.2. Visualization with a non-linear embedding: tSNE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-learn/index.html#parameter-selection-validation-and-testing">3.4.7. Parameter selection, Validation, and Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#hyperparameters-over-fitting-and-under-fitting">3.4.7.1. Hyperparameters, Over-fitting, and Under-fitting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#visualizing-the-bias-variance-tradeoff">3.4.7.2. Visualizing the Bias/Variance Tradeoff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#summary-on-model-selection">3.4.7.3. Summary on model selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scikit-learn/index.html#a-last-word-of-caution-separate-validation-and-test-set">3.4.7.4. A last word of caution: separate validation and test set</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scikit-learn/index.html#examples-for-the-scikit-learn-chapter">3.4.8. Examples for the scikit-learn chapter</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../advanced/interfacing_with_c/interfacing_with_c.html"
+                          title="previous chapter"><span class="section-number">2.8. </span>Interfacing with C</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="statistics/index.html"
+                          title="next chapter"><span class="section-number">3.1. </span>Statistics in Python</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/packages/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="statistics/index.html" title="3.1. Statistics in Python"
+             >next</a></li>
+        <li class="right" >
+          <a href="../advanced/interfacing_with_c/interfacing_with_c.html" title="2.8. Interfacing with C"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Packages and applications</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

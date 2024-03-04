@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Full code examples for the SciPy chapter &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/foldable_toc.css?v=38a22cee" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <script src="../../../_static/foldable_toc.js?v=d65ca516"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Full code examples for the SciPy chapter</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/scipy/auto_examples/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="full-code-examples-for-the-scipy-chapter">
+<h1>Full code examples for the SciPy chapter<a class="headerlink" href="#full-code-examples-for-the-scipy-chapter" title="Link to this heading">¶</a></h1>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Demos various methods to find the minimum of a function."><img alt="" src="../../../_images/sphx_glr_plot_optimize_example1_thumb.png" />
+<p><a class="reference internal" href="plot_optimize_example1.html#sphx-glr-intro-scipy-auto-examples-plot-optimize-example1-py"><span class="std std-ref">Finding the minimum of a smooth function</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Finding the minimum of a smooth function</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="scipy.signal.resample uses FFT to resample a 1D signal."><img alt="" src="../../../_images/sphx_glr_plot_resample_thumb.png" />
+<p><a class="reference internal" href="plot_resample.html#sphx-glr-intro-scipy-auto-examples-plot-resample-py"><span class="std std-ref">Resample a signal with scipy.signal.resample</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Resample a signal with scipy.signal.resample</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="scipy.signal.detrend removes a linear trend."><img alt="" src="../../../_images/sphx_glr_plot_detrend_thumb.png" />
+<p><a class="reference internal" href="plot_detrend.html#sphx-glr-intro-scipy-auto-examples-plot-detrend-py"><span class="std std-ref">Detrending a signal</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Detrending a signal</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Solve the ODE dy/dt = -2y between t = 0..4, with the initial condition y(t=0) = 1."><img alt="" src="../../../_images/sphx_glr_plot_solve_ivp_simple_thumb.png" />
+<p><a class="reference internal" href="plot_solve_ivp_simple.html#sphx-glr-intro-scipy-auto-examples-plot-solve-ivp-simple-py"><span class="std std-ref">Integrating a simple ODE</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Integrating a simple ODE</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Explore the normal distribution: a histogram built from samples and the PDF (probability densit..."><img alt="" src="../../../_images/sphx_glr_plot_normal_distribution_thumb.png" />
+<p><a class="reference internal" href="plot_normal_distribution.html#sphx-glr-intro-scipy-auto-examples-plot-normal-distribution-py"><span class="std std-ref">Normal distribution: histogram and PDF</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Normal distribution: histogram and PDF</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Integrate the Damped spring-mass oscillator"><img alt="" src="../../../_images/sphx_glr_plot_solve_ivp_damped_spring_mass_thumb.png" />
+<p><a class="reference internal" href="plot_solve_ivp_damped_spring_mass.html#sphx-glr-intro-scipy-auto-examples-plot-solve-ivp-damped-spring-mass-py"><span class="std std-ref">Integrate the Damped spring-mass oscillator</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Integrate the Damped spring-mass oscillator</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Comparing 2 sets of samples from Gaussians"><img alt="" src="../../../_images/sphx_glr_plot_t_test_thumb.png" />
+<p><a class="reference internal" href="plot_t_test.html#sphx-glr-intro-scipy-auto-examples-plot-t-test-py"><span class="std std-ref">Comparing 2 sets of samples from Gaussians</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Comparing 2 sets of samples from Gaussians</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demos a simple curve fitting"><img alt="" src="../../../_images/sphx_glr_plot_curve_fit_thumb.png" />
+<p><a class="reference internal" href="plot_curve_fit.html#sphx-glr-intro-scipy-auto-examples-plot-curve-fit-py"><span class="std std-ref">Curve fitting</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Curve fitting</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demo spectrogram and power spectral density on a frequency chirp."><img alt="" src="../../../_images/sphx_glr_plot_spectrogram_thumb.png" />
+<p><a class="reference internal" href="plot_spectrogram.html#sphx-glr-intro-scipy-auto-examples-plot-spectrogram-py"><span class="std std-ref">Spectrogram, power spectral density</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Spectrogram, power spectral density</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A basic demo of binary opening and closing."><img alt="" src="../../../_images/sphx_glr_plot_mathematical_morpho_thumb.png" />
+<p><a class="reference internal" href="plot_mathematical_morpho.html#sphx-glr-intro-scipy-auto-examples-plot-mathematical-morpho-py"><span class="std std-ref">Demo mathematical morphology</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Demo mathematical morphology</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A demo of 1D interpolation"><img alt="" src="../../../_images/sphx_glr_plot_interpolation_thumb.png" />
+<p><a class="reference internal" href="plot_interpolation.html#sphx-glr-intro-scipy-auto-examples-plot-interpolation-py"><span class="std std-ref">A demo of 1D interpolation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">A demo of 1D interpolation</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demo geometrical transformations of images."><img alt="" src="../../../_images/sphx_glr_plot_image_transform_thumb.png" />
+<p><a class="reference internal" href="plot_image_transform.html#sphx-glr-intro-scipy-auto-examples-plot-image-transform-py"><span class="std std-ref">Plot geometrical transformations on images</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plot geometrical transformations on images</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Extracting and labeling connected components in a 2D array"><img alt="" src="../../../_images/sphx_glr_plot_connect_measurements_thumb.png" />
+<p><a class="reference internal" href="plot_connect_measurements.html#sphx-glr-intro-scipy-auto-examples-plot-connect-measurements-py"><span class="std std-ref">Demo connected components</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Demo connected components</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demos finding minima and roots of a function."><img alt="" src="../../../_images/sphx_glr_plot_optimize_example2_thumb.png" />
+<p><a class="reference internal" href="plot_optimize_example2.html#sphx-glr-intro-scipy-auto-examples-plot-optimize-example2-py"><span class="std std-ref">Minima and roots of a function</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Minima and roots of a function</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demo filtering for denoising of images."><img alt="" src="../../../_images/sphx_glr_plot_image_filters_thumb.png" />
+<p><a class="reference internal" href="plot_image_filters.html#sphx-glr-intro-scipy-auto-examples-plot-image-filters-py"><span class="std std-ref">Plot filtering on images</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plot filtering on images</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Optimization of a two-parameter function"><img alt="" src="../../../_images/sphx_glr_plot_2d_minimization_thumb.png" />
+<p><a class="reference internal" href="plot_2d_minimization.html#sphx-glr-intro-scipy-auto-examples-plot-2d-minimization-py"><span class="std std-ref">Optimization of a two-parameter function</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Optimization of a two-parameter function</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Plot the power of the FFT of a signal and inverse FFT back to reconstruct a signal."><img alt="" src="../../../_images/sphx_glr_plot_fftpack_thumb.png" />
+<p><a class="reference internal" href="plot_fftpack.html#sphx-glr-intro-scipy-auto-examples-plot-fftpack-py"><span class="std std-ref">Plotting and manipulating FFTs for filtering</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plotting and manipulating FFTs for filtering</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<section id="solutions-of-the-exercises-for-scipy">
+<h2>Solutions of the exercises for SciPy<a class="headerlink" href="#solutions-of-the-exercises-for-scipy" title="Link to this heading">¶</a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Discover the periods in evolution of animal populations (../../../../data/populations.txt)"><img alt="" src="../../../_images/sphx_glr_plot_periodicity_finder_thumb.png" />
+<p><a class="reference internal" href="solutions/plot_periodicity_finder.html#sphx-glr-intro-scipy-auto-examples-solutions-plot-periodicity-finder-py"><span class="std std-ref">Crude periodicity finding</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Crude periodicity finding</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="We have the min and max temperatures in Alaska for each months of the year. We would like to fi..."><img alt="" src="../../../_images/sphx_glr_plot_curvefit_temperature_data_thumb.png" />
+<p><a class="reference internal" href="solutions/plot_curvefit_temperature_data.html#sphx-glr-intro-scipy-auto-examples-solutions-plot-curvefit-temperature-data-py"><span class="std std-ref">Curve fitting: temperature as a function of month of the year</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Curve fitting: temperature as a function of month of the year</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Blur an an image (../../../../data/elephant.png) using a Gaussian kernel."><img alt="" src="../../../_images/sphx_glr_plot_image_blur_thumb.png" />
+<p><a class="reference internal" href="solutions/plot_image_blur.html#sphx-glr-intro-scipy-auto-examples-solutions-plot-image-blur-py"><span class="std std-ref">Simple image blur by convolution with a Gaussian kernel</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Simple image blur by convolution with a Gaussian kernel</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Denoise an image (../../../../data/moonlanding.png) by implementing a blur with an FFT."><img alt="" src="../../../_images/sphx_glr_plot_fft_image_denoise_thumb.png" />
+<p><a class="reference internal" href="solutions/plot_fft_image_denoise.html#sphx-glr-intro-scipy-auto-examples-solutions-plot-fft-image-denoise-py"><span class="std std-ref">Image denoising by FFT</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Image denoising by FFT</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/89e050515d3da6313decb5b1b0d5787d/auto_examples_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/8da74510b6533b5cd0d7bcdff74bda7f/auto_examples_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Full code examples for the SciPy chapter</a><ul>
+<li><a class="reference internal" href="#solutions-of-the-exercises-for-scipy">Solutions of the exercises for SciPy</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/intro/scipy/auto_examples/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Full code examples for the SciPy chapter</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/scipy/auto_examples/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

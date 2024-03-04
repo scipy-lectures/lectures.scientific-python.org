@@ -1,0 +1,85 @@
+
+:orphan:
+
+.. _sphx_glr_intro_scipy_auto_examples_sg_execution_times:
+
+
+Computation times
+=================
+**00:03.698** total execution time for 17 files **from intro/scipy/auto_examples**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_image_transform.py` (``plot_image_transform.py``)
+     - 00:00.947
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_image_filters.py` (``plot_image_filters.py``)
+     - 00:00.477
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_spectrogram.py` (``plot_spectrogram.py``)
+     - 00:00.434
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_2d_minimization.py` (``plot_2d_minimization.py``)
+     - 00:00.381
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_fftpack.py` (``plot_fftpack.py``)
+     - 00:00.242
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_resample.py` (``plot_resample.py``)
+     - 00:00.211
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_curve_fit.py` (``plot_curve_fit.py``)
+     - 00:00.134
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_connect_measurements.py` (``plot_connect_measurements.py``)
+     - 00:00.130
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_normal_distribution.py` (``plot_normal_distribution.py``)
+     - 00:00.113
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_t_test.py` (``plot_t_test.py``)
+     - 00:00.109
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_mathematical_morpho.py` (``plot_mathematical_morpho.py``)
+     - 00:00.102
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_solve_ivp_simple.py` (``plot_solve_ivp_simple.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_optimize_example2.py` (``plot_optimize_example2.py``)
+     - 00:00.079
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_interpolation.py` (``plot_interpolation.py``)
+     - 00:00.073
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_detrend.py` (``plot_detrend.py``)
+     - 00:00.064
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_solve_ivp_damped_spring_mass.py` (``plot_solve_ivp_damped_spring_mass.py``)
+     - 00:00.058
+     - 0.0
+   * - :ref:`sphx_glr_intro_scipy_auto_examples_plot_optimize_example1.py` (``plot_optimize_example1.py``)
+     - 00:00.057
+     - 0.0

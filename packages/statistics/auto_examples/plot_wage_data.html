@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.1.6.7. Visualizing factors influencing wages &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.1.6.8. Air fares before and after 9/11" href="plot_airfare.html" />
+    <link rel="prev" title="3.1.6.6. Multiple Regression" href="plot_regression_3d.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_airfare.html" title="3.1.6.8. Air fares before and after 9/11"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="plot_regression_3d.html" title="3.1.6.6. Multiple Regression"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U"><span class="section-number">3.1. </span>Statistics in Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1.6.7. </span>Visualizing factors influencing wages</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/statistics/auto_examples/plot_wage_data.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-packages-statistics-auto-examples-plot-wage-data-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="visualizing-factors-influencing-wages">
+<span id="sphx-glr-packages-statistics-auto-examples-plot-wage-data-py"></span><h1><span class="section-number">3.1.6.7. </span>Visualizing factors influencing wages<a class="headerlink" href="#visualizing-factors-influencing-wages" title="Link to this heading">¶</a></h1>
+<p>This example uses seaborn to quickly plot various factors relating wages,
+experience and eduction.</p>
+<p>Seaborn (<a class="reference external" href="https://seaborn.pydata.org">https://seaborn.pydata.org</a>) is a library that combines
+visualization and statistical fits to show trends in data.</p>
+<p>Note that importing seaborn changes the matplotlib style to have an
+“excel-like” feeling. This changes affect other matplotlib figures. To
+restore defaults once this example is run, we would need to call
+plt.rcdefaults().</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standard library imports</span>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">os</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Load the data</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">requests</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">if</span> <span class="ow">not</span> <a href="https://docs.python.org/3/library/os.path.html#os.path.exists" title="os.path.exists" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span></a><span class="p">(</span><span class="s2">&quot;wages.txt&quot;</span><span class="p">):</span>
+<div class="newline"></div>    <span class="c1"># Download the file if it is not present</span>
+<div class="newline"></div>    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://lib.stat.cmu.edu/datasets/CPS_85_Wages&quot;</span><span class="p">)</span>
+<div class="newline"></div>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;wages.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="newline"></div>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Give names to the columns</span>
+<div class="newline"></div><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">names</span></a> <span class="o">=</span> <span class="p">[</span>
+<div class="newline"></div>    <span class="s2">&quot;EDUCATION: Number of years of education&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s2">&quot;SOUTH: 1=Person lives in South, 0=Person lives elsewhere&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s2">&quot;SEX: 1=Female, 0=Male&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s2">&quot;EXPERIENCE: Number of years of work experience&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s2">&quot;UNION: 1=Union member, 0=Not union member&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s2">&quot;WAGE: Wage (dollars per hour)&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s2">&quot;AGE: years&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s2">&quot;RACE: 1=Other, 2=Hispanic, 3=White&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s2">&quot;OCCUPATION: 1=Management, 2=Sales, 3=Clerical, 4=Service, 5=Professional, 6=Other&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s2">&quot;SECTOR: 0=Other, 1=Manufacturing, 2=Construction&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s2">&quot;MARR: 0=Unmarried,  1=Married&quot;</span><span class="p">,</span>
+<div class="newline"></div><span class="p">]</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">short_names</span></a> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">names</span></a><span class="p">]</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function"><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span>
+<div class="newline"></div>    <span class="s2">&quot;wages.txt&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span>
+<div class="newline"></div><span class="p">)</span>
+<div class="newline"></div><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html#pandas.Index" title="pandas.core.indexes.base.Index" class="sphx-glr-backref-module-pandas-core-indexes-base sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span><span class="o">.</span><span class="n">columns</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">short_names</span></a>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Log-transform the wages, because they typically are increased with</span>
+<div class="newline"></div><span class="c1"># multiplicative factors</span>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">[</span><span class="s2">&quot;WAGE&quot;</span><span class="p">]</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">log10</span></a><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">[</span><span class="s2">&quot;WAGE&quot;</span><span class="p">])</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Plot scatter matrices highlighting different aspects</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="seaborn.pairplot" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span></a><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;WAGE&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;EDUCATION&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="seaborn.pairplot" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span></a><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;WAGE&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;EDUCATION&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;SEX&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.suptitle.html#matplotlib.pyplot.suptitle" title="matplotlib.pyplot.suptitle" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span></a><span class="p">(</span><span class="s2">&quot;Effect of gender: 1=Female, 0=Male&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="seaborn.pairplot" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span></a><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;WAGE&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;EDUCATION&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;RACE&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.suptitle.html#matplotlib.pyplot.suptitle" title="matplotlib.pyplot.suptitle" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span></a><span class="p">(</span><span class="s2">&quot;Effect of race: 1=Other, 2=Hispanic, 3=White&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="seaborn.pairplot" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span></a><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;WAGE&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;EDUCATION&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;UNION&quot;</span><span class="p">)</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.suptitle.html#matplotlib.pyplot.suptitle" title="matplotlib.pyplot.suptitle" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span></a><span class="p">(</span><span class="s2">&quot;Effect of union: 1=Union member, 0=Not union member&quot;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../../../_images/sphx_glr_plot_wage_data_001.png" srcset="../../../_images/sphx_glr_plot_wage_data_001.png" alt="plot wage data" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../../_images/sphx_glr_plot_wage_data_002.png" srcset="../../../_images/sphx_glr_plot_wage_data_002.png" alt="Effect of gender: 1=Female, 0=Male" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../../_images/sphx_glr_plot_wage_data_003.png" srcset="../../../_images/sphx_glr_plot_wage_data_003.png" alt="Effect of race: 1=Other, 2=Hispanic, 3=White" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../../_images/sphx_glr_plot_wage_data_004.png" srcset="../../../_images/sphx_glr_plot_wage_data_004.png" alt="Effect of union: 1=Union member, 0=Not union member" class = "sphx-glr-multi-img"/></li>
+</ul>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Effect of union: 1=Union member, 0=Not union member&#39;)
+<div class="newline"></div></pre></div>
+</div>
+<p>Plot a simple regression</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">seaborn</span><span class="o">.</span><span class="n">lmplot</span></a><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;WAGE&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;EDUCATION&quot;</span><span class="p">,</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="o">=</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<img src="../../../_images/sphx_glr_plot_wage_data_005.png" srcset="../../../_images/sphx_glr_plot_wage_data_005.png" alt="plot wage data" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.789 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-packages-statistics-auto-examples-plot-wage-data-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/342af837d47b3eb9832ed5bef493428e/plot_wage_data.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_wage_data.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/86f0aa93444d3ad46192a466c68d0d5a/plot_wage_data.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_wage_data.py</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="plot_regression_3d.html"
+                          title="previous chapter"><span class="section-number">3.1.6.6. </span>Multiple Regression</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="plot_airfare.html"
+                          title="next chapter"><span class="section-number">3.1.6.8. </span>Air fares before and after 9/11</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/packages/statistics/auto_examples/plot_wage_data.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_airfare.html" title="3.1.6.8. Air fares before and after 9/11"
+             >next</a></li>
+        <li class="right" >
+          <a href="plot_regression_3d.html" title="3.1.6.6. Multiple Regression"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" ><span class="section-number">3.1. </span>Statistics in Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1.6.7. </span>Visualizing factors influencing wages</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/statistics/auto_examples/plot_wage_data.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

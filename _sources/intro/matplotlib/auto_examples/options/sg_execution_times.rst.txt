@@ -1,0 +1,85 @@
+
+:orphan:
+
+.. _sphx_glr_intro_matplotlib_auto_examples_options_sg_execution_times:
+
+
+Computation times
+=================
+**00:02.387** total execution time for 17 files **from intro/matplotlib/auto_examples/options**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_colormaps.py` (``plot_colormaps.py``)
+     - 00:01.354
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_ticks.py` (``plot_ticks.py``)
+     - 00:00.767
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_markers.py` (``plot_markers.py``)
+     - 00:00.057
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_linestyles.py` (``plot_linestyles.py``)
+     - 00:00.038
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_alpha.py` (``plot_alpha.py``)
+     - 00:00.018
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_ms.py` (``plot_ms.py``)
+     - 00:00.014
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mfc.py` (``plot_mfc.py``)
+     - 00:00.014
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mec.py` (``plot_mec.py``)
+     - 00:00.014
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_mew.py` (``plot_mew.py``)
+     - 00:00.014
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_aliased.py` (``plot_aliased.py``)
+     - 00:00.014
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_linewidth.py` (``plot_linewidth.py``)
+     - 00:00.013
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_color.py` (``plot_color.py``)
+     - 00:00.013
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_solid_joinstyle.py` (``plot_solid_joinstyle.py``)
+     - 00:00.012
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_dash_joinstyle.py` (``plot_dash_joinstyle.py``)
+     - 00:00.012
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_dash_capstyle.py` (``plot_dash_capstyle.py``)
+     - 00:00.011
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_solid_capstyle.py` (``plot_solid_capstyle.py``)
+     - 00:00.011
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_options_plot_antialiased.py` (``plot_antialiased.py``)
+     - 00:00.011
+     - 0.0

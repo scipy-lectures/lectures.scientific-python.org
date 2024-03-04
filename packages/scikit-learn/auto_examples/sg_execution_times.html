@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Computation times &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Computation times</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/scikit-learn/auto_examples/sg_execution_times.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="computation-times">
+<span id="sphx-glr-packages-scikit-learn-auto-examples-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Link to this heading">¶</a></h1>
+<p><strong>00:16.075</strong> total execution time for 17 files <strong>from packages/scikit-learn/auto_examples</strong>:</p>
+<div class="docutils container">
+<style scoped>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+</style>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" class="init">
+$(document).ready( function () {
+    $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+} );
+</script><table class="table table-striped sg-datatable docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>Mem (MB)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_california_prediction.html#sphx-glr-packages-scikit-learn-auto-examples-plot-california-prediction-py"><span class="std std-ref">A simple regression analysis on the California housing data</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_california_prediction.py</span></code>)</p></td>
+<td><p>00:04.398</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_eigenfaces.html#sphx-glr-packages-scikit-learn-auto-examples-plot-eigenfaces-py"><span class="std std-ref">The eigenfaces example: chaining PCA and SVMs</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_eigenfaces.py</span></code>)</p></td>
+<td><p>00:03.658</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_digits_simple_classif.html#sphx-glr-packages-scikit-learn-auto-examples-plot-digits-simple-classif-py"><span class="std std-ref">Simple visualization and classification of the digits dataset</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_digits_simple_classif.py</span></code>)</p></td>
+<td><p>00:01.624</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_measuring_performance.html#sphx-glr-packages-scikit-learn-auto-examples-plot-measuring-performance-py"><span class="std std-ref">Measuring Decision Tree performance</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_measuring_performance.py</span></code>)</p></td>
+<td><p>00:01.507</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_bias_variance.html#sphx-glr-packages-scikit-learn-auto-examples-plot-bias-variance-py"><span class="std std-ref">Bias and variance of polynomial fit</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_bias_variance.py</span></code>)</p></td>
+<td><p>00:01.411</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_tsne.html#sphx-glr-packages-scikit-learn-auto-examples-plot-tsne-py"><span class="std std-ref">tSNE to visualize digits</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_tsne.py</span></code>)</p></td>
+<td><p>00:01.185</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_iris_knn.html#sphx-glr-packages-scikit-learn-auto-examples-plot-iris-knn-py"><span class="std std-ref">Nearest-neighbor prediction on iris</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_iris_knn.py</span></code>)</p></td>
+<td><p>00:00.678</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_compare_classifiers.html#sphx-glr-packages-scikit-learn-auto-examples-plot-compare-classifiers-py"><span class="std std-ref">Compare classifiers on the digits data</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_compare_classifiers.py</span></code>)</p></td>
+<td><p>00:00.425</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_linear_model_cv.html#sphx-glr-packages-scikit-learn-auto-examples-plot-linear-model-cv-py"><span class="std std-ref">Use the RidgeCV and LassoCV to set the regularization parameter</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_linear_model_cv.py</span></code>)</p></td>
+<td><p>00:00.343</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_polynomial_regression.html#sphx-glr-packages-scikit-learn-auto-examples-plot-polynomial-regression-py"><span class="std std-ref">Plot fitting a 9th order polynomial</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_polynomial_regression.py</span></code>)</p></td>
+<td><p>00:00.219</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_ML_flow_chart.html#sphx-glr-packages-scikit-learn-auto-examples-plot-ml-flow-chart-py"><span class="std std-ref">Tutorial Diagrams</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_ML_flow_chart.py</span></code>)</p></td>
+<td><p>00:00.192</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_variance_linear_regr.html#sphx-glr-packages-scikit-learn-auto-examples-plot-variance-linear-regr-py"><span class="std std-ref">Plot variance and regularization in linear models</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_variance_linear_regr.py</span></code>)</p></td>
+<td><p>00:00.101</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_pca.html#sphx-glr-packages-scikit-learn-auto-examples-plot-pca-py"><span class="std std-ref">Demo PCA in 2D</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_pca.py</span></code>)</p></td>
+<td><p>00:00.090</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_iris_scatter.html#sphx-glr-packages-scikit-learn-auto-examples-plot-iris-scatter-py"><span class="std std-ref">Plot 2D views of the iris dataset</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_iris_scatter.py</span></code>)</p></td>
+<td><p>00:00.088</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_svm_non_linear.html#sphx-glr-packages-scikit-learn-auto-examples-plot-svm-non-linear-py"><span class="std std-ref">Example of linear and non-linear models</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_svm_non_linear.py</span></code>)</p></td>
+<td><p>00:00.065</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_separator.html#sphx-glr-packages-scikit-learn-auto-examples-plot-separator-py"><span class="std std-ref">Simple picture of the formal problem of machine learning</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_separator.py</span></code>)</p></td>
+<td><p>00:00.049</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_linear_regression.html#sphx-glr-packages-scikit-learn-auto-examples-plot-linear-regression-py"><span class="std std-ref">A simple linear regression</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_linear_regression.py</span></code>)</p></td>
+<td><p>00:00.042</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/packages/scikit-learn/auto_examples/sg_execution_times.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Computation times</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/scikit-learn/auto_examples/sg_execution_times.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

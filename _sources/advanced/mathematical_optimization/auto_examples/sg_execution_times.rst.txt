@@ -1,0 +1,67 @@
+
+:orphan:
+
+.. _sphx_glr_advanced_mathematical_optimization_auto_examples_sg_execution_times:
+
+
+Computation times
+=================
+**00:09.053** total execution time for 11 files **from advanced/mathematical_optimization/auto_examples**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_gradient_descent.py` (``plot_gradient_descent.py``)
+     - 00:06.411
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_exercise_ill_conditioned.py` (``plot_exercise_ill_conditioned.py``)
+     - 00:01.497
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_compare_optimizers.py` (``plot_compare_optimizers.py``)
+     - 00:00.548
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_1d_optim.py` (``plot_1d_optim.py``)
+     - 00:00.214
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_exercise_flat_minimum.py` (``plot_exercise_flat_minimum.py``)
+     - 00:00.110
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_constraints.py` (``plot_constraints.py``)
+     - 00:00.082
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_curve_fitting.py` (``plot_curve_fitting.py``)
+     - 00:00.049
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_non_bounds_constraints.py` (``plot_non_bounds_constraints.py``)
+     - 00:00.046
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_convex.py` (``plot_convex.py``)
+     - 00:00.045
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_smooth.py` (``plot_smooth.py``)
+     - 00:00.037
+     - 0.0
+   * - :ref:`sphx_glr_advanced_mathematical_optimization_auto_examples_plot_noisy.py` (``plot_noisy.py``)
+     - 00:00.016
+     - 0.0

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.2.2. Basic types &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2.3. Control Flow" href="control_flow.html" />
+    <link rel="prev" title="1.2.1. First steps" href="first_steps.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="control_flow.html" title="1.2.3. Control Flow"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="first_steps.html" title="1.2.1. First steps"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python_language.html" accesskey="U"><span class="section-number">1.2. </span>The Python language</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.2. </span>Basic types</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/basic_types.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="basic-types">
+<h1><span class="section-number">1.2.2. </span>Basic types<a class="headerlink" href="#basic-types" title="Link to this heading">¶</a></h1>
+<section id="numerical-types">
+<h2><span class="section-number">1.2.2.1. </span>Numerical types<a class="headerlink" href="#numerical-types" title="Link to this heading">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Python supports the following numerical, scalar types:</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Integer<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<div class="newline"></div><span class="go">2</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&lt;class &#39;int&#39;&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+</dd>
+<dt class="field-even">Floats<span class="colon">:</span></dt>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="mf">2.1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&lt;class &#39;float&#39;&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+</dd>
+<dt class="field-odd">Complex<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">+</span> <span class="mf">0.5</span><span class="n">j</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">real</span>
+<div class="newline"></div><span class="go">1.5</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">imag</span>
+<div class="newline"></div><span class="go">0.5</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="mi">0</span><span class="n">j</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&lt;class &#39;complex&#39;&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+</dd>
+<dt class="field-even">Booleans<span class="colon">:</span></dt>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">4</span>
+<div class="newline"></div><span class="go">False</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">test</span>
+<div class="newline"></div><span class="go">False</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&lt;class &#39;bool&#39;&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A Python shell can therefore replace your pocket calculator, with the
+basic arithmetic operations <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code> (modulo)
+natively implemented</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">7</span> <span class="o">*</span> <span class="mf">3.</span>
+<div class="newline"></div><span class="go">21.0</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">10</span>
+<div class="newline"></div><span class="go">1024</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="mi">8</span> <span class="o">%</span> <span class="mi">3</span>
+<div class="newline"></div><span class="go">2</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Type conversion (casting):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="newline"></div><span class="go">1.0</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="containers">
+<h2><span class="section-number">1.2.2.2. </span>Containers<a class="headerlink" href="#containers" title="Link to this heading">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Python provides many efficient types of containers, in which
+collections of objects can be stored.</p>
+</div>
+<section id="lists">
+<h3>Lists<a class="headerlink" href="#lists" title="Link to this heading">¶</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A list is an ordered collection of objects, that may have different
+types. For example:</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&lt;class &#39;list&#39;&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Indexing: accessing individual objects contained in the list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<div class="newline"></div><span class="go">&#39;green&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Counting from the end with negative indices:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="newline"></div><span class="go">&#39;white&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<div class="newline"></div><span class="go">&#39;black&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Indexing starts at 0</strong> (as in C), not at 1 (as in Fortran or Matlab)!</p>
+</div>
+<p>Slicing: obtaining sublists of regularly-spaced elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
+<div class="newline"></div><span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<div class="newline"></div><span class="go">[&#39;green&#39;, &#39;black&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">colors[start:stop]</span></code> contains the elements with indices <code class="docutils literal notranslate"><span class="pre">i</span></code>
+such as  <code class="docutils literal notranslate"><span class="pre">start&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">stop</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code> ranging from <code class="docutils literal notranslate"><span class="pre">start</span></code> to
+<code class="docutils literal notranslate"><span class="pre">stop-1</span></code>). Therefore, <code class="docutils literal notranslate"><span class="pre">colors[start:stop]</span></code> has <code class="docutils literal notranslate"><span class="pre">(stop</span> <span class="pre">-</span> <span class="pre">start)</span></code> elements.</p>
+</div>
+<p><strong>Slicing syntax</strong>: <code class="docutils literal notranslate"><span class="pre">colors[start:stop:stride]</span></code></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>All slicing parameters are optional:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
+<div class="newline"></div><span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+<div class="newline"></div><span class="go">[&#39;black&#39;, &#39;white&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div><span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+<div class="newline"></div><span class="go">[&#39;red&#39;, &#39;green&#39;, &#39;white&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
+<p>Lists are <em>mutable</em> objects and can be modified:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;yellow&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
+<div class="newline"></div><span class="go">[&#39;yellow&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
+<div class="newline"></div><span class="go">[&#39;yellow&#39;, &#39;blue&#39;, &#39;gray&#39;, &#39;purple&#39;, &#39;white&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The elements of a list may have different types:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
+<div class="newline"></div><span class="go">[3, -200, &#39;hello&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<div class="newline"></div><span class="go">(-200, &#39;hello&#39;)</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For collections of numerical data that all have the same type, it
+is often <strong>more efficient</strong> to use the <code class="docutils literal notranslate"><span class="pre">array</span></code> type provided by
+the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> module. A NumPy array is a chunk of memory
+containing fixed-sized items.  With NumPy arrays, operations on
+elements can be faster because elements are regularly spaced in
+memory and more operations are performed through specialized C
+functions instead of Python loops.</p>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Python offers a large panel of functions to modify lists, or query
+them. Here are a few examples; for more details, see
+<a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">https://docs.python.org/3/tutorial/datastructures.html#more-on-lists</a></p>
+</div>
+<p>Add and remove elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;pink&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
+<div class="newline"></div><span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;, &#39;pink&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1"># removes and returns the last item</span>
+<div class="newline"></div><span class="go">&#39;pink&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
+<div class="newline"></div><span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">])</span> <span class="c1"># extend colors, in-place</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
+<div class="newline"></div><span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;, &#39;pink&#39;, &#39;purple&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span>
+<div class="newline"></div><span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Reverse:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span>
+<div class="newline"></div><span class="go">[&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span> <span class="c1"># new object that is a copy of colors in a different memory area</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors2</span>
+<div class="newline"></div><span class="go">[&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors2</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span> <span class="c1"># in-place; reversing rcolors2 does not affect colors</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors2</span>
+<div class="newline"></div><span class="go">[&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Concatenate and repeat lists:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span> <span class="o">+</span> <span class="n">colors</span>
+<div class="newline"></div><span class="go">[&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;black&#39;, &#39;white&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span> <span class="o">*</span> <span class="mi">2</span>
+<div class="newline"></div><span class="go">[&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Sort:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">rcolors</span><span class="p">)</span> <span class="c1"># new object</span>
+<div class="newline"></div><span class="go">[&#39;black&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;red&#39;, &#39;white&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span>
+<div class="newline"></div><span class="go">[&#39;white&#39;, &#39;black&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># in-place</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rcolors</span>
+<div class="newline"></div><span class="go">[&#39;black&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;red&#39;, &#39;white&#39;]</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
+<aside class="topic">
+<p class="topic-title"><strong>Methods and Object-Oriented Programming</strong></p>
+<p>The notation <code class="docutils literal notranslate"><span class="pre">rcolors.method()</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">rcolors.append(3)</span></code> and <code class="docutils literal notranslate"><span class="pre">colors.pop()</span></code>) is our
+first example of object-oriented programming (OOP). Being a <code class="docutils literal notranslate"><span class="pre">list</span></code>, the
+object <cite>rcolors</cite> owns the <em>method</em> <cite>function</cite> that is called using the notation
+<strong>.</strong>. No further knowledge of OOP than understanding the notation <strong>.</strong> is
+necessary for going through this tutorial.</p>
+</aside>
+<aside class="topic">
+<p class="topic-title"><strong>Discovering methods:</strong></p>
+<p>Reminder: in Ipython: tab-completion (press tab)</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">rcolors</span><span class="o">.&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
+<div class="newline"></div><span class="go">                 append()  count()   insert()  reverse()</span>
+<div class="newline"></div><span class="go">                 clear()   extend()  pop()     sort()</span>
+<div class="newline"></div><span class="go">                 copy()    index()   remove()</span>
+<div class="newline"></div></pre></div>
+</div>
+</aside>
+</section>
+<section id="strings">
+<h3>Strings<a class="headerlink" href="#strings" title="Link to this heading">¶</a></h3>
+<p>Different string syntaxes (simple, double or triple quotes):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hello, how are you?&#39;</span>
+<div class="newline"></div><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hi, what&#39;s up&quot;</span>
+<div class="newline"></div><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;Hello,</span>
+<div class="newline"></div><span class="s1">       how are you&#39;&#39;&#39;</span>         <span class="c1"># tripling the quotes allows the</span>
+<div class="newline"></div>                              <span class="c1"># string to span more than one line</span>
+<div class="newline"></div><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Hi,</span>
+<div class="newline"></div><span class="s2">what&#39;s up?&quot;&quot;&quot;</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="s1">&#39;Hi, what&#39;</span><span class="n">s</span> <span class="n">up</span><span class="err">?</span><span class="s1">&#39;</span>
+<div class="newline"></div><span class="go">  Cell In[2], line 1</span>
+<div class="newline"></div><span class="go">    &#39;Hi, what&#39;s up?&#39;</span>
+<div class="newline"></div><span class="go">                   ^</span>
+<div class="newline"></div><span class="go">SyntaxError: unterminated string literal (detected at line 1)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>This syntax error can be avoided by enclosing the string in double quotes
+instead of single quotes. Alternatively, one can prepend a backslash to the
+second single quote. Other uses of the backslash are, e.g., the newline character
+<code class="docutils literal notranslate"><span class="pre">\n</span></code> and the tab character <code class="docutils literal notranslate"><span class="pre">\t</span></code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Strings are collections like lists. Hence they can be indexed and
+sliced, using the same syntax and rules.</p>
+</div>
+<p>Indexing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="newline"></div><span class="go">&#39;h&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="newline"></div><span class="go">&#39;e&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="newline"></div><span class="go">&#39;o&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>(Remember that negative indices correspond to counting from the right
+end.)</p>
+</div>
+<p>Slicing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hello, world!&quot;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="c1"># 3rd to 6th (excluded) elements: elements 3, 4, 5</span>
+<div class="newline"></div><span class="go">&#39;lo,&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># Syntax: a[start:stop:step]</span>
+<div class="newline"></div><span class="go">&#39;lo o&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[::</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># every three characters, from beginning to end</span>
+<div class="newline"></div><span class="go">&#39;hl r!&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Accents and special characters can also be handled as in Python 3
+strings consist of Unicode characters.</p>
+</div>
+<p>A string is an <strong>immutable object</strong> and it is not possible to modify its
+contents. One may however create new strings from the original one.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hello, world!&quot;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="newline"></div><span class="gh">Out[4]: </span><span class="go">&#39;hezlo, world!&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Strings have many useful methods, such as <code class="docutils literal notranslate"><span class="pre">a.replace</span></code> as seen
+above. Remember the <code class="docutils literal notranslate"><span class="pre">a.</span></code> object-oriented notation and use tab
+completion or <code class="docutils literal notranslate"><span class="pre">help(str)</span></code> to search for new methods.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Python offers advanced possibilities for manipulating strings,
+looking for patterns or formatting. The interested reader is referred to
+<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#string-methods">https://docs.python.org/3/library/stdtypes.html#string-methods</a> and
+<a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">https://docs.python.org/3/library/string.html#format-string-syntax</a></p>
+</div>
+<p>String formatting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;An integer: </span><span class="si">%i</span><span class="s1">; a float: </span><span class="si">%f</span><span class="s1">; another string: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="c1"># with more values use tuple after %</span>
+<div class="newline"></div><span class="go">&#39;An integer: 1; a float: 0.100000; another string: string&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="mi">102</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;processing_of_dataset_</span><span class="si">%d</span><span class="s1">.txt&#39;</span> <span class="o">%</span> <span class="n">i</span>   <span class="c1"># no need for tuples with just one value after %</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span>
+<div class="newline"></div><span class="go">&#39;processing_of_dataset_102.txt&#39;</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="dictionaries">
+<h3>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">¶</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A dictionary is basically an efficient table that <strong>maps keys to
+values</strong>.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;emmanuelle&#39;</span><span class="p">:</span> <span class="mi">5752</span><span class="p">,</span> <span class="s1">&#39;sebastian&#39;</span><span class="p">:</span> <span class="mi">5578</span><span class="p">}</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="p">[</span><span class="s1">&#39;francis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5915</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span>
+<div class="newline"></div><span class="go">{&#39;emmanuelle&#39;: 5752, &#39;sebastian&#39;: 5578, &#39;francis&#39;: 5915}</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="p">[</span><span class="s1">&#39;sebastian&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="go">5578</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<div class="newline"></div><span class="go">dict_keys([&#39;emmanuelle&#39;, &#39;sebastian&#39;, &#39;francis&#39;])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">tel</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<div class="newline"></div><span class="go">dict_values([5752, 5578, 5915])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;francis&#39;</span> <span class="ow">in</span> <span class="n">tel</span>
+<div class="newline"></div><span class="go">True</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It can be used to conveniently store and retrieve values
+associated with a name (a string for a date, a name, etc.). See
+<a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">https://docs.python.org/3/tutorial/datastructures.html#dictionaries</a>
+for more information.</p>
+<p>A dictionary can have keys (resp. values) with different types:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s1">&#39;hello&#39;</span><span class="p">}</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<div class="newline"></div><span class="go">{&#39;a&#39;: 1, &#39;b&#39;: 2, 3: &#39;hello&#39;}</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
+</section>
+<section id="more-container-types">
+<h3>More container types<a class="headerlink" href="#more-container-types" title="Link to this heading">¶</a></h3>
+<p><strong>Tuples</strong></p>
+<p>Tuples are basically immutable lists. The elements of a tuple are written
+between parentheses, or just separated by commas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="mi">12345</span><span class="p">,</span> <span class="mi">54321</span><span class="p">,</span> <span class="s1">&#39;hello!&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="newline"></div><span class="go">12345</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<div class="newline"></div><span class="go">(12345, 54321, &#39;hello!&#39;)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Sets:</strong> unordered, unique items:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>    
+<div class="newline"></div><span class="go">{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;}</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">difference</span><span class="p">((</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">))</span>
+<div class="newline"></div><span class="go">{&#39;c&#39;}</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+</section>
+<section id="assignment-operator">
+<h2><span class="section-number">1.2.2.3. </span>Assignment operator<a class="headerlink" href="#assignment-operator" title="Link to this heading">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#assignment-statements">Python library reference</a>
+says:</p>
+<blockquote>
+<div><p>Assignment statements are used to (re)bind names to values and to
+modify attributes or items of mutable objects.</p>
+</div></blockquote>
+<p>In short, it works as follows (simple assignment):</p>
+<ol class="arabic simple">
+<li><p>an expression on the right hand side is evaluated, the corresponding
+object is created/obtained</p></li>
+<li><p>a <strong>name</strong> on the left hand side is assigned, or bound, to the
+r.h.s. object</p></li>
+</ol>
+</div>
+<p>Things to note:</p>
+<ul>
+<li><p>a single object can have several names bound to it:</p>
+<blockquote>
+<div><div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div></pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>to change a list <em>in place</em>, use indexing/slices:</p>
+<blockquote>
+<div><div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div></pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>the key concept here is <strong>mutable vs. immutable</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>mutable objects can be changed in place</p></li>
+<li><p>immutable objects cannot be modified once created</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>A very good and detailed explanation of the above issues can
+be found in David M. Beazley’s article <a class="reference external" href="https://www.informit.com/articles/article.aspx?p=453682">Types and Objects in Python</a>.</p>
+</div>
+<p><div style="clear: both"></div></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">1.2.2. Basic types</a><ul>
+<li><a class="reference internal" href="#numerical-types">1.2.2.1. Numerical types</a></li>
+<li><a class="reference internal" href="#containers">1.2.2.2. Containers</a><ul>
+<li><a class="reference internal" href="#lists">Lists</a></li>
+<li><a class="reference internal" href="#strings">Strings</a></li>
+<li><a class="reference internal" href="#dictionaries">Dictionaries</a></li>
+<li><a class="reference internal" href="#more-container-types">More container types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#assignment-operator">1.2.2.3. Assignment operator</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="first_steps.html"
+                          title="previous chapter"><span class="section-number">1.2.1. </span>First steps</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="control_flow.html"
+                          title="next chapter"><span class="section-number">1.2.3. </span>Control Flow</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/intro/language/basic_types.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="control_flow.html" title="1.2.3. Control Flow"
+             >next</a></li>
+        <li class="right" >
+          <a href="first_steps.html" title="1.2.1. First steps"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python_language.html" ><span class="section-number">1.2. </span>The Python language</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.2. </span>Basic types</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/basic_types.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

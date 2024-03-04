@@ -1,0 +1,61 @@
+
+:orphan:
+
+.. _sphx_glr_intro_numpy_auto_examples_sg_execution_times:
+
+
+Computation times
+=================
+**00:00.886** total execution time for 9 files **from intro/numpy/auto_examples**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_elephant.py` (``plot_elephant.py``)
+     - 00:00.297
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_mandelbrot.py` (``plot_mandelbrot.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_chebyfit.py` (``plot_chebyfit.py``)
+     - 00:00.084
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_randomwalk.py` (``plot_randomwalk.py``)
+     - 00:00.084
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_basic2dplot.py` (``plot_basic2dplot.py``)
+     - 00:00.079
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_distances.py` (``plot_distances.py``)
+     - 00:00.074
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_populations.py` (``plot_populations.py``)
+     - 00:00.072
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_basic1dplot.py` (``plot_basic1dplot.py``)
+     - 00:00.056
+     - 0.0
+   * - :ref:`sphx_glr_intro_numpy_auto_examples_plot_polyfit.py` (``plot_polyfit.py``)
+     - 00:00.055
+     - 0.0

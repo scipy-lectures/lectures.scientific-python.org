@@ -1,0 +1,64 @@
+
+:orphan:
+
+.. _sphx_glr_intro_matplotlib_auto_examples_exercises_sg_execution_times:
+
+
+Computation times
+=================
+**00:00.586** total execution time for 10 files **from intro/matplotlib/auto_examples/exercises**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_9.py` (``plot_exercise_9.py``)
+     - 00:00.091
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_10.py` (``plot_exercise_10.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_1.py` (``plot_exercise_1.py``)
+     - 00:00.069
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_4.py` (``plot_exercise_4.py``)
+     - 00:00.065
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_8.py` (``plot_exercise_8.py``)
+     - 00:00.055
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_7.py` (``plot_exercise_7.py``)
+     - 00:00.051
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_6.py` (``plot_exercise_6.py``)
+     - 00:00.046
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_2.py` (``plot_exercise_2.py``)
+     - 00:00.045
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_3.py` (``plot_exercise_3.py``)
+     - 00:00.043
+     - 0.0
+   * - :ref:`sphx_glr_intro_matplotlib_auto_examples_exercises_plot_exercise_5.py` (``plot_exercise_5.py``)
+     - 00:00.035
+     - 0.0

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Relating Gender and IQ &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="3.2. Sympy : Symbolic Mathematics in Python" href="../../../sympy.html" />
+    <link rel="prev" title="3.1.7.1. Solutions to this chapter’s exercises" href="index.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../sympy.html" title="3.2. Sympy : Symbolic Mathematics in Python"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="3.1.7.1. Solutions to this chapter’s exercises"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../index.html" ><span class="section-number">3.1. </span>Statistics in Python</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U"><span class="section-number">3.1.7.1. </span>Solutions to this chapter’s exercises</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Relating Gender and IQ</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/statistics/auto_examples/solutions/plot_brain_size.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-packages-statistics-auto-examples-solutions-plot-brain-size-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="relating-gender-and-iq">
+<span id="sphx-glr-packages-statistics-auto-examples-solutions-plot-brain-size-py"></span><h1>Relating Gender and IQ<a class="headerlink" href="#relating-gender-and-iq" title="Link to this heading">¶</a></h1>
+<p>Going back to the brain size + IQ data, test if the VIQ of male and
+female are different after removing the effect of brain size, height and
+weight.</p>
+<p>Notice that here ‘Gender’ is a categorical value. As it is a non-float
+data type, statsmodels is able to automatically infer this.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <a href="https://www.statsmodels.org/stable/generated/statsmodels.formula.api.ols.html#statsmodels.formula.api.ols" title="statsmodels.formula.api.ols" class="sphx-glr-backref-module-statsmodels-formula-api sphx-glr-backref-type-py-function"><span class="n">ols</span></a>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function"><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="s2">&quot;../brain_size.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">model</span> <span class="o">=</span> <a href="https://www.statsmodels.org/stable/generated/statsmodels.formula.api.ols.html#statsmodels.formula.api.ols" title="statsmodels.formula.api.ols" class="sphx-glr-backref-module-statsmodels-formula-api sphx-glr-backref-type-py-function"><span class="n">ols</span></a><span class="p">(</span><span class="s2">&quot;VIQ ~ Gender + MRI_Count + Height&quot;</span><span class="p">,</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="newline"></div><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Here, we don&#39;t need to define a contrast, as we are testing a single</span>
+<div class="newline"></div><span class="c1"># coefficient of our model, and not a combination of coefficients.</span>
+<div class="newline"></div><span class="c1"># However, defining a contrast, which would then be a &#39;unit contrast&#39;,</span>
+<div class="newline"></div><span class="c1"># will give us the same results</span>
+<div class="newline"></div><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">f_test</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results
+<div class="newline"></div>==============================================================================
+<div class="newline"></div>Dep. Variable:                    VIQ   R-squared:                       0.246
+<div class="newline"></div>Model:                            OLS   Adj. R-squared:                  0.181
+<div class="newline"></div>Method:                 Least Squares   F-statistic:                     3.809
+<div class="newline"></div>Date:                Mon, 04 Mar 2024   Prob (F-statistic):             0.0184
+<div class="newline"></div>Time:                        00:58:26   Log-Likelihood:                -172.34
+<div class="newline"></div>No. Observations:                  39   AIC:                             352.7
+<div class="newline"></div>Df Residuals:                      35   BIC:                             359.3
+<div class="newline"></div>Df Model:                           3
+<div class="newline"></div>Covariance Type:            nonrobust
+<div class="newline"></div>==================================================================================
+<div class="newline"></div>                     coef    std err          t      P&gt;|t|      [0.025      0.975]
+<div class="newline"></div>----------------------------------------------------------------------------------
+<div class="newline"></div>Intercept        166.6258     88.824      1.876      0.069     -13.696     346.948
+<div class="newline"></div>Gender[T.Male]     8.8524     10.710      0.827      0.414     -12.890      30.595
+<div class="newline"></div>MRI_Count          0.0002   6.46e-05      2.615      0.013    3.78e-05       0.000
+<div class="newline"></div>Height            -3.0837      1.276     -2.417      0.021      -5.674      -0.494
+<div class="newline"></div>==============================================================================
+<div class="newline"></div>Omnibus:                        7.373   Durbin-Watson:                   2.109
+<div class="newline"></div>Prob(Omnibus):                  0.025   Jarque-Bera (JB):                2.252
+<div class="newline"></div>Skew:                           0.005   Prob(JB):                        0.324
+<div class="newline"></div>Kurtosis:                       1.823   Cond. No.                     2.40e+07
+<div class="newline"></div>==============================================================================
+<div class="newline"></div>
+<div class="newline"></div>Notes:
+<div class="newline"></div>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+<div class="newline"></div>[2] The condition number is large, 2.4e+07. This might indicate that there are
+<div class="newline"></div>strong multicollinearity or other numerical problems.
+<div class="newline"></div>&lt;F test: F=0.683196084584229, p=0.4140878441244694, df_denom=35, df_num=1&gt;
+<div class="newline"></div></pre></div>
+</div>
+<p>Here we plot a scatter matrix to get intuitions on our results.
+This goes beyond what was asked in the exercise</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This plotting is useful to get an intuitions on the relationships between</span>
+<div class="newline"></div><span class="c1"># our different variables</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">plotting</span>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># Fill in the missing values for Height for plotting</span>
+<div class="newline"></div><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;pad&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># The parameter &#39;c&#39; is passed to plt.scatter and will control the color</span>
+<div class="newline"></div><span class="c1"># The same holds for parameters &#39;marker&#39;, &#39;alpha&#39; and &#39;cmap&#39;, that</span>
+<div class="newline"></div><span class="c1"># control respectively the type of marker used, their transparency and</span>
+<div class="newline"></div><span class="c1"># the colormap</span>
+<div class="newline"></div><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.plotting.scatter_matrix.html#pandas.plotting.scatter_matrix" title="pandas.plotting.scatter_matrix" class="sphx-glr-backref-module-pandas-plotting sphx-glr-backref-type-py-function"><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span></a><span class="p">(</span>
+<div class="newline"></div>    <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">[[</span><span class="s2">&quot;VIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;MRI_Count&quot;</span><span class="p">,</span> <span class="s2">&quot;Height&quot;</span><span class="p">]],</span>
+<div class="newline"></div>    <span class="n">c</span><span class="o">=</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a><span class="p">[</span><span class="s2">&quot;Gender&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Female&quot;</span><span class="p">),</span>
+<div class="newline"></div>    <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<div class="newline"></div>    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;winter&quot;</span><span class="p">,</span>
+<div class="newline"></div><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.gcf.html#matplotlib.pyplot.gcf" title="matplotlib.pyplot.gcf" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span></a><span class="p">()</span>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.suptitle" title="matplotlib.figure.Figure.suptitle" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span></a><span class="p">(</span><span class="s2">&quot;blue: male, green: female&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<img src="../../../../_images/sphx_glr_plot_brain_size_001.png" srcset="../../../../_images/sphx_glr_plot_brain_size_001.png" alt="blue: male, green: female" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/scientific-python-lectures/scientific-python-lectures/packages/statistics/examples/solutions/plot_brain_size.py:39: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+<div class="newline"></div>The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+<div class="newline"></div>
+<div class="newline"></div>For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div>  data[&quot;Height&quot;].fillna(method=&quot;pad&quot;, inplace=True)
+<div class="newline"></div>/home/runner/work/scientific-python-lectures/scientific-python-lectures/packages/statistics/examples/solutions/plot_brain_size.py:39: FutureWarning: Series.fillna with &#39;method&#39; is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+<div class="newline"></div>  data[&quot;Height&quot;].fillna(method=&quot;pad&quot;, inplace=True)
+<div class="newline"></div></pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.245 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-packages-statistics-auto-examples-solutions-plot-brain-size-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../../_downloads/8eac263f497f0a3124a691828e6e26aa/plot_brain_size.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_brain_size.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../../_downloads/2159eefe66b25292446f3b8c21f133a7/plot_brain_size.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_brain_size.py</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter"><span class="section-number">3.1.7.1. </span>Solutions to this chapter’s exercises</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../../../sympy.html"
+                          title="next chapter"><span class="section-number">3.2. </span>Sympy : Symbolic Mathematics in Python</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../../_sources/packages/statistics/auto_examples/solutions/plot_brain_size.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../sympy.html" title="3.2. Sympy : Symbolic Mathematics in Python"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="3.1.7.1. Solutions to this chapter’s exercises"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../index.html" ><span class="section-number">3.1. </span>Statistics in Python</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" ><span class="section-number">3.1.7.1. </span>Solutions to this chapter’s exercises</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Relating Gender and IQ</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/statistics/auto_examples/solutions/plot_brain_size.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

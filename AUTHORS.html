@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4.1.1. Authors &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="4. About the Scientific Python Lectures" href="about.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="about.html" title="4. About the Scientific Python Lectures"
+             accesskey="P">previous</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="about.html" accesskey="U"><span class="section-number">4. </span>About the Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4.1.1. </span>Authors</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/AUTHORS.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="authors">
+<h1><span class="section-number">4.1.1. </span>Authors<a class="headerlink" href="#authors" title="Link to this heading">¶</a></h1>
+<section id="editors">
+<h2><span class="section-number">4.1.1.1. </span>Editors<a class="headerlink" href="#editors" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Gaël Varoquaux</p></li>
+<li><p>Emmanuelle Gouillart</p></li>
+<li><p>Olav Vahtras</p></li>
+<li><p>Pierre de Buyl</p></li>
+<li><p>K. Jarrod Millman</p></li>
+<li><p>Stéfan van der Walt</p></li>
+</ul>
+</section>
+<section id="chapter-authors">
+<h2><span class="section-number">4.1.1.2. </span>Chapter authors<a class="headerlink" href="#chapter-authors" title="Link to this heading">¶</a></h2>
+<p>Listed by alphabetical order.</p>
+<ul class="simple">
+<li><p>Christopher Burns</p></li>
+<li><p>Adrian Chauve</p></li>
+<li><p>Robert Cimrman</p></li>
+<li><p>Christophe Combelles</p></li>
+<li><p>André Espaze</p></li>
+<li><p>Emmanuelle Gouillart</p></li>
+<li><p>Mike Müller</p></li>
+<li><p>Fabian Pedregosa</p></li>
+<li><p>Didrik Pinte</p></li>
+<li><p>Nicolas Rougier</p></li>
+<li><p>Gaël Varoquaux</p></li>
+<li><p>Pauli Virtanen</p></li>
+<li><p>Zbigniew Jędrzejewski-Szmek</p></li>
+<li><p>Valentin Haenel (editor from 2011 to 2015)</p></li>
+</ul>
+</section>
+<section id="additional-contributions">
+<h2><span class="section-number">4.1.1.3. </span>Additional Contributions<a class="headerlink" href="#additional-contributions" title="Link to this heading">¶</a></h2>
+<p>Listed by alphabetical order</p>
+<ul class="simple">
+<li><p>Osayd Abdu</p></li>
+<li><p>arunpersaud</p></li>
+<li><p>Ross Barnowski</p></li>
+<li><p>Sebastian Berg</p></li>
+<li><p>Lilian Besson</p></li>
+<li><p>Matthieu Boileau</p></li>
+<li><p>Joris Van den Bossche</p></li>
+<li><p>Michael Boyle</p></li>
+<li><p>Matthew Brett</p></li>
+<li><p>BSGalvan</p></li>
+<li><p>Lars Buitinck</p></li>
+<li><p>Pierre de Buyl</p></li>
+<li><p>Ozan Çağlayan</p></li>
+<li><p>Lawrence Chan</p></li>
+<li><p>Adrien Chauve</p></li>
+<li><p>Robert Cimrman</p></li>
+<li><p>Christophe Combelles</p></li>
+<li><p>David Cournapeau</p></li>
+<li><p>Dave</p></li>
+<li><p>dogacan dugmeci</p></li>
+<li><p>Török Edwin</p></li>
+<li><p>egens</p></li>
+<li><p>Andre Espaze</p></li>
+<li><p>André Espaze</p></li>
+<li><p>Loïc Estève</p></li>
+<li><p>Corey Farwell</p></li>
+<li><p>Tim Gates</p></li>
+<li><p>Stuart Geiger</p></li>
+<li><p>Olivier Georg</p></li>
+<li><p>Daniel Gerigk</p></li>
+<li><p>Robert Gieseke</p></li>
+<li><p>Philip Gillißen</p></li>
+<li><p>Ralf Gommers</p></li>
+<li><p>Emmanuelle Gouillart</p></li>
+<li><p>Julia Gustavsen</p></li>
+<li><p>Omar Gutiérrez</p></li>
+<li><p>Matt Haberland</p></li>
+<li><p>Valentin Haenel</p></li>
+<li><p>Pierre Haessig</p></li>
+<li><p>Bruno Hanzen</p></li>
+<li><p>Michael Hartmann</p></li>
+<li><p>Jonathan Helmus</p></li>
+<li><p>Andreas Hilboll</p></li>
+<li><p>Himanshu</p></li>
+<li><p>Julian Hofer</p></li>
+<li><p>Tim Hoffmann</p></li>
+<li><p>B. Hohl</p></li>
+<li><p>Tarek Hoteit</p></li>
+<li><p>Gert-Ludwig Ingold</p></li>
+<li><p>Zbigniew Jędrzejewski-Szmek</p></li>
+<li><p>Thouis (Ray) Jones</p></li>
+<li><p>jorgeprietoarranz</p></li>
+<li><p>josephsalmon</p></li>
+<li><p>Greg Kiar</p></li>
+<li><p>kikocorreoso</p></li>
+<li><p>Vince Knight</p></li>
+<li><p>LFP6</p></li>
+<li><p>Manuel López-Ibáñez</p></li>
+<li><p>Marco Mangan</p></li>
+<li><p>Nicola Masarone</p></li>
+<li><p>John McLaughlin</p></li>
+<li><p>mhemantha</p></li>
+<li><p>michelemaroni89</p></li>
+<li><p>K. Jarrod Millman</p></li>
+<li><p>Mohammad</p></li>
+<li><p>Zachary Moon</p></li>
+<li><p>Mike Mueller</p></li>
+<li><p>negm</p></li>
+<li><p>John B Nelson</p></li>
+<li><p>nicoguaro</p></li>
+<li><p>Sergio Oller</p></li>
+<li><p>Theofilos Papapanagiotou</p></li>
+<li><p>patniharshit</p></li>
+<li><p>Fabian Pedregosa</p></li>
+<li><p>Philippe Pepiot</p></li>
+<li><p>Tiago M. D. Pereira</p></li>
+<li><p>Nicolas Pettiaux</p></li>
+<li><p>Didrik Pinte</p></li>
+<li><p>Evgeny Pogrebnyak</p></li>
+<li><p>reverland</p></li>
+<li><p>Maximilien Riehl</p></li>
+<li><p>Kristian Rother</p></li>
+<li><p>Nicolas P. Rougier</p></li>
+<li><p>Pamphile Roy</p></li>
+<li><p>Rutzmoser</p></li>
+<li><p>Sander</p></li>
+<li><p>João Felipe Santos</p></li>
+<li><p>Mark Setchell</p></li>
+<li><p>Helen Sherwood-Taylor</p></li>
+<li><p>Shoeboxam</p></li>
+<li><p>Simon</p></li>
+<li><p>solarjoe</p></li>
+<li><p>ssmiller</p></li>
+<li><p>Scott Staniewicz</p></li>
+<li><p>strpeter</p></li>
+<li><p>surfer190</p></li>
+<li><p>Bartosz Telenczuk</p></li>
+<li><p>tommyod</p></li>
+<li><p>Wes Turner</p></li>
+<li><p>Akihiro Uchida</p></li>
+<li><p>Utkarsh Upadhyay</p></li>
+<li><p>Olav Vahtras</p></li>
+<li><p>Stéfan van der Walt</p></li>
+<li><p>Gaël Varoquaux</p></li>
+<li><p>Nelle Varoquaux</p></li>
+<li><p>Olivier Verdier</p></li>
+<li><p>VirgileFritsch</p></li>
+<li><p>Pauli Virtanen</p></li>
+<li><p>Yosh Wakeham</p></li>
+<li><p>yasutomo57jp</p></li>
+</ul>
+<p><div style="clear: both"></div></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">4.1.1. Authors</a><ul>
+<li><a class="reference internal" href="#editors">4.1.1.1. Editors</a></li>
+<li><a class="reference internal" href="#chapter-authors">4.1.1.2. Chapter authors</a></li>
+<li><a class="reference internal" href="#additional-contributions">4.1.1.3. Additional Contributions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="about.html"
+                          title="previous chapter"><span class="section-number">4. </span>About the Scientific Python Lectures</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/AUTHORS.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="about.html" title="4. About the Scientific Python Lectures"
+             >previous</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="about.html" ><span class="section-number">4. </span>About the Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4.1.1. </span>Authors</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/AUTHORS.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

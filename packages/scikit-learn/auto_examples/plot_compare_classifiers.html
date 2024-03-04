@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.4.8.9. Compare classifiers on the digits data &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.4.8.10. Plot fitting a 9th order polynomial" href="plot_polynomial_regression.html" />
+    <link rel="prev" title="3.4.8.8. Simple picture of the formal problem of machine learning" href="plot_separator.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_polynomial_regression.html" title="3.4.8.10. Plot fitting a 9th order polynomial"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="plot_separator.html" title="3.4.8.8. Simple picture of the formal problem of machine learning"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U"><span class="section-number">3.4. </span>scikit-learn: machine learning in Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.4.8.9. </span>Compare classifiers on the digits data</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/scikit-learn/auto_examples/plot_compare_classifiers.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-packages-scikit-learn-auto-examples-plot-compare-classifiers-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="compare-classifiers-on-the-digits-data">
+<span id="sphx-glr-packages-scikit-learn-auto-examples-plot-compare-classifiers-py"></span><h1><span class="section-number">3.4.8.9. </span>Compare classifiers on the digits data<a class="headerlink" href="#compare-classifiers-on-the-digits-data" title="Link to this heading">¶</a></h1>
+<p>Compare the performance of a variety of classifiers on a test set for the
+digits data.</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/sklearn/svm/_classes.py:31: FutureWarning: The default value of `dual` will change from `True` to `&#39;auto&#39;` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+<div class="newline"></div>  warnings.warn(
+<div class="newline"></div>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/sklearn/svm/_base.py:1237: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+<div class="newline"></div>  warnings.warn(
+<div class="newline"></div>LinearSVC: 0.9341800269333108
+<div class="newline"></div>GaussianNB: 0.8332741681010102
+<div class="newline"></div>KNeighborsClassifier: 0.9804562804949924
+<div class="newline"></div>------------------
+<div class="newline"></div>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/sklearn/svm/_classes.py:31: FutureWarning: The default value of `dual` will change from `True` to `&#39;auto&#39;` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+<div class="newline"></div>  warnings.warn(
+<div class="newline"></div>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/sklearn/svm/_base.py:1237: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+<div class="newline"></div>  warnings.warn(
+<div class="newline"></div>LinearSVC(loss=&#39;hinge&#39;): 0.9294570108037394
+<div class="newline"></div>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/sklearn/svm/_classes.py:31: FutureWarning: The default value of `dual` will change from `True` to `&#39;auto&#39;` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+<div class="newline"></div>  warnings.warn(
+<div class="newline"></div>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/sklearn/svm/_base.py:1237: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+<div class="newline"></div>  warnings.warn(
+<div class="newline"></div>LinearSVC(loss=&#39;squared_hinge&#39;): 0.9341371852581549
+<div class="newline"></div>-------------------
+<div class="newline"></div>KNeighbors(n_neighbors=1): 0.9913675218842191
+<div class="newline"></div>KNeighbors(n_neighbors=2): 0.9848442068835102
+<div class="newline"></div>KNeighbors(n_neighbors=3): 0.9867753449543099
+<div class="newline"></div>KNeighbors(n_neighbors=4): 0.9803719053818863
+<div class="newline"></div>KNeighbors(n_neighbors=5): 0.9804562804949924
+<div class="newline"></div>KNeighbors(n_neighbors=6): 0.9757924194139573
+<div class="newline"></div>KNeighbors(n_neighbors=7): 0.9780645792142071
+<div class="newline"></div>KNeighbors(n_neighbors=8): 0.9780645792142071
+<div class="newline"></div>KNeighbors(n_neighbors=9): 0.9780645792142071
+<div class="newline"></div>KNeighbors(n_neighbors=10): 0.9755550897728812
+<div class="newline"></div></pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">metrics</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC" class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class"><span class="n">LinearSVC</span></a>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB" title="sklearn.naive_bayes.GaussianNB" class="sphx-glr-backref-module-sklearn-naive_bayes sphx-glr-backref-type-py-class"><span class="n">GaussianNB</span></a>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class"><span class="n">KNeighborsClassifier</span></a>
+<div class="newline"></div>
+<div class="newline"></div><a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.Bunch.html#sklearn.utils.Bunch" title="sklearn.utils.Bunch" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">digits</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits" title="sklearn.datasets.load_digits" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span></a><span class="p">()</span>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">digits</span><span class="o">.</span><span class="n">data</span></a>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">digits</span><span class="o">.</span><span class="n">target</span></a>
+<div class="newline"></div><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">model_selection</span><span class="o">.</span><span class="n">train_test_split</span></a><span class="p">(</span>
+<div class="newline"></div>    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<div class="newline"></div><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">for</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class"><span class="n">Model</span></a> <span class="ow">in</span> <span class="p">[</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC" class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class"><span class="n">LinearSVC</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB" title="sklearn.naive_bayes.GaussianNB" class="sphx-glr-backref-module-sklearn-naive_bayes sphx-glr-backref-type-py-class"><span class="n">GaussianNB</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class"><span class="n">KNeighborsClassifier</span></a><span class="p">]:</span>
+<div class="newline"></div>    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class"><span class="n">Model</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">)</span>
+<div class="newline"></div>    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.predict" title="sklearn.neighbors.KNeighborsClassifier.predict" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-method"><span class="n">clf</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
+<div class="newline"></div>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class"><span class="n">Model</span></a><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a><span class="p">,</span><span class="w"> </span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># test SVC loss</span>
+<div class="newline"></div><span class="k">for</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">loss</span></a> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;hinge&quot;</span><span class="p">,</span> <span class="s2">&quot;squared_hinge&quot;</span><span class="p">]:</span>
+<div class="newline"></div>    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC" class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class"><span class="n">LinearSVC</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">loss</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">loss</span></a><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">)</span>
+<div class="newline"></div>    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.predict" title="sklearn.neighbors.KNeighborsClassifier.predict" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-method"><span class="n">clf</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
+<div class="newline"></div>    <span class="nb">print</span><span class="p">(</span>
+<div class="newline"></div>        <span class="sa">f</span><span class="s2">&quot;LinearSVC(loss=&#39;</span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">loss</span></a><span class="si">}</span><span class="s2">&#39;): </span><span class="si">{</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a><span class="p">,</span><span class="w"> </span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="newline"></div>    <span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------------------&quot;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c1"># test the number of neighbors</span>
+<div class="newline"></div><span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_neighbors</span></a> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+<div class="newline"></div>    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-class"><span class="n">KNeighborsClassifier</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_neighbors</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_neighbors</span></a><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">)</span>
+<div class="newline"></div>    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.predict" title="sklearn.neighbors.KNeighborsClassifier.predict" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-method"><span class="n">clf</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
+<div class="newline"></div>    <span class="nb">print</span><span class="p">(</span>
+<div class="newline"></div>        <span class="sa">f</span><span class="s2">&quot;KNeighbors(n_neighbors=</span><span class="si">{</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_neighbors</span></a><span class="si">}</span><span class="s2">): </span><span class="si">{</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a><span class="p">,</span><span class="w"> </span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="newline"></div>    <span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.425 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-packages-scikit-learn-auto-examples-plot-compare-classifiers-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/4f1450472e9d811b9dc59f37e0801af2/plot_compare_classifiers.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_compare_classifiers.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/cd8e685eae1fabbadf80cfeed9eaa9f1/plot_compare_classifiers.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_compare_classifiers.py</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="plot_separator.html"
+                          title="previous chapter"><span class="section-number">3.4.8.8. </span>Simple picture of the formal problem of machine learning</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="plot_polynomial_regression.html"
+                          title="next chapter"><span class="section-number">3.4.8.10. </span>Plot fitting a 9th order polynomial</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/packages/scikit-learn/auto_examples/plot_compare_classifiers.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_polynomial_regression.html" title="3.4.8.10. Plot fitting a 9th order polynomial"
+             >next</a></li>
+        <li class="right" >
+          <a href="plot_separator.html" title="3.4.8.8. Simple picture of the formal problem of machine learning"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" ><span class="section-number">3. </span>Packages and applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" ><span class="section-number">3.4. </span>scikit-learn: machine learning in Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.4.8.9. </span>Compare classifiers on the digits data</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/scikit-learn/auto_examples/plot_compare_classifiers.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

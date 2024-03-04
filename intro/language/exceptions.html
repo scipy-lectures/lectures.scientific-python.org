@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.2.8. Exception handling in Python &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2.9. Object-oriented programming (OOP)" href="oop.html" />
+    <link rel="prev" title="1.2.7. Standard Library" href="standard_library.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="oop.html" title="1.2.9. Object-oriented programming (OOP)"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="standard_library.html" title="1.2.7. Standard Library"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python_language.html" accesskey="U"><span class="section-number">1.2. </span>The Python language</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.8. </span>Exception handling in Python</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/exceptions.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="exception-handling-in-python">
+<h1><span class="section-number">1.2.8. </span>Exception handling in Python<a class="headerlink" href="#exception-handling-in-python" title="Link to this heading">¶</a></h1>
+<p>It is likely that you have raised Exceptions if you have
+typed all the previous commands of the tutorial. For example, you may
+have raised an exception if you entered a command with a typo.</p>
+<p>Exceptions are raised by different kinds of errors arising when executing
+Python code. In your own code, you may also catch errors, or define custom
+error types. You may want to look at the descriptions of the <a class="reference external" href="https://docs.python.org/3/library/exceptions.html">the built-in
+Exceptions</a> when looking
+for the right exception type.</p>
+<section id="exceptions">
+<h2><span class="section-number">1.2.8.1. </span>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">¶</a></h2>
+<p>Exceptions are raised by errors in Python:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<div class="newline"></div><span class="gt">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<div class="newline"></div><span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<div class="newline"></div><span class="ne">----&gt; </span><span class="mi">1</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="ne">ZeroDivisionError</span>: division by zero
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="mi">1</span> <span class="o">+</span> <span class="s1">&#39;e&#39;</span>
+<div class="newline"></div><span class="gt">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<div class="newline"></div><span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<div class="newline"></div><span class="ne">----&gt; </span><span class="mi">1</span> <span class="mi">1</span> <span class="o">+</span> <span class="s1">&#39;e&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">d</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div><span class="gt">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<div class="newline"></div><span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<div class="newline"></div><span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">d</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="ne">KeyError</span>: 3
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [5]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [6]: </span><span class="n">l</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<div class="newline"></div><span class="gt">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<div class="newline"></div><span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<div class="newline"></div><span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">l</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="ne">IndexError</span>: list index out of range
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [7]: </span><span class="n">l</span><span class="o">.</span><span class="n">foobar</span>
+<div class="newline"></div><span class="gt">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<div class="newline"></div><span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<div class="newline"></div><span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">l</span><span class="o">.</span><span class="n">foobar</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="ne">AttributeError</span>: &#39;list&#39; object has no attribute &#39;foobar&#39;
+<div class="newline"></div></pre></div>
+</div>
+<p>As you can see, there are <strong>different types</strong> of exceptions for different errors.</p>
+</section>
+<section id="catching-exceptions">
+<h2><span class="section-number">1.2.8.2. </span>Catching exceptions<a class="headerlink" href="#catching-exceptions" title="Link to this heading">¶</a></h2>
+<section id="try-except">
+<h3>try/except<a class="headerlink" href="#try-except" title="Link to this heading">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ...: </span>    <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ...: </span>        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Please enter a number: &#39;</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">   ...: </span>        <span class="k">break</span>
+<div class="newline"></div><span class="gp">   ...: </span>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ...: </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;That was no valid number.  Try again...&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ...: </span>
+<div class="newline"></div><span class="go">Please enter a number: a</span>
+<div class="newline"></div><span class="go">That was no valid number.  Try again...</span>
+<div class="newline"></div><span class="go">Please enter a number: 1</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [9]: </span><span class="n">x</span>
+<div class="newline"></div><span class="gh">Out[9]: </span><span class="go">1</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="try-finally">
+<h3>try/finally<a class="headerlink" href="#try-finally" title="Link to this heading">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>    <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Please enter a number: &#39;</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">   ....: </span><span class="k">finally</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Thank you for your input&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....: </span>
+<div class="newline"></div><span class="go">Please enter a number: a</span>
+<div class="newline"></div><span class="go">Thank you for your input</span>
+<div class="newline"></div><span class="gt">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<div class="newline"></div><span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<div class="newline"></div><span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Please enter a number: &#39;</span><span class="p">))</span>
+<div class="newline"></div><span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">finally</span><span class="p">:</span>
+<div class="newline"></div><span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Thank you for your input&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="ne">ValueError</span>: invalid literal for int() with base 10: &#39;a&#39;
+<div class="newline"></div></pre></div>
+</div>
+<p>Important for resource management (e.g. closing a file)</p>
+</section>
+<section id="easier-to-ask-for-forgiveness-than-for-permission">
+<h3>Easier to ask for forgiveness than for permission<a class="headerlink" href="#easier-to-ask-for-forgiveness-than-for-permission" title="Link to this heading">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="k">def</span> <span class="nf">print_sorted</span><span class="p">(</span><span class="n">collection</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">   ....: </span>    <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>        <span class="n">collection</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">   ....: </span>    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>        <span class="k">pass</span> <span class="c1"># The pass statement does nothing</span>
+<div class="newline"></div><span class="gp">   ....: </span>    <span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....: </span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [12]: </span><span class="n">print_sorted</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<div class="newline"></div><span class="go">[1, 2, 3]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [13]: </span><span class="n">print_sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<div class="newline"></div><span class="go">{1, 2, 3}</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [14]: </span><span class="n">print_sorted</span><span class="p">(</span><span class="s1">&#39;132&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">132</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+</section>
+<section id="raising-exceptions">
+<h2><span class="section-number">1.2.8.3. </span>Raising exceptions<a class="headerlink" href="#raising-exceptions" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>Capturing and reraising an exception:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="k">def</span> <span class="nf">filter_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">   ....: </span>   <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>       <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....: </span>   <span class="k">except</span> <span class="ne">UnicodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>       <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Gaël&#39;</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>           <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OK, Gaël&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....: </span>       <span class="k">else</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>           <span class="k">raise</span> <span class="n">e</span>
+<div class="newline"></div><span class="gp">   ....: </span>   <span class="k">return</span> <span class="n">name</span>
+<div class="newline"></div><span class="gp">   ....: </span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [16]: </span><span class="n">filter_name</span><span class="p">(</span><span class="s1">&#39;Gaël&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">OK, Gaël</span>
+<div class="newline"></div><span class="gh">Out[16]: </span><span class="go">&#39;Gaël&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [17]: </span><span class="n">filter_name</span><span class="p">(</span><span class="s1">&#39;Stéfan&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gt">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="ne">UnicodeEncodeError</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
+<div class="newline"></div><span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<div class="newline"></div><span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">filter_name</span><span class="p">(</span><span class="s1">&#39;Stéfan&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="nn">Cell In[15], line 8,</span> in <span class="ni">filter_name</span><span class="nt">(name)</span>
+<div class="newline"></div><span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OK, Gaël&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="k">else</span><span class="p">:</span>
+<div class="newline"></div><span class="ne">----&gt; </span><span class="mi">8</span>         <span class="k">raise</span> <span class="n">e</span>
+<div class="newline"></div><span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">return</span> <span class="n">name</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="nn">Cell In[15], line 3,</span> in <span class="ni">filter_name</span><span class="nt">(name)</span>
+<div class="newline"></div><span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">filter_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<div class="newline"></div><span class="g g-Whitespace">      </span><span class="mi">2</span>    <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="ne">----&gt; </span><span class="mi">3</span>        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="g g-Whitespace">      </span><span class="mi">4</span>    <span class="k">except</span> <span class="ne">UnicodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<div class="newline"></div><span class="g g-Whitespace">      </span><span class="mi">5</span>        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Gaël&#39;</span><span class="p">:</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="nn">UnicodeEncodeError: &#39;ascii&#39; codec can&#39;t encode character &#39;\xe9&#39; in position 2: ordinal not</span> in <span class="ni">range</span><span class="nt">(128)</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p>Exceptions to pass messages between parts of the code:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="k">def</span> <span class="nf">achilles_arrow</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">   ....: </span>   <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>       <span class="k">raise</span> <span class="ne">StopIteration</span>
+<div class="newline"></div><span class="gp">   ....: </span>   <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span>
+<div class="newline"></div><span class="gp">   ....: </span>   <span class="k">return</span> <span class="n">x</span>
+<div class="newline"></div><span class="gp">   ....: </span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [19]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [20]: </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>    <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>        <span class="n">x</span> <span class="o">=</span> <span class="n">achilles_arrow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....: </span>    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....: </span>        <span class="k">break</span>
+<div class="newline"></div><span class="gp">   ....: </span>
+<div class="newline"></div><span class="gp">   ....: </span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [21]: </span><span class="n">x</span>
+<div class="newline"></div><span class="gh">Out[21]: </span><span class="go">0.9990234375</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+</ul>
+<p>Use exceptions to notify certain conditions are met (e.g.
+StopIteration) or not (e.g. custom error raising)</p>
+<p><div style="clear: both"></div></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">1.2.8. Exception handling in Python</a><ul>
+<li><a class="reference internal" href="#exceptions">1.2.8.1. Exceptions</a></li>
+<li><a class="reference internal" href="#catching-exceptions">1.2.8.2. Catching exceptions</a><ul>
+<li><a class="reference internal" href="#try-except">try/except</a></li>
+<li><a class="reference internal" href="#try-finally">try/finally</a></li>
+<li><a class="reference internal" href="#easier-to-ask-for-forgiveness-than-for-permission">Easier to ask for forgiveness than for permission</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#raising-exceptions">1.2.8.3. Raising exceptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="standard_library.html"
+                          title="previous chapter"><span class="section-number">1.2.7. </span>Standard Library</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="oop.html"
+                          title="next chapter"><span class="section-number">1.2.9. </span>Object-oriented programming (OOP)</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/intro/language/exceptions.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="oop.html" title="1.2.9. Object-oriented programming (OOP)"
+             >next</a></li>
+        <li class="right" >
+          <a href="standard_library.html" title="1.2.7. Standard Library"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python_language.html" ><span class="section-number">1.2. </span>The Python language</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.8. </span>Exception handling in Python</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/exceptions.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples for the scikit-image chapter &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/foldable_toc.css?v=38a22cee" />
+    <script src="../../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <script src="../../../_static/foldable_toc.js?v=d65ca516"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Examples for the scikit-image chapter</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/scikit-image/auto_examples/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="examples-for-the-scikit-image-chapter">
+<h1>Examples for the scikit-image chapter<a class="headerlink" href="#examples-for-the-scikit-image-chapter" title="Link to this heading">¶</a></h1>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="How to create an image with basic NumPy commands : np.zeros, slicing..."><img alt="" src="../../../_images/sphx_glr_plot_check_thumb.png" />
+<p><a class="reference internal" href="plot_check.html#sphx-glr-packages-scikit-image-auto-examples-plot-check-py"><span class="std std-ref">Creating an image</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Creating an image</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Load and display an image"><img alt="" src="../../../_images/sphx_glr_plot_camera_thumb.png" />
+<p><a class="reference internal" href="plot_camera.html#sphx-glr-packages-scikit-image-auto-examples-plot-camera-py"><span class="std std-ref">Displaying a simple image</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Displaying a simple image</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An illustration of overflow problem arising when working with integers"><img alt="" src="../../../_images/sphx_glr_plot_camera_uint_thumb.png" />
+<p><a class="reference internal" href="plot_camera_uint.html#sphx-glr-packages-scikit-image-auto-examples-plot-camera-uint-py"><span class="std std-ref">Integers can overflow</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Integers can overflow</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Histogram equalizing makes images have a uniform histogram."><img alt="" src="../../../_images/sphx_glr_plot_equalize_hist_thumb.png" />
+<p><a class="reference internal" href="plot_equalize_hist.html#sphx-glr-packages-scikit-image-auto-examples-plot-equalize-hist-py"><span class="std std-ref">Equalizing the histogram of an image</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Equalizing the histogram of an image</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of the horizontal Sobel filter, to compute horizontal gradient..."><img alt="" src="../../../_images/sphx_glr_plot_sobel_thumb.png" />
+<p><a class="reference internal" href="plot_sobel.html#sphx-glr-packages-scikit-image-auto-examples-plot-sobel-py"><span class="std std-ref">Computing horizontal gradients with the Sobel filter</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Computing horizontal gradients with the Sobel filter</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Visualize segmentation contours on original grayscale image."><img alt="" src="../../../_images/sphx_glr_plot_boundaries_thumb.png" />
+<p><a class="reference internal" href="plot_boundaries.html#sphx-glr-packages-scikit-image-auto-examples-plot-boundaries-py"><span class="std std-ref">Segmentation contours</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Segmentation contours</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates automatic Otsu thresholding."><img alt="" src="../../../_images/sphx_glr_plot_threshold_thumb.png" />
+<p><a class="reference internal" href="plot_threshold.html#sphx-glr-packages-scikit-image-auto-examples-plot-threshold-py"><span class="std std-ref">Otsu thresholding</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Otsu thresholding</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Warping and affine transforms of images."><img alt="" src="../../../_images/sphx_glr_plot_features_thumb.png" />
+<p><a class="reference internal" href="plot_features.html#sphx-glr-packages-scikit-image-auto-examples-plot-features-py"><span class="std std-ref">Affine transform</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Affine transform</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to label connected components of a binary image, using the dedicated ski..."><img alt="" src="../../../_images/sphx_glr_plot_labels_thumb.png" />
+<p><a class="reference internal" href="plot_labels.html#sphx-glr-packages-scikit-image-auto-examples-plot-labels-py"><span class="std std-ref">Labelling connected components of an image</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Labelling connected components of an image</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example compares several denoising filters available in scikit-image: a Gaussian filter, a..."><img alt="" src="../../../_images/sphx_glr_plot_filter_coins_thumb.png" />
+<p><a class="reference internal" href="plot_filter_coins.html#sphx-glr-packages-scikit-image-auto-examples-plot-filter-coins-py"><span class="std std-ref">Various denoising filters</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Various denoising filters</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example compares two segmentation methods in order to separate two connected disks: the wa..."><img alt="" src="../../../_images/sphx_glr_plot_segmentations_thumb.png" />
+<p><a class="reference internal" href="plot_segmentations.html#sphx-glr-packages-scikit-image-auto-examples-plot-segmentations-py"><span class="std std-ref">Watershed and random walker for segmentation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Watershed and random walker for segmentation</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/fef51fefbc4306cd767710473a730af7/auto_examples_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/6db0bb911897ac73e48f2e61eccb9f04/auto_examples_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+<p><div style="clear: both"></div></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/packages/scikit-image/auto_examples/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Scientific Python Lectures</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Examples for the scikit-image chapter</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/scikit-image/auto_examples/index.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

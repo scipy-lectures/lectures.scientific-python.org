@@ -1,0 +1,166 @@
+:orphan:
+
+Examples for the summary excercices
+====================================
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Generate a chart of more complex data recorded by the lidar system">
+
+.. only:: html
+
+  .. image:: /intro/scipy/summary-exercises/auto_examples/images/thumb/sphx_glr_plot_optimize_lidar_complex_data_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_optimize_lidar_complex_data.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The lidar system, data (2 of 2 datasets)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Generate a chart of the data recorded by the lidar system">
+
+.. only:: html
+
+  .. image:: /intro/scipy/summary-exercises/auto_examples/images/thumb/sphx_glr_plot_optimize_lidar_data_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_optimize_lidar_data.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The lidar system, data (1 of 2 datasets)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Generate the exercise results on the Gumbell distribution">
+
+.. only:: html
+
+  .. image:: /intro/scipy/summary-exercises/auto_examples/images/thumb/sphx_glr_plot_sprog_annual_maxima_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_sprog_annual_maxima.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Gumbell distribution, results</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Generate a chart of the data fitted by Gaussian curve">
+
+.. only:: html
+
+  .. image:: /intro/scipy/summary-exercises/auto_examples/images/thumb/sphx_glr_plot_optimize_lidar_data_fit_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_optimize_lidar_data_fit.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The lidar system, data and fit (1 of 2 datasets)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Generate a chart of the data fitted by Gaussian curve">
+
+.. only:: html
+
+  .. image:: /intro/scipy/summary-exercises/auto_examples/images/thumb/sphx_glr_plot_optimize_lidar_complex_data_fit_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_optimize_lidar_complex_data_fit.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The lidar system, data and fit (2 of 2 datasets)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Generate the image cumulative-wind-speed-prediction.png for the interpolate section of scipy.rs...">
+
+.. only:: html
+
+  .. image:: /intro/scipy/summary-exercises/auto_examples/images/thumb/sphx_glr_plot_cumulative_wind_speed_prediction_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_cumulative_wind_speed_prediction.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cumulative wind speed prediction</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Generate the exercise results on the Gumbell distribution">
+
+.. only:: html
+
+  .. image:: /intro/scipy/summary-exercises/auto_examples/images/thumb/sphx_glr_plot_gumbell_wind_speed_prediction_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_intro_scipy_summary-exercises_auto_examples_plot_gumbell_wind_speed_prediction.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Gumbell distribution</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/summary-exercises/auto_examples/plot_optimize_lidar_complex_data
+   /intro/scipy/summary-exercises/auto_examples/plot_optimize_lidar_data
+   /intro/scipy/summary-exercises/auto_examples/plot_sprog_annual_maxima
+   /intro/scipy/summary-exercises/auto_examples/plot_optimize_lidar_data_fit
+   /intro/scipy/summary-exercises/auto_examples/plot_optimize_lidar_complex_data_fit
+   /intro/scipy/summary-exercises/auto_examples/plot_cumulative_wind_speed_prediction
+   /intro/scipy/summary-exercises/auto_examples/plot_gumbell_wind_speed_prediction
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: auto_examples_python.zip </intro/scipy/summary-exercises/auto_examples/auto_examples_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip </intro/scipy/summary-exercises/auto_examples/auto_examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

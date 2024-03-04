@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.2.3. Control Flow &#8212; Scientific Python Lectures</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css?v=c29d3f28" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@3.0.0/build/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <script src="../../_static/documentation_options.js?v=3d051f0c"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=0729d509"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../../_static/scroll_highlight_toc.js?v=cbac5d29"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2.4. Defining functions" href="functions.html" />
+    <link rel="prev" title="1.2.2. Basic types" href="basic_types.html" />
+ 
+
+<script defer data-domain="lectures.scientific-python.org" src="https://views.scientific-python.org/js/script.js"></script>
+
+  </head><body>
+    <!-- Use the header to add javascript -->
+    
+
+    <script type="text/javascript">
+     // Function to toggle tip div
+     function toggle_tip_div(obj) {
+       $(obj).find("p.summary").remove();
+
+       var content = $(obj).text();
+       var html = $(obj).html();
+
+       if ($(obj).hasClass("collapsed")) {
+         // Expand
+         $(obj).html('<p class="summary"><img src="../../_static/minus.png"></p>' + html);
+       } else {
+         // Collapse
+         if(content.length > 50) {
+           content = content.substr(0, 47);
+         }
+         $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+       }
+
+       $(obj).toggleClass("collapsed");
+     }
+
+     $(document).ready(function () {
+       $(".tip").each(function() {
+         $(this).find("p.admonition-title").remove();
+       });
+       // Collapse all tips and add plus sign
+       $(".tip").each(function() { toggle_tip_div($(this)); });
+
+       $(".tip")
+         .click(function(event){
+           // Change state of the global button
+           $('div.related li.transparent').removeClass('transparent');
+           toggle_tip_div($(this));
+           if (event.target.tagName.toLowerCase() != "a") {
+             return true; //Makes links clickable
+           }
+         });
+     });
+    </script>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="functions.html" title="1.2.4. Defining functions"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="basic_types.html" title="1.2.2. Basic types"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python_language.html" accesskey="U"><span class="section-number">1.2. </span>The Python language</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.3. </span>Control Flow</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/control_flow.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="control-flow">
+<h1><span class="section-number">1.2.3. </span>Control Flow<a class="headerlink" href="#control-flow" title="Link to this heading">¶</a></h1>
+<p>Controls the order in which the code is executed.</p>
+<section id="if-elif-else">
+<h2><span class="section-number">1.2.3.1. </span>if/elif/else<a class="headerlink" href="#if-elif-else" title="Link to this heading">¶</a></h2>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="mi">2</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obvious!&quot;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">...</span>
+<div class="newline"></div><span class="go">Obvious!</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Blocks are delimited by indentation</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Type the following lines in your Python interpreter, and be careful
+to <strong>respect the indentation depth</strong>. The Ipython shell automatically
+increases the indentation depth after a colon <code class="docutils literal notranslate"><span class="pre">:</span></code> sign; to
+decrease the indentation depth, go four spaces to the left with the
+Backspace key. Press the Enter key twice to leave the logical block.</p>
+</div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span><span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A lot&quot;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">...</span>
+<div class="newline"></div><span class="go">A lot</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Indentation is compulsory in scripts as well. As an exercise, re-type the
+previous lines with the same indentation in a script <code class="docutils literal notranslate"><span class="pre">condition.py</span></code>, and
+execute the script with <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">condition.py</span></code> in Ipython.</p>
+</section>
+<section id="for-range">
+<h2><span class="section-number">1.2.3.2. </span>for/range<a class="headerlink" href="#for-range" title="Link to this heading">¶</a></h2>
+<p>Iterating with an index:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="newline"></div><span class="go">0</span>
+<div class="newline"></div><span class="go">1</span>
+<div class="newline"></div><span class="go">2</span>
+<div class="newline"></div><span class="go">3</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>But most often, it is more readable to iterate over values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;cool&#39;</span><span class="p">,</span> <span class="s1">&#39;powerful&#39;</span><span class="p">,</span> <span class="s1">&#39;readable&#39;</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Python is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">word</span><span class="p">)</span>
+<div class="newline"></div><span class="go">Python is cool</span>
+<div class="newline"></div><span class="go">Python is powerful</span>
+<div class="newline"></div><span class="go">Python is readable</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="while-break-continue">
+<h2><span class="section-number">1.2.3.3. </span>while/break/continue<a class="headerlink" href="#while-break-continue" title="Link to this heading">¶</a></h2>
+<p>Typical C-style while loop (Mandelbrot problem):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
+<div class="newline"></div><span class="go">(-134+352j)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>More advanced features</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">break</span></code> out of enclosing for/while loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="k">break</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">continue</span></code> the next iteration of a loop.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">if</span> <span class="n">element</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="k">continue</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">element</span><span class="p">)</span>
+<div class="newline"></div><span class="go">1.0</span>
+<div class="newline"></div><span class="go">0.5</span>
+<div class="newline"></div><span class="go">0.25</span>
+<div class="newline"></div></pre></div>
+</div>
+</section>
+<section id="conditional-expressions">
+<h2><span class="section-number">1.2.3.4. </span>Conditional Expressions<a class="headerlink" href="#conditional-expressions" title="Link to this heading">¶</a></h2>
+<dl class="field-list">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&lt;OBJECT&gt;</span></code><span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Evaluates to False:</dt><dd><ul class="simple">
+<li><p>any number equal to zero (0, 0.0, 0+0j)</p></li>
+<li><p>an empty container (list, tuple, set, dictionary, …)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+</dd>
+<dt>Evaluates to True:</dt><dd><ul class="simple">
+<li><p>everything else</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code><span class="colon">:</span></dt>
+<dd class="field-even"><p>Tests equality, with logics:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">==</span> <span class="mf">1.</span>
+<div class="newline"></div><span class="go">True</span>
+<div class="newline"></div></pre></div>
+</div>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">is</span> <span class="pre">b</span></code><span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tests identity: both sides are the same object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mf">1.</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+<div class="newline"></div><span class="go">True</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<div class="newline"></div><span class="go">False</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<div class="newline"></div><span class="go">True</span>
+<div class="newline"></div></pre></div>
+</div>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">in</span> <span class="pre">b</span></code><span class="colon">:</span></dt>
+<dd class="field-even"><p>For any collection <code class="docutils literal notranslate"><span class="pre">b</span></code>: <code class="docutils literal notranslate"><span class="pre">b</span></code> contains <code class="docutils literal notranslate"><span class="pre">a</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="ow">in</span> <span class="n">b</span>
+<div class="newline"></div><span class="go">True</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="ow">in</span> <span class="n">b</span>
+<div class="newline"></div><span class="go">False</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">b</span></code> is a dictionary, this tests that <code class="docutils literal notranslate"><span class="pre">a</span></code> is a key of <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="advanced-iteration">
+<h2><span class="section-number">1.2.3.5. </span>Advanced iteration<a class="headerlink" href="#advanced-iteration" title="Link to this heading">¶</a></h2>
+<section id="iterate-over-any-sequence">
+<h3>Iterate over any <em>sequence</em><a class="headerlink" href="#iterate-over-any-sequence" title="Link to this heading">¶</a></h3>
+<p>You can iterate over any sequence (string, list, keys in a dictionary, lines in
+a file, …):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vowels</span> <span class="o">=</span> <span class="s1">&#39;aeiouy&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;powerful&#39;</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vowels</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="newline"></div><span class="go">o</span>
+<div class="newline"></div><span class="go">e</span>
+<div class="newline"></div><span class="go">u</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hello how are you?&quot;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c1"># returns a list</span>
+<div class="newline"></div><span class="go">[&#39;Hello&#39;, &#39;how&#39;, &#39;are&#39;, &#39;you?&#39;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">...</span>
+<div class="newline"></div><span class="go">Hello</span>
+<div class="newline"></div><span class="go">how</span>
+<div class="newline"></div><span class="go">are</span>
+<div class="newline"></div><span class="go">you?</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Few languages (in particular, languages for scientific computing) allow to
+loop over anything but integers/indices. With Python it is possible to
+loop exactly over the objects of interest without bothering with indices
+you often don’t care about. This feature can often be used to make
+code more readable.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not safe to modify the sequence you are iterating over.</p>
+</div>
+</section>
+<section id="keeping-track-of-enumeration-number">
+<h3>Keeping track of enumeration number<a class="headerlink" href="#keeping-track-of-enumeration-number" title="Link to this heading">¶</a></h3>
+<p>Common task is to iterate over a sequence while keeping track of the
+item number.</p>
+<ul>
+<li><p>Could use while loop with a counter as above. Or a for loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cool&#39;</span><span class="p">,</span> <span class="s1">&#39;powerful&#39;</span><span class="p">,</span> <span class="s1">&#39;readable&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<div class="newline"></div><span class="go">(0, &#39;cool&#39;)</span>
+<div class="newline"></div><span class="go">(1, &#39;powerful&#39;)</span>
+<div class="newline"></div><span class="go">(2, &#39;readable&#39;)</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p>But, Python provides a built-in function - <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> - for this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">((</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>
+<div class="newline"></div><span class="go">(0, &#39;cool&#39;)</span>
+<div class="newline"></div><span class="go">(1, &#39;powerful&#39;)</span>
+<div class="newline"></div><span class="go">(2, &#39;readable&#39;)</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="looping-over-a-dictionary">
+<h3>Looping over a dictionary<a class="headerlink" href="#looping-over-a-dictionary" title="Link to this heading">¶</a></h3>
+<p>Use <strong>items</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mf">1.2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">1</span><span class="n">j</span><span class="p">}</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Key: </span><span class="si">%s</span><span class="s1"> has value: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span>
+<div class="newline"></div><span class="go">Key: a has value: 1</span>
+<div class="newline"></div><span class="go">Key: b has value: 1.2</span>
+<div class="newline"></div><span class="go">Key: c has value: 1j</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ordering of a dictionary is random, thus we use <a class="reference external" href="https://docs.python.org/3/library/functions.html#sorted" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sorted()</span></code></a>
+which will sort on the keys.</p>
+</div>
+</section>
+</section>
+<section id="list-comprehensions">
+<h2><span class="section-number">1.2.3.6. </span>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Link to this heading">¶</a></h2>
+<p>Instead of creating a list by means of a loop, one can make use
+of a list comprehension with a rather self-explaining syntax.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<div class="newline"></div><span class="go">[0, 1, 4, 9]</span>
+<div class="newline"></div></pre></div>
+</div>
+<hr class="docutils" />
+<aside class="topic green">
+<p class="topic-title">Exercise</p>
+<p>Compute the decimals of Pi using the Wallis formula:</p>
+<div class="math">
+<p><img src="../../_images/math/1e109015aef7f1be5ae735fec9b6f9efca31ba67.png" alt="\pi = 2 \prod_{i=1}^{\infty} \frac{4i^2}{4i^2 - 1}"/></p>
+</div></aside>
+<p><div style="clear: both"></div></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">1.2.3. Control Flow</a><ul>
+<li><a class="reference internal" href="#if-elif-else">1.2.3.1. if/elif/else</a></li>
+<li><a class="reference internal" href="#for-range">1.2.3.2. for/range</a></li>
+<li><a class="reference internal" href="#while-break-continue">1.2.3.3. while/break/continue</a></li>
+<li><a class="reference internal" href="#conditional-expressions">1.2.3.4. Conditional Expressions</a></li>
+<li><a class="reference internal" href="#advanced-iteration">1.2.3.5. Advanced iteration</a><ul>
+<li><a class="reference internal" href="#iterate-over-any-sequence">Iterate over any <em>sequence</em></a></li>
+<li><a class="reference internal" href="#keeping-track-of-enumeration-number">Keeping track of enumeration number</a></li>
+<li><a class="reference internal" href="#looping-over-a-dictionary">Looping over a dictionary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#list-comprehensions">1.2.3.6. List Comprehensions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="basic_types.html"
+                          title="previous chapter"><span class="section-number">1.2.2. </span>Basic types</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="functions.html"
+                          title="next chapter"><span class="section-number">1.2.4. </span>Defining functions</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/intro/language/control_flow.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="functions.html" title="1.2.4. Defining functions"
+             >next</a></li>
+        <li class="right" >
+          <a href="basic_types.html" title="1.2.2. Basic types"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Scientific Python Lectures</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">1. </span>Getting started with Python for science</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python_language.html" ><span class="section-number">1.2. </span>The Python language</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.3. </span>Control Flow</a></li>
+     
+    <!-- Insert a tip toggle in the navigation bar -->
+        <li class="left">
+        <!-- On click, expand all tips -->
+        <!--
+        <a>
+            <img src="../../_static/plus.png"
+                 alt="Expand tips" style="padding: 1ex;"/>
+            <span class="hiddenlink">Collapse document to compact view</span>
+        </a>
+        -->
+        </li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/intro/language/control_flow.rst">Edit
+      <span class="tooltip">
+        Improve this page:<br/>Edit it on Github.
+      </span>
+    </a>
+    </li>
+    
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>
