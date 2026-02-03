@@ -1,0 +1,1286 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>About the Scientific Python Lecture notes &#8212; Scientific Python Lectures</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'about';</script>
+    <link rel="canonical" href="https://lectures.scientific-python.org/about.html" />
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="scikit-learn: machine learning in Python" href="packages/scikit-learn/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Scientific Python Lectures - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Scientific Python Lectures - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started with Python for Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro/intro.html">Python scientific computing ecosystem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="intro/language/python_language.html">The Python language</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro/language/first_steps.html">First steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/language/basic_types.html">Basic types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/language/control_flow.html">Control Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/language/functions.html">Defining functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/language/reusing_code.html">Reusing code: scripts and modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/language/io.html">Input and Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/language/standard_library.html">Standard Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/language/exceptions.html">Exception handling in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/language/oop.html">Object-oriented programming (OOP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="intro/numpy/index.html">NumPy: creating and manipulating numerical data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro/numpy/array_object.html">The NumPy array object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/numpy/operations.html">Numerical operations on arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/numpy/elaborate_arrays.html">More elaborate arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/numpy/advanced_operations.html">Advanced operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/numpy/exercises.html">Some exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="intro/matplotlib/index.html">Matplotlib: plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro/scipy/index.html">SciPy: high-level scientific computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro/help/help.html">Getting help and finding documentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="advanced/advanced_python/index.html">Advanced Python Constructs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/advanced_numpy/index.html">Advanced NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/debugging/index.html">Debugging code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/optimizing/index.html">Optimizing code</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="advanced/scipy_sparse/introduction.html">Scipy sparse arrays</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced/scipy_sparse/storage_schemes.html">Storage Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/scipy_sparse/solvers.html">Linear System Solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/scipy_sparse/other_packages.html">Other Interesting Packages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/image_processing/index.html">Image manipulation and processing using NumPy and SciPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/mathematical_optimization/index.html">Mathematical optimization: finding minima of functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html">Interfacing with C</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages and applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="packages/statistics/index.html">Statistics in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages/sympy.html"><code class="docutils literal notranslate"><span class="pre">sympy</span></code> : Symbolic Mathematics in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages/scikit-image/index.html"><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>: image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages/scikit-learn/index.html"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>: machine learning in Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">About the Scientific Python Lecture notes</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/scipy-lectures/scientific-python-lectures" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/about.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/scipy-lectures/scientific-python-lectures/issues/new?title=Issue%20on%20page%20%2Fabout.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/about.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>About the Scientific Python Lecture notes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">About the Scientific Python Lecture notes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editors">Editors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-authors">Chapter authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-contributions">Additional Contributions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-new">What’s new</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2024-1-april-2024">Release 2024.1 (April 2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2022-1-august-2022">Release 2022.1 (August 2022)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2020-2-september-2020">Release 2020.2 (September 2020)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2020-1-march-2020">Release 2020.1 (March 2020)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2019-1-may-2019">Release 2019.1 (May 2019)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2018-1-september-2018">Release 2018.1 (September 2018)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2017-1-october-2017">Release 2017.1 (October 2017)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2016-1-september-2016">Release 2016.1 (September 2016)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2015-3-november-2015">Release 2015.3 (November 2015)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2015-2-october-2015">Release 2015.2 (October 2015)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2015-1-september-2015">Release 2015.1 (September 2015)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2013-2-21-august-2013">Release 2013.2 (21 August 2013)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2013-1-10-feb-2013">Release 2013.1 (10 Feb 2013)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2012-3-26-nov-2012">Release 2012.3 (26 Nov 2012)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2012-2-22-jun-2012">Release 2012.2 (22 Jun 2012)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2012-1-20-jun-2012">Release 2012.1 (20 Jun 2012)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2012-0-22-apr-2012">Release 2012.0 (22 Apr 2012)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2011-1-16-oct-2011">Release 2011.1 (16 Oct 2011)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2011-1-sept-2011">Release 2011 (1 Sept 2011)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-and-design-choices-for-the-lectures">Objectives and design choices for the lectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing-guide">Contributing guide</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-instructions">Building instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-cover">Updating the cover</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-and-admonitions">Notes and admonitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-and-solutions">Exercises and solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-processing">A note on processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development">Development</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="about-the-scientific-python-lecture-notes">
+<h1>About the Scientific Python Lecture notes<a class="headerlink" href="#about-the-scientific-python-lecture-notes" title="Link to this heading">#</a></h1>
+<p>Release: 2025.2rc0.dev0</p>
+<p>The lectures are archived on Zenodo:</p>
+<p><img alt="http://dx.doi.org/10.5281/zenodo.594102" src="https://zenodo.org/badge/doi/10.5281/zenodo.594102.svg" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="authors">
+<h1>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h1>
+<section id="editors">
+<h2>Editors<a class="headerlink" href="#editors" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>K. Jarrod Millman</p></li>
+<li><p>Stéfan van der Walt</p></li>
+<li><p>Gaël Varoquaux</p></li>
+<li><p>Emmanuelle Gouillart</p></li>
+<li><p>Olav Vahtras</p></li>
+<li><p>Pierre de Buyl</p></li>
+<li><p>Peter Rush</p></li>
+<li><p>Matthew Brett</p></li>
+</ul>
+</section>
+<section id="chapter-authors">
+<h2>Chapter authors<a class="headerlink" href="#chapter-authors" title="Link to this heading">#</a></h2>
+<p>Listed by alphabetical order.</p>
+<ul class="simple">
+<li><p>Christopher Burns</p></li>
+<li><p>Adrian Chauve</p></li>
+<li><p>Robert Cimrman</p></li>
+<li><p>Christophe Combelles</p></li>
+<li><p>André Espaze</p></li>
+<li><p>Emmanuelle Gouillart</p></li>
+<li><p>Mike Müller</p></li>
+<li><p>Fabian Pedregosa</p></li>
+<li><p>Didrik Pinte</p></li>
+<li><p>Nicolas Rougier</p></li>
+<li><p>Gaël Varoquaux</p></li>
+<li><p>Pauli Virtanen</p></li>
+<li><p>Zbigniew Jędrzejewski-Szmek</p></li>
+<li><p>Valentin Haenel (editor from 2011 to 2015)</p></li>
+</ul>
+</section>
+<section id="additional-contributions">
+<h2>Additional Contributions<a class="headerlink" href="#additional-contributions" title="Link to this heading">#</a></h2>
+<p>Listed by alphabetical order</p>
+<ul class="simple">
+<li><p>Osayd Abdu</p></li>
+<li><p>arunpersaud</p></li>
+<li><p>Ross Barnowski</p></li>
+<li><p>Sebastian Berg</p></li>
+<li><p>Lilian Besson</p></li>
+<li><p>Matthieu Boileau</p></li>
+<li><p>Joris Van den Bossche</p></li>
+<li><p>Michael Boyle</p></li>
+<li><p>Matthew Brett</p></li>
+<li><p>BSGalvan</p></li>
+<li><p>Lars Buitinck</p></li>
+<li><p>Pierre de Buyl</p></li>
+<li><p>Ozan Çağlayan</p></li>
+<li><p>Lawrence Chan</p></li>
+<li><p>Adrien Chauve</p></li>
+<li><p>Robert Cimrman</p></li>
+<li><p>Christophe Combelles</p></li>
+<li><p>David Cournapeau</p></li>
+<li><p>Dave</p></li>
+<li><p>dogacan dugmeci</p></li>
+<li><p>Török Edwin</p></li>
+<li><p>egens</p></li>
+<li><p>Andre Espaze</p></li>
+<li><p>André Espaze</p></li>
+<li><p>Loïc Estève</p></li>
+<li><p>Corey Farwell</p></li>
+<li><p>Tim Gates</p></li>
+<li><p>Stuart Geiger</p></li>
+<li><p>Olivier Georg</p></li>
+<li><p>Daniel Gerigk</p></li>
+<li><p>Robert Gieseke</p></li>
+<li><p>Philip Gillißen</p></li>
+<li><p>Ralf Gommers</p></li>
+<li><p>Emmanuelle Gouillart</p></li>
+<li><p>Julia Gustavsen</p></li>
+<li><p>Omar Gutiérrez</p></li>
+<li><p>Matt Haberland</p></li>
+<li><p>Valentin Haenel</p></li>
+<li><p>Pierre Haessig</p></li>
+<li><p>Bruno Hanzen</p></li>
+<li><p>Michael Hartmann</p></li>
+<li><p>Jonathan Helmus</p></li>
+<li><p>Andreas Hilboll</p></li>
+<li><p>Himanshu</p></li>
+<li><p>Julian Hofer</p></li>
+<li><p>Tim Hoffmann</p></li>
+<li><p>B. Hohl</p></li>
+<li><p>Tarek Hoteit</p></li>
+<li><p>Gert-Ludwig Ingold</p></li>
+<li><p>Zbigniew Jędrzejewski-Szmek</p></li>
+<li><p>Thouis (Ray) Jones</p></li>
+<li><p>jorgeprietoarranz</p></li>
+<li><p>josephsalmon</p></li>
+<li><p>Greg Kiar</p></li>
+<li><p>kikocorreoso</p></li>
+<li><p>Vince Knight</p></li>
+<li><p>LFP6</p></li>
+<li><p>Manuel López-Ibáñez</p></li>
+<li><p>Marco Mangan</p></li>
+<li><p>Nicola Masarone</p></li>
+<li><p>John McLaughlin</p></li>
+<li><p>mhemantha</p></li>
+<li><p>michelemaroni89</p></li>
+<li><p>K. Jarrod Millman</p></li>
+<li><p>Mohammad</p></li>
+<li><p>Zachary Moon</p></li>
+<li><p>Mike Mueller</p></li>
+<li><p>negm</p></li>
+<li><p>John B Nelson</p></li>
+<li><p>nicoguaro</p></li>
+<li><p>Sergio Oller</p></li>
+<li><p>Theofilos Papapanagiotou</p></li>
+<li><p>patniharshit</p></li>
+<li><p>Fabian Pedregosa</p></li>
+<li><p>Philippe Pepiot</p></li>
+<li><p>Tiago M. D. Pereira</p></li>
+<li><p>Nicolas Pettiaux</p></li>
+<li><p>Didrik Pinte</p></li>
+<li><p>Evgeny Pogrebnyak</p></li>
+<li><p>reverland</p></li>
+<li><p>Maximilien Riehl</p></li>
+<li><p>Kristian Rother</p></li>
+<li><p>Nicolas P. Rougier</p></li>
+<li><p>Pamphile Roy</p></li>
+<li><p>Rutzmoser</p></li>
+<li><p>Sander</p></li>
+<li><p>João Felipe Santos</p></li>
+<li><p>Mark Setchell</p></li>
+<li><p>Helen Sherwood-Taylor</p></li>
+<li><p>Shoeboxam</p></li>
+<li><p>Simon</p></li>
+<li><p>solarjoe</p></li>
+<li><p>ssmiller</p></li>
+<li><p>Scott Staniewicz</p></li>
+<li><p>strpeter</p></li>
+<li><p>surfer190</p></li>
+<li><p>Bartosz Telenczuk</p></li>
+<li><p>tommyod</p></li>
+<li><p>Wes Turner</p></li>
+<li><p>Akihiro Uchida</p></li>
+<li><p>Utkarsh Upadhyay</p></li>
+<li><p>Olav Vahtras</p></li>
+<li><p>Stéfan van der Walt</p></li>
+<li><p>Gaël Varoquaux</p></li>
+<li><p>Nelle Varoquaux</p></li>
+<li><p>Olivier Verdier</p></li>
+<li><p>VirgileFritsch</p></li>
+<li><p>Pauli Virtanen</p></li>
+<li><p>Yosh Wakeham</p></li>
+<li><p>yasutomo57jp</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="what-s-new">
+<h1>What’s new<a class="headerlink" href="#what-s-new" title="Link to this heading">#</a></h1>
+<section id="release-2024-1-april-2024">
+<h2>Release 2024.1 (April 2024)<a class="headerlink" href="#release-2024-1-april-2024" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Python 3.10, 3.11, 3.12</p></li>
+<li><p>Renamed Scientific Python Lectures</p></li>
+<li><p>Removed old content</p></li>
+<li><p>Major updates to support recent packages</p></li>
+<li><p>Updates to the SciPy and scikit-image chapters</p></li>
+</ul>
+</section>
+<section id="release-2022-1-august-2022">
+<h2>Release 2022.1 (August 2022)<a class="headerlink" href="#release-2022-1-august-2022" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Replace scikit-learn housing example with California data (Marco Mangan)</p></li>
+<li><p>Fix links and typos (Zachary Moon, Tim Gates, Marco Mangan, Gert-Ludwig Ingold)</p></li>
+<li><p>Fix fftpack figure (Osayd Abdu)</p></li>
+<li><p>Update software version (Pierre de Buyl)</p></li>
+</ul>
+</section>
+<section id="release-2020-2-september-2020">
+<h2>Release 2020.2 (September 2020)<a class="headerlink" href="#release-2020-2-september-2020" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Replace image i/o from scipy.misc by imageio (Pierre de Buyl)</p></li>
+<li><p>Update information on dict ordering (Bharath Saiguhan)</p></li>
+<li><p>Suppress warnings for mandelbrot example (Pierre de Buyl)</p></li>
+<li><p>Update NumPy introduction and advanced usage for changes to NumPy: wording, bytes
+representation, floating point argument to np.zeros (Ross Barnowski)</p></li>
+<li><p>Fix links to NumPy documentation to use <a class="reference external" href="http://numpy.org">numpy.org</a> (Ross Barnowski)</p></li>
+<li><p>Update note on transposed arrays (Ross Barnowski with Eric Wieser)</p></li>
+<li><p>Use generated figure file for lidar data processing (Lawrence Chan)</p></li>
+<li><p>Update link from PyMC2 to PyMC3 (B. Hohl)</p></li>
+<li><p>Fix transparent popup menu to have a background (Pierre de Buyl)</p></li>
+</ul>
+</section>
+<section id="release-2020-1-march-2020">
+<h2>Release 2020.1 (March 2020)<a class="headerlink" href="#release-2020-1-march-2020" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fix outdated URLs (Gert-Ludwig Ingold)</p></li>
+<li><p>Update packages (Pierre de Buyl)</p></li>
+<li><p>Remove Python 2 continuous integration (Olav Vahtras - EuroSciPy 2019 sprint)</p></li>
+<li><p>Fix chessboard size (Mark Setchell)</p></li>
+<li><p>Add objectives and design choices (Gert-Ludwig Ingold and Pierre de Buyl)</p></li>
+<li><p>Make the numpy advanced iterator example more elaborate (Sebastian Berg)</p></li>
+<li><p>Use empty list instead of empty tuple to deactivate ticks (Tim Hoffmann)</p></li>
+<li><p>Fix typos (Sander van Rijn, cydave, Michel Corne) and off by 2 errors
+(Andreas Hilboll)</p></li>
+<li><p>Improve readability of Polynomials example code (Michel Corne)</p></li>
+<li><p>Replace suggestions for debugging environments (Gert-Ludwig Ingold)</p></li>
+<li><p>Add section on Python 2 vs Python 3 (Pierre de Buyl)</p></li>
+</ul>
+</section>
+<section id="release-2019-1-may-2019">
+<h2>Release 2019.1 (May 2019)<a class="headerlink" href="#release-2019-1-may-2019" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Update matplotlib compatibility to version 2.2 (Mike Mueller, Joris Van den
+Bossche, Pierre de Buyl)</p></li>
+<li><p>Make C-API example cos_module_np Python 2/3 compatible (Michael Boyle)</p></li>
+<li><p>Fix typos and outdated URLs (Dogacan Dugmeci, Matthieu Boileau, Stuart Geiger, Omar
+Gutiérrez, Himanshu, Julian Hofer, Joseph Salmon, Manuel López-Ibáñez,
+Nicola Masarone, michelemaroni89, Evgeny Pogrebnyak, tommyod)</p></li>
+</ul>
+</section>
+<section id="release-2018-1-september-2018">
+<h2>Release 2018.1 (September 2018)<a class="headerlink" href="#release-2018-1-september-2018" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fix wordings, typos, colours (Pierre de Buyl, Greg Kiar, Olav Vahtras
+Kristian Rother)</p></li>
+<li><p>Fix interpolation example code (Scott Staniewicz)</p></li>
+<li><p>Fix CSS for high density displays (Gaël Varoquaux)</p></li>
+<li><p>Generate indexing figures with PyX (Gert Ingold)</p></li>
+<li><p>Warn clearly against the use of Python 2 (Bruno Hanzen)</p></li>
+<li><p>Update external links (Bruno Hanzen)</p></li>
+<li><p>Update versions of dependencies: sphinx-gallery, pandas, statsmodels
+(Gaël Varoquaux)</p></li>
+</ul>
+</section>
+<section id="release-2017-1-october-2017">
+<h2>Release 2017.1 (October 2017)<a class="headerlink" href="#release-2017-1-october-2017" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Update optimization chapter (Michael Hartmann, Gaël Varoquaux)</p></li>
+<li><p>Update SymPy chapter (Vince Knight)</p></li>
+<li><p>Update advanced NumPy (Bartosz Teleńczuk)</p></li>
+<li><p>Update scikit-learn chapter (Gaël Varoquaux)</p></li>
+<li><p>Update SciPy chapter (Gaël Varoquaux)</p></li>
+<li><p>Make ‘&gt;&gt;&gt;’ in the prompts unselectable (Pierre de Buyl)</p></li>
+<li><p>Use common package requirements for pip and conda and improve the build
+instructions (Gert-Ludwig Ingold, Vince Knight, Pierre de Buyl)</p></li>
+<li><p>Set up Circle CI (Loïc Estève)</p></li>
+<li><p>Improved support for Python 3 integer divisions and calls to print (Loïc
+Estève, Gert-Ludwig Ingold, Pierre de Buyl, Gaël Varoquaux)</p></li>
+<li><p>Change test runner to pytest (Pierre de Buyl)</p></li>
+<li><p>Replace the plot directive by sphinx-gallery (Gert-Ludwig Ingold)</p></li>
+</ul>
+</section>
+<section id="release-2016-1-september-2016">
+<h2>Release 2016.1 (September 2016)<a class="headerlink" href="#release-2016-1-september-2016" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Rework of intro chapter (Gaël Varoquaux)</p></li>
+<li><p>Integrate sphinx-gallery: examples are now Jupyter notebooks (Gaël
+Varoquaux, Gert-Ludwig Ingold, Óscar Nájera)</p></li>
+<li><p>Better Python 3 tests and support (Gert-Ludwig Ingold)</p></li>
+<li><p>Adapt examples to Matplotlib 1.5 (Gaël Varoquaux)</p></li>
+<li><p>Modernize numpy chapter (Bartosz Telenczuk)</p></li>
+</ul>
+</section>
+<section id="release-2015-3-november-2015">
+<h2>Release 2015.3 (November 2015)<a class="headerlink" href="#release-2015-3-november-2015" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Collapsed sidebar can now pop up for mid-sized display (Gaël Varoquaux)</p></li>
+<li><p>Replaced pictures of Lena by raccoon face (Thouis Jones)</p></li>
+</ul>
+</section>
+<section id="release-2015-2-october-2015">
+<h2>Release 2015.2 (October 2015)<a class="headerlink" href="#release-2015-2-october-2015" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Authors on cover ordered as in bibtex entry (Nicolas Rougier)</p></li>
+<li><p>Better rendering on mobile (Gaël Varoquaux)</p></li>
+<li><p>Fix restructured text markup errors (Olav Vahtras)</p></li>
+</ul>
+</section>
+<section id="release-2015-1-september-2015">
+<h2>Release 2015.1 (September 2015)<a class="headerlink" href="#release-2015-1-september-2015" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>New chapter on statistics with Python (Gaël Varoquaux)</p></li>
+<li><p>Better layout in PDF (Gaël Varoquaux)</p></li>
+<li><p>New HTML layout, simplified formatting, mobile-friendly and sidebar
+(Gaël Varoquaux, Nelle Varoquaux)</p></li>
+<li><p>Logos on the HTML front page and on the PDF cover (Nicolas Rougier)</p></li>
+<li><p>Python 3 compatible code (Gaël Varoquaux, Olav Vahtras)</p></li>
+<li><p>Code put up to date for more recent versions of project (Pierre de
+Buyl, Emmanuelle Gouillart, Gert-Ludwig Ingold, Nicolas Pettiaux, Olav
+Vahtras, Gaël Varoquaux, Nelle Varoquaux)</p></li>
+<li><p>Matplotlib updated with removal of deprecated pylab interface (Nicolas
+Rougier)</p></li>
+</ul>
+</section>
+<section id="release-2013-2-21-august-2013">
+<h2>Release 2013.2 (21 August 2013)<a class="headerlink" href="#release-2013-2-21-august-2013" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>NumPy chapter simplified (Valentin Haenel)</p></li>
+<li><p>New layout for the HTML rendering (Gaël Varoquaux)</p></li>
+</ul>
+</section>
+<section id="release-2013-1-10-feb-2013">
+<h2>Release 2013.1 (10 Feb 2013)<a class="headerlink" href="#release-2013-1-10-feb-2013" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Improvements to the advanced image manipulation chapter (Emmanuelle Gouillart)</p></li>
+<li><p>Upgrade of the introductory language chapter (Valentin Haenel)</p></li>
+<li><p>Upgrade of the introductory numpy chapter (Valentin Haenel)</p></li>
+<li><p>New advanced chapter on interfacing with C (Valentin Haenel)</p></li>
+<li><p>Minor fixes and improvements in various places (Robert Gieseke, Ozan Çağlayan,
+Sergio Oller, kikocorreo, Valentin Haenel)</p></li>
+</ul>
+</section>
+<section id="release-2012-3-26-nov-2012">
+<h2>Release 2012.3 (26 Nov 2012)<a class="headerlink" href="#release-2012-3-26-nov-2012" title="Link to this heading">#</a></h2>
+<p>This release integrates the changes written for the Euroscipy conference:</p>
+<ul class="simple">
+<li><p>Matplotlib chapter completely redone (Nicolas Rougier, Gaël Varoquaux)</p></li>
+<li><p>New advanced chapter on mathematical optimization (Gaël Varoquaux)</p></li>
+<li><p>Mayavi chapter redone (Gaël Varoquaux)</p></li>
+<li><p>Front page layout slightly improved: folding TOC (Gaël Varoquaux)</p></li>
+</ul>
+</section>
+<section id="release-2012-2-22-jun-2012">
+<h2>Release 2012.2 (22 Jun 2012)<a class="headerlink" href="#release-2012-2-22-jun-2012" title="Link to this heading">#</a></h2>
+<p>Minor release with a few clean ups (Gael Varoquaux).</p>
+</section>
+<section id="release-2012-1-20-jun-2012">
+<h2>Release 2012.1 (20 Jun 2012)<a class="headerlink" href="#release-2012-1-20-jun-2012" title="Link to this heading">#</a></h2>
+<p>This is a minor release with many clean ups. In particular, clean up of
+the layout (Gael Varoquaux), shortening of the numpy chapters and
+deduplications across the intro and advanced chapters (Gael Varoquaux)
+and doctesting of all the code (Gael Varoquaux).</p>
+</section>
+<section id="release-2012-0-22-apr-2012">
+<h2>Release 2012.0 (22 Apr 2012)<a class="headerlink" href="#release-2012-0-22-apr-2012" title="Link to this heading">#</a></h2>
+<p>This is a minor release with a few clean ups. In particular, clean up the
+scikit-learn chapter (Lars Buitinck), more informative section titles
+(Gael Varoquaux), and misc fixes (Valentin Haenel, Virgile Fritsch).</p>
+</section>
+<section id="release-2011-1-16-oct-2011">
+<h2>Release 2011.1 (16 Oct 2011)<a class="headerlink" href="#release-2011-1-16-oct-2011" title="Link to this heading">#</a></h2>
+<p>This release is a reworked version of the Euroscipy 2011 tutorial. Layout
+has been cleaned and optimized (Valentin Haenel and many others), the Traits
+chapter has been merged in (Didrik Pinte)</p>
+</section>
+<section id="release-2011-1-sept-2011">
+<h2>Release 2011 (1 Sept 2011)<a class="headerlink" href="#release-2011-1-sept-2011" title="Link to this heading">#</a></h2>
+<p>This release is used for the Euroscipy 2011 tutorial. The numpy
+introductory chapter has been rewamped (Pauli Virtanen). The outline of
+the introductory chapters has been simplified (Gaël Varoquaux). Advanced
+chapters have been added: advanced Python constructs (Zbigniew
+Jędrzejewski-Szmek), debugging code (Gaël Varoquaux), optimizing code
+(Gaël Varoquaux), image processing (Emmanuelle Gouillart), scikit-learn
+(Fabian Pedregosa).</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="license">
+<h1>License<a class="headerlink" href="#license" title="Link to this heading">#</a></h1>
+<p>All code and material is licensed under a</p>
+<p>Creative Commons Attribution 4.0 International License (CC-by)</p>
+<p><a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></p>
+<p>See the <a class="reference internal" href="AUTHORS.html"><span class="std std-doc">AUTHORS</span></a> file for a list of contributors.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h1>
+<p>The Scientific Python Lectures are a community-based effort and require
+constant maintenance and improvements. New contributions such as wording
+improvements or inclusion of new topics are welcome.</p>
+<p>To propose bugfixes or straightforward improvements to the lectures, see the
+contribution guide below.</p>
+<p>For new topics, read the objectives first and <a class="reference external" href="https://github.com/scipy-lectures/scientific-python-lectures/issues">open an issue on the GitHub
+project</a> to
+discuss it with the editors.</p>
+<section id="objectives-and-design-choices-for-the-lectures">
+<h2>Objectives and design choices for the lectures<a class="headerlink" href="#objectives-and-design-choices-for-the-lectures" title="Link to this heading">#</a></h2>
+<p>Contributors should keep the following objectives and design choices of
+the Scientific Python Lectures in mind.</p>
+<p>Objectives:</p>
+<ul class="simple">
+<li><p>Provide a self-contained introduction to Python and its primary computational
+packages, the ”Scientific Python stack“.</p></li>
+<li><p>Provide tutorials for a selection of widely-used and stable computational
+libraries.
+Currently, we cover Pandas, Statmodels, some of Seaborn, Scikit-image,
+Scikit-learn, and Sympy.</p></li>
+<li><p>We would like to apply automated testing to the code examples as much as
+possible.</p></li>
+</ul>
+<p>Design choices:</p>
+<ul class="simple">
+<li><p>Each chapter should provide a useful basis for a 1‒2 h tutorial.</p></li>
+<li><p>The code should be readable.</p></li>
+<li><p>An idiomatic style should be followed, e.g. <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>,
+preference for array operations, PEP8 coding conventions.</p></li>
+</ul>
+</section>
+<section id="contributing-guide">
+<h2>Contributing guide<a class="headerlink" href="#contributing-guide" title="Link to this heading">#</a></h2>
+<p>The directory <code class="docutils literal notranslate"><span class="pre">guide</span></code> contains instructions on how to contribute:</p>
+<p><a class="reference internal" href="guide/index.html#guide"><span class="std std-ref">Contribution guide</span></a></p>
+</section>
+<section id="building-instructions">
+<h2>Building instructions<a class="headerlink" href="#building-instructions" title="Link to this heading">#</a></h2>
+<p>To generate the html output for on-screen display, Type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>the generated html files can be found in <code class="docutils literal notranslate"><span class="pre">build/html</span></code></p>
+<p>The first build takes a long time, but information is cached and
+subsequent builds will be faster.</p>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
+<p>Build requirements are listed in the
+<a class="reference download internal" download="" href="_downloads/b4ef698db8ca845e5845c4618278f29a/requirements.txt"><code class="xref download docutils literal notranslate"><span class="pre">requirements</span> <span class="pre">file</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Requirements for notebooks / Binderhub</span>
+<span class="n">numpy</span><span class="o">==</span><span class="mf">2.4.1</span>
+<span class="n">scipy</span><span class="o">==</span><span class="mf">1.17.0</span>
+<span class="n">matplotlib</span><span class="o">==</span><span class="mf">3.10.8</span>
+<span class="n">pandas</span><span class="o">==</span><span class="mf">3.0</span>
+<span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">==</span><span class="mf">1.8.0</span>
+<span class="n">scikit</span><span class="o">-</span><span class="n">image</span><span class="o">==</span><span class="mf">0.26</span>
+<span class="n">sympy</span><span class="o">==</span><span class="mf">1.14.0</span>
+<span class="n">statsmodels</span><span class="o">==</span><span class="mf">0.14.6</span>
+<span class="n">seaborn</span><span class="o">==</span><span class="mf">0.13.2</span>
+<span class="n">pytest</span><span class="o">&gt;=</span><span class="mf">9.0</span>
+<span class="n">sphinx</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">copybutton</span>
+<span class="n">coverage</span><span class="o">&gt;=</span><span class="mf">7.13</span>
+<span class="n">Pillow</span>
+<span class="n">pooch</span>
+<span class="n">ipython</span>
+<span class="n">pickleshare</span>
+<span class="n">requests</span>
+<span class="n">xlrd</span>
+<span class="n">openpyxl</span>
+<span class="n">jupytext</span>
+<span class="c1"># For pretty rendering in local JupyterLab or JupyterLite.</span>
+<span class="n">jupyterlab_myst</span>
+<span class="c1"># For glue markup in notebooks.</span>
+<span class="n">myst_nb</span>
+</pre></div>
+</div>
+<p>Ensure that you have a <a class="reference external" href="https://docs.python.org/3/library/venv.html">virtual environment</a> or conda environment
+set up, then install requirements with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Note that you will also need the following system packages:</p>
+<ul class="simple">
+<li><p>Python C development headers (the <code class="docutils literal notranslate"><span class="pre">python3-dev</span></code> package on Debian, e.g.),</p></li>
+<li><p>a C compiler like gcc,</p></li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/make/">GNU Make</a>,</p></li>
+<li><p>a full LaTeX distribution such as <a class="reference external" href="https://www.tug.org/texlive/">TeX Live</a> (<code class="docutils literal notranslate"><span class="pre">texlive-latex-base</span></code>,
+<code class="docutils literal notranslate"><span class="pre">texlive-latex-extra</span></code>, <code class="docutils literal notranslate"><span class="pre">texlive-fonts-extra</span></code>, and <code class="docutils literal notranslate"><span class="pre">latexmk</span></code>
+on Debian/Ubuntu),</p></li>
+<li><p><a class="reference external" href="http://savannah.nongnu.org/projects/dvipng/">dvipng</a>,</p></li>
+<li><p><a class="reference external" href="https://personal.psu.edu/~jcc8/software/latexmk/">latexmk</a>,</p></li>
+<li><p><a class="reference external" href="https://git-scm.com/">git</a>.</p></li>
+</ul>
+</section>
+<section id="updating-the-cover">
+<h3>Updating the cover<a class="headerlink" href="#updating-the-cover" title="Link to this heading">#</a></h3>
+<p>Use Inkscape to modify the cover in <code class="docutils literal notranslate"><span class="pre">images/</span></code>, then export to PDF:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inkscape</span> <span class="o">--</span><span class="n">export</span><span class="o">-</span><span class="n">filename</span><span class="o">=</span><span class="n">cover</span><span class="o">-</span><span class="mf">2025.</span><span class="n">pdf</span> <span class="n">cover</span><span class="o">-</span><span class="mf">2025.</span><span class="n">svg</span>
+</pre></div>
+</div>
+<p>Ensure that the <code class="docutils literal notranslate"><span class="pre">images/cover.pdf</span></code> symlink points to the correct
+file.</p>
+</section>
+</section>
+<section id="notes-and-admonitions">
+<h2>Notes and admonitions<a class="headerlink" href="#notes-and-admonitions" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">:::</span></code> for
+<code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> blocks (<a class="reference external" href="https://jupyterbook.org/en/stable/content/content-blocks.html#markdown-friendly-directives-with">JupyterBook allows
+this</a>):
+So, for example, prefer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::</span> <span class="p">{</span><span class="n">note</span><span class="p">}</span>
+
+<span class="n">My</span> <span class="n">note</span>
+
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p>to the more standard Myst markup of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- #region --&gt;
+``` {note}
+
+My note
+
+```
+&lt;!-- #endregion --&gt;
+</pre></div>
+</div>
+<p>Note the <code class="docutils literal notranslate"><span class="pre">region</span></code> and <code class="docutils literal notranslate"><span class="pre">endregion</span></code> markup in the second form; this makes more
+sure that Jupytext does not confuse the <code class="docutils literal notranslate"><span class="pre">{note}</span></code> with a code block. One of the
+advantages of the <code class="docutils literal notranslate"><span class="pre">:::</span></code> markup is that you don’t need these <code class="docutils literal notranslate"><span class="pre">#region</span></code>
+demarcations.</p>
+<p>For the same reason, prefer the <code class="docutils literal notranslate"><span class="pre">:::</span></code> form for other content blocks, such as
+warnings and admonitions. For example, prefer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::</span> <span class="p">{</span><span class="n">admonition</span><span class="p">}</span> <span class="n">A</span> <span class="n">custom</span> <span class="n">title</span>
+
+<span class="n">My</span> <span class="n">admonition</span>
+
+<span class="p">:::</span>
+</pre></div>
+</div>
+</section>
+<section id="exercises-and-solutions">
+<h2>Exercises and solutions<a class="headerlink" href="#exercises-and-solutions" title="Link to this heading">#</a></h2>
+<p>We use <a class="reference external" href="https://ebp-sphinx-exercise.readthedocs.io">sphinx-exercise</a> for the exercises and solutions.</p>
+<p>Mark <em>all</em> exercises and solutions with <a class="reference external" href="https://ebp-sphinx-exercise.readthedocs.io/en/latest/syntax.html#alternative-gated-syntax">gated
+markers</a>,
+like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::</span> <span class="p">{</span><span class="n">exercise</span><span class="o">-</span><span class="n">start</span><span class="p">}</span>
+<span class="p">:</span><span class="n">label</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">exercise</span><span class="o">-</span><span class="n">label</span>
+<span class="p">:</span><span class="n">class</span><span class="p">:</span> <span class="n">dropdown</span>
+<span class="p">:::</span>
+
+<span class="n">My</span> <span class="n">exercise</span><span class="o">.</span>
+
+<span class="p">:::</span> <span class="p">{</span><span class="n">exercise</span><span class="o">-</span><span class="n">end</span><span class="p">}</span>
+<span class="p">:::</span>
+
+<span class="p">:::</span> <span class="p">{</span><span class="n">solution</span><span class="o">-</span><span class="n">start</span><span class="p">}</span> <span class="n">my</span><span class="o">-</span><span class="n">exercise</span><span class="o">-</span><span class="n">label</span>
+<span class="p">:</span><span class="n">class</span><span class="p">:</span> <span class="n">dropdown</span>
+<span class="p">:::</span>
+
+<span class="n">My</span> <span class="n">solution</span><span class="o">.</span>
+
+<span class="p">:::</span> <span class="p">{</span><span class="n">solution</span><span class="o">-</span><span class="n">end</span><span class="p">}</span>
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p>The gated markers (of form <code class="docutils literal notranslate"><span class="pre">solution-start</span></code> and <code class="docutils literal notranslate"><span class="pre">solution-end</span></code> etc) allow you
+to embed code cells in the exercise or solution, because this allows code cells
+to be at the top level of the notebook, where Jupyter needs them to be.</p>
+<p>The gated markers also make it possible to for the <code class="docutils literal notranslate"><span class="pre">process_notebooks.py</span></code>
+script to recognize exercise and solutions blocks, to parse them correctly.</p>
+</section>
+<section id="a-note-on-processing">
+<span id="notebook-processing"></span><h2>A note on processing<a class="headerlink" href="#a-note-on-processing" title="Link to this heading">#</a></h2>
+<p>The pages are designed both as pages for pretty HTML output, and to be used as
+interactive notebooks in e.g. JupyterLite.</p>
+<p>There is some markup that we need for the pretty HTML output that looks ugly in
+a Jupyter interface such as <a class="reference external" href="https://jupyterlite.readthedocs.io">JupyterLite</a>.
+To deal with this in part, we install the
+<a class="reference external" href="https://github.com/jupyter-book/jupyterlab-myst">jupyterlab_myst</a> extension by
+default, so that Myst markup (mostly) appears as it should inside JupyterLab
+when opened as a notebook. Another difference we want to see between the HTML
+and the notebook version is that we want to avoid putting the solutions in the
+notebook version, to allow more space for thought about the exercise. Both to
+modify any ugly formatting, and to remove the exercise solutions, we
+post-process the pages with a script <code class="docutils literal notranslate"><span class="pre">_scripts/process_notebooks.py</span></code> to load
+the pages as text notebooks, and write out <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files with modified markup
+that looks better in a Jupyter interface. Some of the authoring advice here is
+to allow that process to work smoothly, because the <code class="docutils literal notranslate"><span class="pre">process_notebooks.py</span></code> file
+reads the input Myst-MD format notebooks using
+<a class="reference external" href="https://jupytext.readthedocs.io">Jupytext</a> before converting to Jupyter
+<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files.</p>
+</section>
+<section id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h2>
+<p>There may well be cases where you will want to put cells in the rendered
+notebook that test values, as part of the exposition. For example, from the
+<code class="docutils literal notranslate"><span class="pre">intro/scipy/index.md</span></code> notebook / page:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+```{code-cell}
+A_upper = np.triu(A)
+A_upper
+```
+
+```{code-cell}
+np.allclose(sp.linalg.solve_triangular(A_upper, b, lower=False),
+            sp.linalg.solve(A_upper, b))
+```
+</pre></div>
+</div>
+<p>Notice that, in this case, we do want the reader to see that test, as part of
+the exposition.</p>
+<p>However, there are cases where the test would be useful, to, for example,
+detect changes in the output over versions of the packages being used. We want
+to avoid the situation where the text says one thing, but the values contradict
+it. But we may not want the reader to have to read such tests as part of the
+exposition. Here, for example, is a test from the <code class="docutils literal notranslate"><span class="pre">intro/scipy/index.md</span></code>
+notebook:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+```{code-cell}
+log_a = sp.special.gammaln(500)
+log_b = sp.special.gammaln(499)
+log_res = log_a - log_b
+res = np.exp(log_res)
+res
+```
+
+```{code-cell}
+:tags: [remove-cell, test]
+assert np.allclose(res, 499)
+```
+
+</pre></div>
+</div>
+<p>Note that the test confirms that Scipy is still giving the output implied in
+the text. Note too that we have given the testing code cell the tag
+<code class="docutils literal notranslate"><span class="pre">remove-cell</span></code>. This drops the cell from the HTML output, and our
+<a class="reference internal" href="#notebook-processing"><span class="std std-ref">post-processing of the notebooks</span></a> also drops these cells,
+so someone opening the notebook in e.g. JupyterLite will not see them.
+Accordingly, please make sure you are not defining anything in these test cells
+that the notebook will need in later cells.</p>
+<p>Be judicious — testing the output of <code class="docutils literal notranslate"><span class="pre">np.ones(3)</span></code> is probably not useful
+— Numpy would have to break in order for that test to fail.</p>
+</section>
+<section id="development">
+<h2>Development<a class="headerlink" href="#development" title="Link to this heading">#</a></h2>
+<p>Run this once, in the repository directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pre_commit</span>
+<span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Before each commit that you will push:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="o">--</span><span class="nb">all</span>
+</pre></div>
+</div>
+<p>Among other things, this runs the <code class="docutils literal notranslate"><span class="pre">codespell</span></code> check, also run by CI.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="packages/scikit-learn/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>: machine learning in Python</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">About the Scientific Python Lecture notes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editors">Editors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-authors">Chapter authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-contributions">Additional Contributions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-new">What’s new</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2024-1-april-2024">Release 2024.1 (April 2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2022-1-august-2022">Release 2022.1 (August 2022)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2020-2-september-2020">Release 2020.2 (September 2020)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2020-1-march-2020">Release 2020.1 (March 2020)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2019-1-may-2019">Release 2019.1 (May 2019)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2018-1-september-2018">Release 2018.1 (September 2018)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2017-1-october-2017">Release 2017.1 (October 2017)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2016-1-september-2016">Release 2016.1 (September 2016)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2015-3-november-2015">Release 2015.3 (November 2015)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2015-2-october-2015">Release 2015.2 (October 2015)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2015-1-september-2015">Release 2015.1 (September 2015)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2013-2-21-august-2013">Release 2013.2 (21 August 2013)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2013-1-10-feb-2013">Release 2013.1 (10 Feb 2013)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2012-3-26-nov-2012">Release 2012.3 (26 Nov 2012)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2012-2-22-jun-2012">Release 2012.2 (22 Jun 2012)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2012-1-20-jun-2012">Release 2012.1 (20 Jun 2012)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2012-0-22-apr-2012">Release 2012.0 (22 Apr 2012)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2011-1-16-oct-2011">Release 2011.1 (16 Oct 2011)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-2011-1-sept-2011">Release 2011 (1 Sept 2011)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-and-design-choices-for-the-lectures">Objectives and design choices for the lectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing-guide">Contributing guide</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-instructions">Building instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-cover">Updating the cover</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-and-admonitions">Notes and admonitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-and-solutions">Exercises and solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-processing">A note on processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development">Development</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Scientific Python developers
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

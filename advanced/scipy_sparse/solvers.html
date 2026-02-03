@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Linear System Solvers &#8212; Scientific Python Lectures</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'advanced/scipy_sparse/solvers';</script>
+    <link rel="canonical" href="https://lectures.scientific-python.org/advanced/scipy_sparse/solvers.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Other Interesting Packages" href="other_packages.html" />
+    <link rel="prev" title="Storage Schemes" href="storage_schemes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Scientific Python Lectures - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Scientific Python Lectures - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started with Python for Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Python scientific computing ecosystem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/language/python_language.html">The Python language</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/first_steps.html">First steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/basic_types.html">Basic types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/control_flow.html">Control Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/functions.html">Defining functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/reusing_code.html">Reusing code: scripts and modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/io.html">Input and Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/standard_library.html">Standard Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/exceptions.html">Exception handling in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/oop.html">Object-oriented programming (OOP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/numpy/index.html">NumPy: creating and manipulating numerical data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/numpy/array_object.html">The NumPy array object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/numpy/operations.html">Numerical operations on arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/numpy/elaborate_arrays.html">More elaborate arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/numpy/advanced_operations.html">Advanced operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/numpy/exercises.html">Some exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/matplotlib/index.html">Matplotlib: plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/scipy/index.html">SciPy: high-level scientific computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/help/help.html">Getting help and finding documentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../advanced_python/index.html">Advanced Python Constructs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_numpy/index.html">Advanced NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/index.html">Debugging code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../optimizing/index.html">Optimizing code</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="introduction.html">Scipy sparse arrays</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="storage_schemes.html">Storage Schemes</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Linear System Solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_packages.html">Other Interesting Packages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_processing/index.html">Image manipulation and processing using NumPy and SciPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mathematical_optimization/index.html">Mathematical optimization: finding minima of functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfacing_with_c/interfacing_with_c.html">Interfacing with C</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages and applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../packages/statistics/index.html">Statistics in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/sympy.html"><code class="docutils literal notranslate"><span class="pre">sympy</span></code> : Symbolic Mathematics in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/scikit-image/index.html"><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>: image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/scikit-learn/index.html"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>: machine learning in Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About the Scientific Python Lecture notes</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="/scipy-lecture-notes/interact/lab/index.html?path=advanced/scipy_sparse/solvers.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch via JupyterLite"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterLite logo" src="../../_static/images/logo_jupyterlite.svg">
+  </span>
+<span class="btn__text-container">JupyterLite</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/scipy-lectures/scientific-python-lectures" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/advanced/scipy_sparse/solvers.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/scipy-lectures/scientific-python-lectures/issues/new?title=Issue%20on%20page%20%2Fadvanced/scipy_sparse/solvers.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/advanced/scipy_sparse/solvers.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../../_sources/advanced/scipy_sparse/solvers.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Linear System Solvers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-direct-solvers">Sparse Direct Solvers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-solvers">Iterative Solvers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-parameters">Common Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearoperator-class">LinearOperator Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-notes-on-preconditioning">A Few Notes on Preconditioning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem-solvers">Eigenvalue Problem Solvers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-eigen-module">The <code class="xref py py-mod docutils literal notranslate"><span class="pre">eigen</span></code> module</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-system-solvers">
+<h1>Linear System Solvers<a class="headerlink" href="#linear-system-solvers" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>sparse matrix/eigenvalue problem solvers live in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.linalg.html#module-scipy.sparse.linalg" title="(in SciPy v1.17.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.sparse.linalg</span></code></a></p></li>
+<li><p>the submodules:</p>
+<ul>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">dsolve</span></code>: direct factorization methods for solving linear systems</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">isolve</span></code>: iterative methods for solving linear systems</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">eigen</span></code>: sparse eigenvalue problem solvers</p></li>
+</ul>
+</li>
+</ul>
+<p>All solvers are accessible from:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">__all__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ArpackError&#39;,
+ &#39;ArpackNoConvergence&#39;,
+ &#39;LaplacianNd&#39;,
+ &#39;LinearOperator&#39;,
+ &#39;MatrixRankWarning&#39;,
+ &#39;SuperLU&#39;,
+ &#39;aslinearoperator&#39;,
+ &#39;bicg&#39;,
+ &#39;bicgstab&#39;,
+ &#39;cg&#39;,
+ &#39;cgs&#39;,
+ &#39;dsolve&#39;,
+ &#39;eigen&#39;,
+ &#39;eigs&#39;,
+ &#39;eigsh&#39;,
+ &#39;expm&#39;,
+ &#39;expm_multiply&#39;,
+ &#39;factorized&#39;,
+ &#39;funm_multiply_krylov&#39;,
+ &#39;gcrotmk&#39;,
+ &#39;gmres&#39;,
+ &#39;interface&#39;,
+ &#39;inv&#39;,
+ &#39;is_sptriangular&#39;,
+ &#39;isolve&#39;,
+ &#39;lgmres&#39;,
+ &#39;lobpcg&#39;,
+ &#39;lsmr&#39;,
+ &#39;lsqr&#39;,
+ &#39;matfuncs&#39;,
+ &#39;matrix_power&#39;,
+ &#39;minres&#39;,
+ &#39;norm&#39;,
+ &#39;onenormest&#39;,
+ &#39;qmr&#39;,
+ &#39;spbandwidth&#39;,
+ &#39;spilu&#39;,
+ &#39;splu&#39;,
+ &#39;spsolve&#39;,
+ &#39;spsolve_triangular&#39;,
+ &#39;svds&#39;,
+ &#39;tfqmr&#39;,
+ &#39;use_solver&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="sparse-direct-solvers">
+<h2>Sparse Direct Solvers<a class="headerlink" href="#sparse-direct-solvers" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>default solver: SuperLU</p>
+<ul>
+<li><p>included in SciPy</p></li>
+<li><p>real and complex systems</p></li>
+<li><p>both single and double precision</p></li>
+</ul>
+</li>
+<li><p>optional: umfpack</p>
+<ul>
+<li><p>real and complex systems</p></li>
+<li><p>double precision only</p></li>
+<li><p>recommended for performance</p></li>
+<li><p>wrappers now live in <code class="xref py py-mod docutils literal notranslate"><span class="pre">scikits.umfpack</span></code></p></li>
+<li><p>check-out the new <code class="xref py py-mod docutils literal notranslate"><span class="pre">scikits.suitesparse</span></code> by Nathaniel Smith</p></li>
+</ul>
+</li>
+</ul>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<p>Import the whole module, and see its docstring:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">spsolve</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function spsolve in module scipy.sparse.linalg._dsolve.linsolve:
+
+spsolve(A, b, permc_spec=None, use_umfpack=True)
+    Solve the sparse linear system Ax=b, where b may be a vector or a matrix.
+
+    Parameters
+    ----------
+    A : ndarray or sparse array or matrix
+        The square matrix A will be converted into CSC or CSR form
+    b : ndarray or sparse array or matrix
+        The matrix or vector representing the right hand side of the equation.
+        If a vector, b.shape must be (n,) or (n, 1).
+    permc_spec : str, optional
+        How to permute the columns of the matrix for sparsity preservation.
+        (default: &#39;COLAMD&#39;)
+
+        - ``NATURAL``: natural ordering.
+        - ``MMD_ATA``: minimum degree ordering on the structure of A^T A.
+        - ``MMD_AT_PLUS_A``: minimum degree ordering on the structure of A^T+A.
+        - ``COLAMD``: approximate minimum degree column ordering [1]_, [2]_.
+
+    use_umfpack : bool, optional
+        if True (default) then use UMFPACK for the solution [3]_, [4]_, [5]_,
+        [6]_ . This is only referenced if b is a vector and
+        ``scikits.umfpack`` is installed.
+
+    Returns
+    -------
+    x : ndarray or sparse array or matrix
+        the solution of the sparse linear equation.
+        If b is a vector, then x is a vector of size A.shape[1]
+        If b is a matrix, then x is a matrix of size (A.shape[1], b.shape[1])
+
+    Notes
+    -----
+    For solving the matrix expression AX = B, this solver assumes the resulting
+    matrix X is sparse, as is often the case for very sparse inputs.  If the
+    resulting X is dense, the construction of this sparse result will be
+    relatively expensive.  In that case, consider converting A to a dense
+    matrix and using scipy.linalg.solve or its variants.
+
+    References
+    ----------
+    .. [1] T. A. Davis, J. R. Gilbert, S. Larimore, E. Ng, Algorithm 836:
+           COLAMD, an approximate column minimum degree ordering algorithm,
+           ACM Trans. on Mathematical Software, 30(3), 2004, pp. 377--380.
+           :doi:`10.1145/1024074.1024080`
+
+    .. [2] T. A. Davis, J. R. Gilbert, S. Larimore, E. Ng, A column approximate
+           minimum degree ordering algorithm, ACM Trans. on Mathematical
+           Software, 30(3), 2004, pp. 353--376. :doi:`10.1145/1024074.1024079`
+
+    .. [3] T. A. Davis, Algorithm 832:  UMFPACK - an unsymmetric-pattern
+           multifrontal method with a column pre-ordering strategy, ACM
+           Trans. on Mathematical Software, 30(2), 2004, pp. 196--199.
+           https://dl.acm.org/doi/abs/10.1145/992200.992206
+
+    .. [4] T. A. Davis, A column pre-ordering strategy for the
+           unsymmetric-pattern multifrontal method, ACM Trans.
+           on Mathematical Software, 30(2), 2004, pp. 165--195.
+           https://dl.acm.org/doi/abs/10.1145/992200.992205
+
+    .. [5] T. A. Davis and I. S. Duff, A combined unifrontal/multifrontal
+           method for unsymmetric sparse matrices, ACM Trans. on
+           Mathematical Software, 25(1), 1999, pp. 1--19.
+           https://doi.org/10.1145/305658.287640
+
+    .. [6] T. A. Davis and I. S. Duff, An unsymmetric-pattern multifrontal
+           method for sparse LU factorization, SIAM J. Matrix Analysis and
+           Computations, 18(1), 1997, pp. 140--158.
+           https://doi.org/10.1137/S0895479894246905T.
+
+
+    Examples
+    --------
+    &gt;&gt;&gt; import numpy as np
+    &gt;&gt;&gt; from scipy.sparse import csc_array
+    &gt;&gt;&gt; from scipy.sparse.linalg import spsolve
+    &gt;&gt;&gt; A = csc_array([[3, 2, 0], [1, -1, 0], [0, 5, 1]], dtype=float)
+    &gt;&gt;&gt; B = csc_array([[2, 0], [-1, 0], [2, 0]], dtype=float)
+    &gt;&gt;&gt; x = spsolve(A, B)
+    &gt;&gt;&gt; np.allclose(A.dot(x).toarray(), B.toarray())
+    True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Both superlu and umfpack can be used (if the latter is installed) as follows.</p>
+<p>Prepare a linear system:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">mtx</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">spdiags</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;csc&quot;</span><span class="p">)</span>
+<span class="n">mtx</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  5,  0,  0,  0],
+       [ 0,  2,  8,  0,  0],
+       [ 0,  0,  3,  9,  0],
+       [ 0,  0,  0,  4, 10],
+       [ 0,  0,  0,  0,  5]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rhs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Solve as single precision real:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mtx1</span> <span class="o">=</span> <span class="n">mtx</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">spsolve</span><span class="p">(</span><span class="n">mtx1</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">use_umfpack</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[106.  -21.    5.5  -1.5   1. ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mtx1</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error: [0. 0. 0. 0. 0.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Solve as double precision real:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mtx2</span> <span class="o">=</span> <span class="n">mtx</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">spsolve</span><span class="p">(</span><span class="n">mtx2</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">use_umfpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[106.  -21.    5.5  -1.5   1. ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mtx2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error: [0. 0. 0. 0. 0.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Solve as single precision complex:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mtx1</span> <span class="o">=</span> <span class="n">mtx</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">spsolve</span><span class="p">(</span><span class="n">mtx1</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">use_umfpack</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[106. +0.j -21. +0.j   5.5+0.j  -1.5+0.j   1. +0.j]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mtx1</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error: [0.+0.j 0.+0.j 0.+0.j 0.+0.j 0.+0.j]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Solve as double precision complex:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mtx2</span> <span class="o">=</span> <span class="n">mtx</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">spsolve</span><span class="p">(</span><span class="n">mtx2</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">use_umfpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[106. +0.j -21. +0.j   5.5+0.j  -1.5+0.j   1. +0.j]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mtx2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error: [0.+0.j 0.+0.j 0.+0.j 0.+0.j 0.+0.j]
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference download internal" download="" href="../../_downloads/73064326fccc2239a0bef117d7bb60c3/direct_solve.py"><code class="xref download docutils literal notranslate"><span class="pre">examples/direct_solve.py</span></code></a></p>
+</section>
+</section>
+<section id="iterative-solvers">
+<h2>Iterative Solvers<a class="headerlink" href="#iterative-solvers" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>the <code class="xref py py-mod docutils literal notranslate"><span class="pre">isolve</span></code> module contains the following solvers:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bicg</span></code> (BIConjugate Gradient)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bicgstab</span></code> (BIConjugate Gradient STABilized)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cg</span></code> (Conjugate Gradient) - symmetric positive definite matrices
+only</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cgs</span></code> (Conjugate Gradient Squared)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gmres</span></code> (Generalized Minimal RESidual)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minres</span></code> (MINimum RESidual)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qmr</span></code> (Quasi-Minimal Residual)</p></li>
+</ul>
+</li>
+</ul>
+<section id="common-parameters">
+<h3>Common Parameters<a class="headerlink" href="#common-parameters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>mandatory:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code> : The N-by-N matrix of the linear system.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code>: Right hand side of the linear system. Has shape (N,) or (N,1).</p></li>
+</ul>
+</li>
+<li><p>optional:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">x0</span></code>: Starting guess for the solution.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tol</span></code> : Relative tolerance to achieve before terminating.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxiter</span></code> : Maximum number of iterations. Iteration will stop after maxiter
+steps even if the specified tolerance has not been achieved.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code> : Preconditioner for A. The preconditioner should approximate the
+inverse of A. Effective preconditioning dramatically improves the
+rate of convergence, which implies that fewer iterations are needed
+to reach a given error tolerance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callback</span></code> : User-supplied function to call after each iteration. It is
+called as <code class="docutils literal notranslate"><span class="pre">callback(xk)</span></code>, where <code class="docutils literal notranslate"><span class="pre">xk</span></code> is the current solution vector.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="linearoperator-class">
+<h3>LinearOperator Class<a class="headerlink" href="#linearoperator-class" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>common interface for performing matrix vector products</p></li>
+<li><p>useful abstraction that enables using dense and sparse matrices within
+the solvers, as well as <em>matrix-free</em> solutions</p></li>
+<li><p>has <code class="docutils literal notranslate"><span class="pre">shape</span></code> and <code class="docutils literal notranslate"><span class="pre">matvec()</span></code> (+ some optional parameters)</p></li>
+</ul>
+<p>Here is an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mv</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">LinearOperator</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">matvec</span><span class="o">=</span><span class="n">mv</span><span class="p">)</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;2x2 _CustomLinearOperator with dtype=int8&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">matvec</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2., 3.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2., 3.])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-few-notes-on-preconditioning">
+<h3>A Few Notes on Preconditioning<a class="headerlink" href="#a-few-notes-on-preconditioning" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>problem specific</p></li>
+<li><p>often hard to develop</p></li>
+<li><p>if not sure, try ILU</p>
+<ul>
+<li><p>available in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.linalg.html#module-scipy.sparse.linalg" title="(in SciPy v1.17.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.sparse.linalg</span></code></a> as <code class="xref py py-func docutils literal notranslate"><span class="pre">spilu()</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="eigenvalue-problem-solvers">
+<h2>Eigenvalue Problem Solvers<a class="headerlink" href="#eigenvalue-problem-solvers" title="Link to this heading">#</a></h2>
+<section id="the-eigen-module">
+<h3>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">eigen</span></code> module<a class="headerlink" href="#the-eigen-module" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">arpack</span></code>: a collection of Fortran77 subroutines designed to solve large scale eigenvalue problems</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lobpcg</span></code>: (Locally Optimal Block Preconditioned Conjugate
+Gradient Method); * works very well in combination with
+<a class="reference external" href="https://github.com/pyamg/pyamg">PyAMG</a></p>
+<ul>
+<li><p>example by Nathan Bell:</p>
+<p><a class="reference download internal" download="" href="../../_downloads/e463b114494fb7e28688fcd24ca17c63/pyamg_with_lobpcg.py"><code class="xref download docutils literal notranslate"><span class="pre">examples/pyamg_with_lobpcg.py</span></code></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Another example by Nils Wagner:</p>
+<p><a class="reference download internal" download="" href="../../_downloads/62edd5b69bad35322a403fadba3b3924/lobpcg_sakurai.py"><code class="xref download docutils literal notranslate"><span class="pre">examples/lobpcg_sakurai.py</span></code></a></p>
+<p>Output:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>examples/lobpcg_sakurai.py
+Results<span class="w"> </span>by<span class="w"> </span>LOBPCG<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">n</span><span class="o">=</span><span class="m">2500</span>
+
+<span class="o">[</span><span class="w"> </span><span class="m">0</span>.06250083<span class="w">  </span><span class="m">0</span>.06250028<span class="w">  </span><span class="m">0</span>.06250007<span class="o">]</span>
+
+Exact<span class="w"> </span>eigenvalues
+
+<span class="o">[</span><span class="w"> </span><span class="m">0</span>.06250005<span class="w">  </span><span class="m">0</span>.0625002<span class="w">   </span><span class="m">0</span>.06250044<span class="o">]</span>
+
+Elapsed<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">7</span>.01
+</pre></div>
+</div>
+<p><img alt="" src="../../_images/lobpcg_eigenvalues.png" /></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./advanced/scipy_sparse"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="storage_schemes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Storage Schemes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="other_packages.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Other Interesting Packages</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-direct-solvers">Sparse Direct Solvers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-solvers">Iterative Solvers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-parameters">Common Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearoperator-class">LinearOperator Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-notes-on-preconditioning">A Few Notes on Preconditioning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problem-solvers">Eigenvalue Problem Solvers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-eigen-module">The <code class="xref py py-mod docutils literal notranslate"><span class="pre">eigen</span></code> module</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Scientific Python developers
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

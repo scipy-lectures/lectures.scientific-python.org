@@ -1,0 +1,2022 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples for packages/statistics/index.md &#8212; Scientific Python Lectures</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'packages/statistics/stats_examples';</script>
+    <link rel="canonical" href="https://lectures.scientific-python.org/packages/statistics/stats_examples.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Scientific Python Lectures - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Scientific Python Lectures - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started with Python for Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Python scientific computing ecosystem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/language/python_language.html">The Python language</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/first_steps.html">First steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/basic_types.html">Basic types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/control_flow.html">Control Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/functions.html">Defining functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/reusing_code.html">Reusing code: scripts and modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/io.html">Input and Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/standard_library.html">Standard Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/exceptions.html">Exception handling in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/language/oop.html">Object-oriented programming (OOP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/numpy/index.html">NumPy: creating and manipulating numerical data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/numpy/array_object.html">The NumPy array object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/numpy/operations.html">Numerical operations on arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/numpy/elaborate_arrays.html">More elaborate arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/numpy/advanced_operations.html">Advanced operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/numpy/exercises.html">Some exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/matplotlib/index.html">Matplotlib: plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/scipy/index.html">SciPy: high-level scientific computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/help/help.html">Getting help and finding documentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/advanced_python/index.html">Advanced Python Constructs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/advanced_numpy/index.html">Advanced NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/debugging/index.html">Debugging code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/optimizing/index.html">Optimizing code</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../advanced/scipy_sparse/introduction.html">Scipy sparse arrays</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/scipy_sparse/storage_schemes.html">Storage Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/scipy_sparse/solvers.html">Linear System Solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced/scipy_sparse/other_packages.html">Other Interesting Packages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/image_processing/index.html">Image manipulation and processing using NumPy and SciPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/mathematical_optimization/index.html">Mathematical optimization: finding minima of functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/interfacing_with_c/interfacing_with_c.html">Interfacing with C</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages and applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Statistics in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sympy.html"><code class="docutils literal notranslate"><span class="pre">sympy</span></code> : Symbolic Mathematics in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scikit-image/index.html"><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>: image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scikit-learn/index.html"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>: machine learning in Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About the Scientific Python Lecture notes</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="/scipy-lecture-notes/interact/lab/index.html?path=packages/statistics/stats_examples.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch via JupyterLite"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterLite logo" src="../../_static/images/logo_jupyterlite.svg">
+  </span>
+<span class="btn__text-container">JupyterLite</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/scipy-lectures/scientific-python-lectures" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/scipy-lectures/scientific-python-lectures/edit/main/packages/statistics/stats_examples.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/scipy-lectures/scientific-python-lectures/issues/new?title=Issue%20on%20page%20%2Fpackages/statistics/stats_examples.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/packages/statistics/stats_examples.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../../_sources/packages/statistics/stats_examples.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Examples for packages/statistics/index.md</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Plotting simple quantities of a pandas dataframe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots-and-paired-differences">Boxplots and paired differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-regression">Simple Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-regression">Multiple Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-iris-petal-and-sepal-sizes">Analysis of Iris petal and sepal sizes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-factors-influencing-wages">Visualizing factors influencing wages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-for-an-education-sex-interaction-in-wages">Test for an education/sex interaction in wages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-examples">Other examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#air-fares-before-and-after-9-11">Air fares before and after 9/11</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relating-gender-and-iq">Relating Gender and IQ</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="examples-for-packages-statistics-index-md">
+<h1>Examples for packages/statistics/index.md<a class="headerlink" href="#examples-for-packages-statistics-index-md" title="Link to this heading">#</a></h1>
+<div class="cell docutils container" id="plotting-simple-quantities-of-a-pandas-dataframe">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># For loading data as data frames.</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h2>Plotting simple quantities of a pandas dataframe<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<!--- plot_pandas --><p>This example loads from a CSV file data with mixed numerical and
+categorical entries, and plots a few quantities, separately for females
+and males, thanks to the pandas integrated plotting tool (that uses
+matplotlib behind the scene).</p>
+<p>See <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/visualization.html">http://pandas.pydata.org/pandas-docs/stable/visualization.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/brain_size.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Box plots of different columns for each sex</span>
+<span class="n">groupby_sex</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Gender&quot;</span><span class="p">)</span>
+<span class="n">groupby_sex</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;FSIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;VIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;PIQ&quot;</span><span class="p">])</span>
+
+<span class="c1"># Scatter matrices for different columns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;Weight&quot;</span><span class="p">,</span> <span class="s2">&quot;Height&quot;</span><span class="p">,</span> <span class="s2">&quot;MRI_Count&quot;</span><span class="p">]])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;PIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;VIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;FSIQ&quot;</span><span class="p">]]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bae0b9d4fab714318c61d24b4f18fcedf176d5f5f425f38cfdfe73d57de21d9b.png" src="../../_images/bae0b9d4fab714318c61d24b4f18fcedf176d5f5f425f38cfdfe73d57de21d9b.png" />
+<img alt="../../_images/3f88fecdf4c32dd69d0ed7030f0db319d1ad0fa93cb070e1eb75a10e13b0a84e.png" src="../../_images/3f88fecdf4c32dd69d0ed7030f0db319d1ad0fa93cb070e1eb75a10e13b0a84e.png" />
+<img alt="../../_images/baa1f5b6bb1f8be94d22e1b487f989db3f2a02da5f2e431c95bd334f4ada1e49.png" src="../../_images/baa1f5b6bb1f8be94d22e1b487f989db3f2a02da5f2e431c95bd334f4ada1e49.png" />
+</div>
+</div>
+</section>
+<section id="boxplots-and-paired-differences">
+<span id="id2"></span><h2>Boxplots and paired differences<a class="headerlink" href="#boxplots-and-paired-differences" title="Link to this heading">#</a></h2>
+<!--- plot_paired_boxplots --><p>Plot boxplots for FSIQ, PIQ, and the paired difference between the two:
+while the spread (error bars) for FSIQ and PIQ are very large, there is a
+systematic (common) effect due to the subjects. This effect is cancelled
+out in the difference and the spread of the difference (“paired” by
+subject) is much smaller than the spread of the individual measures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/brain_size.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="c1"># Box plot of FSIQ and PIQ (different measures od IQ)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">data</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;FSIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;PIQ&quot;</span><span class="p">])</span>
+<span class="c1"># Boxplot of the difference</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;FSIQ&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;PIQ&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">((</span><span class="mi">1</span><span class="p">,),</span> <span class="p">(</span><span class="s2">&quot;FSIQ - PIQ&quot;</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.XTick at 0x7f23ee1e6390&gt;], [Text(1, 0, &#39;FSIQ - PIQ&#39;)])
+</pre></div>
+</div>
+<img alt="../../_images/2dc2ea8499ed2d1ec7a204200a57d81e1685d6c6572f57fb2e15e901056ae30b.png" src="../../_images/2dc2ea8499ed2d1ec7a204200a57d81e1685d6c6572f57fb2e15e901056ae30b.png" />
+<img alt="../../_images/7d29bd1d0e137e2af757a9c1220fb3566c8c9b0c528e6f107e9093a250230860.png" src="../../_images/7d29bd1d0e137e2af757a9c1220fb3566c8c9b0c528e6f107e9093a250230860.png" />
+</div>
+</div>
+</section>
+<section id="simple-regression">
+<span id="id3"></span><h2>Simple Regression<a class="headerlink" href="#simple-regression" title="Link to this heading">#</a></h2>
+<!--- plot_regression --><p>Fit a simple linear regression using ‘statsmodels’, compute corresponding
+p-values.</p>
+<p><strong>Original author: Thomas Haslwanter</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For statistics.</span>
+<span class="c1"># Import the formula interface to Statsmodels.</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smf</span>
+
+<span class="c1"># Analysis of Variance (ANOVA) on linear models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.stats.anova</span><span class="w"> </span><span class="kn">import</span> <span class="n">anova_lm</span>
+
+<span class="c1"># Generate and show the data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># To get reproducible values, provide a seed value</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">27446968</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d8529c8fa94ba266c7fbbc99f89aa6b0ed6e0b46eddb925d130a1ba6fc974ddc.png" src="../../_images/d8529c8fa94ba266c7fbbc99f89aa6b0ed6e0b46eddb925d130a1ba6fc974ddc.png" />
+</div>
+</div>
+<p>Multilinear regression model, calculating fit, P-values, confidence
+intervals etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the data into a Pandas DataFrame to use the formulas framework</span>
+<span class="c1"># in statsmodels</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit the model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s2">&quot;y ~ x&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the summary</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared:         </th> <td>   0.901</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.896</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   164.5</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 03 Feb 2026</td> <th>  Prob (F-statistic):</th> <td>1.72e-10</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>16:04:25</td>     <th>  Log-Likelihood:    </th> <td> -51.758</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>    20</td>      <th>  AIC:               </th> <td>   107.5</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    18</td>      <th>  BIC:               </th> <td>   109.5</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   -4.2948</td> <td>    0.759</td> <td>   -5.661</td> <td> 0.000</td> <td>   -5.889</td> <td>   -2.701</td>
+</tr>
+<tr>
+  <th>x</th>         <td>    3.2060</td> <td>    0.250</td> <td>   12.825</td> <td> 0.000</td> <td>    2.681</td> <td>    3.731</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 1.218</td> <th>  Durbin-Watson:     </th> <td>   1.796</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.544</td> <th>  Jarque-Bera (JB):  </th> <td>   0.999</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.503</td> <th>  Prob(JB):          </th> <td>   0.607</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.568</td> <th>  Cond. No.          </th> <td>    3.03</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform analysis of variance on fitted linear model</span>
+<span class="n">anova_results</span> <span class="o">=</span> <span class="n">anova_lm</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">anova_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>df</th>
+      <th>sum_sq</th>
+      <th>mean_sq</th>
+      <th>F</th>
+      <th>PR(&gt;F)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>x</th>
+      <td>1.0</td>
+      <td>1893.370786</td>
+      <td>1893.370786</td>
+      <td>164.484593</td>
+      <td>1.717490e-10</td>
+    </tr>
+    <tr>
+      <th>Residual</th>
+      <td>18.0</td>
+      <td>207.196756</td>
+      <td>11.510931</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Plot the fitted model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve the parameter estimates</span>
+<span class="n">offset</span><span class="p">,</span> <span class="n">coef</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_results</span><span class="o">.</span><span class="n">params</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">coef</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7573f772010f3d6f5cbabb5f3d75799029ccf5105fe08050fdd8b6caa24d74a6.png" src="../../_images/7573f772010f3d6f5cbabb5f3d75799029ccf5105fe08050fdd8b6caa24d74a6.png" />
+</div>
+</div>
+</section>
+<section id="multiple-regression">
+<span id="id4"></span><h2>Multiple Regression<a class="headerlink" href="#multiple-regression" title="Link to this heading">#</a></h2>
+<!--- plot_regression_3d --><p>Calculate using ‘statsmodels’ just the best fit, or all the corresponding
+statistical parameters.</p>
+<p>Also shows how to make 3d plots.</p>
+<p>Original author: Thomas Haslwanter</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For 3d plots. This import is necessary to have 3D plotting below</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate and show the data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="c1"># We generate a 2D grid</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># To get reproducible values, provide a seed value</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">27446968</span><span class="p">)</span>
+
+<span class="c1"># Z is the elevation of this 2D grid</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">X</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">ax</span><span class="p">:</span> <span class="n">Axes3D</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4a0aa153e148f6d08072f08bb77717e3ed785f7e28570f49bb21ed23d4d995cb.png" src="../../_images/4a0aa153e148f6d08072f08bb77717e3ed785f7e28570f49bb21ed23d4d995cb.png" />
+</div>
+</div>
+<p>Multilinear regression model, calculating fit, P-values, confidence
+intervals etc.</p>
+<p>Convert the data into a Pandas DataFrame to use the formulas framework
+in statsmodels</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First we need to flatten the data: it&#39;s 2D layout is not relevant.</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">Y</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="n">Z</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit the model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s2">&quot;z ~ x + y&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="c1"># Show the summary</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>            <td>z</td>        <th>  R-squared:         </th> <td>   0.520</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.518</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   237.5</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 03 Feb 2026</td> <th>  Prob (F-statistic):</th> <td>1.35e-70</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>16:04:25</td>     <th>  Log-Likelihood:    </th> <td> -1553.9</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   441</td>      <th>  AIC:               </th> <td>   3114.</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   438</td>      <th>  BIC:               </th> <td>   3126.</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     2</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   -5.0862</td> <td>    0.392</td> <td>  -12.975</td> <td> 0.000</td> <td>   -5.857</td> <td>   -4.316</td>
+</tr>
+<tr>
+  <th>x</th>         <td>    2.8036</td> <td>    0.129</td> <td>   21.655</td> <td> 0.000</td> <td>    2.549</td> <td>    3.058</td>
+</tr>
+<tr>
+  <th>y</th>         <td>   -0.3219</td> <td>    0.129</td> <td>   -2.486</td> <td> 0.013</td> <td>   -0.576</td> <td>   -0.067</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 2.098</td> <th>  Durbin-Watson:     </th> <td>   2.001</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.350</td> <th>  Jarque-Bera (JB):  </th> <td>   2.152</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.137</td> <th>  Prob(JB):          </th> <td>   0.341</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.796</td> <th>  Cond. No.          </th> <td>    3.03</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Retrieving the parameter estimates manually:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_results</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieving the parameter estimates manually:
+[-5.08619946  2.80358982 -0.32185766]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform analysis of variance on fitted linear model</span>
+<span class="n">anova_results</span> <span class="o">=</span> <span class="n">anova_lm</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">anova_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>df</th>
+      <th>sum_sq</th>
+      <th>mean_sq</th>
+      <th>F</th>
+      <th>PR(&gt;F)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>x</th>
+      <td>1.0</td>
+      <td>31774.518515</td>
+      <td>31774.518515</td>
+      <td>468.91858</td>
+      <td>3.152434e-71</td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td>1.0</td>
+      <td>418.772098</td>
+      <td>418.772098</td>
+      <td>6.18011</td>
+      <td>1.329127e-02</td>
+    </tr>
+    <tr>
+      <th>Residual</th>
+      <td>438.0</td>
+      <td>29679.436264</td>
+      <td>67.761270</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="analysis-of-iris-petal-and-sepal-sizes">
+<span id="id5"></span><h2>Analysis of Iris petal and sepal sizes<a class="headerlink" href="#analysis-of-iris-petal-and-sepal-sizes" title="Link to this heading">#</a></h2>
+<!--- plot_iris_analysis --><p>Illustrate an analysis on a real dataset:</p>
+<ul class="simple">
+<li><p>Visualizing the data to formulate intuitions</p></li>
+<li><p>Fitting of a linear model</p></li>
+<li><p>Hypothesis test of the effect of a categorical variable in the presence
+of a continuous confound</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/iris.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot a scatter matrix</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Express the names as categories</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+<span class="c1"># The parameter &#39;c&#39; is passed to plt.scatter and will control the color</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">categories</span><span class="o">.</span><span class="n">codes</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;blue: setosa, green: versicolor, red: virginica&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;blue: setosa, green: versicolor, red: virginica&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/73d96ff142d129f9f4b5d49b0ee8f45e7d0812356891688bb8f6ebe33fb149d1.png" src="../../_images/73d96ff142d129f9f4b5d49b0ee8f45e7d0812356891688bb8f6ebe33fb149d1.png" />
+</div>
+</div>
+<p>Statistical analysis</p>
+<p>Let us try to explain the sepal length as a function of the petal
+width and the category of iris</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s2">&quot;sepal_width ~ name + petal_length&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>       <td>sepal_width</td>   <th>  R-squared:         </th> <td>   0.478</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.468</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   44.63</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 03 Feb 2026</td> <th>  Prob (F-statistic):</th> <td>1.58e-20</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>16:04:26</td>     <th>  Log-Likelihood:    </th> <td> -38.185</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   150</td>      <th>  AIC:               </th> <td>   84.37</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   146</td>      <th>  BIC:               </th> <td>   96.41</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+           <td></td>             <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>          <td>    2.9813</td> <td>    0.099</td> <td>   29.989</td> <td> 0.000</td> <td>    2.785</td> <td>    3.178</td>
+</tr>
+<tr>
+  <th>name[T.versicolor]</th> <td>   -1.4821</td> <td>    0.181</td> <td>   -8.190</td> <td> 0.000</td> <td>   -1.840</td> <td>   -1.124</td>
+</tr>
+<tr>
+  <th>name[T.virginica]</th>  <td>   -1.6635</td> <td>    0.256</td> <td>   -6.502</td> <td> 0.000</td> <td>   -2.169</td> <td>   -1.158</td>
+</tr>
+<tr>
+  <th>petal_length</th>       <td>    0.2983</td> <td>    0.061</td> <td>    4.920</td> <td> 0.000</td> <td>    0.178</td> <td>    0.418</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 2.868</td> <th>  Durbin-Watson:     </th> <td>   1.753</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.238</td> <th>  Jarque-Bera (JB):  </th> <td>   2.885</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.082</td> <th>  Prob(JB):          </th> <td>   0.236</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 3.659</td> <th>  Cond. No.          </th> <td>    54.0</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<p>Now formulate a “contrast”, to test if the offset for versicolor and
+virginica are identical</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing the difference between effect of versicolor and virginica&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">f_test</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Testing the difference between effect of versicolor and virginica
+&lt;F test: F=3.2453353465741173, p=0.07369058781701392, df_denom=146, df_num=1&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-factors-influencing-wages">
+<span id="id6"></span><h2>Visualizing factors influencing wages<a class="headerlink" href="#visualizing-factors-influencing-wages" title="Link to this heading">#</a></h2>
+<!--- plot_wage_data --><p>This example uses Seaborn to quickly plot various factors relating wages,
+experience, and education.</p>
+<p>Seaborn (<a class="reference external" href="https://seaborn.pydata.org">https://seaborn.pydata.org</a>) is a library that combines
+visualization and statistical fits to show trends in data.</p>
+<p>Note that importing Seaborn changes the matplotlib style to have an
+“excel-like” feeling. This changes affect other matplotlib figures. To
+restore defaults once this example is run, we would need to call
+<code class="docutils literal notranslate"><span class="pre">plt.rcdefaults()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/wages.txt&quot;</span><span class="p">,</span>
+    <span class="n">skiprows</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+    <span class="n">skipfooter</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">sep</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span>  <span class="c1"># To allow use of skipfooter.</span>
+<span class="p">)</span>
+<span class="c1"># Give names to the columns</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;education: Number of years of education&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;south: 1=person lives in South, 0=Person lives elsewhere&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sex: 1=female, 0=Male&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;experience: Number of years of work experience&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;union: 1=union member, 0=Not union member&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;wage: wage (dollars per hour)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;age: years&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;race: 1=other, 2=Hispanic, 3=White&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;occupation: 1=Management, 2=Sales, 3=Clerical, 4=Service, 5=Professional, 6=Other&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sector: 0=Other, 1=Manufacturing, 2=Construction&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marr: 0=unmarried,  1=Married&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">short_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+<span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">short_names</span><span class="p">)</span>
+<span class="c1"># Log-transform the wages, because they typically are increased with</span>
+<span class="c1"># multiplicative factors</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;wage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;wage&quot;</span><span class="p">])</span>
+<span class="c1"># Convert genders to strings (this is particularly useful so that the</span>
+<span class="c1"># statsmodels formulas detects that `sex` is a categorical variable)</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">choose</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;female&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot scatter matrices highlighting different aspects</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wage&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;education&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f23d6d2de20&gt;
+</pre></div>
+</div>
+<img alt="../../_images/bacf5dd799ba22cc56b370e85b0739fc4368be9d6dfa46735d0ce4e0b3a2548d.png" src="../../_images/bacf5dd799ba22cc56b370e85b0739fc4368be9d6dfa46735d0ce4e0b3a2548d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wage&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;education&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Effect of sex: 1=Female, 0=Male&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Effect of sex: 1=Female, 0=Male&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/64daf948995d5b6dbb9238a0d0f4bbb4e39f4a809ddb96784aa577c5a9968534.png" src="../../_images/64daf948995d5b6dbb9238a0d0f4bbb4e39f4a809ddb96784aa577c5a9968534.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wage&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;education&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;race&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Effect of race: 1=Other, 2=Hispanic, 3=White&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Effect of race: 1=Other, 2=Hispanic, 3=White&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/f372b9fb3acae9d3c4040fdd1344877d36626e8c41aeed67de7d6dd41362c5f7.png" src="../../_images/f372b9fb3acae9d3c4040fdd1344877d36626e8c41aeed67de7d6dd41362c5f7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wage&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;education&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;union&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Effect of union: 1=Union member, 0=Not union member&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Effect of union: 1=Union member, 0=Not union member&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/bc9146576bac68b62584d401ede927705483245bd31e1f093e09a3c06930cf06.png" src="../../_images/bc9146576bac68b62584d401ede927705483245bd31e1f093e09a3c06930cf06.png" />
+</div>
+</div>
+<p>Plot a simple regression</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;wage&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;education&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f23d5f6e1e0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/5c02eeebe2c5e4ac434adfd8e60be97b6e85e48f365fac0bbc713244303313ff.png" src="../../_images/5c02eeebe2c5e4ac434adfd8e60be97b6e85e48f365fac0bbc713244303313ff.png" />
+</div>
+</div>
+</section>
+<section id="test-for-an-education-sex-interaction-in-wages">
+<span id="id7"></span><h2>Test for an education/sex interaction in wages<a class="headerlink" href="#test-for-an-education-sex-interaction-in-wages" title="Link to this heading">#</a></h2>
+<!--- plot_wage_education_gender --><p>Wages depend mostly on education. Here we investigate how this dependence
+is related to gender: not only does gender create an offset in wages, it
+also seems that wages increase more with education for males than
+females.</p>
+<p>Does our data support this last hypothesis? We will test this using
+statsmodels’ formulas
+(<a class="reference external" href="http://statsmodels.sourceforge.net/stable/example_formulas.html">http://statsmodels.sourceforge.net/stable/example_formulas.html</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simple plotting</span>
+
+<span class="c1"># Plot 2 linear fits for male and female.</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;wage&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;education&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># statistical analysis</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+
+<span class="c1"># Note that this model is not the plot displayed above: it is one</span>
+<span class="c1"># joined model for male and female, not separate models for male and</span>
+<span class="c1"># female. The reason is that a single model enables statistical testing</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;wage ~ education + sex&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>wage</td>       <th>  R-squared:         </th> <td>   0.193</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.190</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   63.42</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 03 Feb 2026</td> <th>  Prob (F-statistic):</th> <td>2.01e-25</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>16:04:34</td>     <th>  Log-Likelihood:    </th> <td>  86.654</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   534</td>      <th>  AIC:               </th> <td>  -167.3</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   531</td>      <th>  BIC:               </th> <td>  -154.5</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     2</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+       <td></td>          <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>   <td>    0.4053</td> <td>    0.046</td> <td>    8.732</td> <td> 0.000</td> <td>    0.314</td> <td>    0.496</td>
+</tr>
+<tr>
+  <th>sex[T.male]</th> <td>    0.1008</td> <td>    0.018</td> <td>    5.625</td> <td> 0.000</td> <td>    0.066</td> <td>    0.136</td>
+</tr>
+<tr>
+  <th>education</th>   <td>    0.0334</td> <td>    0.003</td> <td>    9.768</td> <td> 0.000</td> <td>    0.027</td> <td>    0.040</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 4.675</td> <th>  Durbin-Watson:     </th> <td>   1.792</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.097</td> <th>  Jarque-Bera (JB):  </th> <td>   4.876</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.147</td> <th>  Prob(JB):          </th> <td>  0.0873</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 3.365</td> <th>  Cond. No.          </th> <td>    69.7</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div><img alt="../../_images/799408919c26db920e0228355437277eeac1426ba851cd02cb922d3716d15c74.png" src="../../_images/799408919c26db920e0228355437277eeac1426ba851cd02cb922d3716d15c74.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The plots above highlight that there is not only a different offset in</span>
+<span class="c1"># wage but also a different slope</span>
+<span class="c1">#</span>
+<span class="c1"># We need to model this using an interaction</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span>
+    <span class="n">formula</span><span class="o">=</span><span class="s2">&quot;wage ~ education + sex + education * sex&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>wage</td>       <th>  R-squared:         </th> <td>   0.198</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.194</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   43.72</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 03 Feb 2026</td> <th>  Prob (F-statistic):</th> <td>2.94e-25</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>16:04:34</td>     <th>  Log-Likelihood:    </th> <td>  88.503</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   534</td>      <th>  AIC:               </th> <td>  -169.0</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   530</td>      <th>  BIC:               </th> <td>  -151.9</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+            <td></td>               <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>             <td>    0.2998</td> <td>    0.072</td> <td>    4.173</td> <td> 0.000</td> <td>    0.159</td> <td>    0.441</td>
+</tr>
+<tr>
+  <th>sex[T.male]</th>           <td>    0.2750</td> <td>    0.093</td> <td>    2.972</td> <td> 0.003</td> <td>    0.093</td> <td>    0.457</td>
+</tr>
+<tr>
+  <th>education</th>             <td>    0.0415</td> <td>    0.005</td> <td>    7.647</td> <td> 0.000</td> <td>    0.031</td> <td>    0.052</td>
+</tr>
+<tr>
+  <th>education:sex[T.male]</th> <td>   -0.0134</td> <td>    0.007</td> <td>   -1.919</td> <td> 0.056</td> <td>   -0.027</td> <td>    0.000</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 4.838</td> <th>  Durbin-Watson:     </th> <td>   1.825</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.089</td> <th>  Jarque-Bera (JB):  </th> <td>   5.000</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.156</td> <th>  Prob(JB):          </th> <td>  0.0821</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 3.356</td> <th>  Cond. No.          </th> <td>    194.</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<p>Looking at the p-value of the interaction of sex and education, the
+data does not support the hypothesis that education benefits males
+more than female (p-value &gt; 0.05).</p>
+</section>
+<section id="other-examples">
+<h2>Other examples<a class="headerlink" href="#other-examples" title="Link to this heading">#</a></h2>
+<section id="air-fares-before-and-after-9-11">
+<span id="id8"></span><h3>Air fares before and after 9/11<a class="headerlink" href="#air-fares-before-and-after-9-11" title="Link to this heading">#</a></h3>
+<!--- plot_airfare --><p>This is a business-intelligence (BI) like application.</p>
+<p>What is interesting here is that we may want to study fares as a function
+of the year, paired accordingly to the trips, or forgetting the year,
+only as a function of the trip endpoints.</p>
+<p>Using statsmodels’ linear models, we find that both with an OLS (ordinary
+least square) and a robust fit, the intercept and the slope are
+significantly non-zero: the air fares have decreased between 2000 and
+2001, and their dependence on distance travelled has also decreased</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># As a separator, &#39;\s+&#39; is a regular expression that means &#39;one or more</span>
+<span class="c1"># spaces&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;examples/airfares.txt&quot;</span><span class="p">,</span>
+    <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span>
+    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;city1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;city2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pop1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pop2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dist&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fare_2000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nb_passengers_2000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fare_2001&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nb_passengers_2001&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we log-transform the number of passengers</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;nb_passengers_2000&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;nb_passengers_2000&quot;</span><span class="p">])</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;nb_passengers_2001&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;nb_passengers_2001&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make a dataframe with the year as an attribute, instead of separate columns</p>
+<p>This involves a small danse in which we separate the dataframes in 2,
+one for year 2000, and one for 2001, before concatenating again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make an index of each flight</span>
+<span class="n">data_flat</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_2000</span> <span class="o">=</span> <span class="n">data_flat</span><span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;city1&quot;</span><span class="p">,</span> <span class="s2">&quot;city2&quot;</span><span class="p">,</span> <span class="s2">&quot;pop1&quot;</span><span class="p">,</span> <span class="s2">&quot;pop2&quot;</span><span class="p">,</span> <span class="s2">&quot;dist&quot;</span><span class="p">,</span> <span class="s2">&quot;fare_2000&quot;</span><span class="p">,</span> <span class="s2">&quot;nb_passengers_2000&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="c1"># Rename the columns</span>
+<span class="n">data_2000</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;city1&quot;</span><span class="p">,</span> <span class="s2">&quot;city2&quot;</span><span class="p">,</span> <span class="s2">&quot;pop1&quot;</span><span class="p">,</span> <span class="s2">&quot;pop2&quot;</span><span class="p">,</span> <span class="s2">&quot;dist&quot;</span><span class="p">,</span> <span class="s2">&quot;fare&quot;</span><span class="p">,</span> <span class="s2">&quot;nb_passengers&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># Add a column with the year</span>
+<span class="n">data_2000</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_2001</span> <span class="o">=</span> <span class="n">data_flat</span><span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;city1&quot;</span><span class="p">,</span> <span class="s2">&quot;city2&quot;</span><span class="p">,</span> <span class="s2">&quot;pop1&quot;</span><span class="p">,</span> <span class="s2">&quot;pop2&quot;</span><span class="p">,</span> <span class="s2">&quot;dist&quot;</span><span class="p">,</span> <span class="s2">&quot;fare_2001&quot;</span><span class="p">,</span> <span class="s2">&quot;nb_passengers_2001&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="c1"># Rename the columns</span>
+<span class="n">data_2001</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;city1&quot;</span><span class="p">,</span> <span class="s2">&quot;city2&quot;</span><span class="p">,</span> <span class="s2">&quot;pop1&quot;</span><span class="p">,</span> <span class="s2">&quot;pop2&quot;</span><span class="p">,</span> <span class="s2">&quot;dist&quot;</span><span class="p">,</span> <span class="s2">&quot;fare&quot;</span><span class="p">,</span> <span class="s2">&quot;nb_passengers&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># Add a column with the year</span>
+<span class="n">data_2001</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="mi">2001</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_flat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data_2000</span><span class="p">,</span> <span class="n">data_2001</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot scatter matrices highlighting different aspects</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span>
+    <span class="n">data_flat</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fare&quot;</span><span class="p">,</span> <span class="s2">&quot;dist&quot;</span><span class="p">,</span> <span class="s2">&quot;nb_passengers&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">markers</span><span class="o">=</span><span class="s2">&quot;.&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f23d32f4050&gt;
+</pre></div>
+</div>
+<img alt="../../_images/4701f8e4dcb766954e825f940cdde9c0d41e4f0bd5f067a39bd2c623d06bc400.png" src="../../_images/4701f8e4dcb766954e825f940cdde9c0d41e4f0bd5f067a39bd2c623d06bc400.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A second plot, to show the effect of the year (ie the 9/11 effect)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span>
+    <span class="n">data_flat</span><span class="p">,</span>
+    <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fare&quot;</span><span class="p">,</span> <span class="s2">&quot;dist&quot;</span><span class="p">,</span> <span class="s2">&quot;nb_passengers&quot;</span><span class="p">],</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
+    <span class="n">markers</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f23d368fad0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/5020a30edf3d155460ab1872af6b80a269c70007a92a5f8ae2d1237543437152.png" src="../../_images/5020a30edf3d155460ab1872af6b80a269c70007a92a5f8ae2d1237543437152.png" />
+</div>
+</div>
+<p>Plot the difference in fare</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">fare_2001</span> <span class="o">-</span> <span class="n">data</span><span class="o">.</span><span class="n">fare_2000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fare: 2001 - 2000&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/be3018007ee637dcb8d6555dd0cc8905589fb7d4702d8a04c2a8b24c303997a6.png" src="../../_images/be3018007ee637dcb8d6555dd0cc8905589fb7d4702d8a04c2a8b24c303997a6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">nb_passengers_2001</span> <span class="o">-</span> <span class="n">data</span><span class="o">.</span><span class="n">nb_passengers_2000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;NB passengers: 2001 - 2000&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/382ab4e5c579d96d70d3dbadabfd015a26052bff2ffbfefa71855699b5dfd5fa.png" src="../../_images/382ab4e5c579d96d70d3dbadabfd015a26052bff2ffbfefa71855699b5dfd5fa.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Statistical testing: dependence of fare on distance and number of</span>
+<span class="c1"># passengers</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;fare ~ 1 + dist + nb_passengers&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_flat</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>fare</td>       <th>  R-squared:         </th> <td>   0.275</td> 
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.275</td> 
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   1585.</td> 
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 03 Feb 2026</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
+</tr>
+<tr>
+  <th>Time:</th>                 <td>16:04:40</td>     <th>  Log-Likelihood:    </th> <td> -45532.</td> 
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>  8352</td>      <th>  AIC:               </th> <td>9.107e+04</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>  8349</td>      <th>  BIC:               </th> <td>9.109e+04</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     2</td>      <th>                     </th>     <td> </td>    
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>    
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+        <td></td>           <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>     <td>  211.2428</td> <td>    2.466</td> <td>   85.669</td> <td> 0.000</td> <td>  206.409</td> <td>  216.076</td>
+</tr>
+<tr>
+  <th>dist</th>          <td>    0.0484</td> <td>    0.001</td> <td>   48.149</td> <td> 0.000</td> <td>    0.046</td> <td>    0.050</td>
+</tr>
+<tr>
+  <th>nb_passengers</th> <td>  -32.8925</td> <td>    1.127</td> <td>  -29.191</td> <td> 0.000</td> <td>  -35.101</td> <td>  -30.684</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>604.051</td> <th>  Durbin-Watson:     </th> <td>   1.446</td> 
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td> 740.733</td> 
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.710</td>  <th>  Prob(JB):          </th> <td>1.42e-161</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 3.338</td>  <th>  Cond. No.          </th> <td>5.23e+03</td> 
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 5.23e+03. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using a robust fit</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">rlm</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;fare ~ 1 + dist + nb_passengers&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_flat</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>Robust linear Model Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>        <td>fare</td>       <th>  No. Observations:  </th> <td>  8352</td>
+</tr>
+<tr>
+  <th>Model:</th>                 <td>RLM</td>       <th>  Df Residuals:      </th> <td>  8349</td>
+</tr>
+<tr>
+  <th>Method:</th>               <td>IRLS</td>       <th>  Df Model:          </th> <td>     2</td>
+</tr>
+<tr>
+  <th>Norm:</th>                <td>HuberT</td>      <th>                     </th>    <td> </td>  
+</tr>
+<tr>
+  <th>Scale Est.:</th>            <td>mad</td>       <th>                     </th>    <td> </td>  
+</tr>
+<tr>
+  <th>Cov Type:</th>              <td>H1</td>        <th>                     </th>    <td> </td>  
+</tr>
+<tr>
+  <th>Date:</th>           <td>Tue, 03 Feb 2026</td> <th>                     </th>    <td> </td>  
+</tr>
+<tr>
+  <th>Time:</th>               <td>16:04:40</td>     <th>                     </th>    <td> </td>  
+</tr>
+<tr>
+  <th>No. Iterations:</th>        <td>12</td>        <th>                     </th>    <td> </td>  
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+        <td></td>           <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>     <td>  215.0848</td> <td>    2.448</td> <td>   87.856</td> <td> 0.000</td> <td>  210.287</td> <td>  219.883</td>
+</tr>
+<tr>
+  <th>dist</th>          <td>    0.0460</td> <td>    0.001</td> <td>   46.166</td> <td> 0.000</td> <td>    0.044</td> <td>    0.048</td>
+</tr>
+<tr>
+  <th>nb_passengers</th> <td>  -35.2686</td> <td>    1.119</td> <td>  -31.526</td> <td> 0.000</td> <td>  -37.461</td> <td>  -33.076</td>
+</tr>
+</table><br/><br/>If the model instance has been used for another fit with different fit parameters, then the fit options might not be the correct ones anymore .</div></div>
+</div>
+<p>Statistical testing: regression of fare on distance: 2001/2000 difference</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;fare_2001 - fare_2000 ~ 1 + dist&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>        <td>fare_2001</td>    <th>  R-squared:         </th> <td>   0.159</td> 
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.159</td> 
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   791.7</td> 
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 03 Feb 2026</td> <th>  Prob (F-statistic):</th> <td>1.20e-159</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>16:04:40</td>     <th>  Log-Likelihood:    </th> <td> -22640.</td> 
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>  4176</td>      <th>  AIC:               </th> <td>4.528e+04</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>  4174</td>      <th>  BIC:               </th> <td>4.530e+04</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>    
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>    
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>  148.0279</td> <td>    1.673</td> <td>   88.480</td> <td> 0.000</td> <td>  144.748</td> <td>  151.308</td>
+</tr>
+<tr>
+  <th>dist</th>      <td>    0.0388</td> <td>    0.001</td> <td>   28.136</td> <td> 0.000</td> <td>    0.036</td> <td>    0.041</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>136.558</td> <th>  Durbin-Watson:     </th> <td>   1.544</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td> 149.624</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.462</td>  <th>  Prob(JB):          </th> <td>3.23e-33</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.920</td>  <th>  Cond. No.          </th> <td>2.40e+03</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 2.4e+03. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the corresponding regression</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;fare_difference&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;fare_2001&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;fare_2000&quot;</span><span class="p">]</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;dist&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;fare_difference&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f23d255fa10&gt;
+</pre></div>
+</div>
+<img alt="../../_images/3d99d821507f480e0010ab5394bacffabb40048724a138d16060ca85de4823e5.png" src="../../_images/3d99d821507f480e0010ab5394bacffabb40048724a138d16060ca85de4823e5.png" />
+</div>
+</div>
+</section>
+<section id="relating-gender-and-iq">
+<span id="id9"></span><h3>Relating Gender and IQ<a class="headerlink" href="#relating-gender-and-iq" title="Link to this heading">#</a></h3>
+<!--- plot_brain_size --><p>Going back to the brain size + IQ data, test if the VIQ of male and
+female are different after removing the effect of brain size, height and
+weight.</p>
+<p>Notice that here ‘Gender’ is a categorical value. As it is a non-float
+data type, statsmodels is able to automatically infer this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/brain_size.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s2">&quot;VIQ ~ Gender + MRI_Count + Height&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>VIQ</td>       <th>  R-squared:         </th> <td>   0.246</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.181</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   3.809</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 03 Feb 2026</td> <th>  Prob (F-statistic):</th>  <td>0.0184</td> 
+</tr>
+<tr>
+  <th>Time:</th>                 <td>16:04:41</td>     <th>  Log-Likelihood:    </th> <td> -172.34</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>    39</td>      <th>  AIC:               </th> <td>   352.7</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    35</td>      <th>  BIC:               </th> <td>   359.3</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+         <td></td>           <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>      <td>  166.6258</td> <td>   88.824</td> <td>    1.876</td> <td> 0.069</td> <td>  -13.696</td> <td>  346.948</td>
+</tr>
+<tr>
+  <th>Gender[T.Male]</th> <td>    8.8524</td> <td>   10.710</td> <td>    0.827</td> <td> 0.414</td> <td>  -12.890</td> <td>   30.595</td>
+</tr>
+<tr>
+  <th>MRI_Count</th>      <td>    0.0002</td> <td> 6.46e-05</td> <td>    2.615</td> <td> 0.013</td> <td> 3.78e-05</td> <td>    0.000</td>
+</tr>
+<tr>
+  <th>Height</th>         <td>   -3.0837</td> <td>    1.276</td> <td>   -2.417</td> <td> 0.021</td> <td>   -5.674</td> <td>   -0.494</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 7.373</td> <th>  Durbin-Watson:     </th> <td>   2.109</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.025</td> <th>  Jarque-Bera (JB):  </th> <td>   2.252</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.005</td> <th>  Prob(JB):          </th> <td>   0.324</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 1.823</td> <th>  Cond. No.          </th> <td>2.40e+07</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 2.4e+07. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here, we don&#39;t need to define a contrast, as we are testing a single</span>
+<span class="c1"># coefficient of our model, and not a combination of coefficients.</span>
+<span class="c1"># However, defining a contrast, which would then be a &#39;unit contrast&#39;,</span>
+<span class="c1"># will give us the same results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">f_test</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;F test: F=0.6831960845842289, p=0.4140878441244704, df_denom=35, df_num=1&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we plot a scatter matrix to get intuitions on our results.
+This goes beyond what was asked in the exercise</p>
+<p>This plotting is useful to get an intuitions on the relationships between
+our different variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fill in the missing values for Height for plotting</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The parameter &#39;c&#39; is passed to plt.scatter and will control the color</span>
+<span class="c1"># The same holds for parameters &#39;marker&#39;, &#39;alpha&#39; and &#39;cmap&#39;, that</span>
+<span class="c1"># control respectively the type of marker used, their transparency and</span>
+<span class="c1"># the colormap</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">[[</span><span class="s2">&quot;VIQ&quot;</span><span class="p">,</span> <span class="s2">&quot;MRI_Count&quot;</span><span class="p">,</span> <span class="s2">&quot;Height&quot;</span><span class="p">]],</span>
+    <span class="n">c</span><span class="o">=</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Gender&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Female&quot;</span><span class="p">),</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;winter&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;blue: male, green: female&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/196739e5b4e5669a95cdd04efcb2918a1f723193ea27dc73bae7dccd6a45016f.png" src="../../_images/196739e5b4e5669a95cdd04efcb2918a1f723193ea27dc73bae7dccd6a45016f.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./packages/statistics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Plotting simple quantities of a pandas dataframe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots-and-paired-differences">Boxplots and paired differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-regression">Simple Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-regression">Multiple Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-iris-petal-and-sepal-sizes">Analysis of Iris petal and sepal sizes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-factors-influencing-wages">Visualizing factors influencing wages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-for-an-education-sex-interaction-in-wages">Test for an education/sex interaction in wages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-examples">Other examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#air-fares-before-and-after-9-11">Air fares before and after 9/11</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relating-gender-and-iq">Relating Gender and IQ</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Scientific Python developers
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
